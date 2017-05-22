@@ -1,0 +1,194 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"properties": {
+		"content-spec": {
+			"type": "string"
+		},
+		"device": {
+			"type": "object",
+			"properties": {
+				"deviceID": {
+					"type": "string"
+				},
+				"operationalStatus": {
+					"type": "string"
+				},
+				"metaData": {
+					"type": "object"
+				}
+			},
+			"additionalProperties": false,
+			"required": [
+				"deviceID"
+			]
+		},
+		"part": {
+			"type": "object",
+			"properties": {
+				"type": {
+					"type": "string"
+				},
+				"partTypeId": {
+					"type": "string"
+				},
+				"id": {
+					"type": "string"
+				},
+				"result": {
+					"type": "string"
+				},
+				"code": {
+					"type": "string"
+				},
+				"metaData": {
+					"type": "object"
+				}
+			},		
+		"additionalProperties": false,
+		"required": [
+			"id"
+		]
+	},
+	    "process": {
+      "type": "object",
+      "properties": {
+        "externalProcessId": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        },
+        "shutoffPhase": {
+          "type": "string"
+        },
+        "program": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "lastChangedDate": {
+              "type": "string"
+            }
+          }
+        },
+        "shutoffValues": {
+	        "type": "object",
+	        "items": {
+	          	"type": "object",
+				"properties": {
+				  "ts": {
+				    "type": "string"
+				  },
+				  "value": {
+				    "type": "number"
+				  },
+				  "upperError": {
+				    "type": "number"
+				  },
+				  "LowerError": {
+				    "type": "number"            
+				  },
+				  "upperWarn": {
+				    "type": "number"
+				  },
+				  "LowerWarn": {
+				    "type": "number"            
+				  }
+				},	
+				"additionalProperties": false
+	        }
+	     },
+        "metaData": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "ts"       
+      ]
+    },
+    "measurements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ts": {
+            "type": "string"
+          },
+          "phase": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "limits": {
+	          "type": "object",
+		        "items": {
+	            "type": "object",
+				"properties": {
+				  "upperError": {
+				    "type": "object"
+				  },
+				  "LowerError": {
+				    "type": "object"            
+				  },
+				  "upperWarn": {
+				    "type": "object"
+				  },
+				  "LowerWarn": {
+				    "type": "object"            
+				  }
+				},	
+				"additionalProperties": false            
+	          }
+          },
+        "specialValues": {
+	        "type": "object",
+	        "items": {
+	          	"type": "object",
+				"properties": {
+				  "time": {
+				    "type": "object"
+				  },
+				  "value": {
+				    "type": "object"
+				  }
+				},
+				"required": [
+		          "value"
+		        ],	
+				"additionalProperties": false
+	        }
+	     },
+          "series": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "ts",
+          "series"
+        ],
+      	"additionalProperties":false
+      }
+    }
+    },	
+	"additionalProperties": false,
+	"required": [
+		"content-spec",
+		"device",
+		"measurements"
+	]
+}

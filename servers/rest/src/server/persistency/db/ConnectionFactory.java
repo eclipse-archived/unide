@@ -32,6 +32,7 @@ public class ConnectionFactory {
 	private Properties properties;
 	private String dbNameMessages;
 	private String dbNameMeasurements;
+	private String dbNameProcesses;
 
 	private ConnectionFactory() {
 
@@ -56,7 +57,7 @@ public class ConnectionFactory {
 
 		if (connection == null) {
 
-			if (properties == null) {
+			if (properties == null || properties.isEmpty()) {
 				getConfiguration();
 			}
 
@@ -67,6 +68,7 @@ public class ConnectionFactory {
 
 			dbNameMessages = properties.getProperty("dbNameMessages");
 			dbNameMeasurements = properties.getProperty("dbNameMeasurements");
+			dbNameProcesses = properties.getProperty("dbNameProcesses");
 
 			connection = InfluxDBFactory.connect(url, user, password);
 
@@ -74,6 +76,7 @@ public class ConnectionFactory {
 				LOG.info("DB connected");
 				connection.createDatabase(dbNameMeasurements);
 				connection.createDatabase(dbNameMessages);
+				connection.createDatabase(dbNameProcesses);
 			}
 		}
 
@@ -112,6 +115,15 @@ public class ConnectionFactory {
 	public static String getDatabasenameMeasurements() {
 		return ConnectionFactory.getInstance().dbNameMeasurements;
 	}
+	
+	/**
+	 * Gets the InfluxDB-Name for Measurements
+	 * 
+	 * @return InfluxDB-Name for Measurements
+	 */
+	public static String getDatabasenameProcesses() {
+		return ConnectionFactory.getInstance().dbNameProcesses;
+	}
 
 	/**
 	 * Reads the database configuration of the project
@@ -125,8 +137,7 @@ public class ConnectionFactory {
 
 		try {
 
-			input = getClass().getClassLoader().getResourceAsStream(
-					"config.properties");
+			input = ConnectionFactory.class.getResourceAsStream("/config.properties");
 
 			properties.load(input);
 

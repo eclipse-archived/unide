@@ -4,17 +4,8 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>Jersey RESTful Application</servlet-name>
-    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-    <init-param>
-      <param-name>jersey.config.server.provider.packages</param-name>
-      <param-value>server.endpoints</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Jersey RESTful Application</servlet-name>
-    <url-pattern>/rest/*</url-pattern>
-  </servlet-mapping>
+
+<!--   <listener>
+   <listener-class>server.endpoints.DatabaseStoraging</listener-class>
+  </listener> -->
 </web-app>

@@ -41,7 +41,8 @@
         "metaData": {
           "type": "object"          
         }
-      }
+      },
+      "additionalProperties":false
 	},
     "measurements": {
       "type": "array",

@@ -15,10 +15,12 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.everit.json.schema.Schema;
 import org.everit.json.schema.ValidationException;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONObject;
+
 
 /**
  * Validates a JSON-String to a given PPMP-JSON schema
@@ -26,6 +28,7 @@ import org.json.JSONObject;
 public class Validator {
     
 	private static final Validator validator = new Validator(); 
+	private static final Logger LOG = Logger.getLogger( Validator.class );
     
 	/**
 	 * Map for content-spec and the JSON-schema to use
@@ -35,7 +38,13 @@ public class Validator {
     static{
     	contentSpecMapping.put("urn:spec://eclipse.org/unide/machine-message#v2", "message_schema_v2.json");
     	contentSpecMapping.put("urn:spec://eclipse.org/unide/measurement-message#v2", "measurement_schema_v2.json");
+    	contentSpecMapping.put("urn:spec://eclipse.org/unide/process-message#v2", "process_message_v2.json");
     	contentSpecMapping.put("urn:spec://bosch.com/ppm/process-message#v2", "process_message_v2.json");
+    	contentSpecMapping.put("urn:spec://bosch.com/ppm/measurement-message#v2", "measurement_schema_v2.json");
+    	contentSpecMapping.put("urn:spec://bosch.com/ppm/machine-message#v2", "message_schema_v2.json");
+    	contentSpecMapping.put("urn:spec://bosch.com/cindy/process-message#v2", "process_message_v2.json");
+    	contentSpecMapping.put("urn:spec://bosch.com/cindy/measurement-message#v2", "measurement_schema_v2.json");
+    	contentSpecMapping.put("urn:spec://bosch.com/cindy/machine-message#v2", "message_schema_v2.json");
     }
 	
     private Validator() {
@@ -78,8 +87,9 @@ public class Validator {
      * @param jsonObject JSON object
      * @return Schema which maps to the object
      * @throws IOException
+     * @throws ValidationException 
      */
-    private Schema getSchema(JSONObject jsonObject) throws IOException{
+    private Schema getSchema(JSONObject jsonObject) throws IOException, ValidationException{
     	
     	InputStream schemaStream = getSchemaStream(jsonObject);
     	StringBuilder schema = new StringBuilder();
@@ -103,13 +113,21 @@ public class Validator {
      * @return JSON schema as stream 
      * @throws IOException
      */
-    private InputStream getSchemaStream(JSONObject jsonObject) throws IOException{
+    private InputStream getSchemaStream(JSONObject jsonObject) throws IOException {
     	
     	InputStream schemaStream = null;
+    	String contentSpec = jsonObject.getString("content-spec");
     	
-    	schemaStream = Validator.class.getClassLoader().getResourceAsStream(contentSpecMapping.get(jsonObject.getString("content-spec")));
+    	assert !contentSpec.isEmpty();
+
+    	schemaStream = Validator.class.getResourceAsStream("/" + contentSpecMapping.get(contentSpec));
+    	
+    	if (schemaStream == null){
+    		LOG.info("No validation schema found for content-spec: " + contentSpec);
+    		throw new IOException("No validation schema found for content-spec: " + contentSpec + ".");
+    	}
 
         return schemaStream;
     }
- 
+    
 }

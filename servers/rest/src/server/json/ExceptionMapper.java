@@ -8,10 +8,6 @@
 
 package server.json;
 
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
-import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.Provider;
 
 import org.apache.log4j.Logger;
@@ -36,16 +32,9 @@ public class ExceptionMapper
 	/**
 	* Building the Response including the header
 	*/
-	public Response toResponse(final Exception exception)
+	public String toResponse(final Exception exception)
 	{
-		ResponseBuilder builder = Response
-				.status(Status.BAD_REQUEST)
-				.entity(getJson(exception))
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Credentials", "true")
-				.header("Access-Control-Allow-Methods", "POST")
-				.type(MediaType.APPLICATION_JSON);
-		return builder.build();
+		return getJson(exception);
 	}
 	
 	/**
