@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "content-spec": {
+      "type": "string"
+    },
+    "device": {
+      "type": "object",
+      "properties": {
+        "deviceID": {
+          "type": "string"
+        },
+        "operationalStatus": {
+          "type": "string"
+        },
+        "metaData": {
+          "type": "object"
+        }
+      },
+	  "additionalProperties":false,
+      "required": [
+        "deviceID"
+      ]
+    },
+	 "part": {
+      "type": "object",
+      "properties": {
+        "partTypeID": {
+          "type": "string"
+        },
+        "partID": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "metaData": {
+          "type": "object"          
+        }
+      },
+      "additionalProperties":false
+	},
+    "measurements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ts": {
+            "type": "string"
+          },
+          "series": {
+            "type": "object",
+            "properties": {
+              "$_time": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": [
+              "$_time"
+              ]
+          },
+		  "limits": {
+            "type": "object"          
+			}
+		},
+		"additionalProperties":false,
+        "required": [
+          "ts",
+          "series"
+        ]
+      }
+    }
+  },
+  "additionalProperties":false,
+  "required": [
+    "content-spec",
+    "device",
+    "measurements"
+  ]
+}

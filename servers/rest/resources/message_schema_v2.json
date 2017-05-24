@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "content-spec": {
+      "type": "string"
+    },
+    "device": {
+      "type": "object",
+      "properties": {
+        "deviceID": {
+          "type": "string"
+        },
+        "operationalStatus": {
+          "type": "string"
+        },
+        "metaData": {
+          "type": "object"
+        }
+      },
+	  "additionalProperties":false,
+      "required": [
+        "deviceID"
+      ]
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "origin": {
+            "type": "string"
+          },
+          "ts": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "hint": {
+            "type": "string"
+          },
+          "metaData": {
+          "type": "object"
+		  }
+        },
+		"additionalProperties":false,
+        "required": [
+          "ts",
+          "code"          
+        ]
+      }
+    }
+  },
+	"additionalProperties":false,
+	"required": [
+		"content-spec",
+		"device",
+		"messages"
+	]
+}
