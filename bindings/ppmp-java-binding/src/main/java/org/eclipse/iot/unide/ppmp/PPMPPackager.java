@@ -9,11 +9,14 @@ package org.eclipse.iot.unide.ppmp;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+
 import org.eclipse.iot.unide.ppmp.measurements.MeasurementsWrapper;
 import org.eclipse.iot.unide.ppmp.messages.MessagesWrapper;
+import org.eclipse.iot.unide.ppmp.process.ProcessWrapper;
 
 import java.io.IOException;
 
@@ -23,8 +26,10 @@ public class PPMPPackager {
 
     public PPMPPackager() {
         mapper = new ObjectMapper();
-
-        mapper.registerModule(new JSR310Module());
+        
+        mapper.enable(DeserializationFeature. ACCEPT_SINGLE_VALUE_AS_ARRAY);
+        mapper.configure(SerializationFeature.WRITE_SINGLE_ELEM_ARRAYS_UNWRAPPED, true);
+        mapper.registerModule(new JavaTimeModule());
 
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         mapper.setSerializationInclusion(Include.NON_NULL);
@@ -55,6 +60,12 @@ public class PPMPPackager {
     public MeasurementsWrapper getMeasurementsBean(String jsonString) throws IOException {
         MeasurementsWrapper bean = null;
         bean = mapper.readValue(jsonString, MeasurementsWrapper.class);
+        return bean;
+    }
+    
+    public ProcessWrapper getProcessesBean(String jsonString) throws IOException {
+    	ProcessWrapper bean = null;
+        bean = mapper.readValue(jsonString, ProcessWrapper.class);
         return bean;
     }
 }
