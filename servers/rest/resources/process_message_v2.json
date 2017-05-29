@@ -27,7 +27,7 @@
 			"type": "object",
 			"properties": {
 				"type": {
-					"type": "string"
+         		 	"enum": ["SINGLE", "BATCH"]
 				},
 				"partTypeId": {
 					"type": "string"
@@ -36,7 +36,7 @@
 					"type": "string"
 				},
 				"result": {
-					"type": "string"
+					"enum": ["OK", "NOK", "UNKNOWN"]
 				},
 				"code": {
 					"type": "string"
@@ -60,7 +60,7 @@
           "type": "string"
         },
         "result": {
-          "type": "string"
+          "enum": ["OK", "NOK", "UNKNOWN"]
         },
         "shutoffPhase": {
           "type": "string"
@@ -129,7 +129,7 @@
             "type": "string"
           },
           "result": {
-            "type": "string"
+          	"enum": ["OK", "NOK", "UNKNOWN"]
           },
           "code": {
             "type": "string"
