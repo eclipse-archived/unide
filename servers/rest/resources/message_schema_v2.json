@@ -35,10 +35,10 @@
             "type": "string"
           },
           "type": {
-            "enum": ["DEVICE", "TECHNICAL_INFO"]
+            "type": "string"
           },
           "severity": {
-            "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"]
+            "type": "string"
           },
           "code": {
             "type": "string"

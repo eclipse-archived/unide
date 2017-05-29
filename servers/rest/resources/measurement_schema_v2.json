@@ -33,7 +33,7 @@
           "type": "string"
         },
         "result": {
-          "enum": ["OK", "NOK", "UNKNOWN"]
+          "type": "string"
         },
         "code": {
           "type": "string"
@@ -52,12 +52,6 @@
           "ts": {
             "type": "string"
           },
-	      "result": {
-	        "enum": ["OK", "NOK", "UNKNOWN"]
-	      },
-	      "code": {
-	        "type": "string"
-	      },
           "series": {
             "type": "object",
             "properties": {
