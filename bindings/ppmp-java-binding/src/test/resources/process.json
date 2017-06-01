@@ -10,7 +10,7 @@
     },
     "part" : {
         "type" : "single",
-        "partTypeId" : "F00VH07328",
+        "partTypeID" : "F00VH07328",
         "id" : "420003844",
         "result" : "NOK",
         "code" : "HUH289",

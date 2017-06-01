@@ -29,7 +29,7 @@
 				"type": {
          		 	"enum": ["SINGLE", "BATCH"]
 				},
-				"partTypeId": {
+				"partTypeID": {
 					"type": "string"
 				},
 				"id": {

@@ -21,8 +21,8 @@ public class Part {
 		single, batch
 	};
 	
-	@JsonProperty("partTypeId")
-	private String partTypeId; // optional
+	@JsonProperty("partTypeID")
+	private String partTypeID; // optional
 
 	@JsonProperty("id")
 	private String id;
@@ -40,11 +40,11 @@ public class Part {
 	private MetaData metaData; // optional
 
 	public String getPartTypeId() {
-		return partTypeId;
+		return partTypeID;
 	}
 
-	public void setPartTypeID(String partTypeId) {
-		this.partTypeId = partTypeId;
+	public void setPartTypeID(String partTypeID) {
+		this.partTypeID = partTypeID;
 	}
 
 	public String getId() {
