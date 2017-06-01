@@ -77,7 +77,8 @@
             "lastChangedDate": {
               "type": "string"
             }
-          }
+          },
+          "additionalProperties": false
         },
         "shutoffValues": {
 	        "type": "object",
@@ -110,6 +111,7 @@
           "type": "object"
         }
       },
+      "additionalProperties": false,
       "required": [
         "ts"       
       ]

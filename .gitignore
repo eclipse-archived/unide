@@ -61,3 +61,7 @@ servers/rest/.settings/org.eclipse.wst.jsdt.ui.superType.name
 bindings/ppmp-java-binding/.settings/
 *.classpath
 *.project
+servers/rest/target/
+.settings/
+*.log
+WebContent/META-INF/MANIFEST.MF

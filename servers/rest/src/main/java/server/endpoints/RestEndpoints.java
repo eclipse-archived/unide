@@ -10,8 +10,9 @@ package server.endpoints;
 
 import java.io.IOException;
 
+import javax.xml.bind.ValidationException;
+
 import org.apache.log4j.Logger;
-import org.everit.json.schema.ValidationException;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.ext.web.Router;
@@ -40,7 +41,7 @@ public class RestEndpoints extends AbstractVerticle {
 	public void start() throws IOException {
 
 	    Router router = Router.router(vertx);
-
+	    
 	    router.route().handler(BodyHandler.create());
 	    
 	    router.post("/rest/*").handler(this::checkValidation);	    
@@ -49,12 +50,12 @@ public class RestEndpoints extends AbstractVerticle {
 	    router.post("/rest/v2/process").handler(this::handleProcessMessage);
 	    router.post("/influxdb").handler(this::handleInfluxDbActivation);
 	    
-	    router.route().handler(StaticHandler.create());
-	    
 	    router.get("/*").handler(this::handleGet);
+	    	    
+	    router.route().handler(StaticHandler.create()); 
 	    
-	    vertx.createHttpServer().requestHandler(router::accept).listen(8080);
-	    
+	    vertx.createHttpServer().requestHandler(router::accept).listen(config().getInteger("http.port", 8080));
+
 	}	
 	
 	/**

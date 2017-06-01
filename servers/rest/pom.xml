@@ -10,9 +10,7 @@
     Bosch Software Innovations GmbH - initial API and implementation and initial documentation
 -->
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.eclipse.iot.unide.ppmp</groupId>
   <artifactId>ppmp-server</artifactId>
-  <version>0.0.1</version>
   <packaging>jar</packaging>
   
   <licenses>
@@ -22,29 +20,18 @@
     </license>
   </licenses>  
   
-  <name>unide.server</name>
+  <name>unide-server</name>
   
   	<dependencies>
-		<dependency>
-			<groupId>javax.ws.rs</groupId>
-			<artifactId>javax.ws.rs-api</artifactId>
-			<version>2.0.1</version>
-		</dependency>
 		<dependency>
 		    <groupId>org.influxdb</groupId>
 		    <artifactId>influxdb-java</artifactId>
 		    <version>2.5</version>
-		</dependency>
+		</dependency>		
 		<dependency>
-		    <groupId>org.everit.json</groupId>
-		    <artifactId>org.everit.json.schema</artifactId>
-		    <version>1.5.1</version>
-		    <exclusions>
-		    	<exclusion>
-		    		<groupId>commons-beanutils</groupId>
-		    		<artifactId>commons-beanutils</artifactId>
-		    	</exclusion>
-		    </exclusions>
+		    <groupId>com.networknt</groupId>
+		    <artifactId>json-schema-validator</artifactId>
+		    <version>0.1.7</version>
 		</dependency>
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
@@ -69,18 +56,41 @@
 		<dependency>
 		  <groupId>io.vertx</groupId>
 		  <artifactId>vertx-web</artifactId>
-		  <version>3.0.0</version>
-		</dependency>		
+		  <version>3.4.1</version>
+		</dependency>	
+		<dependency>
+		  <groupId>io.vertx</groupId>
+		  <artifactId>vertx-unit</artifactId>
+		  <version>3.4.1</version>
+		  <scope>test</scope>
+		</dependency>	
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+            <scope>test</scope>
+        </dependency>	
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
     
 	 <build>
-	    <sourceDirectory>src</sourceDirectory>
 		 <resources>
 	        <resource>
-	            <directory>resources</directory>
+	            <directory>src/main/resources</directory>
 	            <includes>
 	                <include>**/*.json</include>
 	                <include>**/*.properties</include>
+	            </includes>
+	        </resource>
+	    	<resource>
+	            <directory>src/test/resources</directory>
+	            <includes>
+	                <include>**/*.json</include>
 	            </includes>
 	        </resource>
 	    </resources>
@@ -124,4 +134,10 @@
 	    </plugins>
 	  </build>
 	  
+	 <parent>
+	 	<artifactId>unide-servers</artifactId>
+	 	<groupId>org.eclipse.iot.unide.ppmp</groupId>
+	 	<version>0.0.1</version>
+	 	<relativePath>../</relativePath>
+	 </parent>
 </project>

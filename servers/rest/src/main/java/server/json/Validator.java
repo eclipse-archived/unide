@@ -14,12 +14,18 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+
+import javax.xml.bind.ValidationException;
 
 import org.apache.log4j.Logger;
-import org.everit.json.schema.Schema;
-import org.everit.json.schema.ValidationException;
-import org.everit.json.schema.loader.SchemaLoader;
-import org.json.JSONObject;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.networknt.schema.JsonSchema;
+import com.networknt.schema.JsonSchemaFactory;
+import com.networknt.schema.ValidationMessage;
 
 
 /**
@@ -61,10 +67,13 @@ public class Validator {
      * @return schema object
      * @throws IOException
      */
-    private Schema getSchema(String schemaText) throws IOException
+    private JsonSchema getSchema(String schemaText) throws IOException
     {
-        final JSONObject schemaNode = new JSONObject(schemaText);
-        return SchemaLoader.load(schemaNode);
+    	JsonSchemaFactory jsonSchemafactory = new JsonSchemaFactory();
+    	
+        JsonSchema jsonSchema = jsonSchemafactory.getSchema(schemaText);
+        
+        return jsonSchema;
     }
     
     /**
@@ -73,13 +82,29 @@ public class Validator {
      * @throws ValidationException
      * @throws IOException
      */
-    public void validate(String jsonText) throws ValidationException, IOException
+    public void validate(String jsonText) throws IllegalArgumentException, ValidationException, IOException
     {    	    	
-        final JSONObject jsonNode = new JSONObject(jsonText.replace("content_spec", "content-spec"));
+        final JsonNode jsonNode = new ObjectMapper().readTree(jsonText.replace("content_spec", "content-spec"));
     	
-        final Schema jsonSchema = getSchema(jsonNode); 
+        final JsonSchema jsonSchema = getSchema(jsonNode); 
         
-        jsonSchema.validate(jsonNode);  
+        Set<ValidationMessage> messages = jsonSchema.validate(jsonNode);  
+        
+        if (messages.size() > 0) {
+        	
+        	ObjectNode jNode = new ObjectMapper().createObjectNode();
+
+        	StringBuilder message = new StringBuilder();       
+        	
+        	for (ValidationMessage validationMessage : messages) {
+        		jNode.put(validationMessage.getMessage().replace("$.", "").split(": ")[0], validationMessage.getMessage().replace("$.", "").split(": ")[1]);
+			}
+        	
+        	message.append(jNode);
+        	
+        	throw new ValidationException(message.toString());
+        }
+        
     }
     
     /**
@@ -89,7 +114,7 @@ public class Validator {
      * @throws IOException
      * @throws ValidationException 
      */
-    private Schema getSchema(JSONObject jsonObject) throws IOException, ValidationException{
+    private JsonSchema getSchema(JsonNode jsonObject) throws IOException, ValidationException{
     	
     	InputStream schemaStream = getSchemaStream(jsonObject);
     	StringBuilder schema = new StringBuilder();
@@ -113,10 +138,10 @@ public class Validator {
      * @return JSON schema as stream 
      * @throws IOException
      */
-    private InputStream getSchemaStream(JSONObject jsonObject) throws IOException {
+    private InputStream getSchemaStream(JsonNode jsonNode) throws IOException {
     	
     	InputStream schemaStream = null;
-    	String contentSpec = jsonObject.getString("content-spec");
+    	String contentSpec = jsonNode.get("content-spec").textValue();
     	
     	assert !contentSpec.isEmpty();
 

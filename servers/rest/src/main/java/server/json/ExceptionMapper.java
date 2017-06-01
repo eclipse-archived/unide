@@ -8,10 +8,9 @@
 
 package server.json;
 
-import javax.ws.rs.ext.Provider;
+import javax.xml.bind.ValidationException;
 
 import org.apache.log4j.Logger;
-import org.everit.json.schema.ValidationException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +18,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /*
  * Mapper for Parsing an exception to a JSON repsonse
  */
-@Provider
 public class ExceptionMapper
 {
 	/** 
@@ -44,14 +42,14 @@ public class ExceptionMapper
 	{
 		try
 		{
-				if (exception.getClass() == ValidationException.class)
-					return ((ValidationException) exception).toJSON().toString();
-				else
-				{
-					ExceptionJson errorInfo = new ExceptionJson(exception);
-		
-					return objectMapper.writeValueAsString(errorInfo);
-				}		
+			if (exception.getClass() == ValidationException.class)
+				return ((ValidationException) exception).toString();
+			else
+			{
+				ExceptionJson errorInfo = new ExceptionJson(exception);
+	
+				return objectMapper.writeValueAsString(errorInfo);
+			}		
 				
 		}
 		catch (JsonProcessingException e)
