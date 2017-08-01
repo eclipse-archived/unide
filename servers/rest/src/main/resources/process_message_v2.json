@@ -9,7 +9,8 @@
 			"type": "object",
 			"properties": {
 				"deviceID": {
-					"type": "string"
+					"type": "string",
+					"maxLength": 36
 				},
 				"operationalStatus": {
 					"type": "string"
@@ -32,7 +33,7 @@
 				"partTypeID": {
 					"type": "string"
 				},
-				"id": {
+				"partID": {
 					"type": "string"
 				},
 				"result": {
@@ -47,17 +48,19 @@
 			},		
 		"additionalProperties": false,
 		"required": [
-			"id"
+			"partID"
 		]
 	},
 	    "process": {
       "type": "object",
       "properties": {
         "externalProcessId": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 36
         },
         "ts": {
-          "type": "string"
+          "type": "string",
+           "format": "date-time"
         },
         "result": {
           "enum": ["OK", "NOK", "UNKNOWN"]
@@ -69,13 +72,16 @@
           "type": "object",
           "properties": {
             "id": {
-              "type": "string"
+              "type": "string",
+              "maxLength": 36
             },
             "name": {
-              "type": "string"
+              "type": "string",
+              "maxLength": 256
             },
             "lastChangedDate": {
-              "type": "string"
+              "type": "string",
+           	  "format": "date-time"
             }
           },
           "additionalProperties": false
@@ -86,7 +92,8 @@
 	          	"type": "object",
 				"properties": {
 				  "ts": {
-				    "type": "string"
+				    "type": "string",
+           			"format": "date-time"
 				  },
 				  "value": {
 				    "type": "number"
@@ -122,19 +129,23 @@
         "type": "object",
         "properties": {
           "ts": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "phase": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 256
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 256
           },
           "result": {
           	"enum": ["OK", "NOK", "UNKNOWN"]
           },
           "code": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 36
           },
           "limits": {
 	          "type": "object",

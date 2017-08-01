@@ -9,7 +9,8 @@
       "type": "object",
       "properties": {
         "deviceID": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 36
         },
         "operationalStatus": {
           "type": "string"
@@ -27,16 +28,19 @@
       "type": "object",
       "properties": {
         "partTypeID": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 256
         },
         "partID": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 256
         },
         "result": {
           "enum": ["OK", "NOK", "UNKNOWN"]
         },
         "code": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 36
         },
         "metaData": {
           "type": "object"          
@@ -50,13 +54,15 @@
         "type": "object",
         "properties": {
           "ts": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
 	      "result": {
 	        "enum": ["OK", "NOK", "UNKNOWN"]
 	      },
 	      "code": {
-	        "type": "string"
+	        "type": "string",
+	        "maxLength": 36
 	      },
           "series": {
             "type": "object",

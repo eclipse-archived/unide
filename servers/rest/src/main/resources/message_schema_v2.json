@@ -9,7 +9,8 @@
       "type": "object",
       "properties": {
         "deviceID": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 36
         },
         "operationalStatus": {
           "type": "string"
@@ -32,7 +33,8 @@
             "type": "string"
           },
           "ts": {
-            "type": "string"
+            "type": "string",
+            "format": "date-time"
           },
           "type": {
             "enum": ["DEVICE", "TECHNICAL_INFO"]
@@ -41,16 +43,20 @@
             "enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"]
           },
           "code": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 36
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 1000
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 2000
           },
           "hint": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 2000
           },
           "metaData": {
           "type": "object"
