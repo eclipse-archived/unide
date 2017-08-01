@@ -65,3 +65,5 @@ servers/rest/target/
 .settings/
 *.log
 WebContent/META-INF/MANIFEST.MF
+*.gliffy
+*.svg
