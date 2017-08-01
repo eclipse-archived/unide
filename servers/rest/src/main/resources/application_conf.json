@@ -1,3 +1,13 @@
 {
-  "http.port" : 8082
+  	"http.port" : 8080,
+	"database":{
+		"type":"influx",
+		"host":"http://localhost",
+		"port":"8086",
+		"user":"root",
+		"password":"root",
+		"MessagesDatabase": "Messages",
+		"MeasurementsDatabase": "Measurements",
+		"ProcessesDatabase": "Processes"
+	}
 }
