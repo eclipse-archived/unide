@@ -76,8 +76,6 @@ public class ProcessDAO implements IProcessMessageReceiver {
 			if (measurement.getSpecialValues() != null){
 				insertSpecialValues(measurement, processWrapper.getDevice(), processWrapper.getPart());
 			}			
-			
-			insertSingleMeasurement(measurement, processWrapper.getDevice(), processWrapper.getPart());
 		}			
 		
 	}	
@@ -106,7 +104,7 @@ public class ProcessDAO implements IProcessMessageReceiver {
 			pointBuilder.addField("ExternalProcessId", processWrapper.getProcess().getExternalProcessId());
 		}
 		
-		if (processWrapper.getProcess().getResult().toString() != null){
+		if (processWrapper.getProcess().getResult() != null){
 			pointBuilder.addField("Result", processWrapper.getProcess().getResult().toString());
 		}
 		
@@ -114,9 +112,17 @@ public class ProcessDAO implements IProcessMessageReceiver {
 			pointBuilder.addField("ShutoffPhase", processWrapper.getProcess().getShutoffPhase());
 		}
 		
+		if (processWrapper.getProcess().getMetaData() != null){
+			pointBuilder.addField("ProcessMetaData", processWrapper.getProcess().getMetaData().toString());
+		}
+		
 		if (processWrapper.getMeasurements() != null){
 			pointBuilder.addField("Measurements", packager.getMessage(processWrapper.getMeasurements()));	
 		}		
+		
+		if (processWrapper.getProcess().getShutOffValuesMap() != null){
+			pointBuilder.addField("ShutOffValues", packager.getMessage(processWrapper.getProcess().getShutOffValuesMap()));	
+		}
 		
 		if (processWrapper.getProcess().getProgram() != null){
 			if (processWrapper.getProcess().getProgram().getId() != null){
@@ -324,12 +330,16 @@ public class ProcessDAO implements IProcessMessageReceiver {
 	 */
 	private void setPartInfoForPointer(Builder pointBuilder, Part part){
 		
-		assert !part.getId().isEmpty();
+		assert !part.getpartID().isEmpty();
 		
-		pointBuilder.tag("Id",part.getId());
+		pointBuilder.tag("partID",part.getpartID());
 		
 		if (part.getPartTypeId() != null){
-			pointBuilder.tag("PartTypeId",part.getPartTypeId());
+			pointBuilder.tag("PartTypeID",part.getPartTypeId());
+		}
+		
+		if (part.getPartTypeId() != null){
+			pointBuilder.tag("PartType",part.getType().toString());
 		}
 			
 		if (part.getCode() != null){
@@ -369,15 +379,9 @@ public class ProcessDAO implements IProcessMessageReceiver {
 	}
 
 	@Override
-	public void receive(String data) {
-		try{
-			
-			insert(data);	
-			
-		} catch (IOException ex){
-			
-			throw new RuntimeException(ex);
-			
-		}		
+	public void receive(String data) throws IOException {
+
+		insert(data);	
+	
 	}
 }

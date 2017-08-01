@@ -8,6 +8,8 @@
 
 package server.endpoints.receivers;
 
+import java.io.IOException;
+
 public interface IMeasurementMessageReceiver {
-	public void receive(String data);
+	public void receive(String data) throws IOException;
 }

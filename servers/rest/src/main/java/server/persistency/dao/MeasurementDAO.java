@@ -178,15 +178,9 @@ public class MeasurementDAO implements IMeasurementMessageReceiver {
 	}
 
 	@Override
-	public void receive(String data) {
-		try{
+	public void receive(String data) throws IOException {
 			
-			insert(data);	
-			
-		} catch (IOException ex){
-			
-			throw new RuntimeException(ex);
-			
-		}		
+		insert(data);	
+	
 	}
 }

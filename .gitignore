@@ -67,3 +67,5 @@ servers/rest/target/
 WebContent/META-INF/MANIFEST.MF
 *.gliffy
 *.svg
+servers/rest/bin/
+servers/rest/pom_tina.xml

@@ -10,11 +10,17 @@ package server.persistency.db;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.influxdb.InfluxDB;
 import org.influxdb.InfluxDBFactory;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import io.vertx.core.json.JsonObject;
 
 /**
  * Manages connections to InfluxDB
@@ -129,25 +135,40 @@ public class ConnectionFactory {
 	 * Reads the database configuration of the project
 	 * 
 	 * @throws IOException
+	 * @throws ParseException 
 	 */
 	private void getConfiguration() throws IOException {
 
+		JSONParser parser = new JSONParser();
 		properties = new Properties();
 		InputStream input = null;
 
 		try {
+			
+			input = ConnectionFactory.class.getResourceAsStream("application_conf.json");
+			
+            Object obj = parser.parse(new InputStreamReader(input));
+ 
+            JSONObject jsonObject = (JSONObject) obj;
+ 
+            JSONObject database = (JSONObject) jsonObject.get("database");
 
-			input = ConnectionFactory.class.getResourceAsStream("/config.properties");
+            properties.setProperty("dbtype", (String) database.get("type"));
+            properties.setProperty("dbuser", (String) database.get("user"));
+            properties.setProperty("dbhost", (String) database.get("host"));
+            properties.setProperty("dbport", (String) database.get("port"));
+            properties.setProperty("dbpassword", (String) database.get("password"));
+            properties.setProperty("dbNameMessages", (String) database.get("MessagesDatabase"));
+            properties.setProperty("dbNameMeasurements", (String) database.get("MeasurementsDatabase"));
+            properties.setProperty("dbNameProcesses", (String) database.get("ProcessesDatabase"));
 
-			properties.load(input);
-
-			LOG.info(properties.getProperty("dbtype"));
+			LOG.warn(properties.getProperty("dbtype"));
 			LOG.info(properties.getProperty("dbuser"));
 			LOG.info(properties.getProperty("dbhost"));
 			LOG.info(properties.getProperty("dbport"));
 			LOG.info(properties.getProperty("dbpassword"));
 
-		} catch (IOException ex) {
+		} catch (IOException | ParseException ex) {
 			LOG.debug("cannot load config!", ex );
 		} finally {
 			if (input != null) {
@@ -159,6 +180,31 @@ public class ConnectionFactory {
 				}
 			}
 		}
+
+	}
+	
+	/**
+	 * Reads the database configuration of the project
+	 * 
+	 * @throws IOException
+	 * @throws ParseException 
+	 */
+	public void setConfiguration(JsonObject configuration) throws IOException {
+
+		properties = new Properties();
+
+        properties.setProperty("dbtype", (String) configuration.getValue("type"));
+        properties.setProperty("dbuser", (String) configuration.getValue("user"));
+        properties.setProperty("dbhost", (String) configuration.getValue("host"));
+        properties.setProperty("dbport", (String) configuration.getValue("port"));
+        properties.setProperty("dbpassword", (String) configuration.getValue("password"));
+        properties.setProperty("dbNameMessages", (String) configuration.getValue("MessagesDatabase"));
+        properties.setProperty("dbNameMeasurements", (String) configuration.getValue("MeasurementsDatabase"));
+        properties.setProperty("dbNameProcesses", (String) configuration.getValue("ProcessesDatabase"));
+
+		LOG.info(properties.getProperty("dbtype"));
+		LOG.info(properties.getProperty("dbhost"));
+		LOG.info(properties.getProperty("dbport"));
 
 	}
 }

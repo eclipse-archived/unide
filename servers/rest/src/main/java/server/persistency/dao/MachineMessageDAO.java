@@ -162,16 +162,9 @@ public class MachineMessageDAO implements IMachineMessageReceiver{
 	}
 
 	@Override
-	public void receive(String data) throws RuntimeException {		
+	public void receive(String data) throws IOException {		
+			
+		insert(data);			
 		
-		try{
-			
-			insert(data);	
-			
-		} catch (IOException ex){
-			
-			throw new RuntimeException(ex);
-			
-		}		
 	}
 }
