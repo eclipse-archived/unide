@@ -141,15 +141,30 @@ public class Validator {
     private InputStream getSchemaStream(JsonNode jsonNode) throws IOException {
     	
     	InputStream schemaStream = null;
-    	String contentSpec = jsonNode.get("content-spec").textValue();
+    	JsonNode contentSpec = jsonNode.get("content-spec");
     	
-    	assert !contentSpec.isEmpty();
+    	assert !contentSpec.textValue().isEmpty();
 
-    	schemaStream = Validator.class.getResourceAsStream("/" + contentSpecMapping.get(contentSpec));
+    	if (contentSpec != null){
+    		schemaStream = Validator.class.getResourceAsStream("/" + contentSpecMapping.get(contentSpec.textValue()));
+    	} 
+    	else{
+    		LOG.info("No content-spec found");
+    		throw new IOException("No content-spec found.\n"
+    				+ "Valid content-specs are:\n"
+    				+ "urn:spec://eclipse.org/unide/machine-message#v2\n"
+    				+ "urn:spec://eclipse.org/unide/measurement-message#v2\n"
+    				+ "urn:spec://eclipse.org/unide/process-message#v2");
+    	}
+    	
     	
     	if (schemaStream == null){
     		LOG.info("No validation schema found for content-spec: " + contentSpec);
-    		throw new IOException("No validation schema found for content-spec: " + contentSpec + ".");
+    		throw new IOException("No validation schema found for content-spec: " + contentSpec + ".\n"
+    				+ "Valid content-specs are:\n"
+    				+ "urn:spec://eclipse.org/unide/machine-message#v2\n"
+    				+ "urn:spec://eclipse.org/unide/measurement-message#v2\n"
+    				+ "urn:spec://eclipse.org/unide/process-message#v2");
     	}
 
         return schemaStream;
