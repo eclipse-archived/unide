@@ -18,14 +18,14 @@ public class Part {
 	};
 	
 	public enum Type {
-		single, batch
+		SINGLE, BATCH
 	};
 	
 	@JsonProperty("partTypeID")
 	private String partTypeID; // optional
 
-	@JsonProperty("id")
-	private String id;
+	@JsonProperty("partID")
+	private String partID;
 	
 	@JsonProperty("type")
 	private Type type; // optional
@@ -47,12 +47,12 @@ public class Part {
 		this.partTypeID = partTypeID;
 	}
 
-	public String getId() {
-		return id;
+	public String getpartID() {
+		return partID;
 	}
 
-	public void setPartID(String id) {
-		this.id = id;
+	public void setPartID(String partID) {
+		this.partID = partID;
 	}
 
 	public Result getResult() {

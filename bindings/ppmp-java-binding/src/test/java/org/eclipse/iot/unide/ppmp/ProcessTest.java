@@ -141,7 +141,7 @@ public class ProcessTest {
 	 */
 	private Part createPart() {
 		Part part = new Part();
-		part.setType(Type.single);
+		part.setType(Type.SINGLE);
 		part.setCode("HUH289");
 		part.setPartID("420003844");
 		part.setPartTypeID("F00VH07328");

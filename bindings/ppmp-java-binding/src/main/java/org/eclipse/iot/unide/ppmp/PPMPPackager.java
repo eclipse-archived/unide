@@ -28,7 +28,6 @@ public class PPMPPackager {
         mapper = new ObjectMapper();
         
         mapper.enable(DeserializationFeature. ACCEPT_SINGLE_VALUE_AS_ARRAY);
-        mapper.configure(SerializationFeature.WRITE_SINGLE_ELEM_ARRAYS_UNWRAPPED, true);
         mapper.registerModule(new JavaTimeModule());
 
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
@@ -69,3 +68,4 @@ public class PPMPPackager {
         return bean;
     }
 }
+

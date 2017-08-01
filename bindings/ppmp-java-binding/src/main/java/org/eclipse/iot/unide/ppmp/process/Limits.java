@@ -10,29 +10,37 @@ package org.eclipse.iot.unide.ppmp.process;
 import java.util.Arrays;
 import java.util.List;
 
+import org.eclipse.iot.unide.ppmp.mapper.SingleValueAsArrayUnwrapper;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class Limits {
 	
 	@JsonProperty("upperError")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	@JsonSerialize(using = SingleValueAsArrayUnwrapper.class)
 	private List<Number> upperError; // optional
 	
 	@JsonProperty("lowerError")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	@JsonSerialize(using = SingleValueAsArrayUnwrapper.class)
 	private List<Number> lowerError; // optional
 
 	@JsonProperty("upperWarn")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	@JsonSerialize(using = SingleValueAsArrayUnwrapper.class)
 	private List<Number> upperWarn; // optional
 
 	@JsonProperty("lowerWarn")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	@JsonSerialize(using = SingleValueAsArrayUnwrapper.class)
 	private List<Number> lowerWarn; // optional
 	
 	@JsonProperty("target")
 	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	@JsonSerialize(using = SingleValueAsArrayUnwrapper.class)
 	private List<Number> target; // optional
 
 	public List<Number> getUpperError() {
