@@ -9,8 +9,6 @@
 package server.persistency.dao;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.time.ZoneOffset;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.iot.unide.ppmp.PPMPPackager;
@@ -86,7 +84,7 @@ public class MachineMessageDAO implements IMachineMessageReceiver{
                 .build();
 
 		Builder builder = Point.measurement(device.getDeviceID())
-	         .time(Timestamp.valueOf(message.getTimestamp().atZoneSameInstant(ZoneOffset.ofHours(1)).toLocalDateTime()).getTime(),TimeUnit.MILLISECONDS);		         
+	         .time(message.getTimestamp().toInstant().toEpochMilli(),TimeUnit.MILLISECONDS);		         
 	         
          setDeviceInfoForPointer(builder, device);
          

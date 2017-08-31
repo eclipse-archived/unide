@@ -9,8 +9,6 @@
 package server.persistency.dao;
 
 import java.io.IOException;
-import java.sql.Timestamp;
-import java.time.ZoneOffset;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -93,7 +91,7 @@ public class MeasurementDAO implements IMeasurementMessageReceiver {
 			Iterator<Entry<String, List<Number>>> it = measurement.getSeriesMap().getSeries().entrySet().iterator();
 			
 			List<Number> time_iterator = measurement.getSeriesMap().getSeries().get("$_time");
-			long starttime = Timestamp.valueOf(measurement.getTimestamp().atZoneSameInstant(ZoneOffset.ofHours(1)).toLocalDateTime()).getTime();
+			long starttime = measurement.getTimestamp().toInstant().toEpochMilli();
 			
 		    while (it.hasNext()) {		    	
 		    	Map.Entry<String, List<Number>> pair = (Map.Entry<String, List<Number>>)it.next();
