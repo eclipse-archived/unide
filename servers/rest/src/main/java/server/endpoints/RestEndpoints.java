@@ -86,13 +86,12 @@ public class RestEndpoints extends AbstractVerticle {
 "<h2>The following endpoints are available</h2>"+
 "<p>"+
 "<ul>"+
-"<li><a>http://[host]:[port]/rest/v2/message?validate=true</a></li>"+
-"<li><a>http://[host]:[port]/rest/v2/measurement?validate=true</a></li>"+
-"<li><a>http://[host]:[port]/rest/v2/process?validate=true</a></li>"+
-"<li><a>http://[host]:[port]/rest/basicauth/v2/message?validate=true</a></li>"+
-"<li><a>http://[host]:[port]/rest/basicauth/v2/measurement?validate=true</a></li>"+
-"<li><a>http://[host]:[port]/rest/basicauth/v2/process?validate=true</a></li>"+
-"</ul>" +
+"<li><a>http://unide.eclipse.org/rest/v2/message?validate=true</a></li>"+
+"<li><a>http://unide.eclipse.org/rest/v2/measurement?validate=true</a></li>"+
+"<li><a>http://unide.eclipse.org/rest/v2/process?validate=true</a></li>"+
+"<li><a>http://unide.eclipse.org/rest/basicauth/v2/message?validate=true</a></li>"+
+"<li><a>http://unide.eclipse.org/rest/basicauth/v2/measurement?validate=true</a></li>"+
+"<li><a>http://unide.eclipse.org/rest/basicauth/v2/process?validate=true</a></li>"+
 "</p>");
 	  }
 
