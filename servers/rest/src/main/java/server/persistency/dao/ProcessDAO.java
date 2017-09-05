@@ -10,7 +10,6 @@ package server.persistency.dao;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.time.ZoneOffset;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -95,7 +94,7 @@ public class ProcessDAO implements IProcessMessageReceiver {
                 .consistency(InfluxDB.ConsistencyLevel.ALL)
                 .build();
 				
-		long starttime = Timestamp.valueOf(processWrapper.getProcess().getTimestamp().atZoneSameInstant(ZoneOffset.ofHours(1)).toLocalDateTime()).getTime();
+		long starttime = processWrapper.getProcess().getTimestamp().toInstant().toEpochMilli();
 		
 		Builder pointBuilder = Point.measurement(processWrapper.getDevice().getDeviceID())
 		         .time((long)starttime, TimeUnit.MILLISECONDS);	
@@ -174,7 +173,7 @@ public class ProcessDAO implements IProcessMessageReceiver {
 								
 		Iterator<Entry<String, ShutOffValues>> iterator = process.getShutOffValuesMap().getShutOffValues().entrySet().iterator();
 		
-		long starttime = Timestamp.valueOf(process.getTimestamp().atZoneSameInstant(ZoneOffset.ofHours(1)).toLocalDateTime()).getTime();
+		long starttime = process.getTimestamp().toInstant().toEpochMilli();
 		
 	    while (iterator.hasNext()) {
 
@@ -221,7 +220,7 @@ public class ProcessDAO implements IProcessMessageReceiver {
                 .build();
 								
 		Iterator<Entry<String, SpecialValue>> iterator = measurement.getSpecialValues().getSpecialValue().entrySet().iterator();
-		long starttime = Timestamp.valueOf(measurement.getTimestamp().atZoneSameInstant(ZoneOffset.ofHours(1)).toLocalDateTime()).getTime();
+		long starttime = measurement.getTimestamp().toInstant().toEpochMilli();
 		
 	    while (iterator.hasNext()) {
 
@@ -289,7 +288,7 @@ public class ProcessDAO implements IProcessMessageReceiver {
 			if (time_iterator != null)
 				
 			{
-				long starttime = Timestamp.valueOf(measurement.getTimestamp().atZoneSameInstant(ZoneOffset.ofHours(1)).toLocalDateTime()).getTime();
+				long starttime = measurement.getTimestamp().toInstant().toEpochMilli();
 			
 			    while (it.hasNext()) {		    	
 			    	Map.Entry<String, List<Number>> pair = (Map.Entry<String, List<Number>>)it.next();
