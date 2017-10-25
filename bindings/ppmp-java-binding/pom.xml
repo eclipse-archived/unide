@@ -13,9 +13,11 @@
     <groupId>org.eclipse.iot.unide.ppmp</groupId>
     <artifactId>ppmp-java-binding</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>bundle</packaging>
 
     <properties>
         <jackson.version>2.8.2</jackson.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <build>
@@ -33,6 +35,15 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>3.3.0</version>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
     </build>
 
     <dependencies>
