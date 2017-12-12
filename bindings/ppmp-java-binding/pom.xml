@@ -15,6 +15,19 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
+    <distributionManagement>
+        <repository>
+            <id>repo.eclipse.org</id>
+            <name>Unide Repository - Releases</name>
+            <url>https://repo.eclipse.org/content/repositories/unide-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>repo.eclipse.org</id>
+            <name>Unide Repository - Snapshots</name>
+            <url>https://repo.eclipse.org/content/repositories/unide-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <properties>
         <jackson.version>2.8.2</jackson.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -44,7 +57,54 @@
                 <extensions>true</extensions>
             </plugin>
         </plugins>
-    </build>
+	</build>
+
+	<profiles>
+		<profile>
+			<!-- this profile signs artifacts so that they can be deployed to repo.eclipse.org -->
+			<id>eclipse_jar_signing</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>enableEclipseJarSigner</name>
+				</property>
+			</activation>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>eclipse-repo</id>
+					<name>Eclipse CBI Repository</name>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>false</enabled>
+					</snapshots>
+					<url>https://repo.eclipse.org/content/repositories/cbi-releases/</url>
+				</pluginRepository>
+			</pluginRepositories>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.cbi.maven.plugins</groupId>
+						<artifactId>eclipse-jarsigner-plugin</artifactId>
+						<version>1.1.4</version>
+						<configuration>
+							<excludeInnerJars>true</excludeInnerJars>
+						</configuration>
+						<executions>
+							<execution>
+								<id>sign-jars</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
     <dependencies>
         <dependency>
