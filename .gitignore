@@ -27,7 +27,6 @@
 ## File-based project format:
 *.iws
 
-/bindings/ppmp-java-binding/ppmp-java-binding.iml
 ## Plugin-specific files:
 
 # IntelliJ
@@ -58,14 +57,11 @@ servers/rest/.settings/org.eclipse.wst.jsdt.ui.superType.container
 servers/rest/.settings/org.eclipse.jdt.core.prefs
 servers/rest/.settings/org.eclipse.m2e.core.prefs
 servers/rest/.settings/org.eclipse.wst.jsdt.ui.superType.name
-bindings/ppmp-java-binding/.settings/
-*.classpath
-*.project
 servers/rest/target/
-.settings/
-*.log
-WebContent/META-INF/MANIFEST.MF
-*.gliffy
-*.svg
 servers/rest/bin/
 servers/rest/pom_tina.xml
+
+*.classpath
+*.project
+.settings/
+*.log
