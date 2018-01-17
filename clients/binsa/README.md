@@ -39,7 +39,7 @@ Current compilation targets include:
 * Edge 15+
 * Safari 11+
 
-The targeted browser can be adjusted .babelrc (presets/targets/browsers) with [browserlist|https://github.com/ai/browserslist] queries.
+The targeted browser can be adjusted .babelrc (presets/targets/browsers) with [browserlist](https://github.com/ai/browserslist) queries.
 
 ## Set serverside CORS headers
 
