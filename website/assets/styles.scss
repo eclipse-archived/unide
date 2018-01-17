@@ -1,0 +1,97 @@
+@import "~assets/variables.scss";
+@import "~bulma/bulma";
+@import "~font-awesome/scss/font-awesome.scss";
+@import "~prismjs/themes/prism.css";
+
+body {
+	overflow: visible;
+}
+a:hover {
+	text-decoration: underline;
+}
+.title {
+	font-weight: normal;
+}
+
+.router-link-active {
+	font-weight: bold;
+}
+.footer {
+	font-size: 0.875em;
+	border-top: 1px solid $grey-lighter;
+	margin-left: -1.25rem;
+	margin-right: -1.25rem;
+	padding-top: 1.25rem;
+	margin-top: 1rem;
+	padding: 16px 0px 32px;
+	padding: 1rem 0 2rem;
+	span:not(:last-child)::after{
+		content: "\2219";
+		font-size: 1em;
+		font-weight: bold;
+		margin: 0 1em;
+	}
+}
+.is-loading {
+  position: relative;
+  * {
+      pointer-events: none;
+      opacity: 0.5;
+  }
+  &:after {
+	  @include loader;
+      position: relative;
+      width: 1em;
+      position: absolute;
+      top: 4em;
+      left: calc(50% - 2.5em);
+      width: 5em;
+      height: 5em;
+      border-width: 0.25em;
+  }
+}
+.__nuxt-error-page {
+	position: relative;
+}
+.accordion {
+	margin-top: 2em;
+	> :first-child {
+		&, & > header {
+			border-top-left-radius: $radius-large;
+			border-top-right-radius: $radius-large;
+		}
+	}
+	:last-child {
+		& {
+			border-bottom-left-radius: $radius-large;
+			border-bottom-right-radius: $radius-large;
+		}
+		&.collapsed {
+			& > header {
+				border-bottom-left-radius: $radius-large;
+				border-bottom-right-radius: $radius-large;
+			}
+		}
+	}
+}
+
+/* prism */
+pre[class*="language-"] {
+	background: $light;
+	border-radius: $radius-large;
+	border: 1px solid $grey-lighter;
+	.number {
+		align-items: inherit;
+		background-color: inherit;
+		border-radius: inherit;
+		display: inherit;
+		font-size: inherit;
+		height: inherit;
+		justify-content: inherit;
+		margin-right: inherit;
+		min-width: inherit;
+		padding: inherit;
+		text-align: inherit;
+		vertical-align: inherit;
+	}
+}

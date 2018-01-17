@@ -1,0 +1,51 @@
+@startuml
+
+skinparam class {
+	BorderColor black
+	FontColor #50237f
+	BackgroundColor #f5f5f5
+	ArrowColor black
+}
+skinparam stereotype{
+	CBackgroundColor white
+	EBackgroundColor white
+}
+
+class MessagePayload {
+	content-spec[1] : String
+}
+
+class Device {
+	deviceID[1] : String
+	metaData[0..1] : Map<String, String>
+	operationalStatus[0..1] : String
+}
+
+class Message {
+	code[1] : String
+	descriptionp[0..1] : String
+	hint[0..1] : String
+	metaData[0..1] : Map<String, String>
+	origin[0..1] : String
+	severity[0..1] : Severity
+	title[0..1] : String
+	ts[1] : Date
+	type[0..1] : Type
+}
+
+enum Type {
+	DEVICE
+	TECHNICAL_INFO
+}
+
+enum Severity {
+	HIGH
+	MEDIUM
+	LOW
+	UNKNOWN
+}
+
+MessagePayload "1" *-- "1" Device : device
+MessagePayload "1" *-- "0..*" Message : messages
+
+@enduml

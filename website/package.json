@@ -1,0 +1,47 @@
+{
+  "name": "unide",
+  "version": "1.0.0",
+  "description": "Eclipse Unide: Understand Industry devices",
+  "author": "Axel Meinhardt <axel.meinhardt@bosch-si.com>",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint",
+    "uml": "java -Djava.awt.headless=true -jar plantuml.jar -charset utf8 -o . -tsvg static/images/*.uml"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "babel-runtime": "^6.23.0",
+    "bulma": "^0.6.1",
+    "font-awesome": "^4.7.0",
+    "front-matter": "^2.3.0",
+    "json-schema-loader": "joshheyse/json-schema-loader#649e1d4",
+    "lodash.clonedeep": "^4.3.2",
+    "markdown-it": "^8.4.0",
+    "markdown-it-decorate": "^1.2.2",
+    "nuxt": "^1.0.0",
+    "prismjs": "^1.9.0",
+    "vue-prism-component": "^1.0.1",
+    "webpack-virtual-modules": "^0.1.8"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "eslint": "^4.11.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-vue": "^2.0.2",
+    "eslint-plugin-babel": "^4.0.1",
+    "eslint-plugin-html": "^4.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^2.1.0",
+    "node-sass": "^4.6.1",
+    "sass-loader": "^6.0.2"
+  }
+}

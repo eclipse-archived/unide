@@ -1,0 +1,125 @@
+@startuml
+
+skinparam class {
+	BorderColor black
+	FontColor #50237f
+	BackgroundColor #f5f5f5
+	ArrowColor black
+}
+skinparam stereotype{
+	CBackgroundColor white
+	EBackgroundColor white
+}
+
+class ProcessPayload{
+	content-spec[1] : String
+}
+
+class Device {
+	deviceID[1] : String
+	metaData[0..1] : Map<String, String>
+	operationalStatus[0..1] : String
+}
+
+class Part {
+	code[0..1] : String
+	metaData[0..1] : Map<String, String>
+	partID[0..1] : String
+	partTypeID[0..1] : String
+	result[0..1] : Result
+	type[0..1] : PartType
+}
+
+class Process {
+	externalProcessId[0..1] : String
+	metaData[0..1] : Map<String, String>
+	result[0..1] : Result
+	shutoffPhase[0..1] : String
+	shutoffValue[0..*] : Map<String, ShutoffValue>
+	ts[1] : Date
+}
+
+class Measurement {
+	code[0..1] : String
+	limits[0..1] : Map<String, Limits>
+	name[0..1] : String
+	phase[0..1] ; String
+	result[0..1] : Result
+	ts[1] : Date
+}
+
+class Program {
+	id[1] : String
+	lastChangeDate[0..1] : String
+	name[0..1] : String
+}
+
+class ShutoffValue {
+	lowerError[0..1] : Float
+	lowerWarn[0..1] : Float
+	target[0..1] : Float
+	ts[0..1] : Date
+	upperError[0..1] : Float
+	upperWarn[0..1] : Float
+	value[1] : Float
+}
+
+class Series {
+	$_time[0..1] : List<Integer>
+	<values>[0..*] : List<Float>
+}
+
+abstract class Limits {
+}
+
+class LimitsSingle {
+	lowerError[0..1] : Float
+	lowerWarn[0..1] : Float
+	target[0..1] : Float
+	upperError[0..1] : Float
+	upperWarn[0..1] : Float
+}
+
+class LimitsList {
+	lowerError[0..1] : List<Float>
+	lowerWarn[0..1] : List<Float>
+	target[0..1] : List<Float>
+	upperError[0..1] : List<Float>
+	upperWarn[0..1] : List<Float>
+}
+
+
+class SpecialValue {
+	$_time[0..1] : Integer
+	name[0..1] : String
+	value[1] : Float 
+}
+
+enum PartType {
+	SINGLE
+	BATCH
+}
+
+enum Result {
+	OK
+	NOK
+	UNKNOWN
+}
+
+ProcessPayload "1" *-- "1" Device : device
+ProcessPayload "1" *-- "0..1" Part : part
+ProcessPayload "1" *-- "1" Process : process
+ProcessPayload "1" *-- "1..*" Measurement : measurements
+
+Process "1" *-- "0..1" Program : program
+Process "1" *-- "0..*" ShutoffValue
+
+Measurement "1" *-- "1" Series : series
+Measurement "1" *-- "0..1" Limits
+Measurement "1" *-- "0..1" SpecialValue : specialValues
+
+Limits <|-- LimitsSingle
+Limits <|-- LimitsList
+
+@enduml
+

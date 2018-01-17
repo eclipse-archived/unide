@@ -1,0 +1,40 @@
+@startuml
+skinparam interface {
+  BackgroundColor #78be20
+  FontColor #50237f
+  BorderColor black
+}
+
+skinparam node {
+  FontColor #50237f
+}
+
+skinparam component {
+  BorderColor black
+  FontColor #50237f
+  BackgroundColor #f5f5f5
+  ArrowColor black
+}
+
+() "/process" as p
+() "/message" as m
+() "/measurement" as s
+
+node "PPMP Producer / Machine" {
+  [Information / Alarms]
+  [Sensor values]
+  [End-to-end process data]
+} 
+node "PPMP Consumer" {
+  [Machine Messages]
+  [Measurements]
+  [Processs]
+} 
+
+[Information / Alarms] -->  m
+m --> [Machine Messages]
+[Sensor values] --> s
+s --> [Measurements]
+[End-to-end process data] --> p
+p --> [Processs]
+@enduml

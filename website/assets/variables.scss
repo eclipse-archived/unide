@@ -1,0 +1,102 @@
+// https://www.w3.org/WAI/ER/WD-AERT/#q100
+@function brightness($color) {
+  @return ((red($color) * .299) + (green($color) * .587) + (blue($color) * .114)) / 255 * 100%;
+}
+@function findColorInvert($color) {
+  @if (abs(brightness($color)) > 50) {
+    @return black;
+  }
+  @return white;
+}
+
+$fa-font-path:   "~font-awesome/fonts";
+
+// Bosch 
+$bosch-prussianblue:			rgb(0, 50, 100);
+$bosch-matisse:					rgb(58, 90, 130);
+$bosch-wildblueyonder:			rgb(110, 140, 178);
+$bosch-spindle:					rgb(168, 186, 210);
+$bosch-red:						rgb(226, 0, 21);
+$bosch-aluminium:				rgb(128, 130, 133);
+$bosch-darkgray:				rgb(167, 167, 167);
+$bosch-gainsboro:				rgb(221, 221, 221);
+
+/*
+rgb(168, 1, 99)
+rgb(63, 19, 108)
+rgb(8, 66, 126)
+rgb(14, 120, 197)
+rgb(19, 153, 160)
+rgb(103, 180, 25)
+rgb(10, 81, 57)
+rgb(66, 76, 88)
+*/
+
+//New CD colors:
+$bosch-eggplant:				rgb(185, 2, 118);
+$bosch-windsor:					rgb(80, 35, 127);
+$bosch-cobalt:					rgb(0, 86, 145);
+$bosch-pacificblue:				rgb(0, 142, 207);
+$bosch-bondiblue:				rgb(0, 168, 176);
+$bosch-lima:					rgb(120, 190, 32);
+$bosch-watercourse:				rgb(0, 98, 73);
+$bosch-fiord:					rgb(82, 95, 107);
+
+$bosch-prussianblue-invert:		findColorInvert($bosch-prussianblue);
+$bosch-matisse-invert:			findColorInvert($bosch-matisse);
+$bosch-wildblueyonder-invert:	findColorInvert($bosch-wildblueyonder);
+$bosch-spindle-invert:			findColorInvert($bosch-spindle);
+$bosch-red-invert:				findColorInvert($bosch-red);
+$bosch-aluminium-invert:		findColorInvert($bosch-aluminium);
+$bosch-darkgray-invert:			findColorInvert($bosch-darkgray);
+$bosch-gainsboro-invert:		findColorInvert($bosch-gainsboro);
+$bosch-eggplant-invert:			findColorInvert($bosch-eggplant);
+$bosch-windsor-invert:			findColorInvert($bosch-windsor);
+$bosch-cobalt-invert:			findColorInvert($bosch-cobalt);
+$bosch-pacificblue-invert:		findColorInvert($bosch-pacificblue);
+$bosch-bondiblue-invert:		findColorInvert($bosch-bondiblue);
+$bosch-lima-invert:				findColorInvert($bosch-lima);
+$bosch-watercourse-invert:		findColorInvert($bosch-watercourse);
+$bosch-fiord-invert:			findColorInvert($bosch-fiord);
+
+$bosch-colors:  (
+  "bosch-prussianblue":			($bosch-prussianblue, $bosch-prussianblue-invert),
+  "bosch-matisse":				($bosch-matisse, $bosch-matisse-invert),
+  "bosch-wildblueyonder":		($bosch-wildblueyonder, $bosch-wildblueyonder-invert),
+  "bosch-spindle":				($bosch-spindle, $bosch-spindle-invert),
+  "bosch-red":					($bosch-red, $bosch-red-invert),
+  "bosch-aluminium":			($bosch-aluminium, $bosch-aluminium-invert),
+  "bosch-darkgray":				($bosch-darkgray, $bosch-darkgray-invert),
+  "bosch-gainsboro":			($bosch-gainsboro, $bosch-gainsboro-invert),
+  "bosch-eggplant":				($bosch-eggplant, $bosch-eggplant-invert),
+  "bosch-windsor":				($bosch-windsor, $bosch-windsor-invert),
+  "bosch-cobalt":				($bosch-cobalt, $bosch-cobalt-invert),
+  "bosch-pacificblue":			($bosch-pacificblue, $bosch-pacificblue-invert),
+  "bosch-bondiblue":			($bosch-bondiblue, $bosch-bondiblue-invert),
+  "bosch-lima":					($bosch-lima, $bosch-lima-invert),
+  "bosch-watercourse":			($bosch-watercourse, $bosch-watercourse-invert),
+  "bosch-fiord":				($bosch-fiord, $bosch-fiord-invert)
+);
+
+$primary:						$bosch-windsor;
+$success:						$bosch-lima;
+$info:							$bosch-pacificblue;
+$warning:						$bosch-eggplant;
+$danger:						$bosch-red;
+
+$primary-invert:				findColorInvert($primary);
+$success-invert:				white;
+$info-invert:					findColorInvert($info);
+$warning-invert:				findColorInvert($warning);
+$danger-invert:					findColorInvert($danger);
+
+$link:							$bosch-windsor;
+$link-hover:					$bosch-lima;
+$link-focus-border:				$bosch-windsor;
+// $card-cap-bg:				$gray-lightest;
+
+$family-sans-serif:  Arial, Tahoma, Verdana, FontAwesome;
+@import "~bulma/sass/utilities/_all.sass";
+
+$widescreen: $desktop;
+$fullhd: $desktop;
