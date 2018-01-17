@@ -1,0 +1,130 @@
+{
+    "currentLang": "Current language",
+    "notFound": "Page '{path}' not found",
+    "add": "Add",
+    "edit": "Edit",
+    "save": "Save",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "send": "Send",
+    "notSupported": "This feature is not supported by your browser. Please update or use a different browser.",
+    "login": {
+        "title": "Login",
+        "user": {
+            "label": "User",
+            "placeholder": "Enter your user"
+        },
+        "password": {
+            "label": "Password",
+            "placeholder": "Enter your password"
+        },
+        "remember": "Remember me",
+        "login": "Login",
+        "anonymous": "Continue anonymously",
+        "confirmation": {
+            "title": "Confirmation required",
+            "message": "There is already an entry for '{name}'. Should it be overwritten?",
+            "cancelText": "no, please don't",
+            "ok": "ok, overwrite",
+            "confirmed": "Opened entry '{name}'!"
+        }
+    },
+    "about": {
+        "about": "About the application",
+        "title": "Name",
+        "description": "Description",
+        "author": "Author",
+        "version": "Version",
+        "license": "License",
+        "source": "Sourcecode",
+        "repository": "Repository",
+        "licenses": "3rd party licenses"
+    },
+    "home": {
+        "title": "This is a client and service for validating PPMP-messages",
+        "subtitle": "The following endpoints are available"
+    },
+    "ppmp": {
+        "title": "PPMP Server",
+        "target": "Target",
+        "config": "Configuration",
+        "device": "Device Id",
+        "operationalStatus": "Op. Status",
+        "measurements": {
+            "title": "Measurements",
+            "sensor": "Sensor",
+            "sensors": "Sensors",
+            "value": "Value",
+            "alias": "Given name",
+            "assign": "Assign",
+            "deleted": "Deleted",
+            "notDeleted": "Deleting failed",
+            "saved": "Saved",
+            "notSaved": "Saving failed",
+            "translate": "Assign a name to '{name}'",
+            "sensorNames": {
+                "motion": "Motion",
+                "orientation": "Orientation",
+                "battery": "Battery",
+                "position": "Position",
+                "cpu": "Processor",
+                "mem": "RAM"
+            },
+            "selected": "{0} selected",
+            "sendingFrequency": {
+                "title": "Send with a frequency of (ms)",
+                "placeholder": "time in milliseconds"
+            },
+            "samplingFrequency": {
+                "title": "Sampling frequency of (ms)",
+                "placeholder": "time in milliseconds"
+            }
+        },
+        "processes": {
+            "title": "Processes",
+			"measurements": "Total Measurements",
+			"phases": "Phases",
+			"startTime": "Start Time",
+			"duration": "Duration",
+			"details": "Details"
+        },
+        "messages": {
+            "title": "Machine Messages",
+            "manual": "Create manually"
+        },
+        "optional": "optional",
+        "noCameras": "No cameras found",
+        "scanQrCode": "Scan QR code",
+        "connectionError": "Connection Error"
+    },
+    "configuration": {
+        "title": "Configurations",
+        "language": "Language",
+        "sections": {
+            "preferences": "Preferences",
+            "im3": "Identity Management 3",
+            "ppm": "Production Performance Manager",
+            "ppmp": "PPMP Server"
+        },
+        "login": {
+            "title": "Login"
+        },
+        "user": {
+            "placeholder": "User"
+        },
+        "password": {
+            "placeholder": "Password"
+        },
+        "name": {
+            "title": "Name",
+            "placeholder": "enter configuration name",
+            "description": "The name of this configuration set."
+        },
+        "url": {
+            "title": "URL",
+            "description": "The protocol, host and port of the server."
+        },
+        "filter": "Filter",
+        "messages": "Preconfigured messages"
+    }
+}

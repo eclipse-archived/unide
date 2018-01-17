@@ -1,0 +1,8 @@
+node_modules
+dist*
+npm-debug.log*
+*.vis
+tests/integration/eclipsecq_spec.js
+tests/videos
+tests/screenshots
+conf/cache

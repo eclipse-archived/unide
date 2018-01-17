@@ -1,0 +1,34 @@
+{
+	"name": "<%= htmlWebpackPlugin.options.packageJson.title || 'Webpack App' %>",
+	"short_name": "<%= htmlWebpackPlugin.options.packageJson.name || 'webpack-app' %>",
+	"description": "<%= htmlWebpackPlugin.options.packageJson.description || 'A Webpack App' %>",
+	"version": "<%= htmlWebpackPlugin.options.packageJson.version || '1.0.0' %>",
+	"manifest_version": 2,
+	"app": {
+		"background": {
+			"scripts": ["<%= process.env.BASEPATH %>background.js"]
+		}
+	},
+	"icons": {
+		"36":	"<%= process.env.BASEPATH %>icons/android-chrome-36x36.png",
+		"48":	"<%= process.env.BASEPATH %>icons/android-chrome-48x48.png",
+	    "60":	"<%= process.env.BASEPATH %>icons/firefox_app_60x60.png",
+		"72":	"<%= process.env.BASEPATH %>icons/android-chrome-72x72.png",
+		"96":	"<%= process.env.BASEPATH %>icons/android-chrome-96x96.png",
+		"128":	"<%= process.env.BASEPATH %>icons/firefox_app_128x128.png",
+		"144":	"<%= process.env.BASEPATH %>icons/android-chrome-144x144.png",
+		"192":	"<%= process.env.BASEPATH %>icons/android-chrome-192x192.png",
+		"256":	"<%= process.env.BASEPATH %>icons/android-chrome-256x256.png",
+		"384":	"<%= process.env.BASEPATH %>icons/android-chrome-384x384.png",
+		"512":	"<%= process.env.BASEPATH %>icons/android-chrome-512x512.png"
+	},
+	"sockets": {
+		"tcp": {
+			"connect": ""
+		}
+	},
+	"permissions": ["system.cpu", "system.memory", "notifications", "storage", "geolocation", "*://*/*"],
+	"sandbox": {
+		"pages": ["sandbox.html"]
+	}
+}

@@ -1,0 +1,61 @@
+{
+	"name": "<%= htmlWebpackPlugin.options.packageJson.title || 'Webpack App' %>",
+	"short_name": "<%= htmlWebpackPlugin.options.packageJson.name || 'webpack-app' %>",
+	"description": "<%= htmlWebpackPlugin.options.packageJson.description || 'A Webpack App' %>",
+	"version": "<%= htmlWebpackPlugin.options.packageJson.version || '1.0.0' %>",
+	"manifest_version": 2,
+	"dir": "auto",
+	"lang": "en-US",
+	"display": "fullscreen",
+	"orientation": "any",
+	"background_color": "#f9f9f9",
+	"theme_color": "#3d5165",
+	"start_url": "<%= process.env.BASEPATH %>",
+	"icons": [
+		{
+			"src": "<%= process.env.BASEPATH %>icons/android-chrome-36x36.png",
+			"sizes": "36x36",
+			"type": "image/png"
+		},
+		{
+			"src": "<%= process.env.BASEPATH %>icons/android-chrome-48x48.png",
+			"sizes": "48x48",
+			"type": "image/png"
+		},
+		{
+			"src": "<%= process.env.BASEPATH %>icons/android-chrome-72x72.png",
+			"sizes": "72x72",
+			"type": "image/png"
+		},
+		{
+			"src": "<%= process.env.BASEPATH %>icons/android-chrome-96x96.png",
+			"sizes": "96x96",
+			"type": "image/png"
+		},
+		{
+			"src": "<%= process.env.BASEPATH %>icons/android-chrome-144x144.png",
+			"sizes": "144x144",
+			"type": "image/png"
+		},
+		{
+			"src": "<%= process.env.BASEPATH %>icons/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "<%= process.env.BASEPATH %>icons/android-chrome-256x256.png",
+			"sizes": "256x256",
+			"type": "image/png"
+		},
+		{
+			"src": "<%= process.env.BASEPATH %>icons/android-chrome-384x384.png",
+			"sizes": "384x384",
+			"type": "image/png"
+		},
+		{
+			"src": "<%= process.env.BASEPATH %>icons/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}
