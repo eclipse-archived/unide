@@ -1,0 +1,8 @@
+{
+	"port": 8081,
+	"fixturesFolder": "tests/fixtures",
+	"integrationFolder": "tests/integration",
+	"screenshotsFolder": "tests/screenshots",
+	"supportFile": "tests/support",
+	"videosFolder": "tests/videos"
+}

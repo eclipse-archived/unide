@@ -1,0 +1,130 @@
+{
+	"currentLang": "Aktuelle Sprache",
+	"notFound": "Die Seite '{path}' wurde nicht gefunden",
+	"add": "Zufügen",
+	"edit": "Ändern",
+	"save": "Speichern",
+	"delete": "Löschen",
+	"cancel": "Abbrechen",
+	"send": "Senden",
+	"notSupported": "Dieses Feature ist nicht supported in ihrem Browser. Bitte updaten Sie oder nutzen Sie einen anderen Browser.",
+	"login": {
+		"title": "Anmeldung",
+		"user": {
+			"label": "Benutzer",
+			"placeholder": "Geben Sie ihren Namen ein"
+		},
+		"password": {
+			"label": "Passwort",
+			"placeholder": "Geben Sie ihr Passwort ein"
+		},
+		"remember": "Eingeloggt bleiben",
+		"login": "Anmelden",
+		"anonymous": "Anonym weiter",
+		"confirmation": {
+			"title": "Bestätigung benötigt",
+			"message": "Es gibt bereits einen Eintrag für '{name}'. Soll der überschrieben werden?",
+			"cancelText": "nein, doch nicht",
+			"ok": "ja, überschreiben",
+			"confirmed": "Eintrag '{name}' geöffnet!"
+		}
+	},
+	"about": {
+		"about": "Über die Anwendung",
+		"title": "Name",
+		"description": "Beschreibung",
+		"author": "Autor",
+		"version": "Version",
+		"license": "Lizenz",
+		"source": "Quellcode",
+		"repository": "Repository",
+		"licenses": "Verwendete Bibliotheken & Lizenzen"
+	},
+	"home": {
+		"title": "Dies ist ein Client und Service, um PPMP Nachrichten zu validieren",
+		"subtitle": "Die folgenden Schnittstellen sind verfügbar"
+	},
+	"ppmp": {
+		"title": "PPMP Server",
+		"target": "Ziel",
+		"config": "Konfiguration",
+		"device": "Geräte Id",
+		"operationalStatus": "Betriebszustand",
+		"measurements": {
+			"title": "Messwerte",
+			"sensor": "Sensor",
+			"sensors": "Sensoren",
+			"value": "Wert",
+			"alias": "Alias Name",
+			"assign": "Zuweisen",
+			"deleted": "Gelöscht",
+			"notDeleted": "Löschen fehlgeschlagen",
+			"saved": "Gespeichert",
+			"notSaved": "Speichern fehlgeschlagen",
+			"translate": "Weise '{name}' einen Namen zu",
+			"sensorNames": {
+				"motion": "Bewegung",
+				"orientation": "Ausrichtung",
+				"battery": "Batterie",
+				"position": "Position",
+                "cpu": "Prozessor",
+                "mem": "Arbeitsspeicher"
+			},
+			"selected": "{0} ausgewählt",
+			"sendingFrequency": {
+				"title": "Sende mit einer Frequenz von (ms)",
+				"placeholder": "Zeit in Millisekunden"
+			},
+			"samplingFrequency": {
+				"title": "Sampling Frequenz von (ms)",
+				"placeholder": "Zeit in Millisekunden"
+			}
+		},
+		"processes": {
+			"title": "Prozesse",
+			"measurements": "Gesamtanzahl Messwerte",
+			"phases": "Phasen",
+			"startTime": "Gestartet am",
+			"duration": "Zeitspanne",
+			"details": "Details"
+		},
+		"messages": {
+			"title": "Maschinennachrichten",
+			"manual": "Manuell erstellen"
+		},
+		"optional": "optional",
+		"noCameras": "Keine Kameras gefunden",
+		"scanQrCode": "QR code scannen",
+		"connectionError": "Verbindungsproblem"
+	},
+	"configuration": {
+		"title": "Einstellungen",
+		"language": "Sprache",
+		"sections": {
+			"preferences": "Persönliche Einstellungen",
+			"im3": "Identity Management 3",
+			"ppm": "Production Performance Manager",
+			"ppmp": "PPMP Server"
+		},
+		"login": {
+			"title": "Login"
+		},
+		"user": {
+			"placeholder": "Benutzer"
+		},
+		"password": {
+			"placeholder": "Passwort"
+		},
+		"name": {
+			"title": "Name",
+			"placeholder": "Geben Sie den Namen ein",
+			"description": "Der Name dieses Konfigurationssatzes."
+		},
+		"url": {
+			"title": "URL",
+			"description": "Das Protocol, Host und der Port des Servers."
+		},
+		"filter": "Filter",
+		"messages": "Vorbereitetete Nachrichten"
+	}
+}

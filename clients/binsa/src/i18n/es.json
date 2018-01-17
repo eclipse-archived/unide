@@ -1,0 +1,135 @@
+{
+    "currentLang": "Idioma seleccionada",
+    "notFound": "Página '{path}' no encontrada",
+    "add": "Añadir",
+    "edit": "Modificar",
+    "save": "Guardar",
+    "delete": "Borrar",
+    "cancel": "Cancelar",
+    "send": "Enviar",
+    "notSupported": "Este función no esta disponible.",
+    "login": {
+        "title": "Login",
+        "user": {
+            "label": "Usuario",
+            "placeholder": "Ingrese su usario"
+        },
+        "password": {
+            "label": "Contraseña",
+            "placeholder": "Ingrese su contraseña"
+        },
+        "remember": "Recordar mi registro",
+        "login": "Iniciar sesión",
+        "anonymous": "Continuar anónimamente",
+        "confirmation": {
+            "title": "Confirmación necesaria",
+            "message": "Ya existe una entrada para '{name}'. ¿Debería sobrescribirlo?",
+            "cancelText": "no, por favor no!",
+            "ok": "si, subrescribirlo",
+            "confirmed": "Entrada '{name}' se sobrescribió!"
+        }
+    },
+    "about": {
+        "about": "Sobre la application",
+        "title": "Nombre",
+        "description": "Descripción",
+        "author": "Autor",
+        "version": "Versión",
+        "license": "Licencia",
+        "source": "Código fuente",
+        "repository": "Repositorio",
+        "licenses": "Librarias & licencias usadas"
+    },
+    "home": {
+        "title": "Eso es un cliente y servicio para validar mensajes de PPMP",
+        "subtitle": "Las interfaces siguientes estan disponible"
+    },
+    "ppmp": {
+        "title": "PPMP Server",
+        "target": "Destino",
+        "config": "Configuracion",
+        "device": "Id del Equipo",
+        "operationalStatus": "Funcionamiento",
+        "measurements": {
+            "title": "Valores de medición",
+            "sensor": "Sensor",
+            "sensors": "Sensores",
+            "value": "Dato",
+            "alias": "Nombre",
+            "assign": "Asignar",
+            "deleted": "Borrado",
+            "notDeleted": "El borrado fallo",
+            "saved": "Guardado",
+            "notSaved": "El guardmiento fallo",
+            "translate": "Assigna un nombre a '{name}'",
+            "sensorNames": {
+                "motion": "Movimiento",
+                "orientation": "Alineamiento",
+                "battery": "Pila",
+                "position": "Posición",
+                "cpu": "Procesador",
+                "mem": "Memoria RAM"
+            },
+            "selected": "{0} seleccionado",
+            "sendingFrequency": {
+                "title": "Enviar con frecuencia en (ms)",
+                "placeholder": "tiempo en milisegundos"
+            },
+            "samplingFrequency": {
+                "title": "Frecuencia de muestreo en (ms)",
+                "placeholder": "tiempo en milisegundos"
+            }
+        },
+        "processes": {
+            "title": "Procesos",
+			"measurements": "Número de valores",
+			"phases": "Fase",
+			"startTime": "Hora de despeque",
+			"duration": "Periodo",
+			"details": "Detalles"
+        },
+        "messages": {
+            "title": "Mensajes del equipo",
+            "manual": "Crear a mano"
+        },
+		"optional": "opcional",
+        "noCameras": "No camera encontrado",
+        "scanQrCode": "Esccanea código QR",
+        "connectionError": "Error conexión de red"
+    },
+    "configuration": {
+        "title": "Configuraciones",
+        "language": "Idioma",
+        "sections": {
+            "preferences": "Configurationes preferidas",
+            "im3": "Identity Management 3",
+            "ppm": "Production Performance Manager",
+            "ppmp": "PPMP Server"
+        },
+        "login": {
+            "title": "Login"
+        },
+        "user": {
+            "placeholder": "Usuario"
+        },
+        "password": {
+            "placeholder": "Contraseña"
+        },
+        "name": {
+            "title": "Nombre",
+            "placeholder": "Ingrese el nombre",
+            "description": "El nombre de este configuracion."
+        },
+        "host": {
+            "title": "Host",
+            "placeholder": "Ingrese el host",
+            "description": "El host del servidor."
+        },
+        "url": {
+            "title": "URL",
+            "description": "El protocolo, host y puerto del serveridor."
+        },
+        "filter": "Filtro",
+        "messages": "Mensajes preparados"
+    }
+}

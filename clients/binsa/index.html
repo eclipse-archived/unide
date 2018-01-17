@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>
+			<%= htmlWebpackPlugin.options.packageJson.title || 'Webpack App'%>
+		</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="<%= htmlWebpackPlugin.options.packageJson.description %>">
+		<link rel="manifest" href="<%= process.env.BASEPATH %>web-manifest.json">
+		
+		<link rel="apple-touch-icon" sizes="57x57" href="<%= process.env.BASEPATH %>icons/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="<%= process.env.BASEPATH %>icons/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="<%= process.env.BASEPATH %>icons/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="<%= process.env.BASEPATH %>icons/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="<%= process.env.BASEPATH %>icons/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="<%= process.env.BASEPATH %>icons/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="<%= process.env.BASEPATH %>icons/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="<%= process.env.BASEPATH %>icons/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="<%= process.env.BASEPATH %>icons/apple-touch-icon-180x180.png">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="apple-mobile-web-app-title" content="<%= htmlWebpackPlugin.options.packageJson.title || 'Webpack App'%>">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="theme-color" content="#fff">
+		<meta name="application-name" content="<%= htmlWebpackPlugin.options.packageJson.title || 'Webpack App'%>">
+		<link rel="icon" type="image/png" sizes="32x32" href="<%= process.env.BASEPATH %>icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="192x192" href="<%= process.env.BASEPATH %>icons/android-chrome-192x192.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="<%= process.env.BASEPATH %>icons/favicon-16x16.png">
+		<link rel="shortcut icon" href="<%= process.env.BASEPATH %>icons/favicon.ico">
+
+		<meta name="msapplication-TileColor" content="#fff">
+		<meta name="msapplication-TileImage" content="<%= process.env.BASEPATH %>icons/mstile-144x144.png">
+		<meta name="msapplication-config" content="<%= process.env.BASEPATH %>browserconfig.xml">
+	</head>
+	
+	<body>
+		<div id="main">
+			<header class="nav-header">
+				<div class="container">
+					<nav class="navbar">
+						<div id="navMenu" class="navbar-menu">
+							<div class="navbar-start">
+								<a href="#/" class="navbar-item router-link-exact-active is-active">
+									Home
+								</a>
+								<a href="#/" class="navbar-item">
+									...
+								</a>
+							</div>
+							<div class="navbar-end" style="overflow: visible;">
+								<div class="dropdown">
+									<a role="button" class="dropdown-trigger navbar-link">
+										<i class="fa fa-globe">&nbsp;</i>
+									</a>
+								</div>
+								<a href="#/configuration" class="navbar-item">
+									<i class="fa fa-cog">&nbsp;</i>
+								</a>
+								<a href="#/about" class="navbar-item">
+									<i class="fa fa-info-circle">&nbsp;</i>
+								</a>
+								<div class="navbar-item">
+									<i class="fa fa-sign-in">&nbsp;</i>
+								</div>
+							</div>
+						</div>
+						<div class="navbar-brand">
+							<div class="navbar-burger burger">
+								<span></span> <span></span> <span></span>
+							</div>
+							<a href="#/" class="navbar-item router-link-exact-active router-link-active">
+								<img src="<%= process.env.BASEPATH %>logo.svg" alt="binsa2">
+							</a>
+						</div>
+					</nav>
+				</div>
+			</header>
+			<div class="container">
+				<div class="header clearfix"></div>
+				<div class="spinner">
+					<span class="fa fa-spinner fa-pulse fa-3x"></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
