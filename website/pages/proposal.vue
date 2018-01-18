@@ -84,5 +84,5 @@
 <script>
 export default {
   layout: 'sidebar'
-}
+};
 </script>

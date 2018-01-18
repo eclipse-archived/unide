@@ -49,15 +49,15 @@ export default {
       const printTime = (v.getHours() && v.getMinutes());
       return Intl.DateTimeFormat(locale, {
         hour12: false,
-        year:   "2-digit",
-        month:  "2-digit",
-        day:    "2-digit",
-        hour:	  printTime ? "numeric" : undefined,
-        minute: printTime ? "2-digit" : undefined
+        year:   '2-digit',
+        month:  '2-digit',
+        day:    '2-digit',
+        hour:   printTime ? 'numeric' : undefined,
+        minute: printTime ? '2-digit' : undefined
       }).format(v);
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

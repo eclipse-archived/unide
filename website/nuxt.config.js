@@ -1,16 +1,14 @@
-const path = require('path');
-
 module.exports = {
   head: {
     title: 'Eclipse unide',
-    meta: [{
+    meta:  [{
       charset: 'utf-8'
     }, {
-      name: 'viewport',
+      name:    'viewport',
       content: 'width=device-width, initial-scale=1'
     }, {
-      hid: 'description',
-      name: 'description',
+      hid:     'description',
+      name:    'description',
       content: 'Eclipse Unide: Understand Industry devices'
     }],
     link: [
@@ -18,14 +16,14 @@ module.exports = {
     ]
   },
   css: [{
-    src: '~assets/styles.scss',
+    src:  '~assets/styles.scss',
     lang: 'scss'
   }],
   render: {
     resourceHints: false
   },
   loading: { color: '#50237f' },
-  build: {
+  build:   {
     extend(config, ctx) {
       if(ctx.isClient && ctx.isDev) {
         // only fails in client.js in dev mode, so no real need for: 
@@ -35,15 +33,15 @@ module.exports = {
         config.entry.app.unshift('core-js/fn/array/filter'); */
         config.module.rules.push({
           enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
+          test:    /\.(js|vue)$/,
+          loader:  'eslint-loader',
           exclude: /(node_modules)/
         });
       }
       config.module.rules.push({
-        test: /schema\.json$/,
+        test:    /schema\.json$/,
         exclude: /node_modules/,
-        loader: 'json-schema-loader',
+        loader:  'json-schema-loader',
         options: {}
       });
     },
@@ -54,8 +52,8 @@ module.exports = {
     },
     extractCSS: true,
     publicPath: '/files/',
-    babel: {
-      "presets": [["vue-app", {
+    babel:      {
+      presets: [['vue-app', {
         targets: { ie: 9 }
       }]],
       plugins: ['transform-runtime']
@@ -63,6 +61,8 @@ module.exports = {
   },
 
   plugins: [{
+    src: '~/plugins/ga.js'
+  }, {
     src: '~/plugins/prismjs.js'
   }],
 
@@ -72,4 +72,4 @@ module.exports = {
   },
 
   modules: [['~modules/postsIdxPlugin', {}]]
-}
+};

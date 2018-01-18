@@ -19,17 +19,17 @@
 <script>
 
 export default {
-  name: 'schemaToc',
+  name:  'schemaToc',
   props: {
     tag: {
-      type: String,
+      type:    String,
       default: 'li'
     },
     schemas: {
       type: Object
     },
     entryNode: {
-      type: String,
+      type:    String,
       default: '$'
     }
   },
@@ -38,8 +38,7 @@ export default {
       return this.schemas[this.entryNode];
     }
   }
-}
-
+};
 </script>
 
 <style lang="scss">

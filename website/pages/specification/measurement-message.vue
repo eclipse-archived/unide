@@ -32,92 +32,95 @@ import schemaDetail  from '~/components/schemaDetail.vue';
 export default {
   created() {
     const now      = new Date(),
-          deviceId = "a4927dad-58d4-4580-b460-79cefd56775b";
+          deviceId = 'a4927dad-58d4-4580-b460-79cefd56775b';
     this.$static = {
       message: {
-        "content-spec": "urn:spec://eclipse.org/unide/measurement-message#v2",
-        device: {
+        'content-spec': 'urn:spec://eclipse.org/unide/measurement-message#v2',
+        device:         {
           deviceID: deviceId
         },
 
         measurements: [{
-          ts: now.toISOString(),
+          ts:     now.toISOString(),
           series: {
-            "$_time": [ 0, 23, 24 ], 
-            temperature: [ 45.4231, 46.4222, 44.2432]
+            // eslint-disable-next-line camelcase
+            $_time:      [0, 23, 24],
+            temperature: [45.4231, 46.4222, 44.2432]
           }
         }]
       },
       complexMessage: {
-        "content-spec": "urn:spec://eclipse.org/unide/measurement-message#v2",
-        device: {
-          deviceID: deviceId,
-          operationalStatus: "MM",
-          metaData:{
-            swVersion: "2.0.3.13",
-            swBuildID: "41535"
+        'content-spec': 'urn:spec://eclipse.org/unide/measurement-message#v2',
+        device:         {
+          deviceID:          deviceId,
+          operationalStatus: 'MM',
+          metaData:          {
+            swVersion: '2.0.3.13',
+            swBuildID: '41535'
           }
         },
         part: {
-          partTypeID: "F00VH07328",
-          partID: "420003844",
-          result: "OK",
-          code: "HUH289",
-          metaData: {
-            "lotID": "845849",
-            "toolID": "32324-432143"
+          partTypeID: 'F00VH07328',
+          partID:     '420003844',
+          result:     'OK',
+          code:       'HUH289',
+          metaData:   {
+            lotID:  '845849',
+            toolID: '32324-432143'
           }
         },
         measurements: [{
-          ts: now.toISOString(),
-          code: "190ABT",
-          result: "OK",
+          ts:     now.toISOString(),
+          code:   '190ABT',
+          result: 'OK',
           series: {
-            "$_time": [ 0, 23, 24 ], 
-            temperature: [ 45.4231, 46.4222, 44.2432]
+            // eslint-disable-next-line camelcase
+            $_time:      [0, 23, 24],
+            temperature: [45.4231, 46.4222, 44.2432]
           },
           limits: {
             temperature: {
               lowerError: 40,
-              lowerWork: 45,
+              lowerWork:  45,
               upperError: 50,
-              upperWarn: 47.5
+              upperWarn:  47.5
             }
           }
         }, {
-          ts: (new Date(now.valueOf() - 5000)).toISOString(),
+          ts:     (new Date(now.valueOf() - 5000)).toISOString(),
           series: {
-            "$_time": [ 0, 130, 2633 ],
-            pressure: [ 52.4, 46.32, 44.2432 ]
+            // eslint-disable-next-line camelcase
+            $_time:   [0, 130, 2633],
+            pressure: [52.4, 46.32, 44.2432]
           }
         }]
       }
     };
     this.$static.examples = {
-      "$/properties/content-spec": [this.$static.message, 'content-spec'],
-      "$/properties/device": [this.$static.complexMessage, 'device'],
-      "$/properties/device/properties/deviceID": [this.$static.message.device, 'deviceID'],
-      "$/properties/device/properties/metaData": [this.$static.complexMessage.device, 'metaData'],
-      "$/properties/device/properties/operationalStatus": [this.$static.complexMessage.device, 'operationalStatus'],
-      "$/properties/measurements": [this.$static.message, 'measurements'],
-      "$/properties/measurements//properties/code": [this.$static.complexMessage.measurements[0], 'code'],
-      "$/properties/measurements//properties/limits": [this.$static.complexMessage.measurements[0], 'limits'],
-      "$/properties/measurements//properties/limits/patternProperties/%5E%5B%5E%24%5D.%2B": [this.$static.complexMessage.measurements[0].limits, 'temperature'],
-      "$/properties/measurements//properties/limits/patternProperties/%5E%5B%5E%24%5D.%2B/properties/lowerError": [this.$static.complexMessage.measurements[0].limits.temperature, 'lowerError'],
-      "$/properties/measurements//properties/limits/patternProperties/%5E%5B%5E%24%5D.%2B/properties/lowerWarn": [this.$static.complexMessage.measurements[0].limits.temperature, 'lowerWarn'],
-      "$/properties/measurements//properties/limits/patternProperties/%5E%5B%5E%24%5D.%2B/properties/upperError": [this.$static.complexMessage.measurements[0].limits.temperature, 'upperError'],
-      "$/properties/measurements//properties/limits/patternProperties/%5E%5B%5E%24%5D.%2B/properties/upperWarn": [this.$static.complexMessage.measurements[0].limits.temperature, 'upperWarn'],
-      "$/properties/measurements//properties/result": [this.$static.complexMessage.measurements[0], 'result'],
-      "$/properties/measurements//properties/series": [this.$static.message.measurements[0], 'series'],
-      "$/properties/measurements//properties/series/patternProperties/%5E%5B%5E%24%5D.%2B": [this.$static.message.measurements[0].series, 'temperature'],
-      "$/properties/measurements//properties/series/properties/%24_time": [this.$static.message.measurements[0].series, '$_time'],
-      "$/properties/measurements//properties/ts": [this.$static.message.measurements[0], 'ts'],
-      "$/properties/part": [this.$static.complexMessage, 'part'],
-      "$/properties/part/properties/code": [this.$static.complexMessage.part, 'code'],
-      "$/properties/part/properties/metaData": [this.$static.complexMessage.part, 'metaData'],
-      "$/properties/part/properties/partID": [this.$static.complexMessage.part, 'partID'],
-      "$/properties/part/properties/partTypeID": [this.$static.complexMessage.part, 'partTypeID'],
-      "$/properties/part/properties/result": [this.$static.complexMessage.part, 'result']
+      '$/properties/content-spec':                                                                                [this.$static.message, 'content-spec'],
+      '$/properties/device':                                                                                      [this.$static.complexMessage, 'device'],
+      '$/properties/device/properties/deviceID':                                                                  [this.$static.message.device, 'deviceID'],
+      '$/properties/device/properties/metaData':                                                                  [this.$static.complexMessage.device, 'metaData'],
+      '$/properties/device/properties/operationalStatus':                                                         [this.$static.complexMessage.device, 'operationalStatus'],
+      '$/properties/measurements':                                                                                [this.$static.message, 'measurements'],
+      '$/properties/measurements//properties/code':                                                               [this.$static.complexMessage.measurements[0], 'code'],
+      '$/properties/measurements//properties/limits':                                                             [this.$static.complexMessage.measurements[0], 'limits'],
+      '$/properties/measurements//properties/limits/patternProperties/%5E%5B%5E%24%5D.%2B':                       [this.$static.complexMessage.measurements[0].limits, 'temperature'],
+      '$/properties/measurements//properties/limits/patternProperties/%5E%5B%5E%24%5D.%2B/properties/lowerError': [this.$static.complexMessage.measurements[0].limits.temperature, 'lowerError'],
+      '$/properties/measurements//properties/limits/patternProperties/%5E%5B%5E%24%5D.%2B/properties/lowerWarn':  [this.$static.complexMessage.measurements[0].limits.temperature, 'lowerWarn'],
+      '$/properties/measurements//properties/limits/patternProperties/%5E%5B%5E%24%5D.%2B/properties/upperError': [this.$static.complexMessage.measurements[0].limits.temperature, 'upperError'],
+      '$/properties/measurements//properties/limits/patternProperties/%5E%5B%5E%24%5D.%2B/properties/upperWarn':  [this.$static.complexMessage.measurements[0].limits.temperature, 'upperWarn'],
+      '$/properties/measurements//properties/result':                                                             [this.$static.complexMessage.measurements[0], 'result'],
+      '$/properties/measurements//properties/series':                                                             [this.$static.message.measurements[0], 'series'],
+      '$/properties/measurements//properties/series/patternProperties/%5E%5B%5E%24%5D.%2B':                       [this.$static.message.measurements[0].series, 'temperature'],
+      '$/properties/measurements//properties/series/properties/%24_time':                                         [this.$static.message.measurements[0].series, '$_time'],
+      '$/properties/measurements//properties/ts':                                                                 [this.$static.message.measurements[0], 'ts'],
+      '$/properties/part':                                                                                        [this.$static.complexMessage, 'part'],
+      '$/properties/part/properties/code':                                                                        [this.$static.complexMessage.part, 'code'],
+      '$/properties/part/properties/metaData':                                                                    [this.$static.complexMessage.part, 'metaData'],
+      '$/properties/part/properties/partID':                                                                      [this.$static.complexMessage.part, 'partID'],
+      '$/properties/part/properties/partTypeID':                                                                  [this.$static.complexMessage.part, 'partTypeID'],
+      '$/properties/part/properties/result':                                                                      [this.$static.complexMessage.part, 'result']
     };
   },
   filters: {
@@ -128,5 +131,5 @@ export default {
   components: {
     card, prism, schemaDetail
   }
-}
+};
 </script>
