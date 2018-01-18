@@ -63,7 +63,7 @@ export default {
   components: {
     navbar, recentPosts, blogArchives
   }
-}
+};
 </script>
 
 <style lang="scss">

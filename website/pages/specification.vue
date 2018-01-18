@@ -50,7 +50,7 @@ export default {
   asyncData({ isStatic }) {
     return { isStatic };
   }
-}
+};
 </script>
 
 <style lang="scss">

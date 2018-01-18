@@ -32,7 +32,7 @@ export default {
       }).format(v);
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

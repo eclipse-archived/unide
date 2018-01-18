@@ -188,7 +188,7 @@
 
 <script>
 import prism      from 'vue-prism-component';
-import cloneDeep  from "lodash.clonedeep";
+import cloneDeep  from 'lodash.clonedeep';
 import card       from '~/components/collapsibleCard.vue';
 import schemaToc  from '~/components/schemaToc.vue';
 import schemaLink from '~/components/schemaLink.vue';
@@ -207,34 +207,38 @@ export default {
   },
   data() {
     return {
-      schema: null,
+      schema:  null,
       loading: true
-    }
+    };
   },
   created() {
     const rfcs     = {
-            date: {
-              link: "https://tools.ietf.org/html/rfc3339#section-5.6",
-              name: "RFC3339, 5.6"
-            },
-            email: {
-              link: "https://tools.ietf.org/html/rfc5322#section-3.4.1",
-              name: "RFC5322, 3.4.1"
-            }
-          };
+      date: {
+        link: 'https://tools.ietf.org/html/rfc3339#section-5.6',
+        name: 'RFC3339, 5.6'
+      },
+      email: {
+        link: 'https://tools.ietf.org/html/rfc5322#section-3.4.1',
+        name: 'RFC5322, 3.4.1'
+      }
+    };
     import(`~/assets/schemas/v2/${this.type}_schema.json`)
-    .then(schema => {
-      this.schema = schema;
-      this.loading = false;
-      this.idx = 0;
-    });
+      .then(schema => {
+        this.schema = schema;
+        this.loading = false;
+        this.idx = 0;
+        return schema;
+      })
+      .catch(err => {
+        throw err;
+      });
 
     this.$static = {
       formats: {
-        "date-time": rfcs.date,
-        "date":      rfcs.date,
-        "time":      rfcs.date,
-        "email":     rfcs.email
+        'date-time': rfcs.date,
+        date:        rfcs.date,
+        time:        rfcs.date,
+        email:       rfcs.email
       }
     };
   },
@@ -248,7 +252,7 @@ export default {
           not: true
         };
       }
-      let schemas = {
+      const schemas = {
         [id.$key]: Object.assign(schema, id, {
           $idx: ++this.idx
         })
@@ -257,8 +261,8 @@ export default {
         if(schema.items instanceof Array) {
           schema.items.forEach((item, idx) => {
             const childId = {
-              $key: `${id.$key}/${idx}`,
-              $path: `${id.$path}[${idx}]`,
+              $key:    `${id.$key}/${idx}`,
+              $path:   `${id.$path}[${idx}]`,
               $parent: [schema, schema.items, idx]
             };
             Object.assign(schemas, this.flattenSchema(item, childId));
@@ -266,73 +270,73 @@ export default {
           });
         } else {
           const childId = {
-            $key: `${id.$key}/`,
-            $path: `${id.$path}[*]`,
+            $key:    `${id.$key}/`,
+            $path:   `${id.$path}[*]`,
             $parent: [schema, schema, 'items']
-          }
+          };
           Object.assign(schemas, this.flattenSchema(schema.items, childId));
           schema.items = childId.$key;
         }
       }
       // Object with subschemas
       // the excluded keywords are for validation but don't create new children
-      ['properties', 'patternProperties' /*, 'dependencies' */]
-      .filter(key => schema.hasOwnProperty(key))
-      .forEach(key =>
-        Object.entries(schema[key])
-        // .filter(([subkey, dependency]) => !(dependency instanceof Array)) // just needed for dependencies
-        .forEach(([subkey, subschema], idx) => {
-          const childId = {
-            $key: `${id.$key}/${key}/${encodeURIComponent(subkey)}`,
-            $path: `${id.$path}&#8203;.`,
-            $parent: [schema, schema[key], subkey]
-          };
-          childId.$path += key === 'patternProperties' ? `&lt;field&gt;` : subkey;
-          Object.assign(schemas, this.flattenSchema(subschema, childId));
-          schema[key][subkey] = childId.$key;
-        })
-      );
+      ['properties', 'patternProperties'] /*, 'dependencies' */
+        .filter(key => schema.hasOwnProperty(key))
+        .forEach(key =>
+          Object.entries(schema[key])
+          // .filter(([subkey, dependency]) => !(dependency instanceof Array)) // just needed for dependencies
+            .forEach(([subkey, subschema], idx) => {
+              const childId = {
+                $key:    `${id.$key}/${key}/${encodeURIComponent(subkey)}`,
+                $path:   `${id.$path}&#8203;.`,
+                $parent: [schema, schema[key], subkey]
+              };
+              childId.$path += key === 'patternProperties' ? `&lt;field&gt;` : subkey;
+              Object.assign(schemas, this.flattenSchema(subschema, childId));
+              schema[key][subkey] = childId.$key;
+            })
+        );
       // simple direct subschemas
       // the excluded keywords are for validation but don't create new children
       // Definitions are inline through webpack loader already
       // additional* is not used here and more quirky to implement
-      ['additionalItems', 'additionalProperties', 'contains', 'propertyNames', 'not', /* 'if', 'then', 'else', 'propertyNames', 'contains', 'definitions' */]
-      .filter(key => schema.hasOwnProperty(key))
-      .forEach(key => {
-        const childId = {
-          $key: `${id.$key}/${key}`,
-          $path: `${id.$path}+`,
-          $parent: [schema, schema, key]
-        };
-        Object.assign(schemas, this.flattenSchema(schema[key], childId));
-        schema[key] = childId.$key;
-      });
+      ['additionalItems', 'additionalProperties', 'contains', 'propertyNames', 'not'] /* 'if', 'then', 'else', 'propertyNames', 'contains', 'definitions' */
+        .filter(key => schema.hasOwnProperty(key))
+        .forEach(key => {
+          const childId = {
+            $key:    `${id.$key}/${key}`,
+            $path:   `${id.$path}+`,
+            $parent: [schema, schema, key]
+          };
+          Object.assign(schemas, this.flattenSchema(schema[key], childId));
+          schema[key] = childId.$key;
+        });
       // simple array of subschemas
       ['allOf', 'anyOf', 'oneOf']
-      .filter(key => schema.hasOwnProperty(key))
-      .forEach(key =>
-        schema[key].forEach((subschema, idx) => {
-          const childId = {
-            $key: `${id.$key}/${key}/${idx}`,
-            $path: `${id.$path}(${idx})?`,
-            $parent: [schema, schema[key], idx]
-          };
-          Object.assign(schemas, this.flattenSchema(subschema, childId));
-          schema[key][idx] = childId.$key;
-        })
-      );
+        .filter(key => schema.hasOwnProperty(key))
+        .forEach(key =>
+          schema[key].forEach((subschema, idx) => {
+            const childId = {
+              $key:    `${id.$key}/${key}/${idx}`,
+              $path:   `${id.$path}(${idx})?`,
+              $parent: [schema, schema[key], idx]
+            };
+            Object.assign(schemas, this.flattenSchema(subschema, childId));
+            schema[key][idx] = childId.$key;
+          })
+        );
       return schemas;
     },
     shrinkSchemas(schemas) {
       const removableWith = schema => {
-              if(schema.anyOf && schema.anyOf.indexOf(true)>=0) {
-                return [schema, true];  
+              if(schema.anyOf && schema.anyOf.indexOf(true) >= 0) {
+                return [schema, true];
               }
-              if(schema.allOf && schema.allOf.indexOf(false)>=0) {
-                return [schema, false];  
+              if(schema.allOf && schema.allOf.indexOf(false) >= 0) {
+                return [schema, false];
               }
               if(schema.not === true) {
-                return [schema, false]
+                return [schema, false];
               }
               if(Object.keys(schema).filter(key => (key[0] !== '$')).length === 0) {
                 return [schema, true];
@@ -377,5 +381,5 @@ export default {
   components: {
     card, prism, schemaToc, schemaLink
   }
-}
+};
 </script>

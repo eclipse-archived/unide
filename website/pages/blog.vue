@@ -29,7 +29,8 @@ const locale = process.browser ? ((navigator.languages && navigator.languages[0]
 export default {
   layout: 'sidebar',
   async asyncData({ params = {}, query, payload }) {
-    let path = '', list = null;
+    let path = '',
+        list = null;
     if(params.year) {
       path += `${params.year}`;
       if(params.month) {
@@ -40,27 +41,27 @@ export default {
       }
     }
     if(path.length) {
-      list = payload || (await axios.get(`/unide/files/posts/${path}.json`)).data
+      list = payload || (await axios.get(`/unide/files/posts/${path}.json`)).data;
     } else {
       list = await import('posts/recent.json');
     }
     return {
       list: list.slice().reverse()
-    }
+    };
   },
   computed: {
     dateHeader() {
       const { year, month, day } = this.$route.params,
             v = new Date(Date.UTC(year || 2016, month || 0, day || 1));
       if(!year) {
-        return "Recent Posts"
+        return 'Recent Posts';
       }
       return Intl.DateTimeFormat(locale, {
         month: month ? 'long' : undefined,
         year:  year ? 'numeric' : undefined,
         day:   day ? '2-digit' : undefined
       }).format(v);
-    },
+    }
   },
   filters: {
     timeStamp(v, { year, month, day }) {
@@ -68,15 +69,15 @@ export default {
       const printTime = (v.getHours() && v.getMinutes());
       return Intl.DateTimeFormat(locale, {
         hour12: false,
-        month:  month ? undefined : "long",
-        year:   year ? undefined : "numeric",
-        day:    "2-digit",
-        hour:	  printTime ? "numeric" : undefined,
-        minute: printTime ? "2-digit" : undefined
+        month:  month ? undefined : 'long',
+        year:   year ? undefined : 'numeric',
+        day:    '2-digit',
+        hour:   printTime ? 'numeric' : undefined,
+        minute: printTime ? '2-digit' : undefined
       }).format(v);
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

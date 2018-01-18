@@ -33,12 +33,12 @@
 export default {
   props: {
     schemas: {
-      type: Object,
+      type:     Object,
       required: true
     },
     link: {
       required: true
     }
   }
-}
+};
 </script>
