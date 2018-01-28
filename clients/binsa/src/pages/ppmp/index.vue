@@ -15,12 +15,13 @@
         <div class="field-body">
           <div class="field is-expanded">
             <div class="control">
-              <span class="select is-fullwidth">
+              <span class="select is-fullwidth" v-if="Object.keys(filteredConfigurations).length > 0">
                 <select id="configId" v-model="configId">
                   <option></option>
                   <option v-for="config in filteredConfigurations" :key="config._id" :value="config._id">{{ config.name }}</option>
                 </select>
               </span>
+              <a class="button is-fullwidth" v-else @click="initSample">{{ $t('ppmp.initSample') }}</a>
             </div>
             <p v-if="connectionError" class="help is-danger">{{ $t('ppmp.connectionError') }}</p>
           </div>
@@ -116,6 +117,47 @@ export default {
   }, mapState('configuration', ['configuration'])),
 
   methods: {
+    async initSample() {
+      const id     = (Math.max(0, Object.keys(this.configuration || {}).map(i => +i).filter(i => !isNaN(i))) + 1).toString(),
+            config = {
+              _id: id,
+              type: "ppmp",
+              name: "Eclipse Server",
+              url: "https://unide.eclipse.org/rest",
+              messages: [{
+                code: "ok",
+                title: "OK",
+                description: "everything ok",
+                hint: "no action necessary",
+                type: "DEVICE",
+                severity: "LOW",
+                color: "#78BE20"
+              },{
+                code: "nok",
+                title: "Not OK",
+                description: "Something went wrong",
+                hint: "take action immediately",
+                type: "DEVICE",
+                severity: "HIGH",
+                color: "#E20015"
+              },{
+                code: "supempt",
+                title: "Supermarket empty",
+                description: "please refill raw material",
+                hint: "inform material handler",
+                type: "TECHNICAL_INFO",
+                severity: "MEDIUM",
+                color: "#A00266"
+              }]
+            };
+      try {
+        let remoteConf = await this.$store.dispatch('configuration/saveConfiguration', config);
+        this.configId = remoteConf._id;
+      } catch(e) {
+        console.error(e);
+      }
+    },
+
     syncRoute() {
       // routing not in sync, data is master
       if(this.configId && this.deviceId) {

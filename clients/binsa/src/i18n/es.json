@@ -50,6 +50,7 @@
         "config": "Configuracion",
         "device": "Id del Equipo",
         "operationalStatus": "Funcionamiento",
+		"initSample": "Crear configuración de muestra",
         "measurements": {
             "title": "Valores de medición",
             "sensor": "Sensor",

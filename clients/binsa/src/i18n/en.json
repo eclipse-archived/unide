@@ -50,6 +50,7 @@
         "config": "Configuration",
         "device": "Device Id",
         "operationalStatus": "Op. Status",
+		"initSample": "Create sample config",
         "measurements": {
             "title": "Measurements",
             "sensor": "Sensor",
