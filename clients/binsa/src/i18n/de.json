@@ -50,6 +50,7 @@
 		"config": "Konfiguration",
 		"device": "Geräte Id",
 		"operationalStatus": "Betriebszustand",
+		"initSample": "Beispielkonfiguration anlegen",
 		"measurements": {
 			"title": "Messwerte",
 			"sensor": "Sensor",

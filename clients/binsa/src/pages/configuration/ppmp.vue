@@ -19,7 +19,7 @@
       </div>
       <div class="field-body">
         <div class="field is-expanded">
-          <url :id="`${localValue._id}_url`" :disabled="disabled" v-model="localValue.url" data-vv-name="url" v-validate="'url|required'"></url>
+          <input :id="`${localValue._id}_url`" :disabled="disabled" v-model="localValue.url" data-vv-name="url" v-validate="'url|required'" class="input" :placeholder="`https://unide.eclipse.org${path}`"></input>
           <p v-show="errors.has('url')" class="help is-danger">{{ errors.first('url') }}</p>
         </div>
       </div>
@@ -99,7 +99,6 @@ import cloneDeep    from 'lodash/cloneDeep';
 import isEqual      from 'lodash/isEqual';
 import defaults     from 'lodash/defaults';
 import { Sketch }   from 'vue-color';
-import url          from 'components/url';
 import card         from 'components/collapsibleCard';
 import messageForm  from 'components/messageForm';
 
@@ -154,22 +153,11 @@ export default {
         l[idx] = message;
         return l;
       }, {});
-      if(clone.url) {
-        try {
-          clone.url = (new URL(clone.url)).origin;
-        } catch(err) {}
-      }
       return clone;
     },
     cleanValue(value) {
-      let url = value.url;
-      try {
-        new URL(url);
-        url += this.path;
-      } catch(err) {}
       return Object.assign({}, value, {
-        messages: Object.values(value.messages),
-        url
+        messages: Object.values(value.messages)
       });
     }
   },
@@ -213,7 +201,6 @@ export default {
     }
   },
   components: {
-    url,
     card,
     messageForm,
     colorPicker: Sketch
