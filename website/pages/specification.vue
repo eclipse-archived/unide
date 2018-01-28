@@ -90,14 +90,6 @@ export default {
       }
     }
   }
-  .property {
-    ul {
-      list-style-type: disc;
-      padding-left: 1em;
-      margin-left: 0;
-      margin-top: 0;
-    }
-  }
   #messageDetail.columns {
     margin-top: 3em;
     border-bottom: 2px solid $primary;
@@ -107,7 +99,6 @@ export default {
         font-size: 1.2rem;
         color: $bosch-darkgray;
         display: block;
-        padding: 1rem 0.5rem;
         text-decoration: none;
         &:hover {
           color: $bosch-lima;

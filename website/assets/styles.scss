@@ -6,8 +6,16 @@
 body {
 	overflow: visible;
 }
-a:hover {
+a {
 	text-decoration: underline;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+.footer, .navbar, .sidebar {
+	a {
+		text-decoration: none;
+	}
 }
 .title {
 	font-weight: normal;

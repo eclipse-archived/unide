@@ -38,9 +38,10 @@ const locale = process.browser ? ((navigator.languages && navigator.languages[0]
 
 export default {
   layout: 'sidebar',
-  async asyncData({ params, payload }) {
+  async asyncData({ params, payload, isServer}) {
+    console.log("isServer: ",isServer);
     return {
-      post: payload || (params.name && (await axios.get(`/unide/files/posts/${params.name}.json`)).data) || {}
+      post: payload || (params.name && (await axios.get(`${isServer ? 'http://localhost:3000/' : '/'}unide/files/posts/${params.name}.json`)).data) || {}
     };
   },
   filters: {

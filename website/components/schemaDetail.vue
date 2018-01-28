@@ -383,3 +383,19 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.schemaDetail {
+  a {
+    text-decoration: none;
+  }
+  .property {
+    ul {
+      list-style-type: disc;
+      padding-left: 1em;
+      margin-left: 0;
+      margin-top: 0;
+    }
+  }
+}
+</style>
