@@ -37,13 +37,13 @@ export default {
       answer:   "JSON is a good fit regarding understandability and size. Having a structured and comprehensible basis is the first step for acceptance in the industry. In the spirit of Donald E. Knuth (\"<a href='http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.103.6084'><i>premature optimization is the root of all evil</i></a>\"), further compacting is possible in a later stage."
     }, {
       question: 'Why are time and measurement points separated in multiple arrays?',
-      answer:   "We have discussed multiple options for <a href='specification/#series'>series</a>: having an array of<br/>tupels (<code>[[0, 23.34],[...],...]</code>),<br/>plain objects (<code>[{time: 0, temperature: 23.34}, {...}...]</code>),<br/>objects with time as key (<code>{ \"0\": [23.34,...],...}</code>) and other.<br/>When parsing, we had to recognize, that unsigned long int for time and floating point measurements are of different types. Also, all former variants are more verbose due to additional brackets, commas or quotation marks. We believe that the current version is a good compromise between readability and structure."
+      answer:   "We have discussed multiple options for <a href='specification'>series</a>: having an array of<br/>tupels (<code>[[0, 23.34],[...],...]</code>),<br/>plain objects (<code>[{time: 0, temperature: 23.34}, {...}...]</code>),<br/>objects with time as key (<code>{ \"0\": [23.34,...],...}</code>) and other.<br/>When parsing, we had to recognize, that unsigned long int for time and floating point measurements are of different types. Also, all former variants are more verbose due to additional brackets, commas or quotation marks. We believe that the current version is a good compromise between readability and structure."
     }, {
       question: "I'm interested in Unide/PPMP. How can I contribute?",
       answer:   "The first goal of Unide is to provide sample client/server implementations of PPMP. Secondly, we're looking forward to improving PPMP in future versions together with the eclipse community.<br/>If you want to contribute with source code, use cases or implementing it in your devices, let us know and discuss in the <a href=\"https://github.com/eclipse/unide\">unide forum</a> or by forking / filing an issue on <a href=\"https://github.com/eclipse/unide\">github</a>."
     }, {
       question: 'Why have you included content-spec uri, if that can also be expressed in the a REST url already?',
-      answer:   '<a href="specification/#content_spec">content-spec</a> is included in the payload, because PPMP does not rely on a specific transport protocol (like REST).'
+      answer:   '<a href="specification">content-spec</a> is included in the payload, because PPMP does not rely on a specific transport protocol (like REST).'
     }]
   }),
   components: {
