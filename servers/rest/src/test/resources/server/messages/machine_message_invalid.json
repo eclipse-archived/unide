@@ -1,0 +1,32 @@
+{
+	"content-spec": "urn:spec://eclipse.org/unide/machine-message#v2",
+	"device": 
+	{
+		"deviceID": "2ca5158b-8350-4592-bff9-755194497d4e",
+		"operationalStatus": "normal",
+		"metaData": 
+		{
+			"swVersion": "2.0.3.13",
+			"swBuildID": "41535"
+		}
+	},
+
+	"messages": 
+	[
+		{
+			"ts": "2002-05-30T09:30:10.125+02:00",
+			"type": "TECHNICAL_INFO",
+			"severity": "HIGH",
+			"code": "33-02",
+			"title": "Disk size limit reached",
+			"description": "Disk size has reached limit. Unable to write log files."
+		},
+		{
+			"type": "TECHNICAL_INFO",
+			"severity": "HIGH",
+			"code": "33-02",
+			"title": "Disk size limit reached",
+			"description": "Disk size has reached limit. Unable to write log files."
+		}
+	]
+}
