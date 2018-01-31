@@ -1,0 +1,31 @@
+@startuml
+skinparam classFontColor red
+skinparam classFontSize 10
+skinparam classFontName Aapex
+
+participant "Client" as Client
+participant "RestVerticle" as RestVerticle
+participant "PpmpValidator" as PpmpValidator
+participant "EventBus" as EventBus
+participant "ReceiverVerticle" as ReceiverVerticle
+participant "Receiver" as Receiver
+participant "Database" as Database
+
+Client -> RestVerticle : POST: /rest/v2/
+RestVerticle -> PpmpValidator: ppmp json
+note left: if vallidation error then throw Exception
+
+RestVerticle <- PpmpValidator : PpmpEvent
+RestVerticle -> EventBus :PpmpEvent
+
+EventBus -> ReceiverVerticle : PpmpEvent
+ReceiverVerticle -> Receiver : PpmpEvent
+Receiver -> Database : write/...
+Receiver <- Database : success / failed
+ReceiverVerticle <- Receiver : success / failed
+EventBus <- ReceiverVerticle : success / failed
+RestVerticle <- EventBus : success / failed
+
+Client <- RestVerticle : success / failed
+
+@enduml

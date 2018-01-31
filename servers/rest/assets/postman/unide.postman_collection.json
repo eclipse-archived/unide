@@ -1,0 +1,223 @@
+{
+	"info": {
+		"name": "Unide",
+		"_postman_id": "868488cf-584c-47e6-d3a3-93be2d8376d0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "InfluxDB",
+			"description": "",
+			"item": [
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": "{{influxurl}}/ping",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Show Databases",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "q",
+									"value": "SHOW DATABASES",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8086/query?q=\"SHOW DATABASES\"",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"query"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "\"SHOW DATABASES\"",
+									"equals": true
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Messages DB: Select from Messages",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "q",
+									"value": "SELECT * FROM \"ppmp_message\"",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "db",
+									"value": "Messages",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8086/query",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Messages DB: Select from Measurements",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "q",
+									"value": "SELECT * FROM \"ppmp_measurements\" WHERE \"deviceId\"='33a58b-8350-4592-23121-755194497d'",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "db",
+									"value": "Measurements",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8086/query",
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Messages DB: Select from Processes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "q",
+									"value": "SELECT * FROM \"ppmp_processes\"",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "db",
+									"value": "Processes",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8086/query",
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Send Machine message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"content-spec\": \"urn:spec://eclipse.org/unide/machine-message#v2\",\r\n\t\"device\": \r\n\t{\r\n\t\t\"deviceID\": \"2ca5158b-8350-4592-23121-755194497d\"\r\n\t},\r\n\t\"messages\": \r\n\t[\r\n\t\t{\r\n\t\t\t\"origin\": \"sensor-id-992.2393.22\",\r\n\t\t\t\"ts\": \"2002-05-30T09:30:10.123+02:00\",\r\n\t\t\t\"type\": \"DEVICE\",\r\n\t\t\t\"severity\": \"LOW\",\r\n\t\t\t\"code\": \"190ABT\",\r\n\t\t\t\"title\": \"control board damaged\",\r\n\t\t\t\"description\": \"Electronic control board or its electrical connections are damaged\",\r\n\t\t\t\"hint\": \"Check the control board\"\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"origin\": \"sensor-id-992.2393.22\",\r\n\t\t\t\"ts\": \"2002-05-30T09:30:10.123+02:00\",\r\n\t\t\t\"type\": \"DEVICE\",\r\n\t\t\t\"severity\": \"HIGH\",\r\n\t\t\t\"code\": \"190ABA\",\r\n\t\t\t\"title\": \"control board damaged\",\r\n\t\t\t\"description\": \"Electronic control damage\",\r\n\t\t\t\"hint\": \"Check the control board\"\r\n\t\t}\r\n\t]\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+				},
+				"url": "{{url}}/rest/v2/",
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Send Measurement message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"content-spec\": \"urn:spec://eclipse.org/unide/measurement-message#v2\",\r\n\t\"device\": \r\n\t{\r\n\t\t\"deviceID\": \"a4927dad-58d4-4580-b460-79cefd56775b\"\r\n\t},\r\n\t\"measurements\": \r\n\t[\r\n\t\t{\r\n\t\t\t\"ts\": \"2002-05-30T09:30:10.123+02:00\",\r\n\t\t\t\"result\": \"NOK\",\r\n\t\t\t\"code\": \"0000 EE01\",\r\n\t\t\t\"series\": \r\n\t\t\t{\r\n\t\t\t\t\"$_time\": \r\n\t\t\t\t[\r\n\t\t\t\t\t0,\r\n\t\t\t\t\t23,\r\n\t\t\t\t\t24\r\n\t\t\t\t],\r\n\t\t\t\t\"temperature\": \r\n\t\t\t\t[\r\n\t\t\t\t\t45.4243,\r\n\t\t\t\t\t461.42342,\r\n\t\t\t\t\t44.2432\r\n\t\t\t\t],\r\n\t\t\t\t\"pressure\": \r\n\t\t\t\t[\r\n\t\t\t\t\t25.4243,\r\n\t\t\t\t\t26.42342,\r\n\t\t\t\t\t24.2432\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t}\r\n\t]\r\n}\r\n\r\n\r\n\r\n"
+				},
+				"url": "{{url}}/rest/v2/",
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Send Process message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content-spec\" : \"urn:spec://eclipse.org/unide/process-message#v2\",\r\n    \"device\" : {\r\n        \"deviceID\" : \"a4927dad-58d4-4580-b460-79cefd56775b\",\r\n        \"operationalStatus\" : \"normal\",\r\n        \"metaData\" : {\r\n            \"swVersion\" : \"2.0.3.13\",\r\n            \"swBuildId\" : \"41535\"   \r\n        }\r\n    },\r\n    \"part\" : {\r\n        \"type\" : \"SINGLE\",\r\n        \"partTypeID\" : \"F00VH07328\",\r\n        \"partID\" : \"420003844\",\r\n        \"result\" : \"NOK\",\r\n        \"code\" : \"HUH289\",\r\n        \"metaData\" : {\r\n             \"toolId\" : \"32324-432143\"\r\n        }\r\n    },\r\n    \"process\" : {\r\n        \"externalProcessId\" : \"b4927dad-58d4-4580-b460-79cefd56775b\",\r\n        \"ts\" : \"2002-05-30T09:30:10.123+02:00\",\r\n        \"result\" : \"NOK\",\r\n        \"shutoffPhase\" : \"phase 1\",\r\n        \"program\" : {\r\n            \"id\" : \"1\",\r\n            \"name\" : \"Programm 1\",\r\n            \"lastChangedDate\" : \"2002-05-30T09:30:10.123+02:00\"\r\n        },\r\n        \"shutoffValues\" : {\r\n            \"force\" : {\r\n                \"ts\" : \"2002-05-30T09:30:11.123+02:00\",\r\n                \"value\" : 24,\r\n                \"upperError\" : 26,\r\n                \"lowerError\" : 22\r\n            },\r\n            \"pressure\" : {               \r\n                \"value\" : 50,\r\n                \"upperError\" : 52,\r\n                \"lowerError\" : 48\r\n            }\r\n        },\r\n        \"metaData\" : {\r\n            \"name\" : \"Getriebedeckel verschrauben\"\r\n        }\r\n    },\r\n    \"measurements\" : [\r\n        {\r\n            \"ts\" : \"2002-05-30T09:30:10.123+02:00\",\r\n            \"phase\" : \"phasen name 2\",\r\n            \"name\" : \"500 Grad links drehen\",\r\n            \"result\" : \"NOK\",\r\n            \"code\" : \"0000 EE01\",\r\n            \"limits\" : {\r\n                \"temperature\" : {\r\n                    \"upperError\" :  4444,\r\n                    \"lowerError\" :  44,\r\n                    \"upperWarn\"    :  2222,\r\n                    \"lowerWarn\"    :  46\r\n                }\r\n            },\r\n            \"series\" : {\r\n                \"time\" : [0, 23, 24],\r\n                \"force\" : [26, 23, 24],\r\n                \"pressure\" : [52.4, 46.32, 44.2432],\r\n                \"temperature\" : [45.4243, 46.42342, 44.2432]          \r\n            }\r\n        }\r\n    ]\r\n}"
+				},
+				"url": "{{url}}/rest/v2/",
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
