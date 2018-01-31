@@ -1,0 +1,566 @@
+= Documentation
+:description: Documentation for the Unide REST Server
+:library: Asciidoctor
+:cip: Unide
+:api: API Specification
+ifdef::asciidoctor[]
+:source-highlighter: highlight.js
+endif::asciidoctor[]
+:idprefix:
+:toc: macro
+:data-uri:
+:icons: font
+:nofooter:
+:docinfo1:
+
+
+[[purpose]]
+.Purpose
+****
+The REST server is part of the Eclipse Unide project. Its main purpose is to showcase how PPMP messages can be validated against
+the schemas defined in the PPMP protocol and processed. The REST server provides an example use case, where PPMP protocol messages are persisted
+to an InfluxDB. Using a monitoring tool like Grafana the persisted data can be visualized afterwards.
+
+This document guides you through the architecture and the persistency functionality of the REST server.
+****
+
+== Getting started
+
+=== Installation
+
+[IMPORTANT]
+====
+Two dependencies of the REST server are currently not available through a public maven repository.
+Therefore, these dependencies have to be installed manually. Making these dependencies available is work in progress,
+the described steps will no longer be required in future.
+
+The dependencies to build are:
+
+.....
+/bindings/ppmp-java-binding
+/ppmp/ppmp-schema
+.....
+====
+
+=== Building and Running the Server
+
+To build the REST server run:
+
+[source,bash]
+mvn clean install
+
+After configuring the server as described below you can run it using
+
+[source,bash]
+run ./target/java -jar ppmp-server-<VERSION>-fat.jar -conf ./target/application_conf.json
+
+=== Configuration
+
+After building the project a configuration file is created in `./target/application.json`.
+Open this file and set `database-` and `http-` settings according to your needs.
+
+The file contains the following properties which should be overridden with the corresponding properties of
+your environment.
+
+[source,json]
+{
+  "http.port": 8090,
+  "persistence.enable" : true,
+  "persistence.system" : "postgresDb",
+  "influxDb.url": "http://localhost:8086",
+  "influxDb.user": "root",
+  "influxDb.password": "root",
+  "postgresDb.url" : "jdbc:postgresql://localhost:5432/unide_ppmp",
+  "postgresDb.user" : "postgres",
+  "postgresDb.password" : "password"
+}
+
+The following table contains detailed information about the properties.
+
+|===
+|Property | Required | Default | Description
+
+| http.port
+| Yes
+| -
+| The HTTP port on which the server will run.
+
+| persistence.enable
+| No
+| `true`
+| Enables persistence. If this property is set to `false`, only the validation endpoint can be used.
+
+| persistence.system
+| No
+| influxDb
+| The name of the database in which PPMP message type messages should be persisted.
+
+| influxDb.url
+| Yes
+| -
+| The connection URL of the InfluxDB instance.
+
+| influxDb.user
+| Yes
+| -
+| The username for InfluxDB.
+
+| influxDb.password
+| Yes
+| -
+| The password for InfluxDB.
+
+| postgresDb.url
+| Yes
+| -
+| The connection URL of the PostgresDB instance.
+
+| postgresDb.user
+| Yes
+| -
+| The username for PostgresDB.
+
+| postgresDb.password
+| Yes
+| -
+| The password for PostgresDB.
+|===
+
+
+== Service Overview
+
+
+=== REST Endpoints
+
+The server provides the following endpoints:
+
+|===
+|Route | Method | Description
+
+| `/rest/v2`
+| `POST`
+| Validate and save a PPMP protocol message of any type
+
+| `/rest/v2/validate`
+| `POST`
+| Validate a PPMP protocol message of any type
+
+| `/rest/v2/message`
+| `POST`
+| Validate and save a PPMP protocol message of type message
+
+| `/rest/v2/measurement`
+| `POST`
+| Validate and save a PPMP protocol message of type measurement
+
+| `/rest/v2/process`
+| `POST`
+| Validate and save a PPMP protocol message of type process
+
+|===
+
+=== Components
+
+The REST server is made up from these components:
+
+.Components
+
+|===
+|Component | Description
+
+|`RestVerticle`
+|Provides the REST endpoints for any interaction with the REST server
+
+|`PpmpValidator`
+|Validates JSON payloads against the PPMP protocol schema
+
+|Vert.x `EventBus`
+|The communication system to allow message passing between verticles.
+
+|`ReceiverVerticle`
+|Consumes events from the eventbus and delegates them to concrete receivers.
+
+|`InfluxDbReceiver`
+|Transforms PPMP messages to InfluxDB line protocol and sends them to InfluxDB over the REST API
+
+|`InfluxDB`
+|The database used to persist PPMP messages
+
+|===
+
+The interactions between those components are shown in the figure below.
+
+.Ppmp Message processing
+plantuml::./diagramms/ppmp_message_proccessing.puml["ppmp_message_proccessing",png ]
+
+
+== InfluxDB Schema Design
+
+All PPMP messages are written to the InfluxDB. The schema of the database differs for each message type.
+Each message type is persisted in its own database. The databases are created on application startup.
+The databases are:
+
+- Messages
+- Measurements
+- Processes
+
+InfluxDB tables are called `Measurement`. The `Measurement` s for the message types are:
+
+- ppmp_messages
+- ppmp_measurements
+- ppmp_processes
+
+The schemas for each message type are described below.
+
+=== PPMP Message
+
+This type is written to the `Messages` database. The Measurement name is `ppmp_message`.
+
+.PPMP Message
+|===
+|Attribute  | Type  | Name
+
+|`message.ts`
+|time
+|time
+
+|`device.DeviceID`
+|tag
+|deviceId
+
+|`message.messageCode`
+|tag
+|code
+
+|`message.origin`
+|field
+|origin
+
+|`message.severity`
+|field
+|severity
+
+|`message.title`
+|field
+|title
+
+|`message.description`
+|field
+|description
+
+|`message.hint`
+|field
+|hint
+
+|`message.type`
+|field
+|type
+|===
+
+=== PPMP Measurement
+
+This type is written to the `Measurements` database. The Measurement name is `ppmp_measurements`.
+
+
+.PPMP Measurement Message
+|===
+|Attribute  | Type | Name
+
+|`ts + offset in series.*$_time*`
+|time
+|time
+
+|`device.DeviceID`
+|tag
+|deviceId
+
+|`series.*name_of_array*`
+|tag
+|measurement.point
+
+|`measurements.series.*name_of_array*.item`
+|field
+|value
+|===
+
+A PPMP Measurement message can contain one or more entries which will be persisted.
+
+The following example shows a measurement that contains four entries.
+
+[source,json]
+{
+	"content-spec": "urn:spec://eclipse.org/unide/measurement-message#v2",
+	"device":
+	{
+		"deviceID": "a4927dad-58d4-4580-b460-79cefd56775b"
+	},
+	"measurements":
+	[
+		{
+			"ts": "2002-05-30T09:30:10.123+02:00",
+			"result": "OK",
+			"series":
+			{
+				"$_time":
+				[
+				    0,
+				    23
+				],
+				"temperature":
+				[
+				    52.4,
+				    46.32
+				],
+				"pressure":
+				[
+				    26,
+				    20
+				]
+			}
+		}
+	]
+}
+
+
+The resulting entries of this measurement message are:
+
+|===
+|Time  | Tags | Fields
+
+|2002-05-30T09:30:10.123+02:00
+|deviceId=12341231,measurementPoint=temperature
+|value=52.4
+
+|2002-05-30T09:30:10.146+02:00
+|deviceId=12341231,measurementPoint=temperature
+|value=46.32
+
+|2002-05-30T09:30:10.123+02:00
+|deviceId=12341231,measurementPoint=pressure
+|value=26
+
+|2002-05-30T09:30:10.1**46**+02:00
+|deviceId=12341231,measurementPoint=pressure
+|value=20
+
+|===
+
+Basically the following schema applies:
+.....
+ts + $_time[i] deviceId=device.deviceId,measurementPoint='value_array_name' value='value_array_name'[i]
+.....
+
+
+=== PPMP Proccess
+
+This type is written to the `Processes` database. The Measurement name is `ppmp_processes`.
+
+.PPMP Prccess
+|===
+|Attribute  | Type | Name
+
+|`process.ts`
+|time
+|time
+
+|`device.DeviceID`
+|tag
+|deviceId
+
+|`process.programm.name`
+|tag
+|programmName
+
+|`process - payload as json`
+|field
+|payload
+|===
+
+== PostgresDB Schema Design
+
+Postgres provides the possibility to store time based data by using the Postgres timescale extension.
+
+https://www.timescale.com/[Timescale extension]
+
+The timescale extension is required for the rest server.
+The easiest way to setup Postgres with the timescale extension  is using docker.
+
+http://docs.timescale.com/v0.7/getting-started/installation/linux/installation-docker[Timescale - Linux Docker]
+
+The unide rest-server does only need the connection string to a running database instance.
+All tables and timescale specific statements are created or executed on application startup of the rest-server,
+when they are not exists.
+
+All PPMP messages are written to the PostgresDB.
+Each message is persisted in its own table.
+The tables are:
+
+- ppmp_messages
+- ppmp_measurements
+- ppmp_processes
+
+The schemas for each message type are described below.
+
+The raw SQL creation statements can be found in `server/receiver/postgres/db.changelog-master.xml`
+
+=== PPMP Message
+
+This type is written to the `ppmp_messages` table.
+
+.PPMP Message
+|===
+|Attribute  | Type  | Name
+
+|`message.ts`
+|timestamp
+|time
+
+|`device.DeviceID`
+|text
+|deviceid
+
+|`message.messageCode`
+|text
+|code
+
+|`message.origin`
+|text
+|origin
+
+|`message.severity`
+|text
+|severity
+
+|`message.title`
+|text
+|title
+
+|`message.description`
+|text
+|description
+
+|`message.hint`
+|text
+|hint
+
+|`message.type`
+|text
+|type
+|===
+
+=== PPMP Measurement
+
+This type is written to the `ppmp_measurements` table.
+
+
+.PPMP Measurement Message
+|===
+|Attribute  | Type | Name
+
+|`ts + offset in series.*$_time*`
+|timestamp
+|time
+
+|`device.DeviceID`
+|text
+|deviceId
+
+|`series.*name_of_array*`
+|text
+|measurement.point
+
+|`measurements.series.*name_of_array*.item`
+|decimal
+|value
+|===
+
+A PPMP Measurement message can contain one or more entries which will be persisted.
+
+The following example shows a measurement that contains four entries.
+
+[source,json]
+{
+	"content-spec": "urn:spec://eclipse.org/unide/measurement-message#v2",
+	"device":
+	{
+		"deviceID": "a4927dad-58d4-4580-b460-79cefd56775b"
+	},
+	"measurements":
+	[
+		{
+			"ts": "2002-05-30T09:30:10.123+02:00",
+			"result": "OK",
+			"series":
+			{
+				"$_time":
+				[
+				    0,
+				    23
+				],
+				"temperature":
+				[
+				    52.4,
+				    46.32
+				],
+				"pressure":
+				[
+				    26,
+				    20
+				]
+			}
+		}
+	]
+}
+
+
+The resulting entries of this measurement message are:
+
+|===
+|time  | deviceid | measurementpoint | value
+
+|2002-05-30T09:30:10.123+02:00
+|deviceId=12341231
+|measurementPoint=temperature
+|value=52.4
+
+|2002-05-30T09:30:10.146+02:00
+|deviceId=12341231
+|measurementPoint=temperature
+|value=46.32
+
+|2002-05-30T09:30:10.123+02:00
+|deviceId=12341231
+|measurementPoint=pressure
+|value=26
+
+|2002-05-30T09:30:10.1**46**+02:00
+|deviceId=12341231
+|measurementPoint=pressure
+|value=20
+
+|===
+
+=== PPMP Proccess
+
+This type is written to the `Processes` database. The Measurement name is `ppmp_processes`.
+
+.PPMP Prccess
+|===
+|Attribute  | Type | Name
+
+|`process.ts`
+|timestamp
+|time
+
+|`device.DeviceID`
+|test
+|deviceId
+
+|`process.programm.name`
+|text
+|programmName
+
+|`process - payload as json`
+|json
+|payload
+|===
