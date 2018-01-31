@@ -1,0 +1,21 @@
+{
+	"content-spec" : "urn:spec://eclipse.org/unide/process-message#v2",
+	"device" : {
+		"deviceID" : "a4927dad-58d4-4580-b460-79cefd56775b",
+		"operationalStatus" : "normal",
+		"metaData" : {
+			"swVersion" : "2.0.3.13",
+			"swBuildId" : "41535"
+		}
+	},
+	"process" : {
+		"externalProcessId" : "b4927dad-58d4-4580-b460-79cefd56775b",
+		"ts" : "2002-05-30T09:30:10.123+02:00",
+		"result" : "NOK",
+		"shutoffPhase" : "phase 1",
+		"program" : {
+			"id" : "1",
+			"lastChangedDate" : "2002-05-30T09:30:10.123+02:00"
+		}
+	}
+}
