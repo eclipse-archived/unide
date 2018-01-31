@@ -1,13 +1,11 @@
 {
-  	"http.port" : 8080,
-	"database":{
-		"type":"influx",
-		"host":"http://localhost",
-		"port":"8086",
-		"user":"root",
-		"password":"root",
-		"MessagesDatabase": "Messages",
-		"MeasurementsDatabase": "Measurements",
-		"ProcessesDatabase": "Processes"
-	}
+  "http.port": 8090,
+  "persistence.enable" : true,
+  "persistence.system" : "postgres",
+  "influxDb.url": "http://localhost:8086",
+  "influxDb.user": "root",
+  "influxDb.password": "root",
+  "postgresDb.url" : "jdbc:postgresql://localhost:5432/unide_ppmp",
+  "postgresDb.user" : "postgres",
+  "postgresDb.password" : ""
 }

@@ -1,0 +1,67 @@
+{
+	"content-spec": "urn:spec://eclipse.org/unide/measurement-message#v2",
+	"device":
+	{
+		"deviceID": "a4927dad-58d4-4580-b460-79cefd56775b",
+		"operationalStatus": "normal",
+		"metaData":
+		{
+			"swVersion": "2.0.3.13",
+			"swBuildID": "41535"
+		}
+	},
+
+	"part":
+	{
+		"partTypeID": "F00VH07328",
+		"partID": "420003844",
+		"result": "NOK",
+		"code": "HUH289",
+		"metaData":
+		{
+			"chargeID": "845849",
+			"toolID": "32324-432143"
+		}
+	},
+
+	"measurements":
+	[
+		{
+			"ts": "2002-05-30T09:30:10.123+02:00",
+			"result": "OK",
+			"limits":
+			{
+				"force":
+				{
+					"upperError": 25,
+					"lowerError": 20
+				},
+
+				"pressure":
+				{
+					"upperError": 60,
+					"lowerError": 40.4
+				}
+			},
+			"series":
+			{
+				"$_time":
+				[
+					0,
+					23
+				],
+				"force":
+				[
+					26,
+					23
+				],
+
+				"pressure":
+				[
+					52.4,
+					46.32
+				]
+			}
+		}
+	]
+}
