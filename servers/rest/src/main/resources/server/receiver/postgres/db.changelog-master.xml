@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2017 Bosch Software Innovations GmbH. All rights reserved.
+  -->
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <!--  CREATE database unide_ppmp; -->
+    <changeSet id="18122017-001" author="fmisir">
+        <sql>
+            <![CDATA[
+                    CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
+             ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="18122017-002" author="fmisir">
+        <sql>
+            <![CDATA[
+                    CREATE TABLE ppmp_messages (
+                    time        TIMESTAMP         NOT NULL,
+                    deviceId    TEXT              NOT NULL,
+                    code        TEXT              NOT NULL,
+                    severity    TEXT              NULL,
+                    title       TEXT              NULL,
+                    description TEXT              NULL,
+                    hint        TEXT              NULL,
+                    type        TEXT              NULL
+                    );
+            ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="18122017-003" author="fmisir">
+        <sql>
+            <![CDATA[
+                    SELECT create_hypertable('ppmp_messages', 'time');
+            ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="18122017-004" author="fmisir">
+        <sql>
+            <![CDATA[
+                    CREATE TABLE ppmp_measurements (
+                    time             TIMESTAMP         NOT NULL,
+                    deviceid         TEXT              NOT NULL,
+                    measurementpoint TEXT              NOT NULL,
+                    value            DECIMAL           NOT NULL
+                    );
+            ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="18122017-005" author="fmisir">
+        <sql>
+            <![CDATA[
+                   SELECT create_hypertable('ppmp_measurements', 'time');
+            ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="18122017-006" author="fmisir">
+        <sql>
+            <![CDATA[
+                    CREATE TABLE ppmp_processes (
+                    time             TIMESTAMP         NOT NULL,
+                    deviceid         TEXT              NOT NULL,
+                    programname      TEXT              NOT NULL,
+                    payload          JSON              NOT NULL
+                    );
+            ]]>
+        </sql>
+    </changeSet>
+    <changeSet id="18122017-007" author="fmisir">
+        <sql>
+            <![CDATA[
+                   SELECT create_hypertable('ppmp_processes', 'time');
+            ]]>
+        </sql>
+    </changeSet>
+</databaseChangeLog>
