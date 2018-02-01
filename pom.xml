@@ -35,9 +35,8 @@
   </organization>
 
   <modules>
-      <module>bindings/ppmp-java-binding</module>
+      <module>ppmp/ppmp-schema</module>
       <module>servers</module>
-
   </modules>
 
   <build>
