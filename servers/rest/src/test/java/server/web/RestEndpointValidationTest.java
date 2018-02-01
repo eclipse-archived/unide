@@ -54,7 +54,7 @@ public class RestEndpointValidationTest {
       vertx = Vertx.vertx();
       DeploymentOptions options = new DeploymentOptions()
             .setConfig( new JsonObject().put( "http.port", PORT )
-                                        .put( "enable.persistence", false ) );
+                                        .put( "persistence.enable", false ) );
       vertx.deployVerticle( MainVerticle.class.getName(), options, context.asyncAssertSuccess() );
    }
 

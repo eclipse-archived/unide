@@ -37,7 +37,7 @@ public class MainVerticle extends AbstractVerticle {
          dependencyProvider = new DependencyProvider( config() );
       }
 
-      boolean enablePersistence = config().getBoolean( "enable.persistence", true );
+      boolean enablePersistence = config().getBoolean( "persistence.enable", true );
       if ( enablePersistence ) {
          CompositeFuture deployFuture = CompositeFuture.all( deployRestVerticle(), deployReceiverVerticle() );
          deployFuture.setHandler( deploymentHandler( startFuture ) );
