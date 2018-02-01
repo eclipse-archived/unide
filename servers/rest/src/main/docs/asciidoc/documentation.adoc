@@ -52,7 +52,7 @@ mvn clean install
 After configuring the server as described below you can run it using
 
 [source,bash]
-run ./target/java -jar ppmp-server-<VERSION>-fat.jar -conf ./target/application_conf.json
+java -jar ppmp-server-<VERSION>-fat.jar -conf ./target/application_conf.json
 
 === Configuration
 
