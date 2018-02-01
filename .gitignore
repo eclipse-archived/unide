@@ -45,21 +45,6 @@ crashlytics-build.properties
 fabric.properties
 
 # Created by .ignore support plugin (hsz.mobi)
-servers/rest/.settings/org.eclipse.wst.common.project.facet.core.prefs.xml
-servers/rest/.settings/org.eclipse.wst.common.component
-servers/rest/.settings/org.eclipse.wst.ws.service.policy.prefs
-servers/rest/.settings/org.eclipse.wst.validation.prefs
-servers/rest/.settings/.jsdtscope
-servers/rest/.settings/org.eclipse.ltk.core.refactoring.prefs
-servers/rest/.settings/org.eclipse.m2e.wtp.prefs
-servers/rest/.settings/org.eclipse.wst.common.project.facet.core.xml
-servers/rest/.settings/org.eclipse.wst.jsdt.ui.superType.container
-servers/rest/.settings/org.eclipse.jdt.core.prefs
-servers/rest/.settings/org.eclipse.m2e.core.prefs
-servers/rest/.settings/org.eclipse.wst.jsdt.ui.superType.name
-servers/rest/target/
-servers/rest/bin/
-servers/rest/pom_tina.xml
 
 *.classpath
 *.project
