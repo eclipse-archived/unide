@@ -81,7 +81,7 @@ export default {
           limits: {
             temperature: {
               lowerError: 40,
-              lowerWork:  45,
+              lowerWarn:  45,
               upperError: 50,
               upperWarn:  47.5
             }
