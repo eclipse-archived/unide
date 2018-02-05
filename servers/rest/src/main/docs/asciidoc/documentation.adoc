@@ -368,9 +368,9 @@ This type is written to the `Processes` database. The Measurement name is `ppmp_
 |tag
 |deviceId
 
-|`process.programm.name`
+|`process.program.id`
 |tag
-|programmName
+|programId
 
 |`process - payload as json`
 |field
@@ -557,9 +557,9 @@ This type is written to the `Processes` database. The Measurement name is `ppmp_
 |test
 |deviceId
 
-|`process.programm.name`
+|`process.program.id`
 |text
-|programmName
+|programId
 
 |`process - payload as json`
 |json

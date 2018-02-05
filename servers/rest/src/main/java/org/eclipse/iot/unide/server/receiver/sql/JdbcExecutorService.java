@@ -100,10 +100,10 @@ public class JdbcExecutorService {
 		case "H2":
 			dbType = "h2";
 			break;
-		case "Microsoft SQL Server":
-		case "Oracle":
-		case "MySQL":
-		case "HSQL Database Engine":
+		// case "Microsoft SQL Server":
+		// case "Oracle":
+		// case "MySQL":
+		// case "HSQL Database Engine":
 		default:
 			throw new RuntimeException("Unknown database '" + dbName + "'");
 		}

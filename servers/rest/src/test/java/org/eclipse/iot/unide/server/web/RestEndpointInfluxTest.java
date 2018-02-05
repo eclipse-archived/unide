@@ -120,7 +120,7 @@ public class RestEndpointInfluxTest {
       String validMessage = FileUtils.readFile( PROCESS_MESSAGE_VALID );
       wireMockRule.stubFor( WireMock.post( "/write?u=root&p=root&db=Processes&precision=n&consistency=all" )
                                     .withRequestBody( WireMock.containing(
-                                          "ppmp_processes,programm=Programm\\ 1 payload=" ) )
+                                          "ppmp_processes,program=1 payload=" ) )
                                     .willReturn( WireMock.aResponse().withBody( "{}" ).withStatus( 200 ) ) );
 
       given().body( validMessage ).post( PPMP_REST_PATH )

@@ -25,7 +25,7 @@ SELECT create_hypertable('ppmp_measurements', 'time');
 CREATE TABLE ppmp_processes (
 	time             TIMESTAMP         NOT NULL,
 	deviceid         TEXT              NOT NULL,
-	programname      TEXT              NOT NULL,
+	programid        TEXT              NULL,
 	payload          JSON              NOT NULL
 );
 

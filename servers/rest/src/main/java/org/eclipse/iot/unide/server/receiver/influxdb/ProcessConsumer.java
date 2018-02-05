@@ -21,7 +21,7 @@ import org.influxdb.dto.Point.Builder;
 class ProcessConsumer extends AbstractInfluxDbConsumer<ProcessWrapper> {
 
    private static final String MEASUREMENT_NAME = "ppmp_processes";
-   private static final String PROGRAMM_NAME = "programm";
+   private static final String PROGRAM_ID = "program";
    private static final String PAYLOAD = "payload";
 
    ProcessConsumer( InfluxDB influxDB, String databaseName ) {
@@ -44,9 +44,9 @@ class ProcessConsumer extends AbstractInfluxDbConsumer<ProcessWrapper> {
       Builder pointBuilder = Point.measurement( MEASUREMENT_NAME )
                                   .time( startTime, TimeUnit.MILLISECONDS );
 
-      String programName = getProgrammName( processWrapper.getProcess() );
-      if ( isNotNull( programName ) ) {
-         pointBuilder.tag( PROGRAMM_NAME, programName );
+      String programId = getProgramId( processWrapper.getProcess() );
+      if ( isNotNull( programId ) ) {
+         pointBuilder.tag( PROGRAM_ID, programId );
       }
 
       pointBuilder.addField( PAYLOAD, PpmpHelper.toJson( processWrapper ) );
@@ -54,11 +54,11 @@ class ProcessConsumer extends AbstractInfluxDbConsumer<ProcessWrapper> {
       getInfluxDb().write( batchPointsProcess );
    }
 
-   private static String getProgrammName( Process process ) {
+   private static String getProgramId( Process process ) {
       if ( process == null || process.getProgram() == null ) {
          return null;
       }
-      return process.getProgram().getName();
+      return process.getProgram().getId();
    }
 
    @Override

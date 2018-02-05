@@ -19,6 +19,6 @@ CREATE TABLE ppmp_measurements (
 CREATE TABLE ppmp_processes (
 	time             TIMESTAMP         NOT NULL,
 	deviceid         TEXT              NOT NULL,
-	programname      TEXT              NOT NULL,
+	programid        TEXT              NULL,
 	payload          CLOB              NOT NULL
 );
