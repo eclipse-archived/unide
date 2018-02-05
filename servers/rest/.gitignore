@@ -1,7 +1,8 @@
 .settings
 target/
+db
 
 *.classpath
 *.project
-.settings/
 *.log.*
+.vertx

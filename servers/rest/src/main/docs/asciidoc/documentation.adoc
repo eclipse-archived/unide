@@ -66,13 +66,14 @@ your environment.
 {
   "http.port": 8090,
   "persistence.enable" : true,
-  "persistence.system" : "postgresDb",
+  "persistence.system" : "sql",
   "influxDb.url": "http://localhost:8086",
   "influxDb.user": "root",
   "influxDb.password": "root",
-  "postgresDb.url" : "jdbc:postgresql://localhost:5432/unide_ppmp",
-  "postgresDb.user" : "postgres",
-  "postgresDb.password" : "password"
+  "sqlDriver": "org.postgresql.Driver", // optional, defaults to org.postgresql.Driver
+  "sqlDb.url" : "jdbc:postgresql://localhost:5432/unide_ppmp",
+  "sqlDb.user" : "postgres",
+  "sqlDb.password" : "password"
 }
 
 The following table contains detailed information about the properties.
@@ -110,20 +111,20 @@ The following table contains detailed information about the properties.
 | -
 | The password for InfluxDB.
 
-| postgresDb.url
+| sqlDb.url
 | Yes
 | -
-| The connection URL of the PostgresDB instance.
+| The connection URL of the SQL DB instance.
 
-| postgresDb.user
+| sqlDb.user
 | Yes
 | -
-| The username for PostgresDB.
+| The username for SQL DB.
 
-| postgresDb.password
+| sqlDb.password
 | Yes
 | -
-| The password for PostgresDB.
+| The password for the SQL DB.
 |===
 
 
@@ -367,9 +368,9 @@ This type is written to the `Processes` database. The Measurement name is `ppmp_
 |tag
 |deviceId
 
-|`process.programm.name`
+|`process.program.id`
 |tag
-|programmName
+|programId
 
 |`process - payload as json`
 |field
@@ -382,8 +383,8 @@ Postgres provides the possibility to store time based data by using the Postgres
 
 https://www.timescale.com/[Timescale extension]
 
-The timescale extension is required for the rest server.
-The easiest way to setup Postgres with the timescale extension  is using docker.
+The timescale extension is required for the rest server when using postgres as DB.
+The easiest way to setup Postgres with the timescale extension is using docker.
 
 http://docs.timescale.com/v0.7/getting-started/installation/linux/installation-docker[Timescale - Linux Docker]
 
@@ -391,7 +392,7 @@ The unide rest-server does only need the connection string to a running database
 All tables and timescale specific statements are created or executed on application startup of the rest-server,
 when they are not exists.
 
-All PPMP messages are written to the PostgresDB.
+All PPMP messages are written to the SQL DB.
 Each message is persisted in its own table.
 The tables are:
 
@@ -401,7 +402,7 @@ The tables are:
 
 The schemas for each message type are described below.
 
-The raw SQL creation statements can be found in `server/receiver/postgres/db.changelog-master.xml`
+The raw SQL creation statements can be found in `org/eclipse/iot/unide/server/receiver/sql/migrations`
 
 === PPMP Message
 
@@ -556,9 +557,9 @@ This type is written to the `Processes` database. The Measurement name is `ppmp_
 |test
 |deviceId
 
-|`process.programm.name`
+|`process.program.id`
 |text
-|programmName
+|programId
 
 |`process - payload as json`
 |json
