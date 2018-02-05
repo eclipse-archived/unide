@@ -75,7 +75,6 @@ public class JdbcExecutorService {
 		flyway.setDataSource(dataSource);
 		flyway.setLocations(FLYWAY_BASE + "/" + getDbType());
 		flyway.setBaselineOnMigrate(true);
-		// flyway.setBaselineVersionAsString( "0" );
 		flyway.migrate();
 	}
 

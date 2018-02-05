@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 import org.eclipse.iot.unide.ppmp.commons.Device;
 import org.eclipse.iot.unide.ppmp.process.Process;
 import org.eclipse.iot.unide.ppmp.process.ProcessWrapper;
-import org.eclipse.iot.unide.ppmp.process.Program;
 import org.eclipse.iot.unide.server.receiver.util.PpmpHelper;
 
 /**
