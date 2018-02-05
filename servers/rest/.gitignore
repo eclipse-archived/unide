@@ -6,3 +6,4 @@ db
 *.project
 *.log.*
 .vertx
+db
