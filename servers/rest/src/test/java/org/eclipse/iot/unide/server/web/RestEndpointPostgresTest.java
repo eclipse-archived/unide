@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import org.eclipse.iot.unide.server.DependencyProvider;
 import org.eclipse.iot.unide.server.MainVerticle;
 import org.eclipse.iot.unide.server.jdbc.JdbcMockFactory;
-import org.eclipse.iot.unide.server.receiver.Receiver;
 import org.eclipse.iot.unide.server.receiver.ReceiverException;
 import org.junit.After;
 import org.junit.Before;
@@ -21,13 +20,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import com.jayway.restassured.RestAssured;
 
+import org.eclipse.iot.unide.server.receiver.Receiver;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
@@ -151,10 +149,10 @@ public class RestEndpointPostgresTest {
       String validMessage = FileUtils.readFile( PROCESS_MESSAGE_VALID );
       wireMockRule.stubFor( WireMock.post( "/sqlStub" )
                                     .withRequestBody( WireMock.equalTo(
-                                          "INSERT INTO ppmp_processes(time, deviceid, programname, payload) VALUES(?,?,?,to_json(?::json))" ) )
+                                          "INSERT INTO ppmp_processes(time, deviceid, programid, payload) VALUES(?,?,?,to_json(?::json))" ) )
                                     .withHeader( "1", WireMock.equalTo( "2002-05-30 09:30:10.123" ) )
                                     .withHeader( "2", WireMock.equalTo( "a4927dad-58d4-4580-b460-79cefd56775b" ) )
-                                    .withHeader( "3", WireMock.equalTo( "Programm 1" ) )
+                                    .withHeader( "3", WireMock.equalTo( "1" ) )
                                     .withHeader( "4", WireMock.containing( "content-spec" ) )
                                     .willReturn( WireMock.aResponse().withBody( "0" ).withStatus( 200 ) ) );
 

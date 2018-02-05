@@ -5,7 +5,7 @@
   "influxDb.url": "http://localhost:8086",
   "influxDb.user": "root",
   "influxDb.password": "root",
-  "sqlDb.url" : "jdbc:h2:tcp://localhost:9040/db/test",
+  "sqlDb.url" : "jdbc:h2:tcp://localhost:9040/./db/test",
   "sqlDb.user" : "sa",
   "sqlDb.driver": "org.h2.Driver",
   "sqlDb.password" : ""
