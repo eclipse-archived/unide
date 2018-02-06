@@ -106,7 +106,7 @@
 	"properties": {
 		"content-spec": {
 			"type": "string",
-			"default": "urn:spec://bosch.com/ppm/process-message#v2",
+			"default": "urn:spec://eclipse.org/unide/process-message#v2",
 			"description": "Defines what the format version is"
 		},
 		"device": { "$ref": "#/definitions/device" },

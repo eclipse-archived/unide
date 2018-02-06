@@ -273,9 +273,8 @@
 								</transformer>
 							</transformers>
 							<artifactSet />
-							<outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
-							<shadedArtifactAttached>true</shadedArtifactAttached>
-                            <shadedClassifierName>allinone</shadedClassifierName>
+							<!-- outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile -->
+							<createDependencyReducedPom>false</createDependencyReducedPom>
 						</configuration>
 					</execution>
 				</executions>

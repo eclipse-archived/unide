@@ -3,7 +3,7 @@
 	"properties": {
 		"content-spec": {
 			"type": "string",
-			"default": "urn:spec://bosch.com/ppm/measurement-message#v2",
+			"default": "urn:spec://eclipse.org/unide/measurement-message#v2",
 			"description": "Defines what the format version is"
 		},
 		"device": {
