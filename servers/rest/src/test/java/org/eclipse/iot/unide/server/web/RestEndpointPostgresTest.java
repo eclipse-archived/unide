@@ -95,7 +95,7 @@ public class RestEndpointPostgresTest {
 		wireMockRule.stubFor(WireMock.post("/sqlStub")
 				.withRequestBody(WireMock.equalTo(
 						"INSERT INTO ppmp_messages(time, deviceid, code, severity, title, description, hint, type) VALUES(?,?,?,?,?,?,?,?)"))
-				.withHeader("1", WireMock.equalTo("2002-05-30 09:30:10.125"))
+				.withHeader("1", WireMock.equalTo("1022743810125"))
 				.withHeader("2", WireMock.equalTo("2ca5158b-8350-4592-bff9-755194497d4e"))
 				.withHeader("3", WireMock.equalTo("33-02")).withHeader("4", WireMock.equalTo("HIGH"))
 				.withHeader("5", WireMock.equalTo("Disk size limit reached"))
@@ -117,13 +117,13 @@ public class RestEndpointPostgresTest {
 	@Test
 	public void test_send_valid_ppmp_measurement_message_expect_200() {
 		String validMessage = FileUtils.readFile(MEASUREMENT_MESSAGE_VALID);
-		createPpmpMeasurementMessageStub("2002-05-30 09:30:10.123", "a4927dad-58d4-4580-b460-79cefd56775b", "force",
+		createPpmpMeasurementMessageStub("1022743810123", "a4927dad-58d4-4580-b460-79cefd56775b", "force",
 				"26.0");
-		createPpmpMeasurementMessageStub("2002-05-30 09:30:10.146", "a4927dad-58d4-4580-b460-79cefd56775b", "force",
+		createPpmpMeasurementMessageStub("1022743810146", "a4927dad-58d4-4580-b460-79cefd56775b", "force",
 				"23.0");
-		createPpmpMeasurementMessageStub("2002-05-30 09:30:10.123", "a4927dad-58d4-4580-b460-79cefd56775b", "pressure",
+		createPpmpMeasurementMessageStub("1022743810123", "a4927dad-58d4-4580-b460-79cefd56775b", "pressure",
 				"52.4");
-		createPpmpMeasurementMessageStub("2002-05-30 09:30:10.146", "a4927dad-58d4-4580-b460-79cefd56775b", "pressure",
+		createPpmpMeasurementMessageStub("1022743810146", "a4927dad-58d4-4580-b460-79cefd56775b", "pressure",
 				"46.32");
 
 		given().body(validMessage).post(PPMP_REST_PATH).then().statusCode(200).body(containsString(""));
@@ -143,7 +143,7 @@ public class RestEndpointPostgresTest {
 		wireMockRule.stubFor(WireMock.post("/sqlStub")
 				.withRequestBody(WireMock.equalTo(
 						"INSERT INTO ppmp_processes(time, deviceid, programid, payload) VALUES(?,?,?,to_json(?::json))"))
-				.withHeader("1", WireMock.equalTo("2002-05-30 09:30:10.123"))
+				.withHeader("1", WireMock.equalTo("1022743810123"))
 				.withHeader("2", WireMock.equalTo("a4927dad-58d4-4580-b460-79cefd56775b"))
 				.withHeader("3", WireMock.equalTo("1")).withHeader("4", WireMock.containing("content-spec"))
 				.willReturn(WireMock.aResponse().withBody("0").withStatus(200)));

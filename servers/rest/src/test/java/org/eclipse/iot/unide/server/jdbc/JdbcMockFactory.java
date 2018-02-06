@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -196,7 +197,16 @@ public class JdbcMockFactory {
 				return new HashMap<>();
 			}
 			return entries.stream().collect(Collectors.toMap(entry -> String.valueOf(getIndex(entry.getKey())),
-					entry -> entry.getValue() != null ? entry.getValue().toString() : "null"));
+					entry -> {
+						if( entry.getValue() == null ) {
+							return "null";
+						} else if(entry.getValue().getClass() == Timestamp.class) {
+							Timestamp ts = (Timestamp) entry.getValue();
+							return String.valueOf( ts.toInstant().toEpochMilli() );
+						}
+						return entry.getValue().toString();
+					}
+			));
 		}
 
 		private static String getIndex(ParameterReference parameterReference) {
