@@ -36,9 +36,9 @@ public class RestEndpointInfluxTest {
    private static final String PROCESS_MESSAGE_VALID = "server/messages/process_message_valid.json";
    private static final String PROCESS_MESSAGE_INVALID = "server/messages/process_message_invalid.json";
 
-   private static final int PORT = 18080;
+   private static final int PORT = 8080;
    private static final String APPLICATION_URL = "http://localhost" + ":" + PORT;
-   private static final int WIREMOCK_PORT = 19090;
+   private static final int WIREMOCK_PORT = 9090;
    private static final String WIREMOCK_URL = "http://localhost:" + WIREMOCK_PORT;
 
    private static final String PPMP_REST_PATH = "/rest/v2/";

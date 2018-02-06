@@ -18,7 +18,7 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 public class JdbcMockFactoryTest {
 
    @Rule
-   public WireMockRule wireMockRule = new WireMockRule( 18080 );
+   public WireMockRule wireMockRule = new WireMockRule( 8080 );
 
    @Test
    public void execute_update_statement_should_return_valid_response() throws SQLException {
@@ -34,7 +34,7 @@ public class JdbcMockFactoryTest {
                                                          .withStatus( 200 ) )
       );
 
-      Connection mockConnection = JdbcMockFactory.getMockConnection( "http://localhost:18080/sqlStub" );
+      Connection mockConnection = JdbcMockFactory.getMockConnection( "http://localhost:8080/sqlStub" );
       PreparedStatement preparedStatement = mockConnection
             .prepareStatement( "INSERT INTO TEST(col1, col2, col3, col4) VALUES(?,?,?,?)" );
       preparedStatement.setString( 1, "UpdateValue1" );
