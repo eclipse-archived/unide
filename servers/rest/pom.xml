@@ -273,8 +273,9 @@
 								</transformer>
 							</transformers>
 							<artifactSet />
-							<outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar
-							</outputFile>
+							<outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</outputFile>
+							<shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>allinone</shadedClassifierName>
 						</configuration>
 					</execution>
 				</executions>
