@@ -1,7 +1,7 @@
 {
   "name": "binsa",
   "title": "Eclipse Unide Sensor Simulator App",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Eclipse Unide Sensor Simulator Application",
   "main": "index.html",
   "dependencies": {

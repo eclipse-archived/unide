@@ -152,7 +152,8 @@ export class AggregationJob extends RecordingJob {
         return;
       }
       this.aggregatedCache[name] = this.aggregatedCache[name] || [];
-      this.aggregatedCache[name].push([(series[0][0] + series[series.length - 1][0]) / 2, series.reduce((l, [t, v]) => l + v, 0) / series.length]);
+      // time offset has to be an integer
+      this.aggregatedCache[name].push([Math.round((series[0][0] + series[series.length - 1][0]) / 2), series.reduce((l, [t, v]) => l + v, 0) / series.length]);
     });
   }
 
