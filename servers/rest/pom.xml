@@ -57,6 +57,16 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.eclipse.iot.unide.ppmp</groupId>
+			<artifactId>ppmp-java-binding</artifactId>
+			<version>${ppmpjavabinding.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.iot.unide.ppmp</groupId>
+			<artifactId>ppmp-schema</artifactId>
+			<version>${ppmpschema.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
@@ -82,16 +92,6 @@
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.iot.unide.ppmp</groupId>
-			<artifactId>ppmp-java-binding</artifactId>
-			<version>${ppmpjavabinding.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.iot.unide.ppmp</groupId>
-			<artifactId>ppmp-schema</artifactId>
-			<version>${ppmpschema.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
@@ -107,9 +107,9 @@
 			<version>5.0.7</version>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.196</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -159,11 +159,6 @@
 			<artifactId>mockito-core</artifactId>
 			<version>2.13.0</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-dbcp2</artifactId>
-			<version>2.2.0</version>
 		</dependency>
 	</dependencies>
 
