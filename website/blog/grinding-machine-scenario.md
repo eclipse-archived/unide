@@ -168,7 +168,10 @@ gateway:
 
 ![Grafana based dashboard monitoring grinding machine][9]
 
-And this is how it looks using a [CONTACT Elements for IoT][4] based backend:
+If instead of that we use the the [CONTACT Elements for IoT][4] based backend,
+we can see a different and richer dashboard: charts, 3D models, list of
+maintenance events, device master data and the Activity Stream, a place where
+different parties can exchange information related to the grinding machine:
 
 ![CONTACT Elements for IoT Dashboard][10]
 
@@ -180,6 +183,6 @@ And this is how it looks using a [CONTACT Elements for IoT][4] based backend:
 [6]: https://conda.io/miniconda.html
 [7]: https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement/tree/master/grinding-machine
 [8]: https://grafana.com/
-[9]: assets/grinding-machine-grafana-dashboard.png
-[10]: assets/grinding-machine-ce4iot-dashboard.png
+[9]: https://raw.githubusercontent.com/bgusach/unide/master/website/blog/assets/grinding-machine-grafana-dashboard.png
+[10]: https://raw.githubusercontent.com/bgusach/unide/master/website/blog/assets/grinding-machine-ce4iot-dashboard.png
 
