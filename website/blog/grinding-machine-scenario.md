@@ -5,7 +5,7 @@
 
 In this blog post we present a real world condition monitoring scenario used in
 the [Eclipse Production Performance Management Testbed][1], where Unide and
-PPMP plays a crucial role. Moreover, we also provide code repository and
+PPMP plays a crucial role. Moreover, we also provide a code repository and
 instructions so that you can recreate the scenario in your own computer and
 learn about its components and the communication with each other.
 
@@ -46,7 +46,7 @@ protocol.
     - One based on [CONTACT Elements for IoT][4].
 
 
-## Hands-on demonstrantion
+## Hands-on demonstration
 
 In order to make this scenario more hands-on and interesting, within the
 [Production Performance Management Testbed repository][5] project in Github, we
