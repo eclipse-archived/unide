@@ -183,6 +183,6 @@ different parties can exchange information related to the grinding machine:
 [6]: https://conda.io/miniconda.html
 [7]: https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement/tree/master/grinding-machine
 [8]: https://grafana.com/
-[9]: https://raw.githubusercontent.com/bgusach/unide/master/website/blog/assets/grinding-machine-grafana-dashboard.png
-[10]: https://raw.githubusercontent.com/bgusach/unide/master/website/blog/assets/grinding-machine-ce4iot-dashboard.png
+[9]: assets/grinding-machine-grafana-dashboard.png
+[10]: assets/grinding-machine-ce4iot-dashboard.png
 
