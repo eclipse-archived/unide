@@ -1,41 +1,49 @@
 # Unide and the Eclipse Production Performance Management Testbed
 
+
 ## Abstract
 
 In this blog post we present a real world condition monitoring scenario used in
-the Eclipse Production Performance Management Testbed, where Unide/PPMP plays a
-crucial role, and also provide code repository and instructions so that you can
-recreate the scenario and learn about its components.
+the [Eclipse Production Performance Management Testbed][1], where Unide and
+PPMP plays a crucial role. Moreover, we also provide code repository and
+instructions so that you can recreate the scenario in your own computer and
+learn about its components and the communication with each other.
+
 
 ## Introduction
 
 In the context of the [Eclipse Production Performance Management Testbed][1], a
 real world condition monitoring scenario has been recreated, in which a
-grinding machine is continuously monitored allowing to have real time health
-checks and prevent unexpected failures.
+grinding machine is being continuously monitored allowing to have real time
+health checks and prevent unexpected failures. Further details 
 
 This scenario consists of the following building blocks: device, gateway,
-backend, and the communication between them happens seamlessly thanks to the
-PPMP protocol.
+backend. The communication between them happens seamlessly thanks to the PPMP
+protocol.
 
 - The device, i.e. the grinding machine, has been retrofitted with an
   acceleration sensor attached to one of its critical components. The data
   provided by this sensor is routed to the gateway in the form of a [PPMP
   Measurement Message][2].
-- The gateway receives raw acceleration measurements, and applies some machine
-  learning techniques in order to evaluate the condition of the grinding
-  machine. Once the machine condition has been calculated, it is routed to the
-  backend, again in the form of a PPMP Measurement Message.
+
+- The gateway receives the raw acceleration measurements, calculates some
+  statistical characteristics and and applies some machine learning techniques
+  to them in order to evaluate the condition of the grinding machine. Then both
+  the statistical values and the condition are routed to the backend, again in
+  the form of a PPMP Measurement Message.
+
 - The backend, usually in the cloud, is any component that "speaks unide" and
   performs meaningful operations on the incoming messages. Most frequently it
   is responsible for storing the arriving data and making it available to apps
-  that want to consume it.  Common responsibilities of these apps are the
+  that want to consume it. Common responsibilities of these apps are the
   representation or display of the data (e.g. dashboards), or workflows
   management (e.g. the grinding machine is in bad condition and an inspection
-  must be carried out).  In this testbed at least two different backends have
-  been used: one directly based on [Unide][3] and one based on [CONTACT
-  Elements for IoT][4].
-
+  must be carried out). 
+  
+  The backend can be swapped effortless with any entity adhering to PPMP standard.
+  In the Eclipse PPM Testbed at least two different backends have been used: 
+    - One directly based on [Unide][3]
+    - One based on [CONTACT Elements for IoT][4].
 
 
 ## Hands-on demonstrantion
@@ -66,6 +74,7 @@ In that folder you will see two subfolders. The first one
 machine and the second one `unide-grinding-machine-gateway` simulates the
 gateway. 
 
+
 ### Grinding Machine simulator
 
 Let's start with the first component. First `cd` to `unide-grinding-machine`
@@ -90,6 +99,7 @@ message ought to be sent to the gateway.
 We don't have a gateway so far, but don't worry, we will get to that in a
 minute. Don't close this console!
 
+
 ### Gateway simulator
 
 Open a new console, and similarly to the previous point, first `cd` to
@@ -109,6 +119,7 @@ Press Ctrl-C to stop...
 ```
 
 We are getting closer. Leave the gateway running.
+
 
 ### Communication Device-Gateway
 
@@ -132,8 +143,8 @@ characters into a console, is it?
 
 There is only a small but relevant point missing: the routing from the gateway
 to the backend. We need a backend and the Unide project provides a service that
-can be used as a playground for these purposes. So let's stop the gateway and
-run it passing the Unide endpoint:
+can be used as a playground for these purposes. So let's restart the gateway,
+this time passing the Unide endpoint:
 
 ```bash
 $ unide-grinding-machine-gateway start_server --endpoint=https://unide.eclipse.org/rest/v2
@@ -149,7 +160,17 @@ identify this data later, we are going to define a proper device ID (argument
 $ unide-grinding-machine send random --endpoint=http://127.0.0.1:5000 --device-id=IoT-000028--3 --period=10
 ```
 
-TODO: is grafana reachable in read-mode?
+Once started, a continuous flow of data is pumped through each component until
+it reaches the backend, allowing us to use the applications that consume this
+data. For instance, the basic backend provided by Unide offers a [Grafana][8] based
+dashboard that offers live monitoring of the statistical values calculated in the 
+gateway:
+
+![Grafana based dashboard monitoring grinding machine][9]
+
+And this is how it looks using a [CONTACT Elements for IoT][4] based backend:
+
+![CONTACT Elements for IoT Dashboard][10]
 
 [1]: https://iot.eclipse.org/testbeds/production-performance-management/#
 [2]: https://www.eclipse.org/unide/specification/measurement-message#messageDetail
@@ -158,3 +179,7 @@ TODO: is grafana reachable in read-mode?
 [5]: https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement
 [6]: https://conda.io/miniconda.html
 [7]: https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement/tree/master/grinding-machine
+[8]: https://grafana.com/
+[9]: assets/grinding-machine-grafana-dashboard.png
+[10]: assets/grinding-machine-ce4iot-dashboard.png
+
