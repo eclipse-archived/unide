@@ -5,11 +5,10 @@
 package org.eclipse.iot.unide.server.ppmp;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.bind.ValidationException;
-
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
 
 /**
  * Ppmp Protocol types have to contain the type information of the message. The field content-spec contains this
@@ -33,10 +32,10 @@ class PpmpSpecDictionary {
    /**
     * Map for content-spec and the JSON-schema to use
     */
-   private static Multimap<String, PpmpType> CONTENT_SPEC_MAPPING;
+   private static Map<String, PpmpType> CONTENT_SPEC_MAPPING;
 
    static {
-      Multimap<String, PpmpType> tmp = ArrayListMultimap.create();
+      Map<String, PpmpType> tmp = new HashMap<String, PpmpType>();
       tmp.put( "urn:spec://eclipse.org/unide/machine-message#v2", PpmpType.MESSAGE );
       tmp.put( "urn:spec://bosch.com/ppm/machine-message#v2", PpmpType.MESSAGE );
       tmp.put( "urn:spec://eclipse.org/unide/measurement-message#v2", PpmpType.MEASUREMENT );
@@ -70,11 +69,11 @@ class PpmpSpecDictionary {
     * @return the corresponding type for given contentSpec
     */
    static PpmpType getPpmpType( String contentSpec ) throws ValidationException {
-      Collection<PpmpType> ppmpTypes = CONTENT_SPEC_MAPPING.get( contentSpec );
-      if ( ppmpTypes.isEmpty() ) {
+      PpmpType ppmpType = CONTENT_SPEC_MAPPING.get( contentSpec );
+      if ( ppmpType == null ) {
          throw new ValidationException( "For contentSpec '" + contentSpec + "' no type mapping exists" );
       }
-      return ppmpTypes.iterator().next();
+      return ppmpType;
    }
 
 }

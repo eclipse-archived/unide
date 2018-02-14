@@ -308,7 +308,7 @@
               <a href="http://www.eclipse.org/legal/copyright.php">Copyright&nbsp;Agent</a>
             </span>
             <span>
-							<a href="https://eclipse.org/security/ ">Security&nbsp;reports</a>
+							<a href="https://eclipse.org/security/ ">Security&nbsp;Reports</a>
             </span>
             <span>
               <a href="http://www.eclipse.org/legal/">Legal</a>
