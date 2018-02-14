@@ -1,5 +1,8 @@
-# Unide and the Eclipse Production Performance Management Testbed
-
+---
+title: "PPMP Use Cases: Unide and the Eclipse Production Performance Management Testbed"
+date: 2018-02-13 00:00:00
+tags: "use cases"
+---
 
 ## Abstract
 
@@ -112,7 +115,7 @@ is in place. You should get the CLI documentation.
 Now, let's fire up the gateway by calling `unide-grinding-machine-gateway
 start_server`, and a message like this should show up:
 
-```
+```bash
 Running <unide_grinding_machine_gateway.server.App object at 0x.....>
 Listening on http://127.0.0.1:5000
 Press Ctrl-C to stop...
@@ -183,6 +186,6 @@ different parties can exchange information related to the grinding machine:
 [6]: https://conda.io/miniconda.html
 [7]: https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement/tree/master/grinding-machine
 [8]: https://grafana.com/
-[9]: assets/grinding-machine-grafana-dashboard.png
-[10]: assets/grinding-machine-ce4iot-dashboard.png
+[9]: /unide/images/blog/grinding-machine-grafana-dashboard.png
+[10]: /unide/images/blog/grinding-machine-ce4iot-dashboard.png
 
