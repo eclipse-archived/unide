@@ -669,4 +669,4 @@ public class PRC7000 implements Processor {
 ```
 
 # Summary
-It takes a while to understand the involved software components. Yet, once the set up is running, it gets much easier to adapt it to another Use Case. And another. The pattern of wiring protocols and transforming the payload is very similar. The involved frameworks are powerful enough to support many Use Cases. This article is supposed to show that there are simple possibilities to transform transport protocols and payloads, so that you can focus on adressing functionalchallenges.
+It takes a while to understand the involved software components. Yet, once the set up is running, it gets much easier to adapt it to another Use Case. And another. The pattern of wiring protocols and transforming the payload is very similar. The involved frameworks are powerful enough to support many Use Cases. This article is supposed to show that there are simple possibilities to transform transport protocols and payloads, so that you can focus on adressing functional challenges.
