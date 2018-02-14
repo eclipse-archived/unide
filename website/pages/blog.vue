@@ -28,7 +28,7 @@ const locale = process.browser ? ((navigator.languages && navigator.languages[0]
 
 export default {
   layout: 'sidebar',
-  async asyncData({ params = {}, query, payload, isServer }) {
+  async asyncData({ params = {}, query, payload }) {
     let path = '',
         list = null;
     if(params.year) {
@@ -41,7 +41,7 @@ export default {
       }
     }
     if(path.length) {
-      list = payload || (await axios.get(`${isServer ? 'http://localhost:3000/' : '/'}unide/files/posts/${path}.json`)).data;
+      list = payload || (await axios.get(`${process.server ? 'http://localhost:3000/' : '/'}unide/files/posts/${path}.json`)).data;
     } else {
       list = await import('posts/recent.json');
     }

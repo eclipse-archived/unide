@@ -38,9 +38,9 @@ const locale = process.browser ? ((navigator.languages && navigator.languages[0]
 
 export default {
   layout: 'sidebar',
-  async asyncData({ params, payload, isServer}) {
+  async asyncData({ params, payload }) {
     return {
-      post: payload || (params.name && (await axios.get(`${isServer ? 'http://localhost:3000/' : '/'}unide/files/posts/${params.name}.json`)).data) || {}
+      post: payload || (params.name && (await axios.get(`${process.server ? 'http://localhost:3000/' : '/'}unide/files/posts/${params.name}.json`)).data) || {}
     };
   },
   filters: {
@@ -67,7 +67,7 @@ export default {
   h1 {
     font-weight: normal;
   }
-  h2 {
+  h2, h3, h4 {
     color: $bosch-darkgray;
   }
   .card {
@@ -81,6 +81,32 @@ export default {
         }
       }
     }
+    &.figure {
+      margin-bottom: 1rem;
+      text-align: center;
+      @include from(415px) {
+        &.is-pulled-left, &.is-pulled-right {
+          max-width: 33%;
+        }
+        &.is-pulled-left {
+          margin-right: 1rem;
+          text-align: left;
+        }
+        &.is-pulled-right {
+          margin-left: 1rem;
+          .card-content {
+            text-align: right;
+          }
+        }
+      }
+      .card-content {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+      }
+      figure {
+        margin: 0;
+      }
+    }
   }
   > .columns.pageNav {
     margin-top: 2em;
@@ -88,6 +114,9 @@ export default {
       font-size: 0.9em;
       padding: 1.3rem;
     }
+  }
+  pre[class*="language-"] {
+    max-height: 400px;
   }
 }
 </style>
