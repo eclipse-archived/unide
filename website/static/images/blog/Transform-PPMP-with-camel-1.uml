@@ -1,0 +1,40 @@
+@startuml
+
+skinparam activity {
+	StartColor #78be20
+	BorderColor black
+	FontColor #50237f
+	BackgroundColor #f5f5f5
+	ArrowColor black
+	EndColor #50237f
+}
+
+partition PRC7000 {
+	(*) ->[sensor\nvalues] "broadcast data" as send
+}
+
+partition mosquitto {
+	send -down->[MQTT] "queue data"
+}
+
+partition Camel {
+	"queue data" -up->[MQTT] "retrieve data" as queue
+	queue -right->[PRC7000\nformat] "transform payload" as transform
+	transform ->[PPMP format\nbundle] "split payload" as split
+	split -->[measurements] "Transform to JSON" as measurementString
+	split -->[process] "Transform to JSON" as processString
+
+	measurementString -->[String] "sent do backend" as measurementPOST
+	processString -->[String] "sent do backend" as processPOST
+}
+
+partition "REST Server" {
+	measurementPOST -->[HTTP POST] "receive data"
+	processPOST -up>[HTTP POST] "receive data"
+	"receive data" -up-> "validate message"
+	"validate message" -up-> "save to db"
+	"save to db" -> (*)
+}
+
+@enduml
+

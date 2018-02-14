@@ -6,6 +6,13 @@
 body {
 	overflow: visible;
 }
+@include touch {
+	#__layout > div > .container {
+		margin-left: $gap;
+		margin-right: $gap;
+	}
+}
+
 a {
 	text-decoration: underline;
 	&:hover {

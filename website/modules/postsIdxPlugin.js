@@ -1,15 +1,31 @@
 const fs                  = require('fs'),
+      path                = require('path'),
       VirtualModulePlugin = require('webpack-virtual-modules'),
       fm                  = require('front-matter'),
+      Prism               = require('prismjs'),
       marked              = new (require('markdown-it'))({
         html:    true,
         linkify: true,
         breaks:  true,
         plugins: [
           require('markdown-it-decorate')
-        ]
+        ],
+        highlight: (code, lang) => {
+          let prismLanguage = Prism.languages[lang];
+          if(!prismLanguage) {
+            try {
+              require(`prismjs/components/prism-${lang}`);
+              prismLanguage = Prism.languages[lang];
+              if(!prismLanguage) {
+                throw new Error();
+              }
+            } catch(e) {
+              throw new Error(`Prism language not registered: '${lang}'`);
+            }
+          }
+          return `<pre class="language-${lang}"><code class="language-${lang}">${Prism.highlight(code, prismLanguage)}</code></pre>`;
+        }
       }),
-      path                = require('path'),
       postFiles           = fs.readdirSync(path.join(__dirname, '..', 'blog'))
         .filter(filename => filename.endsWith('.md'))
         .map(filename => {
@@ -153,6 +169,7 @@ module.exports = function(options) {
         compiler.plugin('emit', (compilation, callback) => {
           postFiles.forEach(file => {
             const str = JSON.stringify(file);
+            compilation.fileDependencies.push(path.join(__dirname, '..', 'blog', `${file.name}.md`));
             compilation.assets[`posts/${file.name}.json`] = {
               source: () => str,
               size:   () => str.length
