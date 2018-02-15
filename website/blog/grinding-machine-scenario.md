@@ -18,11 +18,11 @@ learn about its components and the communication with each other.
 In the context of the [Eclipse Production Performance Management Testbed][1], a
 real world condition monitoring scenario has been recreated, in which a
 grinding machine is being continuously monitored allowing to have real time
-health checks and prevent unexpected failures. Further details 
+health checks and prevent unexpected failures.
 
 This scenario consists of the following building blocks: device, gateway,
-backend. The communication between them happens seamlessly thanks to the PPMP
-protocol.
+backend. The communication between them happens seamlessly thanks to the
+Production Performance management Protocol (PPMP). 
 
 - The device, i.e. the grinding machine, has been retrofitted with an
   acceleration sensor attached to one of its critical components. The data
@@ -35,7 +35,7 @@ protocol.
   the statistical values and the condition are routed to the backend, again in
   the form of a PPMP Measurement Message.
 
-- The backend, usually in the cloud, is any component that "speaks unide" and
+- The backend, usually in the cloud, is any component that "speaks PPMP" and
   performs meaningful operations on the incoming messages. Most frequently it
   is responsible for storing the arriving data and making it available to apps
   that want to consume it. Common responsibilities of these apps are the
