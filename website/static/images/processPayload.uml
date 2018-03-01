@@ -92,7 +92,7 @@ class LimitsList {
 class SpecialValue {
 	$_time[0..1] : Integer
 	name[0..1] : String
-	value[1] : Float 
+	value[1] : Map<String, Float>
 }
 
 enum PartType {
