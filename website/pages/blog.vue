@@ -28,6 +28,11 @@ const locale = process.browser ? ((navigator.languages && navigator.languages[0]
 
 export default {
   layout: 'sidebar',
+  head() {
+    return {
+      title: this.dateHeader
+    };
+  },
   async asyncData({ params = {}, query, payload }) {
     let path = '',
         list = null;
