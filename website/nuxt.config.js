@@ -1,6 +1,7 @@
 module.exports = {
   head: {
-    title: 'Eclipse unide',
+    title: 'Welcome',
+    titleTemplate: 'Eclipse unide - %s',
     meta:  [{
       charset: 'utf-8'
     }, {
@@ -26,7 +27,7 @@ module.exports = {
   build:   {
     extend(config, ctx) {
       if(ctx.isClient && ctx.isDev) {
-        // only fails in client.js in dev mode, so no real need for: 
+        // only fails in client.js in dev mode, so no real need for:
         /* if(!(config.entry.app instanceof Array)) {
           config.entry.app = [ config.entry.app ];
         }

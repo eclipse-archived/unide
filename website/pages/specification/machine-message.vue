@@ -32,6 +32,11 @@ import card          from '~/components/collapsibleCard.vue';
 import schemaDetail  from '~/components/schemaDetail.vue';
 
 export default {
+  head() {
+    return {
+      title: "Specification for machine messages"
+    };
+  },
   created() {
     const now      = new Date(),
           deviceId = 'a4927dad-58d4-4580-b460-79cefd56775b';

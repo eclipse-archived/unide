@@ -22,6 +22,11 @@ import card from '~/components/collapsibleCard.vue';
 
 export default {
   layout: 'sidebar',
+  head() {
+    return {
+      title: "Frequently asked questions"
+    };
+  },
   data:   () => ({
     faqs: [{
       question: 'What does "Unide" stand for?',
