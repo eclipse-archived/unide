@@ -29,7 +29,7 @@
 			"description": "Provides information about limits for data provided in the series element. The limits is an JSON object where the key is the name of a Measurement Point (see also series element) and the value is a structure of upper/lower limits",
 			"type": "object",
 			"patternProperties": {
-				"^[^$].+": {
+				"^[^$]+": {
 					"oneOf": [{
 						"type": "object",
 						"description": "A constant limit for all corresponding measurements",
@@ -215,7 +215,7 @@
 					"type": "object",
 					"description": "The shutoff values contain the values of the process that stopped the process. The shutoffValues is a JSON object where the key is the name of a Measurement Point (see also series element) and the value is a structure of different upper/lower limits and the actual value as described below.",
 					"patternProperties": {
-						"^[^$].+": {
+						"^[^$]+": {
 							"type": "object",
 							"properties": {
 								"lowerError": {
@@ -318,7 +318,7 @@
 									"type": "object",
 									"description": "Contains the actual (multidimensional) value of interest. Similarly to series, every entry matches a Measurement Point of the device",
 									"patternProperties": {
-										"^[^$].+": {
+										"^[^$]+": {
 											"type": "number"
 										}
 									},
@@ -344,7 +344,7 @@
 							}
 						},
 						"patternProperties": {
-							"^[^$].+": {
+							"^[^$]+": {
 								"type": "array",
 								"items": {
 									"type": "number"

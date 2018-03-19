@@ -84,7 +84,7 @@
 						"type": "object",
 						"description": "Provides information about limits for data provided in the series element.",
 						"patternProperties": {
-							"^[^$].+": {
+							"^[^$]+": {
 								"type": "object",
 								"description": "The key shall be the name of a measurement point (element of series element). The value is a structure of different upper/lower limits.",
 								"properties": {
@@ -137,7 +137,7 @@
 							}
 						},
 						"patternProperties": {
-							"^[^$].+": {
+							"^[^$]+": {
 								"type": "array",
 								"items": {
 									"type": "number"
