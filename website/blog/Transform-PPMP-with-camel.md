@@ -241,7 +241,7 @@ Now that we can easily convert protocols, let's address the structure of the pay
 		</figure>
 	</div>
 	<div class="card-content">
-		BMW plant in Leipzig, Germany: Spot welding <a href="https://creativecommons.org/licenses/by-sa/2.0/de/deed.en">(CC BY-SA 2.0 DE)</a>
+		Workflow to extract the data from controller, convert it and send the data to the cloud application
 	</div>
 </div>
 
