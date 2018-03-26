@@ -1,4 +1,4 @@
-= Documentation
+= Unide PPMP Test Server
 :description: Documentation for the Unide REST Server
 :library: Asciidoctor
 :cip: Unide
@@ -12,35 +12,34 @@ endif::asciidoctor[]
 :icons: font
 :nofooter:
 :docinfo1:
+:stylesheet: ./styles.css
+:imagesdir: ./images
 
+[IMPORTANT]
+====
+For recent specification and news, to to https://eclipse.org/unide[Eclipse Unide project]
+====
 
 [[purpose]]
 .Purpose
 ****
-The REST server is part of the Eclipse Unide project. Its main purpose is to showcase how PPMP messages can be validated against
-the schemas defined in the PPMP protocol and processed. The REST server provides an example use case, where PPMP protocol messages are persisted
-to an InfluxDB. Using a monitoring tool like Grafana the persisted data can be visualized afterwards.
+This REST server is part of the https://eclipse.org/unide[Eclipse Unide project].
+Its main purpose is to showcase how PPMP messages can be validated against the
+schemas defined in the PPMP protocol and processed. The REST server provides an
+example use case, where PPMP protocol messages are persisted to an InfluxDB.
+Using a monitoring tool like Grafana the persisted data can be visualized
+afterwards.
 
 This document guides you through the architecture and the persistency functionality of the REST server.
 ****
 
 == Getting started
 
-=== Installation
+=== Download
 
-[IMPORTANT]
-====
-Two dependencies of the REST server are currently not available through a public maven repository.
-Therefore, these dependencies have to be installed manually. Making these dependencies available is work in progress,
-the described steps will no longer be required in future.
-
-The dependencies to build are:
-
-.....
-/bindings/ppmp-java-binding
-/ppmp/ppmp-schema
-.....
-====
+You'll find the latest builds of this server on the
+https://repo.eclipse.org/content/repositories/unide/org/eclipse/iot/unide/ppmp/ppmp-server/[Eclipse repository].
+The `ppmp-server-*.jar` can easily be downloaded and started as described below.
 
 === Building and Running the Server
 
@@ -59,8 +58,8 @@ java -jar ppmp-server-<VERSION>-fat.jar -conf ./target/application_conf.json
 After building the project a configuration file is created in `./target/application.json`.
 Open this file and set `database-` and `http-` settings according to your needs.
 
-The file contains the following properties which should be overridden with the corresponding properties of
-your environment.
+The file contains the following properties which should be overridden with the
+corresponding properties of your environment.
 
 [source,json]
 {
