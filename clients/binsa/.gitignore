@@ -6,3 +6,4 @@ tests/integration/eclipsecq_spec.js
 tests/videos
 tests/screenshots
 conf/cache
+jenkins.pipeline

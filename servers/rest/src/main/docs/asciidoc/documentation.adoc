@@ -69,7 +69,7 @@ corresponding properties of your environment.
   "influxDb.url": "http://localhost:8086",
   "influxDb.user": "root",
   "influxDb.password": "root",
-  "sqlDriver": "org.postgresql.Driver", // optional, defaults to org.postgresql.Driver
+  "sqlDB.driver": "org.postgresql.Driver", // optional, defaults to org.postgresql.Driver
   "sqlDb.url" : "jdbc:postgresql://localhost:5432/unide_ppmp",
   "sqlDb.user" : "postgres",
   "sqlDb.password" : "password"
