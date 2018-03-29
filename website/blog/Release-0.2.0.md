@@ -30,7 +30,7 @@ If you want to send data to the server, a quick way is via [Postman App](https:/
 the unide REST server works as expected!
 
 # Persistence
-## influx db
+## Influx DB
 [Download](https://portal.influxdata.com/downloads) the InfluxDB Time-Series Data Storage and unzip or install it on your system. By default, it opens an http port at 8086. In order to make use of it, the configuration file should be modified, e.g. to:
 ```json
 {
@@ -69,12 +69,18 @@ For concurrent db actions (reading while writing), use the h2 tcp server instead
 
 ## Download
 
-The artifacts are avaible on Eclipse repository and download server:
+Available artifacts for download:
 * [PPMP Schema v2](https://repo.eclipse.org/content/repositories/unide-releases/org/eclipse/iot/unide/ppmp/ppmp-schema/2.0.0/)
 * [PPMP java Binding](https://repo.eclipse.org/content/repositories/unide-releases/org/eclipse/iot/unide/ppmp/ppmp-java-binding/0.2.0/)
+* [PPMP Python Binding](https://pypi.python.org/packages/d5/af/c90911d1da56a1ed0238338ba01068d43b8cd0137e9ca52b0f52a279f73e/unide_python-0.2.0-py2.py3-none-any.whl#md5=ca67bcd536b3a4015f72f5fa53d36543) 
 * [PPMP Server](https://repo.eclipse.org/content/repositories/unide-releases/org/eclipse/iot/unide/ppmp/ppmp-server/0.2.0/)
 * [binsa client chrome app](http://download.eclipse.org/unide/binsa.crx)
-* Sourcecode: [unide](https://github.com/eclipse/unide/releases/tag/v0.2.0), [java binding](https://github.com/eclipse/unide.java/releases/tag/v0.2.0)
+
+Source code:
+* [unide](https://github.com/eclipse/unide/releases/tag/v0.2.0)
+* [java binding](https://github.com/eclipse/unide.java/releases/tag/v0.2.0)
+* [python binding](https://github.com/eclipse/unide.python/releases/tag/v0.2.0)
+
 
 ## Release notes
 ### REST Server improvements (refactoring & persistence)
@@ -103,7 +109,7 @@ The artifacts are avaible on Eclipse repository and download server:
 * message_schema fixes
   * added minItems: 1 to messages
 * measurement_schema fixes
-  * compledted 'limits' specification
+  * completed 'limits' specification
   * added 'patternProperties' and minProperties detail to 'series'
   * added minItems: 1 to measurements
 * process_schema fixes
@@ -114,8 +120,9 @@ The artifacts are avaible on Eclipse repository and download server:
   * completed 'series' definition
 
 ### Website
-* Autogenerating PPMP specification from JSON schemas to avoid contradiction
+* Autogenerating PPMP specification from JSON schemas to avoid discrepancies
 * Generating UML schemas with plantuml
 * Using similar HTML5 stack as simulation client for SPA website
+
 ### Other
-* java and new python bindings in seperate github repositories
+* java and new python bindings in separate github repositories
