@@ -6,7 +6,6 @@ package org.eclipse.iot.unide.server.receiver.influxdb;
 
 import java.util.function.Consumer;
 
-import org.eclipse.iot.unide.ppmp.messages.MessagesWrapper;
 import org.influxdb.InfluxDB;
 
 /**

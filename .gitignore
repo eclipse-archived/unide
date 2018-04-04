@@ -50,3 +50,6 @@ fabric.properties
 *.project
 .settings/
 *.log
+
+.sts4-cache/
+.vscode/

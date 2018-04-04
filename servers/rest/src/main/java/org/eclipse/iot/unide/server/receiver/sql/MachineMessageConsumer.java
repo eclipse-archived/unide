@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 import org.eclipse.iot.unide.ppmp.commons.Device;
 import org.eclipse.iot.unide.ppmp.messages.Message;
 import org.eclipse.iot.unide.ppmp.messages.MessagesWrapper;
-import org.influxdb.dto.Point.Builder;
 
 /**
  * Consumer class for Message

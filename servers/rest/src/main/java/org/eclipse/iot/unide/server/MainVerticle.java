@@ -5,7 +5,6 @@
 package org.eclipse.iot.unide.server;
 
 import org.eclipse.iot.unide.server.receiver.Receiver;
-import org.eclipse.iot.unide.server.receiver.ReceiverFactory;
 import org.eclipse.iot.unide.server.receiver.ReceiverVerticle;
 import org.eclipse.iot.unide.server.web.RestVerticle;
 import org.slf4j.Logger;

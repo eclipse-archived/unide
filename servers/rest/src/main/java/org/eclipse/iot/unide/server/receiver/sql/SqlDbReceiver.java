@@ -5,7 +5,6 @@
 package org.eclipse.iot.unide.server.receiver.sql;
 
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 import javax.sql.DataSource;
 

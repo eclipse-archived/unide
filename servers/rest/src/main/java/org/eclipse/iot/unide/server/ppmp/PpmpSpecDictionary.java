@@ -4,7 +4,6 @@
 
 package org.eclipse.iot.unide.server.ppmp;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 

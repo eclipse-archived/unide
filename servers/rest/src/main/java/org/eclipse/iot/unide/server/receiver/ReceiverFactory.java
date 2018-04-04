@@ -4,8 +4,6 @@
 
 package org.eclipse.iot.unide.server.receiver;
 
-import java.util.function.Supplier;
-
 import javax.sql.DataSource;
 
 import org.eclipse.iot.unide.server.receiver.influxdb.InfluxDbReceiver;
