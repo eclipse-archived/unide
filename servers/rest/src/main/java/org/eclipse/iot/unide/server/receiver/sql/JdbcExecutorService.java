@@ -9,7 +9,6 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import org.apache.commons.dbcp2.BasicDataSource;
 import org.flywaydb.core.Flyway;
 
 /**

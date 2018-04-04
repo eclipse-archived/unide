@@ -5,18 +5,11 @@
 package org.eclipse.iot.unide.server.receiver.influxdb;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import org.eclipse.iot.unide.ppmp.commons.Device;
 import org.eclipse.iot.unide.ppmp.measurements.Measurements;
 import org.eclipse.iot.unide.ppmp.measurements.MeasurementsWrapper;
-import org.eclipse.iot.unide.ppmp.process.Process;
-import org.eclipse.iot.unide.ppmp.process.ProcessWrapper;
 import org.eclipse.iot.unide.server.receiver.util.PpmpHelper;
 import org.influxdb.InfluxDB;
 import org.influxdb.dto.BatchPoints;

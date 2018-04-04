@@ -6,9 +6,7 @@ package org.eclipse.iot.unide.server.receiver.influxdb;
 
 import java.util.concurrent.TimeUnit;
 
-import org.eclipse.iot.unide.ppmp.PPMPPackager;
 import org.eclipse.iot.unide.ppmp.commons.Device;
-import org.eclipse.iot.unide.ppmp.messages.Message;
 import org.eclipse.iot.unide.ppmp.process.Process;
 import org.eclipse.iot.unide.ppmp.process.ProcessWrapper;
 import org.eclipse.iot.unide.server.receiver.util.PpmpHelper;
