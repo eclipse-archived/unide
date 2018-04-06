@@ -12,24 +12,26 @@ skinparam stereotype{
 }
 
 class MessagePayload {
-	content-spec[1] : String
+	content-spec : String
+	device : Device
+	messages : Messages
 }
 
 class Device {
-	deviceID[1] : String
-	metaData[0..1] : Map<String, String>
+	deviceID : String
+	metaData[0..1] : <String, String>
 	operationalStatus[0..1] : String
 }
 
 class Message {
-	code[1] : String
-	descriptionp[0..1] : String
+	code : String
+	description[0..1] : String
 	hint[0..1] : String
-	metaData[0..1] : Map<String, String>
+	metaData[0..1] : <String, String>
 	origin[0..1] : String
 	severity[0..1] : Severity
 	title[0..1] : String
-	ts[1] : Date
+	ts : Date
 	type[0..1] : Type
 }
 
@@ -45,7 +47,7 @@ enum Severity {
 	UNKNOWN
 }
 
-MessagePayload "1" *-- "1" Device : device
-MessagePayload "1" *-- "0..*" Message : messages
+MessagePayload -- Device
+MessagePayload "1" o-- "1..*" Message : Messages
 
 @enduml
