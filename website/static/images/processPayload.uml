@@ -6,24 +6,28 @@ skinparam class {
 	BackgroundColor #f5f5f5
 	ArrowColor black
 }
-skinparam stereotype{
+skinparam stereotype {
 	CBackgroundColor white
 	EBackgroundColor white
 }
 
-class ProcessPayload{
-	content-spec[1] : String
+class ProcessPayload {
+	content-spec : String
+	device : Device
+	measurements : Measurements
+	part[0..1] : Part
+	process : Process
 }
 
 class Device {
-	deviceID[1] : String
-	metaData[0..1] : Map<String, String>
+	deviceID : String
+	metaData[0..1] : <String, String>
 	operationalStatus[0..1] : String
 }
 
 class Part {
 	code[0..1] : String
-	metaData[0..1] : Map<String, String>
+	metaData[0..1] : <String, String>
 	partID[0..1] : String
 	partTypeID[0..1] : String
 	result[0..1] : Result
@@ -32,25 +36,28 @@ class Part {
 
 class Process {
 	externalProcessId[0..1] : String
-	metaData[0..1] : Map<String, String>
+	metaData[0..1] : <String, String>
+	program[0..1] : Program
 	result[0..1] : Result
 	shutoffPhase[0..1] : String
-	shutoffValue[0..*] : Map<String, ShutoffValue>
-	ts[1] : Date
+	shutoffValues[0..1] : ShutoffValues
+	ts : Date
 }
 
 class Measurement {
 	code[0..1] : String
-	limits[0..1] : Map<String, Limits>
+	limits[0..1] : LimitsList
 	name[0..1] : String
 	phase[0..1] ; String
 	result[0..1] : Result
-	ts[1] : Date
+	series : Series
+	specialValues[0..1] : SpecialValues
+	ts : Date
 }
 
 class Program {
-	id[1] : String
-	lastChangeDate[0..1] : String
+	id : String
+	lastChangeDate[0..1] : Date
 	name[0..1] : String
 }
 
@@ -61,12 +68,12 @@ class ShutoffValue {
 	ts[0..1] : Date
 	upperError[0..1] : Float
 	upperWarn[0..1] : Float
-	value[1] : Float
+	value : Float
 }
 
 class Series {
-	$_time[0..1] : List<Integer>
-	<values>[0..*] : List<Float>
+	$_time[0..1] : [Integer]
+	<value>[0..*] : [Float]
 }
 
 abstract class Limits {
@@ -81,18 +88,18 @@ class LimitsSingle {
 }
 
 class LimitsList {
-	lowerError[0..1] : List<Float>
-	lowerWarn[0..1] : List<Float>
-	target[0..1] : List<Float>
-	upperError[0..1] : List<Float>
-	upperWarn[0..1] : List<Float>
+	lowerError[0..1] : [Float]
+	lowerWarn[0..1] : [Float]
+	target[0..1] : [Float]
+	upperError[0..1] : [Float]
+	upperWarn[0..1] : [Float]
 }
 
 
 class SpecialValue {
 	$_time[0..1] : Integer
 	name[0..1] : String
-	value[1] : Map<String, Float>
+	value : <String, Float>
 }
 
 enum PartType {
@@ -106,20 +113,19 @@ enum Result {
 	UNKNOWN
 }
 
-ProcessPayload "1" *-- "1" Device : device
-ProcessPayload "1" *-- "0..1" Part : part
-ProcessPayload "1" *-- "1" Process : process
-ProcessPayload "1" *-- "1..*" Measurement : measurements
+ProcessPayload -- Device
+ProcessPayload -- Part
+ProcessPayload -- Process
+ProcessPayload "1" o-- "0..*" Measurement : Measurements
 
-Process "1" *-- "0..1" Program : program
-Process "1" *-- "0..*" ShutoffValue
+Process -- Program
+Process "1" *-- "0..*" ShutoffValue : ShutoffValues
 
-Measurement "1" *-- "1" Series : series
-Measurement "1" *-- "0..1" Limits
-Measurement "1" *-- "0..1" SpecialValue : specialValues
+Measurement -- Series
+Measurement "1" *-- "0..*" Limits : LimitsList
+Measurement "1" o-- "0..*" SpecialValue : SpecialValues
 
 Limits <|-- LimitsSingle
 Limits <|-- LimitsList
 
 @enduml
-

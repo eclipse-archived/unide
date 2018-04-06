@@ -7,24 +7,27 @@ skinparam class {
 	ArrowColor black
 }
 
-skinparam stereotype{
+skinparam stereotype {
 	CBackgroundColor white
 	EBackgroundColor white
 }
 
 class MeasurementPayload {
-	content-spec[1] : String
+	content-spec : String
+	device : Device
+	measurements : Measurements
+	part[0..1] : Part
 }
 
 class Device {
-	deviceID[1] : String
-	metaData[0..1] : Map<String, String>
+	deviceID : String
+	metaData[0..1] : <String, String>
 	operationalStatus[0..1] : String
 }
 
 class Part {
 	code[0..1] : String
-	metaData[0..1] : Map<String, String>
+	metaData[0..1] : <String, String>
 	partID[0..1] : String
 	partTypeID[0..1] : String
 	result[0..1] : Result
@@ -32,9 +35,10 @@ class Part {
 
 class Measurement {
 	code[0..1] : String
-	limits[0..1] : Map<String, Limits>
+	limits[0..1] : LimitsList
 	result[0..1] : Result
-	ts[1] : Date
+	series : Series
+	ts : Date
 }
 
 class Limits {
@@ -46,8 +50,8 @@ class Limits {
 }
 
 class Series {
-	$_time[1] : List<Integer>
-	<values>[1..*] : List<Float>
+	$_time : [Integer]
+	<values>[1..*] : [Float]
 }
 
 enum Result {
@@ -56,11 +60,11 @@ enum Result {
 	UNKNOWN
 }
 
-MeasurementPayload "1" *-- "1" Device : device
-MeasurementPayload "1" *-- "0..1" Part : part
-MeasurementPayload "1" *-- "1..*" Measurement : measurements
+MeasurementPayload -- Device
+MeasurementPayload -- Part
+MeasurementPayload "1" o-- "1..*" Measurement : Measurements
 
-Measurement "1" *-- "1" Series : series
-Measurement "1" *-- "0..1" Limits
+Measurement -- Series
+Measurement "1" *-- "0..1" Limits : LimitsList
 
 @enduml
