@@ -1,13 +1,16 @@
 ---
-title: "PPMP Use Cases: Further Transformation with Apache Camel"
-date: 2018-29-03 00:00:00
+title: "PPMP Use Cases: Template for PPMP transformation"
+date: 2018-09-04 00:00:00
 tags: "use cases"
 ---
 
 # Quick start
-In a previous blog post, I have already introduced Apache Camel as a tool to transform to PPMP. In this post, I want to dive a little deeper to get you started with your own transformation.
+In [a previous blog post](https://www.eclipse.org/unide/blog/2018/2/11/Transform-PPMP-with-camel/), I have already introduced Apache Camel as a tool to transform to PPMP. In this post, I want to dive a little deeper to get you started with your own transformation.
 You can find corresponding sourcecode with some transformation examples [in the repository of the Eclipse PPM Testbed](https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement/tree/master/camel-integrator). After download or checkout of the project, you can easily package everything necessary for an installation via [Apache Maven](https://maven.apache.org/) and java&#160;8+:
 ```bash
+git clone https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement.git
+cd eclipseiot-testbed-productionperformancemanagement
+cd camel-integrator
 mvn package
 ```
 After successful build, you should get a zip file at `target/camel-integrator-*-assembly.zip` with the following content
@@ -18,11 +21,25 @@ This is where the main configuration file `application-context.xml`, further inc
 * `lib`
 Contains all java dependencies and their dependencies as individual jar files
 * `log`
-After the first start, you'll find an additional directory that contains the logs of every execution, as defined in the `conf/log4j.properties` file
+After the first start, you'll find an additional directory that contains the logs of every execution, as defined in the `conf/log4j.properties` file.
+
+So this `camel-integrator-*-assembly.zip` is all you need, ready to being shipped and installed in your target system.
 
 # How can I modify this?
 
-In the `conf` folder of the output or `src/main/resources` src folder, you'll find multiple examples on how to use Apache Camel with Production Performance Management Protocol. Most of the examples are based on [spring xml](https://github.com/apache/camel/blob/master/components/camel-spring/src/main/docs/spring.adoc). Among others, you'll find:
+In the `conf` folder of the output or `src/main/resources` src folder, you'll find multiple examples on how to use Apache Camel with Production Performance Management Protocol. Most of the examples are based on [spring xml](https://github.com/apache/camel/blob/master/components/camel-spring/src/main/docs/spring.adoc).
+The most important terms to understand them are:
+
+| xml tag | meaning |
+|-|-|
+| bean | additional functionality, coded as java class / function |
+| camelContext | the main, camel specific configurations |
+| route | describes the data flow as process |
+| from / to | entry / exit points for the data flow. This is also, were external systems are accessed via [components](https://github.com/apache/camel/tree/camel-2.21.0/components) |
+| onException | error handling for the data flow |
+| pipeline, multicast, ... | routing of data via [Enterprise Integration pattern](http://camel.apache.org/enterprise-integration-patterns.html) |
+
+Among others, you'll find:
 <div class="card figure is-pulled-right">
 	<div class="card-image">
 		<figure class="image">
@@ -65,11 +82,11 @@ In order to get familiar with these transformations, I suggest you:
 		</setBody>
 	</route>
 	```
-* start a testrun with
+* start a run directly (with bundling to a zip file) with:
   ```bash
-  mvn exec:java
+	mvn exec:java
   ```
-* and review the result. In the example above, just open your browser at http://localhost:9090
+* and review the result. With the example above, just open the url http://localhost:9090 and see the `hello world!` in your browser
 
 If you prefer a visual model of these camel xml definitions, you could also make use of [JBoss Fuse Tooling](https://tools.jboss.org/features/fusetools.html) which is available for [Eclipse Workbench 4.3+](https://projects.eclipse.org/releases/oxygen) through [the Marketplace](https://marketplace.eclipse.org/content/jboss-tools). Be aware that this might cause additional overhead.
 <div class="card figure">
@@ -99,6 +116,38 @@ If you want to make use of any other of the (as of camel 2.21.0) [281+ component
 	...
 </project>
 ```
+
+# Testing
+
+Testing is an important part of the development cycle, especially for the core components that have to work reliably in a production environment.
+The project includes example tests in the `src/test` folder:
+* `java`
+  contains the actual java unit tests that make use of [`CamelSpringTestSupport`](https://github.com/apache/camel/blob/61a58836da57bab38ce719cbd1effd36253687a4/docs/user-manual/en/spring-testing.adoc) to wire xml CamelContext configuration, test data and expected results together
+* `resources`
+  contains the spring xml configuration that is used by the java test classes and resamble the actual configurations from `src/main/resources`
+* `data`
+  contains testdata for the data flows and the transformation
+
+Tests can easily be run from within an IDE (eclipse, visual code studio etc.) or via commandline
+```bash
+mvn test
+```
+You'll see the output of the testruns. If it looks like this, it works as expected:
+```bash
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.846 sec
+
+Results :
+
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 32.267 s
+[INFO] Finished at: 2018-04-09T15:25:25+02:00
+[INFO] Final Memory: 25M/85M
+[INFO] ------------------------------------------------------------------------
+``` 
 
 # Summary
 The provided camel project template facilitates the creation of simple connectors. You can download it, modify or extend it, package the integrator to a zip file and deploy it on a target server. The included scripts help registering the integrator as an operating system service to run 24/7.
