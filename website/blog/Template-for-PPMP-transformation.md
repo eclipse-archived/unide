@@ -6,7 +6,7 @@ tags: "use cases"
 
 # Quick start
 In [a previous blog post](https://www.eclipse.org/unide/blog/2018/2/11/Transform-PPMP-with-camel/), I have already introduced Apache Camel as a tool to transform to PPMP. In this post, I want to dive a little deeper to get you started with your own transformation.
-You can find corresponding sourcecode with some transformation examples [in the repository of the Eclipse PPM Testbed](https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement/tree/master/camel-integrator). After download or checkout of the project, you can easily package everything necessary for an installation via [Apache Maven](https://maven.apache.org/) and java&#160;8+:
+You can find corresponding source code with some transformation examples [in the repository of the Eclipse PPM Testbed](https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement/tree/master/camel-integrator). After download or checkout of the project, you can easily package everything necessary for an installation via [Apache Maven](https://maven.apache.org/) and java&#160;8+:
 ```bash
 git clone https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement.git
 cd eclipseiot-testbed-productionperformancemanagement
@@ -21,7 +21,7 @@ This is where the main configuration file `application-context.xml`, further inc
 * `lib`
 Contains all java dependencies and their dependencies as individual jar files
 * `log`
-After the first start, you'll find an additional directory that contains the logs of every execution, as defined in the `conf/log4j.properties` file.
+After the first start, you will find an additional directory that contains the logs of every execution, as defined in the `conf/log4j.properties` file.
 
 So this `camel-integrator-*-assembly.zip` is all you need, ready to being shipped and installed in your target system.
 
@@ -100,7 +100,7 @@ If you prefer a visual model of these camel xml definitions, you could also make
 	</div>
 </div>
 
-If you want to make use of any other of the (as of camel 2.21.0) [281+ components](https://github.com/apache/camel/tree/camel-2.21.0/components), your should add the respective maven dependency to the `pom.xml`. For example:
+If you want to make use of any other of the (as of camel 2.21.0) [281+ components](https://github.com/apache/camel/tree/camel-2.21.0/components), you should add the respective maven dependency to the `pom.xml`. For example:
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -132,7 +132,7 @@ Tests can easily be run from within an IDE (eclipse, visual code studio etc.) or
 ```bash
 mvn test
 ```
-You'll see the output of the testruns. If it looks like this, it works as expected:
+You will see the output of the test runs. If it looks like this, it works as expected:
 ```bash
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.846 sec
 
