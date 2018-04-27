@@ -9,6 +9,9 @@
 		"device": {
 			"$ref": "definitions.json#/definitions/device"
 		},
+		"part": {
+			"$ref": "definitions.json#/definitions/part"
+		},
 		"measurements": {
 			"$ref": "definitions.json#/definitions/measurements"
 		}
