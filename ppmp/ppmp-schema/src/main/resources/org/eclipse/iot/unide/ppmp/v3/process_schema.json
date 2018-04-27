@@ -10,7 +10,54 @@
 			"$ref": "definitions.json#/definitions/device"
 		},
 		"process": {
-			"$ref": "definitions.json#/definitions/process"
+			"type": "object",
+			"description": "Contains information about the process. If the process JSON object is set, then all information in measurements are process phases",
+			"properties": {
+				"externalId": {
+					"type": "string",
+					"description": "The process id identifies the process as part of long living process. The process id can be used to connect multiple processes in a manufacturing chain. The id has to be set and tracked by the different devices in the chain.",
+					"maxLength": 36
+				},
+				"program": {
+					"type": "object",
+					"description": "Contains information about the program that was used in the process.",
+					"properties": {
+						"id": {
+							"type": "string",
+							"description": "The program identifier",
+							"maxLength": 36
+						},
+						"lastChangedDate": {
+							"type": "string",
+							"format": "date-time",
+							"description": "The date when the program was last changed"
+						},
+						"name": {
+							"type": "string",
+							"description": "The name of the program",
+							"maxLength": 256
+						}
+					},
+					"required": [
+						"id"
+					]
+				},
+				"result": {
+					"$ref": "definitions.json#/definitions/result"
+				},
+				"shutoffPhase": {
+					"type": "string",
+					"description": "The id of the phase that led to stop the process. The shutOffPhase is the phase of the process in which either pre-defined parameters are met to successfully finish the process or an error that stopped the process. That is not necessarily the last phase. The shutOffPhase should be sent when the last process phase is sent."
+				},
+				"ts": {
+					"type": "string",
+					"format": "date-time",
+					"description": "Start time of the process"
+				}
+			},
+			"required": [
+				"ts"
+			]
 		},
 		"measurements": {
 			"allOf": [
@@ -38,7 +85,7 @@
 									"type": "object",
 									"description": "Provides information about special or interesting values during the process phase.",
 									"properties": {
-										"$_time": {
+										"time": {
 											"type": "integer",
 											"description": "The time offset in milliseconds to the 'ts' field of the measurement"
 										},

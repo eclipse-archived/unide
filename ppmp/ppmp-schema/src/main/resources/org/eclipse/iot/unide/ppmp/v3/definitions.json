@@ -1,5 +1,5 @@
 {
-    "definitions": {
+	"definitions": {
 		"code": {
 			"type": "string",
 			"description": "The code is an addendum to the result which allows to pass information in the case the result was NOK. The value often stems from the integrated system e.g. a PLC code",
@@ -14,6 +14,10 @@
 					"description": "The unique identification of the device. As this is used to identify a device independently from time or location the id itself must be stable and unique. Recommended is to use a universally unique identifier (UUID).",
 					"maxLength": 36
 				},
+				"mode": {
+					"type": "string",
+					"description": "The operational mode indicates the functional state of the device. This is not restrictected to enum, since it is dependent on the machine, process or use case. Examples are 'auto', 'manual', 'test', 'wait', 'maintenance', 'run', 'stop', 'other' or 'unknown'"
+				},
 				"state": {
 					"type": "string",
 					"enum": [
@@ -25,10 +29,6 @@
 					],
 					"default": "UNKNOWN",
 					"description": "The state describes the technical condition of a device."
-				},
-				"mode": {
-					"type": "string",
-					"description": "The operational mode indicates the functional state of the device. This is not restrictected to enum, since it is dependent on the machine, process or use case. Examples are 'auto', 'manual', 'test', 'wait', 'maintenance', 'run', 'stop', 'other' or 'unknown'"
 				}
 			},
 			"required": [
@@ -52,84 +52,122 @@
 								"type": "object",
 								"description": "The key shall be the name of a measurement point (element of series element). The value is a structure of additional context information.",
 								"properties": {
-									"limit": {
-										"description": "Provides information about limits for data provided in the series element. The limits is an JSON object where the key is the name of a Measurement Point (see also series element) and the value is a structure of upper/lower limits",
+									"accuracy": {
+										"oneOf": [
+											{
+												"type": "number",
+												"description": "A constant that describes the accuracy of the corresponding measurement as absolute value"
+											},
+											{
+												"type": "array",
+												"description": "An array of accuracy values. The items of the array correspond to the respective measurements at the same position.",
+												"items": {
+													"type": "number"
+												}
+											}
+										]
+									},
+									"limits": {
+										"description": "Provides information about the limit for data provided in the series element. The limit corresponds to the measurement point (see also series element) with the same key. The value is a structure of upper/lower limits and applies to numeric values only.",
 										"type": "object",
-										"patternProperties": {
-											"^[^$]+": {
-												"oneOf": [
-													{
-														"type": "object",
-														"description": "A constant limit for all corresponding measurements",
-														"properties": {
-															"lowerError": {
-																"description": "Indicates an error if this limit is underrun",
-																"type": "number"
-															},
-															"lowerWarn": {
-																"description": "Indicates a warning if this limit is underrun",
-																"type": "number"
-															},
-															"target": {
-																"description": "Indicates the intented target value of the measurement",
-																"type": "number"
-															},
-															"upperError": {
-																"description": "Indicates an error if this limit is exceeded",
-																"type": "number"
-															},
-															"upperWarn": {
-																"description": "Indicates a warning if this limit is exceeded",
-																"type": "number"
-															}
+										"oneOf": [
+											{
+												"type": "object",
+												"description": "A constant limit for all corresponding measurements",
+												"properties": {
+													"lowerError": {
+														"description": "Indicates an error if this limit is underrun",
+														"type": "number"
+													},
+													"lowerWarn": {
+														"description": "Indicates a warning if this limit is underrun",
+														"type": "number"
+													},
+													"target": {
+														"description": "Indicates the intented target value of the measurement",
+														"type": "number"
+													},
+													"upperError": {
+														"description": "Indicates an error if this limit is exceeded",
+														"type": "number"
+													},
+													"upperWarn": {
+														"description": "Indicates a warning if this limit is exceeded",
+														"type": "number"
+													}
+												}
+											},
+											{
+												"type": "object",
+												"description": "An array of limit values. The items of the array correspond to the respective measurements at the same position.",
+												"properties": {
+													"lowerError": {
+														"description": "Indicates an error if these limits is underrun. The values correspond to the respective measurements in the given order.",
+														"type": "array",
+														"items": {
+															"type": "number"
 														}
 													},
-													{
-														"type": "object",
-														"description": "An array of limit values. The items of the array correspond to the respective measurements at the same position.",
-														"properties": {
-															"lowerError": {
-																"description": "Indicates an error if these limits is underrun. The values correspond to the respective measurements in the given order.",
-																"type": "array",
-																"items": {
-																	"type": "number"
-																}
-															},
-															"lowerWarn": {
-																"description": "Indicates a warning if these limits is underrun. The values correspond to the respective measurements in the given order.",
-																"type": "array",
-																"items": {
-																	"type": "number"
-																}
-															},
-															"target": {
-																"description": "Indicates the intented target values. The values correspond to the respective measurements in the given order.",
-																"type": "array",
-																"items": {
-																	"type": "number"
-																}
-															},
-															"upperError": {
-																"description": "Indicates an error if these limits is exceeded. The values correspond to the respective measurements in the given order.",
-																"type": "array",
-																"items": {
-																	"type": "number"
-																}
-															},
-															"upperWarn": {
-																"description": "Indicates a warning if these limits is exceeded. The values correspond to the respective measurements in the given order.",
-																"type": "array",
-																"items": {
-																	"type": "number"
-																}
-															}
+													"lowerWarn": {
+														"description": "Indicates a warning if these limits is underrun. The values correspond to the respective measurements in the given order.",
+														"type": "array",
+														"items": {
+															"type": "number"
+														}
+													},
+													"target": {
+														"description": "Indicates the intented target values. The values correspond to the respective measurements in the given order.",
+														"type": "array",
+														"items": {
+															"type": "number"
+														}
+													},
+													"upperError": {
+														"description": "Indicates an error if these limits is exceeded. The values correspond to the respective measurements in the given order.",
+														"type": "array",
+														"items": {
+															"type": "number"
+														}
+													},
+													"upperWarn": {
+														"description": "Indicates a warning if these limits is exceeded. The values correspond to the respective measurements in the given order.",
+														"type": "array",
+														"items": {
+															"type": "number"
 														}
 													}
-												]
+												}
 											}
-										}
+										]
+									},
+									"offset": {
+										"description": "The offset applies to numeric data type only.",
+										"oneOf": [
+											{
+												"type": "number",
+												"description": "Describes the offset of the corresponding measurement as absolute value"
+											},
+											{
+												"type": "array",
+												"description": "An array of offset values. The items of the array correspond to the respective measurements at the same position.",
+												"items": {
+													"type": "number"
+												}
+											}
+										]
+									},
+									"type": {
+										"type": "string",
+										"description": "The data type of the corresponding measurement value.",
+										"enum": ["BASE64", "BOOLEAN", "NUMBER", "OTHER", "REF", "STRING"],
+										"default": "NUMBER"
+									},
+									"unit": {
+										"type": "string",
+										"description": "Describes the unit of the corresponding measurement. It is recommended to use symbols as defined in https://tools.ietf.org/html/draft-ietf-core-senml-14#section-12.1"
 									}
-								}
+								},
+								"minProperties": 1
 							}
 						},
 						"required": []
@@ -141,7 +179,7 @@
 						"type": "object",
 						"description": "The series data collected for the measurements. Every entry matches a Measurement Point of the Device Type. In the case of a time series, one column contains the time offsets.",
 						"properties": {
-							"$_time": {
+							"time": {
 								"type": "array",
 								"description": "The time offset in milliseconds (positive values in ascending order starting with 0) to the 'ts' field of the measurement",
 								"items": {
@@ -158,7 +196,7 @@
 							}
 						},
 						"required": [
-							"$_time"
+							"time"
 						],
 						"minProperties": 2
 					},
@@ -205,56 +243,6 @@
 			},
 			"required": [
 				"id"
-			]
-		},
-		"process": {
-			"type": "object",
-			"description": "Contains information about the process. If the process JSON object is set, then all information in measurements are process phases",
-			"properties": {
-				"externalId": {
-					"type": "string",
-					"description": "The process id identifies the process as part of long living process. The process id can be used to connect multiple processes in a manufacturing chain. The id has to be set and tracked by the different devices in the chain.",
-					"maxLength": 36
-				},
-				"program": {
-					"type": "object",
-					"description": "Contains information about the program that was used in the process.",
-					"properties": {
-						"id": {
-							"type": "string",
-							"description": "The program identifier",
-							"maxLength": 36
-						},
-						"lastChangedDate": {
-							"type": "string",
-							"format": "date-time",
-							"description": "The date when the program was last changed"
-						},
-						"name": {
-							"type": "string",
-							"description": "The name of the program",
-							"maxLength": 256
-						}
-					},
-					"required": [
-						"id"
-					]
-				},
-				"result": {
-					"$ref": "#/definitions/result"
-				},
-				"shutoffPhase": {
-					"type": "string",
-					"description": "The id of the phase that led to stop the process. The shutOffPhase is the phase of the process in which either pre-defined parameters are met to successfully finish the process or an error that stopped the process. That is not necessarily the last phase. The shutOffPhase should be sent when the last process phase is sent."
-				},
-				"ts": {
-					"type": "string",
-					"format": "date-time",
-					"description": "Start time of the process"
-				}
-			},
-			"required": [
-				"ts"
 			]
 		},
 		"result": {
