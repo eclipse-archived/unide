@@ -12,7 +12,7 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "uml": "java -Djava.awt.headless=true -jar plantuml.jar -charset utf8 -o . -tsvg static/images/*.uml"
+    "uml": "java -Djava.awt.headless=true -jar plantuml.jar -charset utf8 -o . -tsvg static/images/specification/*/*.uml"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -21,7 +21,7 @@
     "font-awesome": "^4.7.0",
     "front-matter": "^2.3.0",
     "json-schema-loader": "joshheyse/json-schema-loader#649e1d4",
-    "lodash.clonedeep": "^4.3.2",
+    "lodash": "4.17.4",
     "markdown-it": "^8.4.0",
     "markdown-it-decorate": "^1.2.2",
     "nuxt": "^1.0.0",

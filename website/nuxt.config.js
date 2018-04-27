@@ -1,8 +1,8 @@
 module.exports = {
   head: {
-    title: 'Welcome',
+    title:         'Welcome',
     titleTemplate: 'Eclipse unide - %s',
-    meta:  [{
+    meta:          [{
       charset: 'utf-8'
     }, {
       name:    'viewport',

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="386px" preserveAspectRatio="none" style="width:605px;height:386px;" version="1.1" viewBox="0 0 605 386" width="605px" zoomAndPan="magnify"><defs><filter height="300%" id="fr8havgld92gc" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--class Device--><rect fill="#F5F5F5" filter="url(#fr8havgld92gc)" height="89.5078" id="Device" style="stroke: #000000; stroke-width: 1.5;" width="124" x="6" y="244.5"/><ellipse cx="45.75" cy="260.5" fill="#FFFFFF" rx="11" ry="11" style="stroke: #000000; stroke-width: 1.0;"/><path d="M48.5156,256.375 Q48.6719,256.1563 48.8594,256.0469 Q49.0469,255.9375 49.2656,255.9375 Q49.6406,255.9375 49.875,256.1953 Q50.1094,256.4531 50.1094,257.0625 L50.1094,258.5156 Q50.1094,259.125 49.875,259.3906 Q49.6406,259.6563 49.2656,259.6563 Q48.9219,259.6563 48.7188,259.4531 Q48.5156,259.2656 48.4063,258.75 Q48.3594,258.3906 48.1719,258.2031 Q47.8438,257.8281 47.2344,257.6094 Q46.625,257.3906 46,257.3906 Q45.2344,257.3906 44.6016,257.7188 Q43.9688,258.0469 43.4766,258.7969 Q42.9844,259.5469 42.9844,260.5781 L42.9844,261.6719 Q42.9844,262.9063 43.875,263.7266 Q44.7656,264.5469 46.3594,264.5469 Q47.2969,264.5469 47.9531,264.2969 Q48.3438,264.1406 48.7656,263.7031 Q49.0313,263.4375 49.1797,263.3594 Q49.3281,263.2813 49.5313,263.2813 Q49.8594,263.2813 50.1172,263.5391 Q50.375,263.7969 50.375,264.1406 Q50.375,264.4844 50.0313,264.8906 Q49.5313,265.4688 48.7344,265.7969 Q47.6563,266.25 46.3594,266.25 Q44.8438,266.25 43.6406,265.625 Q42.6563,265.125 41.9688,264.0547 Q41.2813,262.9844 41.2813,261.7031 L41.2813,260.5469 Q41.2813,259.2188 41.8984,258.0703 Q42.5156,256.9219 43.6094,256.3047 Q44.7031,255.6875 45.9375,255.6875 Q46.6719,255.6875 47.3203,255.8516 Q47.9688,256.0156 48.5156,256.375 Z "/><text fill="#50237F" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="37" x="65.25" y="265.4102">Device</text><line style="stroke: #000000; stroke-width: 1.5;" x1="7" x2="129" y1="276.5" y2="276.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="42" x="12" y="291.9189">id: String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="84" x="12" y="305.7549">mode[0..1]: String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="112" x="12" y="319.5908">state[0..1]: DeviceState</text><line style="stroke: #000000; stroke-width: 1.5;" x1="7" x2="129" y1="326.0078" y2="326.0078"/><!--class DeviceState--><rect fill="#F5F5F5" filter="url(#fr8havgld92gc)" height="117.1797" id="DeviceState" style="stroke: #000000; stroke-width: 1.5;" width="97" x="255.5" y="8"/><ellipse cx="270.5" cy="24" fill="#FFFFFF" rx="11" ry="11" style="stroke: #000000; stroke-width: 1.0;"/><path d="M269.3594,24.7969 L269.3594,27.2969 L273.6875,27.2969 L273.6875,26.375 Q273.6875,25.7656 273.9297,25.5 Q274.1719,25.2344 274.5469,25.2344 Q274.9219,25.2344 275.1563,25.5 Q275.3906,25.7656 275.3906,26.375 L275.3906,29 L267.3906,29 Q266.7656,29 266.5078,28.7656 Q266.25,28.5313 266.25,28.1406 Q266.25,27.7656 266.5156,27.5313 Q266.7813,27.2969 267.3906,27.2969 L267.6563,27.2969 L267.6563,20.6406 L267.3906,20.6406 Q266.7656,20.6406 266.5078,20.4063 Q266.25,20.1719 266.25,19.7813 Q266.25,19.4063 266.5078,19.1719 Q266.7656,18.9375 267.3906,18.9375 L275.0156,18.9375 L275.0156,21.5313 Q275.0156,22.1406 274.7891,22.3984 Q274.5625,22.6563 274.1719,22.6563 Q273.7969,22.6563 273.5625,22.3984 Q273.3281,22.1406 273.3281,21.5313 L273.3281,20.6406 L269.3594,20.6406 L269.3594,23.0938 L270.8438,23.0938 Q270.8438,22.4375 270.9688,22.25 Q271.2344,21.8438 271.7031,21.8438 Q272.0781,21.8438 272.3125,22.1016 Q272.5469,22.3594 272.5469,22.9688 L272.5469,24.9375 Q272.5469,25.4844 272.4219,25.6719 Q272.1563,26.0625 271.7031,26.0625 Q271.2344,26.0625 270.9688,25.6563 Q270.8438,25.4688 270.8438,24.7969 L269.3594,24.7969 Z "/><text fill="#50237F" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="65" x="284.5" y="28.9102">DeviceState</text><line style="stroke: #000000; stroke-width: 1.5;" x1="256.5" x2="351.5" y1="40" y2="40"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="15" x="261.5" y="55.4189">OK</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="23" x="261.5" y="69.2549">INFO</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="32" x="261.5" y="83.0908">WARN</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="35" x="261.5" y="96.9268">ERROR</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="53" x="261.5" y="110.7627">UNKNOWN</text><line style="stroke: #000000; stroke-width: 1.5;" x1="256.5" x2="351.5" y1="117.1797" y2="117.1797"/><!--class MessagePayload--><rect fill="#F5F5F5" filter="url(#fr8havgld92gc)" height="89.5078" id="MessagePayload" style="stroke: #000000; stroke-width: 1.5;" width="127" x="93.5" y="21.5"/><ellipse cx="108.5" cy="37.5" fill="#FFFFFF" rx="11" ry="11" style="stroke: #000000; stroke-width: 1.0;"/><path d="M111.2656,33.375 Q111.4219,33.1563 111.6094,33.0469 Q111.7969,32.9375 112.0156,32.9375 Q112.3906,32.9375 112.625,33.1953 Q112.8594,33.4531 112.8594,34.0625 L112.8594,35.5156 Q112.8594,36.125 112.625,36.3906 Q112.3906,36.6563 112.0156,36.6563 Q111.6719,36.6563 111.4688,36.4531 Q111.2656,36.2656 111.1563,35.75 Q111.1094,35.3906 110.9219,35.2031 Q110.5938,34.8281 109.9844,34.6094 Q109.375,34.3906 108.75,34.3906 Q107.9844,34.3906 107.3516,34.7188 Q106.7188,35.0469 106.2266,35.7969 Q105.7344,36.5469 105.7344,37.5781 L105.7344,38.6719 Q105.7344,39.9063 106.625,40.7266 Q107.5156,41.5469 109.1094,41.5469 Q110.0469,41.5469 110.7031,41.2969 Q111.0938,41.1406 111.5156,40.7031 Q111.7813,40.4375 111.9297,40.3594 Q112.0781,40.2813 112.2813,40.2813 Q112.6094,40.2813 112.8672,40.5391 Q113.125,40.7969 113.125,41.1406 Q113.125,41.4844 112.7813,41.8906 Q112.2813,42.4688 111.4844,42.7969 Q110.4063,43.25 109.1094,43.25 Q107.5938,43.25 106.3906,42.625 Q105.4063,42.125 104.7188,41.0547 Q104.0313,39.9844 104.0313,38.7031 L104.0313,37.5469 Q104.0313,36.2188 104.6484,35.0703 Q105.2656,33.9219 106.3594,33.3047 Q107.4531,32.6875 108.6875,32.6875 Q109.4219,32.6875 110.0703,32.8516 Q110.7188,33.0156 111.2656,33.375 Z "/><text fill="#50237F" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="95" x="122.5" y="42.4102">MessagePayload</text><line style="stroke: #000000; stroke-width: 1.5;" x1="94.5" x2="219.5" y1="53.5" y2="53.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="101" x="99.5" y="68.9189">content-spec : String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="74" x="99.5" y="82.7549">device : Device</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="109" x="99.5" y="96.5908">messages : Messages</text><line style="stroke: #000000; stroke-width: 1.5;" x1="94.5" x2="219.5" y1="103.0078" y2="103.0078"/><!--class Message--><rect fill="#F5F5F5" filter="url(#fr8havgld92gc)" height="172.5234" id="Message" style="stroke: #000000; stroke-width: 1.5;" width="164" x="165" y="203"/><ellipse cx="217.25" cy="219" fill="#FFFFFF" rx="11" ry="11" style="stroke: #000000; stroke-width: 1.0;"/><path d="M220.0156,214.875 Q220.1719,214.6563 220.3594,214.5469 Q220.5469,214.4375 220.7656,214.4375 Q221.1406,214.4375 221.375,214.6953 Q221.6094,214.9531 221.6094,215.5625 L221.6094,217.0156 Q221.6094,217.625 221.375,217.8906 Q221.1406,218.1563 220.7656,218.1563 Q220.4219,218.1563 220.2188,217.9531 Q220.0156,217.7656 219.9063,217.25 Q219.8594,216.8906 219.6719,216.7031 Q219.3438,216.3281 218.7344,216.1094 Q218.125,215.8906 217.5,215.8906 Q216.7344,215.8906 216.1016,216.2188 Q215.4688,216.5469 214.9766,217.2969 Q214.4844,218.0469 214.4844,219.0781 L214.4844,220.1719 Q214.4844,221.4063 215.375,222.2266 Q216.2656,223.0469 217.8594,223.0469 Q218.7969,223.0469 219.4531,222.7969 Q219.8438,222.6406 220.2656,222.2031 Q220.5313,221.9375 220.6797,221.8594 Q220.8281,221.7813 221.0313,221.7813 Q221.3594,221.7813 221.6172,222.0391 Q221.875,222.2969 221.875,222.6406 Q221.875,222.9844 221.5313,223.3906 Q221.0313,223.9688 220.2344,224.2969 Q219.1563,224.75 217.8594,224.75 Q216.3438,224.75 215.1406,224.125 Q214.1563,223.625 213.4688,222.5547 Q212.7813,221.4844 212.7813,220.2031 L212.7813,219.0469 Q212.7813,217.7188 213.3984,216.5703 Q214.0156,215.4219 215.1094,214.8047 Q216.2031,214.1875 217.4375,214.1875 Q218.1719,214.1875 218.8203,214.3516 Q219.4688,214.5156 220.0156,214.875 Z "/><text fill="#50237F" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="51" x="237.75" y="223.9102">Message</text><line style="stroke: #000000; stroke-width: 1.5;" x1="166" x2="328" y1="235" y2="235"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="61" x="171" y="250.4189">code : String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="114" x="171" y="264.2549">description[0..1] : String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="78" x="171" y="278.0908">hint[0..1] : String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="152" x="171" y="291.9268">metaData[0..1] : &lt;String, String&gt;</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="87" x="171" y="305.7627">origin[0..1] : String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="112" x="171" y="319.5986">severity[0..1] : Severity</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="77" x="171" y="333.4346">title[0..1] : String</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="40" x="171" y="347.2705">ts : Date</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="78" x="171" y="361.1064">type[0..1] : Type</text><line style="stroke: #000000; stroke-width: 1.5;" x1="166" x2="328" y1="367.5234" y2="367.5234"/><!--class Type--><rect fill="#F5F5F5" filter="url(#fr8havgld92gc)" height="75.6719" id="Type" style="stroke: #000000; stroke-width: 1.5;" width="97" x="387.5" y="28.5"/><ellipse cx="420.05" cy="44.5" fill="#FFFFFF" rx="11" ry="11" style="stroke: #000000; stroke-width: 1.0;"/><path d="M418.9094,45.2969 L418.9094,47.7969 L423.2375,47.7969 L423.2375,46.875 Q423.2375,46.2656 423.4797,46 Q423.7219,45.7344 424.0969,45.7344 Q424.4719,45.7344 424.7063,46 Q424.9406,46.2656 424.9406,46.875 L424.9406,49.5 L416.9406,49.5 Q416.3156,49.5 416.0578,49.2656 Q415.8,49.0313 415.8,48.6406 Q415.8,48.2656 416.0656,48.0313 Q416.3313,47.7969 416.9406,47.7969 L417.2063,47.7969 L417.2063,41.1406 L416.9406,41.1406 Q416.3156,41.1406 416.0578,40.9063 Q415.8,40.6719 415.8,40.2813 Q415.8,39.9063 416.0578,39.6719 Q416.3156,39.4375 416.9406,39.4375 L424.5656,39.4375 L424.5656,42.0313 Q424.5656,42.6406 424.3391,42.8984 Q424.1125,43.1563 423.7219,43.1563 Q423.3469,43.1563 423.1125,42.8984 Q422.8781,42.6406 422.8781,42.0313 L422.8781,41.1406 L418.9094,41.1406 L418.9094,43.5938 L420.3938,43.5938 Q420.3938,42.9375 420.5188,42.75 Q420.7844,42.3438 421.2531,42.3438 Q421.6281,42.3438 421.8625,42.6016 Q422.0969,42.8594 422.0969,43.4688 L422.0969,45.4375 Q422.0969,45.9844 421.9719,46.1719 Q421.7063,46.5625 421.2531,46.5625 Q420.7844,46.5625 420.5188,46.1563 Q420.3938,45.9688 420.3938,45.2969 L418.9094,45.2969 Z "/><text fill="#50237F" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="26" x="437.95" y="49.4102">Type</text><line style="stroke: #000000; stroke-width: 1.5;" x1="388.5" x2="483.5" y1="60.5" y2="60.5"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="36" x="393.5" y="75.9189">DEVICE</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="85" x="393.5" y="89.7549">TECHNICAL_INFO</text><line style="stroke: #000000; stroke-width: 1.5;" x1="388.5" x2="483.5" y1="96.1719" y2="96.1719"/><!--class Severity--><rect fill="#F5F5F5" filter="url(#fr8havgld92gc)" height="103.3438" id="Severity" style="stroke: #000000; stroke-width: 1.5;" width="74" x="520" y="15"/><ellipse cx="535" cy="31" fill="#FFFFFF" rx="11" ry="11" style="stroke: #000000; stroke-width: 1.0;"/><path d="M533.8594,31.7969 L533.8594,34.2969 L538.1875,34.2969 L538.1875,33.375 Q538.1875,32.7656 538.4297,32.5 Q538.6719,32.2344 539.0469,32.2344 Q539.4219,32.2344 539.6563,32.5 Q539.8906,32.7656 539.8906,33.375 L539.8906,36 L531.8906,36 Q531.2656,36 531.0078,35.7656 Q530.75,35.5313 530.75,35.1406 Q530.75,34.7656 531.0156,34.5313 Q531.2813,34.2969 531.8906,34.2969 L532.1563,34.2969 L532.1563,27.6406 L531.8906,27.6406 Q531.2656,27.6406 531.0078,27.4063 Q530.75,27.1719 530.75,26.7813 Q530.75,26.4063 531.0078,26.1719 Q531.2656,25.9375 531.8906,25.9375 L539.5156,25.9375 L539.5156,28.5313 Q539.5156,29.1406 539.2891,29.3984 Q539.0625,29.6563 538.6719,29.6563 Q538.2969,29.6563 538.0625,29.3984 Q537.8281,29.1406 537.8281,28.5313 L537.8281,27.6406 L533.8594,27.6406 L533.8594,30.0938 L535.3438,30.0938 Q535.3438,29.4375 535.4688,29.25 Q535.7344,28.8438 536.2031,28.8438 Q536.5781,28.8438 536.8125,29.1016 Q537.0469,29.3594 537.0469,29.9688 L537.0469,31.9375 Q537.0469,32.4844 536.9219,32.6719 Q536.6563,33.0625 536.2031,33.0625 Q535.7344,33.0625 535.4688,32.6563 Q535.3438,32.4688 535.3438,31.7969 L533.8594,31.7969 Z "/><text fill="#50237F" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="42" x="549" y="35.9102">Severity</text><line style="stroke: #000000; stroke-width: 1.5;" x1="521" x2="593" y1="47" y2="47"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="24" x="526" y="62.4189">HIGH</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="38" x="526" y="76.2549">MEDIUM</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="24" x="526" y="90.0908">LOW</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="53" x="526" y="103.9268">UNKNOWN</text><line style="stroke: #000000; stroke-width: 1.5;" x1="521" x2="593" y1="110.3438" y2="110.3438"/><!--link MessagePayload to Device--><path d="M139.203,111.691 C123.681,150.236 101.2792,205.863 85.7657,244.385 " fill="none" id="MessagePayload-Device" style="stroke: #000000; stroke-width: 1.0;"/><!--link MessagePayload to Message--><path d="M179.921,123.785 C189.688,147.766 201.298,176.277 212.092,202.783 " fill="none" id="MessagePayload-Message" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#FFFFFF" points="174.997,111.691,173.556,118.7566,179.5239,122.8044,180.9649,115.7387,174.997,111.691" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="60" x="201" y="169.4951">Messages</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="7" x="169.945" y="132.3903">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="20" x="188.2327" y="192.174">1..*</text><!--
+@startuml
+
+skinparam class {
+	BorderColor black
+	FontColor #50237f
+	BackgroundColor #f5f5f5
+	ArrowColor black
+}
+skinparam stereotype{
+	CBackgroundColor white
+	EBackgroundColor white
+}
+
+class Device {
+	id: String
+	mode[0..1]: String
+	state[0..1]: DeviceState
+}
+
+class Measurement {
+	code[0..1]: String
+	context[0..1]: ContextList
+	result[0..1]: Result
+	series: Series
+	ts: Date
+}
+
+class Context {
+	accuracy[0..1]: Float | [Float]
+	limits[0..1]: Limits
+	offset[0..1]: Float | [Float]
+	type[0..1]: String
+	unit[0..1]: String
+}
+
+class Limits {
+	lowerError[0..1]: Float | [Float]
+	lowerWarn[0..1]: Float | [Float]
+	target[0..1]:  Float | [Float]
+	upperError[0..1]: Float | [Float]
+	upperWarn[0..1]: Float | [Float]
+}
+
+class Series {
+	time: [Integer]
+	<values>[1..*]: [Float]
+}
+
+class Part {
+	code[0..1]: String
+	id[0..1]: String
+	type[0..1]: PartType
+	typeId[0..1]: String
+	result[0..1]: Result
+}
+
+enum DeviceState {
+	OK
+	INFO
+	WARN
+	ERROR
+	UNKNOWN
+}
+
+enum Result {
+	OK
+	NOK
+	UNKNOWN
+}
+
+enum PartType {
+	SINGLE
+	BATCH
+}
+
+Measurement "1" *- - "0..1" Context : ContextList
+Context "1" *- - "0..*" Limits
+
+
+skinparam class {
+	BorderColor black
+	FontColor #50237f
+	BackgroundColor #f5f5f5
+	ArrowColor black
+}
+skinparam stereotype{
+	CBackgroundColor white
+	EBackgroundColor white
+}
+
+class MessagePayload {
+	content-spec : String
+	device : Device
+	messages : Messages
+}
+
+class Message {
+	code : String
+	description[0..1] : String
+	hint[0..1] : String
+	metaData[0..1] : <String, String>
+	origin[0..1] : String
+	severity[0..1] : Severity
+	title[0..1] : String
+	ts : Date
+	type[0..1] : Type
+}
+
+enum Type {
+	DEVICE
+	TECHNICAL_INFO
+}
+
+enum Severity {
+	HIGH
+	MEDIUM
+	LOW
+	UNKNOWN
+}
+
+MessagePayload - - Device
+MessagePayload "1" o- - "1..*" Message : Messages
+
+hide Context
+hide Limits
+hide Measurement
+hide Part
+hide PartType
+hide Result
+hide Series
+
+@enduml
+
+PlantUML version 1.2018.01(Sun Jan 28 19:08:22 CET 2018)
+(EPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 9.0.4+11
+Operating System: Windows 10
+OS Version: 10.0
+Default Encoding: Cp1252
+Language: en
+Country: US
+--></g></svg>

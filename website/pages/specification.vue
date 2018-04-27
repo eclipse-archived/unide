@@ -29,13 +29,13 @@
       <nuxt-link :to="'/specification' + (isStatic ? '#messageDetail' : '')" exact class="column" tag="div">
         <a>Overview</a>
       </nuxt-link>
-      <nuxt-link :to="'/specification/machine-message' + (isStatic ? '#messageDetail' : '')" class="column" tag="div">
+      <nuxt-link :to="'/specification/v2/machine-message' + (isStatic ? '#messageDetail' : '')" class="column" tag="div">
         <a>Machine&nbsp;Message</a>
       </nuxt-link>
-      <nuxt-link :to="'/specification/measurement-message' + (isStatic ? '#messageDetail' : '')" class="column" tag="div">
+      <nuxt-link :to="'/specification/v2/measurement-message' + (isStatic ? '#messageDetail' : '')" class="column" tag="div">
         <a>Measurement&nbsp;Message</a>
       </nuxt-link>
-      <nuxt-link :to="'/specification/process-message' + (isStatic ? '#messageDetail' : '')" class="column" tag="div">
+      <nuxt-link :to="'/specification/v2/process-message' + (isStatic ? '#messageDetail' : '')" class="column" tag="div">
         <a>Process&nbsp;Message</a>
       </nuxt-link>
     </div>

@@ -17,7 +17,7 @@ endif::asciidoctor[]
 
 [IMPORTANT]
 ====
-For recent specification and news, to to https://eclipse.org/unide[Eclipse Unide project]
+For recent specification and news, go to https://eclipse.org/unide[Eclipse Unide project]
 ====
 
 [[purpose]]
