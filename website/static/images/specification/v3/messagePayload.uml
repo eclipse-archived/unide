@@ -1,4 +1,5 @@
 @startuml
+!include definitions.iuml
 
 skinparam class {
 	BorderColor black
@@ -15,12 +16,6 @@ class MessagePayload {
 	content-spec : String
 	device : Device
 	messages : Messages
-}
-
-class Device {
-	deviceID : String
-	metaData[0..1] : <String, String>
-	operationalStatus[0..1] : String
 }
 
 class Message {
@@ -49,5 +44,13 @@ enum Severity {
 
 MessagePayload -- Device
 MessagePayload "1" o-- "1..*" Message : Messages
+
+hide Context
+hide Limits
+hide Measurement
+hide Part
+hide PartType
+hide Result
+hide Series
 
 @enduml

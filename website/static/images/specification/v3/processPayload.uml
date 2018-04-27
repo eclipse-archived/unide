@@ -1,0 +1,61 @@
+@startuml
+!include definitions.iuml
+
+skinparam class {
+	BorderColor black
+	FontColor #50237f
+	BackgroundColor #f5f5f5
+	ArrowColor black
+}
+skinparam stereotype {
+	CBackgroundColor white
+	EBackgroundColor white
+}
+
+class ProcessPayload {
+	content-spec: String
+	device: Device
+	measurements: Measurements
+	part[0..1]: Part
+	process: Process
+}
+
+class Process {
+	externalId[0..1]: String
+	program[0..1]: Program
+	result[0..1]: Result
+	shutoffPhase[0..1]: String
+	ts: Date
+}
+
+class ProcessMeasurement {
+	name[0..1]: String
+	phase[0..1] ; String
+	specialValues[0..1]: SpecialValues
+}
+
+class Program {
+	id: String
+	lastChangeDate[0..1]: Date
+	name[0..1]: String
+}
+
+class SpecialValue {
+	time[0..1]: Integer
+	name[0..1]: String
+	value: <String, Float>
+}
+
+ProcessPayload -- Device
+ProcessPayload -- Part
+ProcessPayload -- Process
+ProcessPayload "1" o-- "0..*" Measurement: Measurements
+
+Process -- Program
+
+Measurement -- Series
+Measurement "1" o-- "0..*" SpecialValue: SpecialValues
+
+Measurement <|-- ProcessMeasurement
+
+@enduml

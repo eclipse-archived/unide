@@ -6,9 +6,9 @@
     </h1>
     <p>The main purpose of the machine message format is to allow devices and integrators to send messages containing an interpretation of measurement data or status.</p>
 
-    <img src="images/messagePayload.svg" alt="Class diagram of the message payload" title="Class diagram of the message payload" class="is-centered">
+    <img src="images/specification/v3/messagePayload.svg" alt="Class diagram of the message payload" title="Class diagram of the message payload" class="is-centered">
 
-    <schemaDetail type="message" :examples="$static.examples">
+    <schemaDetail type="v3/message" :examples="$static.examples">
       <card :collapsed="true">
         <template slot="header">
           Minimal message example
@@ -29,6 +29,7 @@
 <script>
 import prism         from 'vue-prism-component';
 import card          from '~/components/collapsibleCard.vue';
+import get from "lodash/get";
 import schemaDetail  from '~/components/schemaDetail.vue';
 
 export default {
@@ -42,7 +43,7 @@ export default {
           deviceId = 'a4927dad-58d4-4580-b460-79cefd56775b';
     this.$static = {
       message: {
-        'content-spec': 'urn:spec://eclipse.org/unide/machine-message#v2',
+        'content-spec': 'urn:spec://eclipse.org/unide/machine-message#v3',
         device:         {
           deviceID: deviceId
         },
@@ -52,7 +53,7 @@ export default {
         }]
       },
       multipleMachineMessages: {
-        'content-spec': 'urn:spec://eclipse.org/unide/machine-message#v2',
+        'content-spec': 'urn:spec://eclipse.org/unide/machine-message#v3',
         device:         {
           deviceID:          deviceId,
           operationalStatus: 'normal',
@@ -83,23 +84,34 @@ export default {
         }]
       }
     };
-    this.$static.examples =  {
-      '$/properties/content-spec':                        [this.$static.message, 'content-spec'],
-      '$/properties/device':                              [this.$static.message, 'device'],
-      '$/properties/device/properties/deviceID':          [this.$static.message.device, 'deviceID'],
-      '$/properties/device/properties/operationalStatus': [this.$static.multipleMachineMessages.device, 'operationalStatus'],
-      '$/properties/device/properties/metaData':          [this.$static.multipleMachineMessages.device, 'metaData'],
-      '$/properties/messages':                            [this.$static.message, 'messages'],
-      '$/properties/messages//properties/ts':             [this.$static.message.messages[0], 'ts'],
-      '$/properties/messages//properties/origin':         [this.$static.multipleMachineMessages.messages[0], 'origin'],
-      '$/properties/messages//properties/type':           [this.$static.multipleMachineMessages.messages[0], 'type'],
-      '$/properties/messages//properties/severity':       [this.$static.multipleMachineMessages.messages[0], 'severity'],
-      '$/properties/messages//properties/code':           [this.$static.message.messages[0], 'code'],
-      '$/properties/messages//properties/title':          [this.$static.multipleMachineMessages.messages[0], 'title'],
-      '$/properties/messages//properties/description':    [this.$static.multipleMachineMessages.messages[0], 'description'],
-      '$/properties/messages//properties/hint':           [this.$static.multipleMachineMessages.messages[0], 'hint'],
-      '$/properties/messages//properties/metaData':       [this.$static.multipleMachineMessages.messages[0], 'metaData']
-    };
+    this.$static.examples = Object.entries({
+      ...[
+        "content-spec",
+        "device",
+        "device.deviceID",
+        "device.metaData",
+        "device.operationalStatus",
+        "messages",
+        "messages[0].ts",
+        "messages[0].origin",
+        "messages[0].type",
+        "messages[0].severity",
+        "messages[0].code",
+        "messages[0].title",
+        "messages[0].description",
+        "messages[0].hint",
+        "messages[0].metaData"
+      ].reduce((l, v) => {
+        l[v.replace(/(^|\.)/g, "$1properties.").replace(/\[[^]]*]/g, ".items")] = v;
+        return l;
+      }, {})
+    }).reduce((l, [key, path]) => {
+      const example = get(this.$static.message, path) || get(this.$static.multipleMachineMessages, path);
+      if (example) {
+        l[key] = [example];
+      }
+      return l;
+    }, {});
   },
   filters: {
     stringify(v) {

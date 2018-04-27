@@ -124,7 +124,7 @@ export default new Router({
 replace cordovas default config.xml with the following:
 ```xml
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.eclipse.unide.binsa" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="org.eclipse.unide.binsa" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>binsa</name>
     <description>
 		Eclipse Unide Sensor Simulator Application
@@ -141,14 +141,9 @@ replace cordovas default config.xml with the following:
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
-        <allow-intent href="market:*" />
-        <icon src="www/icons/unide.png" />
-        <icon src="www/icons/favicon-16x16.png" width="16" />
-        <icon src="www/icons/firefox_app_128x128.png" width="128" />
-    </platform>
-    <platform name="ios">
-        <allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
+        <config-file mode="add" parent="/manifest" platform="android" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.CAMERA" />
+        </config-file>
         <icon src="www/icons/unide.png" />
         <icon src="www/icons/favicon-16x16.png" width="16" />
         <icon src="www/icons/firefox_app_128x128.png" width="128" />

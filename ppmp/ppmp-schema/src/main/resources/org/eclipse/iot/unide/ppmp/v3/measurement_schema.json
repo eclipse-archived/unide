@@ -1,0 +1,21 @@
+{
+	"type": "object",
+	"properties": {
+		"content-spec": {
+			"type": "string",
+			"default": "urn:spec://eclipse.org/unide/machine-message#v3",
+			"description": "Defines what the format version is"
+		},
+		"device": {
+			"$ref": "definitions.json#/definitions/device"
+		},
+		"measurements": {
+			"$ref": "definitions.json#/definitions/measurements"
+		}
+	},
+	"required": [
+		"content-spec",
+		"device",
+		"measurements"
+	]
+}
