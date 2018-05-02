@@ -22,7 +22,6 @@ class Message {
 	code : String
 	description[0..1] : String
 	hint[0..1] : String
-	metaData[0..1] : <String, String>
 	origin[0..1] : String
 	severity[0..1] : Severity
 	title[0..1] : String

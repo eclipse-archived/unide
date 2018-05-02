@@ -9,6 +9,9 @@
 		"device": {
 			"$ref": "definitions.json#/definitions/device"
 		},
+		"part": {
+			"$ref": "definitions.json#/definitions/part"
+		},
 		"process": {
 			"type": "object",
 			"description": "Contains information about the process. If the process JSON object is set, then all information in measurements are process phases",
