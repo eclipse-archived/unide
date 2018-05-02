@@ -42,180 +42,213 @@ export default {
       deviceId = "a4927dad-58d4-4580-b460-79cefd56775b";
     this.$static = {
       message: {
-        'content-spec': 'urn:spec://eclipse.org/unide/process-message#v2',
-        device:         {
-          deviceID: deviceId
+        "content-spec": "urn:spec://eclipse.org/unide/process-message#v2",
+        device: {
+          id: deviceId
         },
         process: {
           ts: now.toISOString()
         },
         measurements: [
           {
-            ts:     (new Date(now.valueOf() + 100)).toISOString(),
+            ts: new Date(now.valueOf() + 100).toISOString(),
             series: {
-              force:    [26, 23, 24],
+              time: [0, 23, 24],
+              force: [26, 23, 24],
               pressure: [52.4, 46.32, 44.2432]
             }
           }
         ]
       },
       complexMessage: {
-        'content-spec': 'urn:spec://eclipse.org/unide/process-message#v2',
-        device:         {
-          deviceID:          deviceId,
-          operationalStatus: 'normal',
-          metaData:          {
-            swVersion: '2.0.3.13',
-            swBuildId: '41535'
-          }
+        "content-spec": "urn:spec://eclipse.org/unide/process-message#v2",
+        device: {
+          id: deviceId,
+          mode: "auto",
+          state: "OK",
+          swVersion: "2.0.3.13",
+          swBuildId: "41535"
         },
         part: {
-          type:       'SINGLE',
-          partTypeID: 'F00VH07328',
-          partID:     '420003844',
-          result:     'NOK',
-          code:       'HUH289',
-          metaData:   {
-            toolId: '32324-432143'
-          }
+          code: "HUH289",
+          id: "420003844",
+          result: "NOK",
+          toolId: "32324-432143",
+          type: "SINGLE",
+          typeId: "F00VH07328"
         },
         process: {
-          externalProcessId: 'b4927dad-58d4-4580-b460-79cefd56775b',
-          ts:                now.toISOString(),
-          result:            'NOK',
-          shutoffPhase:      'phase 2',
-          program:           {
-            id:              '1',
-            name:            'Programm 1',
-            lastChangedDate: '2002-05-30T09:30:10.123+02:00'
+          externalId: "b4927dad-58d4-4580-b460-79cefd56775b",
+          program: {
+            id: "1",
+            lastChangedDate: "2002-05-30T09:30:10.123+02:00",
+            name: "Programm 1"
           },
-          shutoffValues: {
-            force: {
-              ts:         (new Date(now.valueOf() + 10000)).toISOString(),
-              value:      24,
-              upperError: 26,
-              lowerError: 22,
-              upperWarn:  25,
-              lowerWarn:  23,
-              target:     24
-            },
-            pressure: {
-              value:      50,
-              upperError: 52,
-              lowerError: 48
-            }
-          },
-          metaData: {
-            maxDuration: '30min',
-            escalation:  'shift leader'
-          }
+          result: "NOK",
+          shutoffPhase: "phase 2",
+          ts: now.toISOString(),
+          escalation: "shift leader",
+          maxDuration: "30min"
         },
-        measurements: [{
-          ts:     (new Date(now.valueOf() + 100)).toISOString(),
-          phase:  'phase 1',
-          name:   'heating up',
-          result: 'OK',
-          code:   '0000 EE01',
-          context: {
-            limits: {
+        measurements: [
+          {
+            code: "0000 EE01",
+            name: "heating up",
+            phase: "phase 1",
+            result: "OK",
+            ts: new Date(now.valueOf() + 100).toISOString(),
+            context: {
               pressure: {
-                upperError: 4444,
-                lowerError: 44,
-                upperWarn:  2222,
-                lowerWarn:  46,
-                target:     35
+                limits: {
+                  upperError: 4444,
+                  lowerError: 44,
+                  upperWarn: 2222,
+                  lowerWarn: 46,
+                  target: 35
+                }
               },
               force: {
-                upperError: [27, 24, 25],
-                lowerError: [25, 22, 23]
+                limits: {
+                  upperError: [29, 27, 26],
+                  lowerError: [23, 21, 20],
+                  upperWarn: [28.5, 26.5, 25.5],
+                  lowerWarn: [23.5, 21.5, 20.5],
+                  target: [26, 24, 23]
+                }
               }
+            },
+            specialValues: [
+              {
+                // eslint-disable-next-line camelcase
+                time: 12,
+                name: "turning point",
+                value: {
+                  pressure: 24,
+                  force: 50
+                }
+              },
+              {
+                time: 50,
+                name: "shutoffForce",
+                value: {
+                  force: 24,
+                  upperError: 26,
+                  lowerError: 22,
+                  upperWarn: 25,
+                  lowerWarn: 23,
+                  target: 24
+                }
+              },
+              {
+                time: 50,
+                name: "shutoffPressure",
+                value: {
+                  pressure: 50,
+                  upperError: 52,
+                  lowerError: 48
+                }
+              }
+            ],
+            series: {
+              time: [30, 36, 42],
+              force: [26, 23, 24],
+              pressure: [52.4, 46.32, 44.2432],
+              temperature: [45.4243, 46.42342, 44.2432]
             }
           },
-          specialValues: [{
-            // eslint-disable-next-line camelcase
-            time: 12,
-            name:   'turning point',
-            value:  {
-              pressure: 24,
-              force:    50
+          {
+            ts: new Date(now.valueOf() + 430).toISOString(),
+            phase: "phase 2",
+            name: "processing",
+            result: "OK",
+            series: {
+              // eslint-disable-next-line camelcase
+              time: [0, 23, 24],
+              temperature: [49.2, 48.8, 50]
             }
-          }],
-          series: {
-            time:        [30, 36, 42],
-            force:       [26, 23, 24],
-            pressure:    [52.4, 46.32, 44.2432],
-            temperature: [45.4243, 46.42342, 44.2432]
           }
-        }, {
-          ts:     (new Date(now.valueOf() + 430)).toISOString(),
-          phase:  'phase 2',
-          name:   'processing',
-          result: 'OK',
-          series: {
-            // eslint-disable-next-line camelcase
-            time:      [0, 23, 24],
-            temperature: [49.2, 48.8, 50]
-          }
-        }]
+        ]
       }
     };
     this.$static.examples = Object.entries({
       ...[
-        'content-spec',
-        'device',
-        'device.deviceID',
-        'device.metaData',
-        'device.operationalStatus',
-        'measurements',
-        'measurements[0].code',
-        'measurements[0].limits',
-        'measurements[0].name',
-        'measurements[0].phase',
-        'measurements[0].result',
-        'measurements[0].series',
-        'measurements[0].series.time',
-        'measurements[0].specialValues',
-        'measurements[0].specialValues[0].time',
-        'measurements[0].specialValues[0].name',
-        'measurements[0].specialValues[0].value',
-        'measurements[0].ts',
-        'part',
-        'part.code',
-        'part.metaData',
-        'part.partID',
-        'part.partTypeID',
-        'part.result',
-        'part.type',
-        'process',
-        'process.externalProcessId',
-        'process.metaData',
-        'process.program',
-        'process.program.id',
-        'process.program.lastChangedDate',
-        'process.program.name',
-        'process.result',
-        'process.shutoffPhase',
-        'process.shutoffValues',
-        'process.ts']
-      .reduce((l, v) => {
-        l[v.replace(/(^|\.)/g, '$1properties.').replace(/\[[^]]*]/g, '.items')] = v;
+        "content-spec",
+        "device",
+        "device.id",
+        "device.mode",
+        "measurements",
+        "part",
+        "part.code",
+        "part.id",
+        "part.result",
+        "part.type",
+        "part.typeId",
+        "process",
+        "process.externalId",
+        "process.program",
+        "process.program.id",
+        "process.program.lastChangedDate",
+        "process.program.name",
+        "process.result",
+        "process.shutoffPhase",
+        "process.ts"
+      ].reduce(
+        (l, v) => {
+          l[this.schemafy(v)] = v;
+          return l;
+        },
+        {
+          'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[0]':
+            "measurements[0].context.pressure.limits",
+          'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[1]':
+            "measurements[0].context.force.limits",
+          'properties.measurements.allOf[0].items.properties.series.patternProperties["^[^$]+"]':
+            "measurements[0].series.force"
+        }
+      ),
+      ...["code", "result", "series", "series.time", "ts"].reduce((l, key) => {
+        l[
+          `properties.measurements.allOf[0].items.${this.schemafy(key)}`
+        ] = `measurements[0].${key}`;
         return l;
-      }, {
-        'properties.measurements.items.properties.limits.patternProperties["^[^$]+"].oneOf[0]': 'measurements[0].limits.pressure',
-        'properties.measurements.items.properties.limits.patternProperties["^[^$]+"].oneOf[1]': 'measurements[0].limits.force',
-        'properties.measurements.items.properties.series.patternProperties["^[^$]+"]':          'measurements[0].series.force',
-        'properties.process.properties.shutoffValues.patternProperties["^[^$]+"]':              'process.shutoffValues.force'
-      }),
-      ...['lowerError', 'lowerWarn', 'target', 'upperError', 'upperWarn'].reduce((l, key) => {
-        l[`properties.measurements.items.properties.limits.patternProperties["^[^$]+"].oneOf[0].properties.${key}`] = `measurements[0].limits.pressure.${key}`;
-        l[`properties.measurements.items.properties.limits.patternProperties["^[^$]+"].oneOf[1].properties.${key}`] = `measurements[0].limits.force.${key}`;
-        l[`properties.process.properties.shutoffValues.patternProperties["^[^$]+"].properties.${key}`] = `process.shutoffValues.force.${key}`
+      }, {}),
+      ...[
+        "name",
+        "phase",
+        "specialValues",
+        "specialValues[1].time",
+        "specialValues[1].name",
+        "specialValues[1].value"
+      ].reduce((l, key) => {
+        l[
+          `properties.measurements.allOf[1].items.${this.schemafy(key)}`
+        ] = `measurements[0].${key}`;
+        return l;
+      }, {}),
+      ...[
+        "lowerError",
+        "lowerWarn",
+        "target",
+        "upperError",
+        "upperWarn"
+      ].reduce((l, key) => {
+        l[
+          `properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[0].properties.${key}`
+        ] = `measurements[0].context.pressure.limits.${key}`;
+        l[
+          `properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[1].properties.${key}`
+        ] = `measurements[0].context.force.limits.${key}`;
         return l;
       }, {})
-      }).reduce((l, [key, path]) => {
-      const example = get(this.$static.message, path) || get(this.$static.complexMessage, path);
-      if(example) {
+    }).reduce((l, [key, path]) => {
+      const example =
+        get(this.$static.message, path) ||
+        get(this.$static.complexMessage, path);
+      if (example) {
         l[key] = [example];
+      } else {
+        console.error(`no example provided in process-message for:
+"${key}": "${path}"`);
       }
       return l;
     }, {});
@@ -223,6 +256,13 @@ export default {
   filters: {
     stringify(v) {
       return JSON.stringify(v, " ", 2);
+    }
+  },
+  methods: {
+    schemafy(v) {
+      return v
+        .replace(/(^|\.)/g, "$1properties.")
+        .replace(/\[[^]]*]/g, ".items");
     }
   },
   components: {

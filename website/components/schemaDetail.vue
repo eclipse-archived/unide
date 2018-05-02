@@ -234,6 +234,8 @@ export default {
         Object.entries(this.examples).forEach(([path, example]) => {
           if(get(this.masterSchema, path)) {
             set(this.masterSchema, `${path}.examples`, example);
+          } else {
+            console.error(`schema path not found in ${this.type}: ${path}`);
           }
         });
         console.timeEnd("parsing Schema");

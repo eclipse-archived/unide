@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import prism         from 'vue-prism-component';
-import card          from '~/components/collapsibleCard.vue';
+import prism from "vue-prism-component";
+import card from "~/components/collapsibleCard.vue";
 import get from "lodash/get";
-import schemaDetail  from '~/components/schemaDetail.vue';
+import schemaDetail from "~/components/schemaDetail.vue";
 
 export default {
   head() {
@@ -37,78 +37,84 @@ export default {
     };
   },
   created() {
-    const now      = new Date(),
-          deviceId = 'a4927dad-58d4-4580-b460-79cefd56775b';
+    const now = new Date(),
+      deviceId = "a4927dad-58d4-4580-b460-79cefd56775b";
     this.$static = {
       message: {
-        'content-spec': 'urn:spec://eclipse.org/unide/measurement-message#v3',
-        device:         {
+        "content-spec": "urn:spec://eclipse.org/unide/measurement-message#v3",
+        device: {
           id: deviceId
         },
 
-        measurements: [{
-          ts:     now.toISOString(),
-          series: {
-            // eslint-disable-next-line camelcase
-            time:      [0, 23, 24],
-            temperature: [45.4231, 46.4222, 44.2432]
+        measurements: [
+          {
+            ts: now.toISOString(),
+            series: {
+              // eslint-disable-next-line camelcase
+              time: [0, 23, 24],
+              temperature: [45.4231, 46.4222, 44.2432]
+            }
           }
-        }]
+        ]
       },
       complexMessage: {
-        'content-spec': 'urn:spec://eclipse.org/unide/measurement-message#v3',
-        device:         {
-          id:          deviceId,
-          mode:        'maintenance',
-          state:       'WARN',
-          swVersion:   '2.0.3.13',
-          swBuildID:   '41535'
+        "content-spec": "urn:spec://eclipse.org/unide/measurement-message#v3",
+        device: {
+          id: deviceId,
+          mode: "maintenance",
+          state: "WARN",
+          swVersion: "2.0.3.13",
+          swBuildID: "41535"
         },
         part: {
-          code:       'HUH289',
-          id:         '420003844',
-          type:       'BATCH',
-          typeId:     'F00VH07328',
-          result:     'OK',
-          lotID:      '845849',
-          toolID:     '32324-432143'
+          code: "HUH289",
+          id: "420003844",
+          type: "BATCH",
+          typeId: "F00VH07328",
+          result: "OK",
+          lotID: "845849",
+          toolID: "32324-432143"
         },
-        measurements: [{
-          code:   '190ABT',
-          context: {
-            temperature: {
-              accuracy:     [0.112, 0.115, 0.129],
-              limits: {
-                lowerError: -2,
-                lowerWarn:  -1,
-                upperError: 5,
-                upperWarn:  1.5
-              },
-              offset:       37,
-              unit:         'Cel'
-            }
+        measurements: [
+          {
+            code: "190ABT",
+            context: {
+              temperature: {
+                accuracy: [0.112, 0.115, 0.129],
+                limits: {
+                  lowerError: -2,
+                  lowerWarn: -1,
+                  target: 1.21,
+                  upperError: 5,
+                  upperWarn: 1.5
+                },
+                offset: 37,
+                unit: "Cel"
+              }
+            },
+            result: "OK",
+            series: {
+              // eslint-disable-next-line camelcase
+              time: [0, 23, 24],
+              temperature: [0.4231, 2.4222, 4.2432]
+            },
+            ts: now.toISOString()
           },
-          result: 'OK',
-          series: {
-            // eslint-disable-next-line camelcase
-            time:      [0, 23, 24],
-            temperature: [0.4231, 2.4222, 4.2432]
-          },
-          ts:     now.toISOString()
-        }, {
-          context: {
-            scanData: {
-              type: 'BASE64'
-            }
-          },
-          series: {
-            // eslint-disable-next-line camelcase
-            time:   [0, 130, 2633],
-            pressure: [52.4, 46.32, 44.2432],
-            scanData: [ "Zm9vCg==", "YmFyCg==", "Y2hlZXNlCg==" ]
-          },
-          ts:     (new Date(now.valueOf() - 5000)).toISOString()
-        }]
+          {
+            context: {
+              scanData: {
+                type: "BASE64"
+              }
+            },
+            series: {
+              // eslint-disable-next-line camelcase
+              time: [0, 130, 2633],
+              pressure: [52.4, 46.32, 44.2432],
+              scanData: ["Zm9vCg==", "YmFyCg==", "Y2hlZXNlCg=="]
+            },
+            ts: new Date(now.valueOf() - 5000).toISOString()
+          }
+        ]
       }
     };
     this.$static.examples = Object.entries({
@@ -118,6 +124,12 @@ export default {
         "device.id",
         "device.mode",
         "device.state",
+        "part",
+        "part.code",
+        "part.id",
+        "part.result",
+        "part.type",
+        "part.typeId",
         "measurements",
         "measurements[0].code",
         "measurements[0].context",
@@ -126,23 +138,27 @@ export default {
         "measurements[0].ts",
         "part",
         "part.code",
-        "part.metaData",
-        "part.partID",
-        "part.partTypeID",
+        "part.id",
+        "part.typeId",
         "part.result"
       ].reduce(
         (l, v) => {
-          l[v.replace(/(^|\.)/g, "$1properties.").replace(/\[[^]]*]/g, ".items")] = v;
+          l[
+            v.replace(/(^|\.)/g, "$1properties.").replace(/\[[^]]*]/g, ".items")
+          ] = v;
           return l;
         },
         {
-          'properties.measurements.items.properties.context.patternProperties["^[^$]+"]': "measurements[0].context.temperature",
+          'properties.measurements.items.properties.context.patternProperties["^[^$]+"]':
+            "measurements[0].context.temperature",
           'properties.measurements.items.properties.series.patternProperties["^[^$]+"]':
             "measurements[0].series.temperature"
         }
       ),
-      ...['accuracy', 'limits', 'offset', 'unit'].reduce((l, key) => {
-        l[`properties.measurements.items.properties.context.patternProperties["^[^$]+"].properties.${key}`] = `measurements[0].context.temperature.${key}`;
+      ...["accuracy", "limits", "offset", "unit"].reduce((l, key) => {
+        l[
+          `properties.measurements.items.properties.context.patternProperties["^[^$]+"].properties.${key}`
+        ] = `measurements[0].context.temperature.${key}`;
         return l;
       }, {}),
       ...[
@@ -152,24 +168,33 @@ export default {
         "upperError",
         "upperWarn"
       ].reduce((l, key) => {
-        l[`properties.measurements.items.properties.limits.patternProperties["^[^$]+"].properties.${key}`] = `measurements[0].limits.temperature.${key}`;
+        l[
+          `properties.measurements.items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[0].properties.${key}`
+        ] = `measurements[0].context.temperature.limits.${key}`;
         return l;
       }, {})
     }).reduce((l, [key, path]) => {
-      const example = get(this.$static.message, path) || get(this.$static.complexMessage, path);
+      const example =
+        get(this.$static.message, path) ||
+        get(this.$static.complexMessage, path);
       if (example) {
         l[key] = [example];
+      } else {
+        console.error(`no example provided in measurement-message for:
+"${key}": "${path}"`);
       }
       return l;
     }, {});
   },
   filters: {
     stringify(v) {
-      return JSON.stringify(v, ' ', 2);
+      return JSON.stringify(v, " ", 2);
     }
   },
   components: {
-    card, prism, schemaDetail
+    card,
+    prism,
+    schemaDetail
   }
 };
 </script>

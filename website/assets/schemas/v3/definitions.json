@@ -191,7 +191,8 @@
 							"^[^$]+": {
 								"type": "array",
 								"items": {
-									"type": "number"
+									"type": ["boolean", "number", "string"],
+									"description": "The type of this measurement series is dependendant on the context.type. It defaults to number"
 								}
 							}
 						},
