@@ -35,6 +35,38 @@
         </div>
       </div>
     </div>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label :for="`${localValue._id}_url`" class="label">{{ $t('login.user.label') }}:</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control is-expanded has-icons-right">
+            <input :id="`${localValue._id}_user`" :disabled="disabled" v-model="localValue.user" class="input" :placeholder="$t('login.user.placeholder')">
+            <span class="icon is-small is-right">
+                <i class="fa fa-user"></i>
+            </span>
+          </p>
+          <p v-show="errors.has('user')" class="help is-danger">{{ errors.first('user') }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label :for="`${localValue._id}_password`" class="label">{{ $t('login.password.label') }}:</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control is-expanded has-icons-right">
+            <input type="password" :id="`${localValue._id}_password`" :disabled="disabled" v-model="localValue.password" data-vv-name="password" class="input" :placeholder="$t('login.password.placeholder')">
+            <span class="icon is-small is-right">
+              <i class="fa fa-key"></i>
+            </span>
+          </p>
+          <p v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</p>
+        </div>
+      </div>
+    </div>
     <card collapsed>
       <template slot="header">
         {{ $t('configuration.messages') }}
@@ -169,6 +201,13 @@ export default {
       return clone;
     },
     cleanValue(value) {
+      let copy = cloneDeep(value);
+      if(!value.user) {
+        delete value.user;
+      }
+      if(!value.password) {
+        delete value.password;
+      }
       return Object.assign({}, value, {
         messages: Object.values(value.messages)
       });
@@ -187,7 +226,8 @@ export default {
       handler() {
         this.$validator.validateAll({
           name: this.localValue.name,
-          url:  this.localValue.url
+          url:  this.localValue.url,
+          password: this.localValue.password
         })
           .catch(() => {});
         const myValue = this.cleanValue(this.localValue);

@@ -60,7 +60,7 @@
               {{ $t('ppmp.measurements.sendingFrequency.title') }}
             </label>
             <div class="control">
-              <input class="input" ref="sendingFrequency" required value="1000" type="number" :placeholder="$t('ppmp.measurements.sendingFrequency.placeholder')" v-validate="'required|numeric|min_value:100'" daba-vv-name="sendingFrequency">
+              <input class="input" ref="sendingFrequency" required value="1000" type="number" :placeholder="$t('ppmp.measurements.sendingFrequency.placeholder')" v-validate="'required|numeric|min_value:100'" data-vv-name="sendingFrequency">
             </div>
             <p v-show="errors.has('sendingFrequency')" class="help is-danger">{{ errors.first('sendingFrequency') }}</p>
           </div>
@@ -69,7 +69,7 @@
               {{ $t('ppmp.measurements.samplingFrequency.title') }}
             </label>
             <div class="control">
-              <input class="input" ref="samplingFrequency" required value="100" type="number" :placeholder="$t('ppmp.measurements.samplingFrequency.placeholder')" v-validate="'required|numeric|min_value:10'" daba-vv-name="samplingFrequency" @input="assertSamplingFrequency">
+              <input class="input" ref="samplingFrequency" required value="100" type="number" :placeholder="$t('ppmp.measurements.samplingFrequency.placeholder')" v-validate="'required|numeric|min_value:10'" data-vv-name="samplingFrequency" @input="assertSamplingFrequency">
             </div>
             <p v-show="errors.has('samplingFrequency')" class="help is-danger">{{ errors.first('samplingFrequency') }}</p>
           </div>
@@ -245,25 +245,35 @@ export default {
             if(this.operationalStatus) {
               device.operationalStatus = this.operationalStatus;
             }
-            let baseUrl = this.configuration[this.configId].url;
-            if(this.configuration[this.configId].appendType !== false) {
-              baseUrl += "/v2/measurement";
+            let conf = {
+              method: 'post',
+              url: this.configuration[this.configId].url,
+              data: {
+                'content-spec': 'urn:spec://eclipse.org/unide/measurement-message#v2',
+                device,
+                measurements:   Object.entries(cache).map(([name, series]) => {
+                  const startTime = series[0][0];
+                  return {
+                    ts:     (new Date(startTime)).toISOString(),
+                    series: {
+                      // eslint-disable-next-line camelcase
+                      $_time: series.map(v => v[0] - startTime),
+                      [name]: series.map(v => v[1])
+                    }
+                  };
+                })
+              }
+            };
+            if(this.configuration[this.configId].user && this.configuration[this.configId].password) {
+              conf.auth = {
+                username: this.configuration[this.configId].user,
+                password: this.configuration[this.configId].password
+              };
             }
-            axios.post(baseUrl, {
-              'content-spec': 'urn:spec://eclipse.org/unide/measurement-message#v2',
-              device,
-              measurements:   Object.entries(cache).map(([name, series]) => {
-                const startTime = series[0][0];
-                return {
-                  ts:     (new Date(startTime)).toISOString(),
-                  series: {
-                    // eslint-disable-next-line camelcase
-                    $_time: series.map(v => v[0] - startTime),
-                    [name]: series.map(v => v[1])
-                  }
-                };
-              })
-            })
+            if(this.configuration[this.configId].appendType !== false) {
+              conf.url += "/v2/measurement";
+            }
+            axios.request(conf)
               .catch(err => {
                 console.error(err);
                 this.stopSending();
