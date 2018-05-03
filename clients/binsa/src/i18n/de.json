@@ -125,6 +125,7 @@
 			"title": "URL",
 			"description": "Das Protocol, Host und der Port des Servers."
 		},
+		"appendType": "Nachrichtentyp als REST Pfad /v2/... anhängen?",
 		"filter": "Filter",
 		"messages": "Vorbereitetete Nachrichten"
 	}

@@ -130,6 +130,7 @@
             "title": "URL",
             "description": "El protocolo, host y puerto del serveridor."
         },
+		"appendType": "Añadir el tipo del mensaje a la ruta /v2/...?",
         "filter": "Filtro",
         "messages": "Mensajes preparados"
     }

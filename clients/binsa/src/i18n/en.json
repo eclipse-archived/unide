@@ -125,6 +125,7 @@
             "title": "URL",
             "description": "The protocol, host and port of the server."
         },
+		"appendType": "Append message type as REST path /v2/...?",
         "filter": "Filter",
         "messages": "Preconfigured messages"
     }
