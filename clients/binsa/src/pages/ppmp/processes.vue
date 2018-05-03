@@ -347,41 +347,51 @@ export default {
           process.program      = process.program || {};
           process.program.name = this.programName;
         }
-        let baseUrl = this.configuration[this.configId].url;
-        if(this.configuration[this.configId].appendType !== false) {
-          baseUrl += "/v2/process";
+        let conf = {
+          method: 'post',
+          url: this.configuration[this.configId].url,
+          data: {
+            'content-spec': 'urn:spec://eclipse.org/unide/process-message#v2',
+            device,
+            process,
+            measurements: phases.reduce((l, cache, phase) => {
+              // split measurements of different phases into their own measurement block;
+              // make sure to list series with same time array in one series/measurement object,
+              // but split series with different time array into seperate series/measurement
+              const t = Object.entries(cache).reduce((t, [name, series]) => {
+                // split time apart as Trie key
+                t.add(series.map(v => v[0]), {
+                  name,
+                  values: series.map(v => v[1])
+                });
+                return t;
+              }, new Trie());
+              return l.concat(t.flatten().map(({ keys, values }) => {
+                const measurementStartTime = keys[0];
+                return {
+                  ts:     (new Date(measurementStartTime)).toISOString(),
+                  phase:  phase.toString(),
+                  series: values.reduce((serie, { name, values }) => {
+                    serie[name] = values;
+                    return serie;
+                  }, {
+                    $_time: keys.map(time => time - measurementStartTime)
+                  })
+                };
+              }));
+            }, [])
+          }
+        };
+        if(this.configuration[this.configId].user && this.configuration[this.configId].password) {
+          conf.auth = {
+            username: this.configuration[this.configId].user,
+            password: this.configuration[this.configId].password
+          };
         }
-        await axios.post(baseUrl, {
-          'content-spec': 'urn:spec://eclipse.org/unide/process-message#v2',
-          device,
-          process,
-          measurements: phases.reduce((l, cache, phase) => {
-            // split measurements of different phases into their own measurement block;
-            // make sure to list series with same time array in one series/measurement object,
-            // but split series with different time array into seperate series/measurement
-            const t = Object.entries(cache).reduce((t, [name, series]) => {
-              // split time apart as Trie key
-              t.add(series.map(v => v[0]), {
-                name,
-                values: series.map(v => v[1])
-              });
-              return t;
-            }, new Trie());
-            return l.concat(t.flatten().map(({ keys, values }) => {
-              const measurementStartTime = keys[0];
-              return {
-                ts:     (new Date(measurementStartTime)).toISOString(),
-                phase:  phase.toString(),
-                series: values.reduce((serie, { name, values }) => {
-                  serie[name] = values;
-                  return serie;
-                }, {
-                  $_time: keys.map(time => time - measurementStartTime)
-                })
-              };
-            }));
-          }, [])
-        });
+        if(this.configuration[this.configId].appendType !== false) {
+          conf.url += "/v2/process";
+        }
+        await axios.request(conf);
       } catch(err) {
         console.error(err);
         this.$emit('connectionError', err);

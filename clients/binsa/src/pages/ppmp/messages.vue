@@ -93,24 +93,33 @@ export default {
         device.operationalStatus = this.operationalStatus;
       }
       try {
-        let baseUrl = this.configuration[this.configId].url;
-        if(this.configuration[this.configId].appendType !== false) {
-          baseUrl += "/v2/message";
+        let conf = {
+          method: 'post',
+          url: this.configuration[this.configId].url,
+          data: {
+            'content-spec': 'urn:spec://eclipse.org/unide/machine-message#v2',
+            device,
+            messages: [Object.assign({
+              ts: (new Date()).toISOString()
+            },
+              // eslint-disable-next-line indent
+              messageForm.FIELDS.reduce((m, f) => {
+                m[f] = this.configuration[this.configId].messages[idx][f];
+                return m;
+              }, {})
+            )]
+          }
+        };
+        if(this.configuration[this.configId].user && this.configuration[this.configId].password) {
+          conf.auth = {
+            username: this.configuration[this.configId].user,
+            password: this.configuration[this.configId].password
+          };
         }
-        await axios.post(baseUrl, {
-          'content-spec': 'urn:spec://eclipse.org/unide/machine-message#v2',
-          device,
-          messages: [Object.assign({
-            ts: (new Date()).toISOString()
-          },
-            // eslint-disable-next-line indent
-            messageForm.FIELDS.reduce((m, f) => {
-              m[f] = this.configuration[this.configId].messages[idx][f];
-              return m;
-            }, {})
-
-          )]
-        });
+        if(this.configuration[this.configId].appendType !== false) {
+          conf.url += "/v2/message";
+        }
+        await axios.request(conf);
       } catch(err) {
         this.$emit('connectionError', err);
       }
@@ -128,23 +137,33 @@ export default {
         device.operationalStatus = this.operationalStatus;
       }
       try {
-        let baseUrl = this.configuration[this.configId].url;
-        if(this.configuration[this.configId].appendType !== false) {
-          baseUrl += "/v2/message";
+        let conf = {
+          method: 'post',
+          url: this.configuration[this.configId].url,
+          data: {
+            'content-spec': 'urn:spec://eclipse.org/unide/machine-message#v2',
+            device,
+            messages: [Object.assign({
+              ts: (new Date()).toISOString()
+            },
+              // eslint-disable-next-line indent
+              messageForm.FIELDS.reduce((m, f) => {
+                m[f] = this.message[f];
+                return m;
+              }, {})
+            )]
+          }
+        };
+        if(this.configuration[this.configId].user && this.configuration[this.configId].password) {
+          conf.auth = {
+            username: this.configuration[this.configId].user,
+            password: this.configuration[this.configId].password
+          };
         }
-        await axios.post(baseUrl, {
-          'content-spec': 'urn:spec://eclipse.org/unide/machine-message#v2',
-          device,
-          messages: [Object.assign({
-            ts: (new Date()).toISOString()
-          },
-            // eslint-disable-next-line indent
-            messageForm.FIELDS.reduce((m, f) => {
-              m[f] = this.message[f];
-              return m;
-            }, {})
-          )]
-        });
+        if(this.configuration[this.configId].appendType !== false) {
+          conf.url += "/v2/message";
+        }
+        await axios.request(conf);
       } catch(err) {
       }
       this.sendingManual = false;
