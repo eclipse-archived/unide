@@ -347,7 +347,11 @@ export default {
           process.program      = process.program || {};
           process.program.name = this.programName;
         }
-        await axios.post(`${this.configuration[this.configId].url}/v2/process`, {
+        let baseUrl = this.configuration[this.configId].url;
+        if(this.configuration[this.configId].appendType !== false) {
+          baseUrl += "/v2/process";
+        }
+        await axios.post(baseUrl, {
           'content-spec': 'urn:spec://eclipse.org/unide/process-message#v2',
           device,
           process,

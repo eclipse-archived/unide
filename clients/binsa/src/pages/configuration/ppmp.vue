@@ -19,8 +19,19 @@
       </div>
       <div class="field-body">
         <div class="field is-expanded">
-          <input :id="`${localValue._id}_url`" :disabled="disabled" v-model="localValue.url" data-vv-name="url" v-validate="'url|required'" class="input" :placeholder="`https://unide.eclipse.org${path}`"></input>
+          <input :id="`${localValue._id}_url`" :disabled="disabled" v-model="localValue.url" data-vv-name="url" v-validate="'url|required'" class="input" :placeholder="`https://unide.eclipse.org${path}`">
           <p v-show="errors.has('url')" class="help is-danger">{{ errors.first('url') }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="field is-horizontal">
+      <div class="field-label">
+      </div>
+      <div class="field-body">
+        <div class="field is-expanded">
+          <div class="field">
+            <toggle :id="`${localValue._id}_appendType`" :disabled="disabled" v-model="localValue.appendType">{{ $t('configuration.appendType') }}</toggle>
+          </div>
         </div>
       </div>
     </div>
@@ -36,11 +47,11 @@
           <div class="field-body field has-addons">
             <div class="field control select is-narrow">
               <select class="input" v-model="msgFilterKey">
-                <option v-for="key in MESSAGEFIELDS">{{ key }}</option>
+                <option v-for="key in MESSAGEFIELDS" :key="key">{{ key }}</option>
               </select>
             </div>
             <div class="field control has-icons-right">
-              <input class="input" v-model="msgFilterStr"></input>
+              <input class="input" v-model="msgFilterStr">
               <span class="icon is-small is-right">
                 <i class="fa fa-search"></i>
               </span>
@@ -101,6 +112,7 @@ import defaults     from 'lodash/defaults';
 import { Sketch }   from 'vue-color';
 import card         from 'components/collapsibleCard';
 import messageForm  from 'components/messageForm';
+import Switch       from 'buefy/src/components/switch';
 
 export default {
   props: {
@@ -145,8 +157,9 @@ export default {
     },
     cloneValue(value) {
       const clone = defaults(cloneDeep(value), {
-        name:     '',
-        url:      '',
+        name:       '',
+        url:        '',
+        appendType: true,
         messages: []
       });
       clone.messages = clone.messages.reduce((l, message, idx) => {
@@ -165,7 +178,7 @@ export default {
     value: {
       handler() {
         if(!isEqual(this.value, this.cleanValue(this.localValue))) {
-          this.localValue = this.cloneValue(this.value);
+          this.$set(this, "localValue", this.cloneValue(this.value));
         }
       },
       deep: true
@@ -178,11 +191,16 @@ export default {
         })
           .catch(() => {});
         const myValue = this.cleanValue(this.localValue);
-        if(!isEqual(this.value, myValue)) {
+        if(!isEqual(this.value, myValue) && !this.disabled) {
           this.$emit('input', myValue);
         }
       },
       deep: true
+    },
+    disabled() {
+      if(!this.disabled) {
+        this.$options.watch.localValue.handler.call(this);
+      }
     }
   },
   computed: {
@@ -203,7 +221,8 @@ export default {
   components: {
     card,
     messageForm,
-    colorPicker: Sketch
+    colorPicker: Sketch,
+    toggle: Switch
   }
 };
 </script>

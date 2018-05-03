@@ -245,7 +245,11 @@ export default {
             if(this.operationalStatus) {
               device.operationalStatus = this.operationalStatus;
             }
-            axios.post(`${this.configuration[this.configId].url}/v2/measurement`, {
+            let baseUrl = this.configuration[this.configId].url;
+            if(this.configuration[this.configId].appendType !== false) {
+              baseUrl += "/v2/measurement";
+            }
+            axios.post(baseUrl, {
               'content-spec': 'urn:spec://eclipse.org/unide/measurement-message#v2',
               device,
               measurements:   Object.entries(cache).map(([name, series]) => {
