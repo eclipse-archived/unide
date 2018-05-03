@@ -128,7 +128,11 @@ export default {
         device.operationalStatus = this.operationalStatus;
       }
       try {
-        await axios.post(`${this.configuration[this.configId].url}/v2/message`, {
+        let baseUrl = this.configuration[this.configId].url;
+        if(this.configuration[this.configId].appendType !== false) {
+          baseUrl += "/v2/message";
+        }
+        await axios.post(baseUrl, {
           'content-spec': 'urn:spec://eclipse.org/unide/machine-message#v2',
           device,
           messages: [Object.assign({
