@@ -32,6 +32,7 @@
     "about": {
         "about": "About the application",
         "title": "Name",
+        "dataConcent": "Data Protection",
         "description": "Description",
         "author": "Author",
         "version": "Version",
@@ -40,6 +41,12 @@
         "repository": "Repository",
         "licenses": "3rd party licenses"
     },
+	"dataConcent": {
+		"title": "Data management information",
+		"titleAccepted": "Data management information (accepted)",
+		"information": "This app stores configuration data for reasons of functionality and convenience. The data is only stored locally on your browser/app. If you provide a username and password, it is encrypted (AES-GCM/SHA256). You can see, change and delete these configurations at any time by clicking on the 'settings' icon. You can completely remove the data from your local device by deleting the cache of the site/app in your browser/app settings.",
+		"requirement": "Only proceed, if you consent to this storing of configuration data."
+	},
     "home": {
         "title": "This is a client and service for validating PPMP-messages",
         "subtitle": "The following endpoints are available"

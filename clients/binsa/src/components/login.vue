@@ -5,7 +5,7 @@
         <p class="modal-card-title">
           {{ $t('login.title') }}
         </p>
-        <SelectLang/>
+        <selectLang/>
       </header>
       <section class="modal-card-body">
         <div class="field">
@@ -32,6 +32,7 @@
           </div>
           <p v-show="errors.has('password')" class="help is-danger">{{ errors.first('password') }}</p>
         </div>
+        <dataConcent/>
         <label tabindex="0" class="checkbox" @keydown.prevent.enter.space="remember = !remember">
           <input type="checkbox" v-model="remember" true-value="true">
           <span class="check"></span>
@@ -53,7 +54,8 @@
 </template>
 
 <script>
-import SelectLang from 'components/selectLang';
+import selectLang from 'components/selectLang';
+import dataConcent from 'components/dataConcent';
 
 export default {
   props: {
@@ -88,7 +90,7 @@ export default {
     }
   },
   components: {
-    SelectLang
+    dataConcent, selectLang
   }
 };
 </script>

@@ -28,40 +28,22 @@
         </div>
       </div>
     </div>
-    <footer class="footer">
-      <div class="container">
-        <div class="content has-text-centered">
-          <ul>
-            <span>
-              <a href="http://www.eclipse.org/legal/privacy.php">Privacy Policy</a>
-            </span>
-            <span>
-              <a href="http://www.eclipse.org/legal/termsofuse.php">Terms of Use</a>
-            </span>
-            <span>
-              <a href="http://www.eclipse.org/legal/copyright.php">Copyright Agent</a>
-            </span>
-            <span>
-              <a href="https://eclipse.org/security/ ">Security reports</a>
-            </span>
-            <span>
-              <a href="http://www.eclipse.org/legal/">Legal</a>
-            </span>
-          </ul>
-        </div>
-      </div>
-    </footer>
+    <eclipseFooter/>
   </div>
 </template>
 
 <script>
-import navbar       from '~/components/navbar.vue';
-import recentPosts  from '~/components/recentPosts.vue';
-import blogArchives from '~/components/blogArchives.vue';
+import navbar from "~/components/navbar.vue";
+import recentPosts from "~/components/recentPosts.vue";
+import blogArchives from "~/components/blogArchives.vue";
+import eclipseFooter from "~/components/eclipseFooter.vue";
 
 export default {
   components: {
-    navbar, recentPosts, blogArchives
+    eclipseFooter,
+    blogArchives,
+    navbar,
+    recentPosts
   }
 };
 </script>

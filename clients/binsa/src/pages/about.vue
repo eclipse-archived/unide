@@ -13,6 +13,16 @@
           {{ packageJson[field]}}
         </div>
       </div>
+      
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">{{ $t(`about.dataConcent`) }}:</label>
+        </div>
+        <div class="field-body">
+          <dataConcent/>
+        </div>
+      </div>
+
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">{{ $t(`about.license`) }}:</label>
@@ -299,6 +309,9 @@
         <div class="container">
           <div class="content has-text-centered">
             <span>
+              <a href="http://www.eclipse.org">Eclipse Foundation</a>
+            </span>
+            <span>
               <a href="http://www.eclipse.org/legal/privacy.php">Privacy&nbsp;Policy</a>
             </span>
             <span>
@@ -370,6 +383,7 @@
 <script>
 import axios  from 'axios';
 import card   from 'components/collapsibleCard';
+import dataConcent from 'components/dataConcent';
 
 export default {
   data() {
@@ -393,7 +407,7 @@ export default {
     ])
       .catch(err => console.error(err));
   },
-  components: { card }
+  components: { card, dataConcent }
 };
 </script>
 

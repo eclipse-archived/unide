@@ -32,6 +32,7 @@
     "about": {
         "about": "Sobre la application",
         "title": "Nombre",
+        "dataConcent": "Protección de datos",
         "description": "Descripción",
         "author": "Autor",
         "version": "Versión",
@@ -40,6 +41,12 @@
         "repository": "Repositorio",
         "licenses": "Librarias & licencias usadas"
     },
+	"dataConcent": {
+		"title": "Información de gestión de datos",
+		"titleAccepted": "Información de gestión de datos (aceptada)",
+		"information": "Esta aplicación almacena datos de configuración por razones de funcionalidad y conveniencia. Los datos solo se almacenan localmente en su navegador / aplicación. Si proporciona un nombre de usuario y contraseña, está encriptado (AES-GCM / SHA256). Puede ver, cambiar y eliminar estas configuraciones en cualquier momento haciendo clic en el ícono 'configuración'. Puede eliminar completamente los datos de su dispositivo local al eliminar la memoria caché del sitio / aplicación en la configuración de su navegador / aplicación.",
+		"requirement": "Solo proceda, si acepta este almacenamiento de datos de configuración."
+	},
     "home": {
         "title": "Eso es un cliente y servicio para validar mensajes de PPMP",
         "subtitle": "Las interfaces siguientes estan disponible"
