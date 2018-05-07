@@ -1,8 +1,8 @@
-const pkg  = require('../../package.json'),
-      i18n = {
-        en: require('../../src/i18n/en.json'),
-        de: require('../../src/i18n/de.json')
-      };
+const pkg = require('../../package.json'),
+  i18n = {
+    en: require('../../src/i18n/en.json'),
+    de: require('../../src/i18n/de.json')
+  };
 
 function deleteDB(prefix = '') {
   return new Promise((res, rej) => {
@@ -22,24 +22,24 @@ function resetPage(prefix) {
       ),
     window.caches.keys().then(cacheNames =>
       Promise.all(
-        cacheNames.map(cacheName => 
+        cacheNames.map(cacheName =>
           window.caches.delete(cacheName)
         )
       )
     ),
     deleteDB()
   ])
-  .then(arg => {
-    console.log(prefix);
-    if(prefix) {
-      return deleteDB(prefix);
-    }
-    return arg;
-  })
-  .catch(err => console.error(err));
+    .then(arg => {
+      console.log(prefix);
+      if(prefix) {
+        return deleteDB(prefix);
+      }
+      return arg;
+    })
+    .catch(err => console.error(err));
   cy.visit('http://localhost:8080/binsa/');
-  cy.get('.home').should('exist');
-  cy.get('#navMenu > div.navbar-end > div.navbar-item.signOut').click({force: true});
+  // cy.get('.home').should('exist');
+  // cy.get('#navMenu > div.navbar-end > div.navbar-item.signOut').click({ force: true });
 }
 
 describe('General', () => {
@@ -101,7 +101,7 @@ describe('Login', () => {
             cy.get('@dropdown');
             cy.should('have.class', 'is-active');
             cy.get('.background');
-            cy.get('.dropdown-menu .dropdown-item').contains('de').click({force: true});
+            cy.get('.dropdown-menu .dropdown-item').contains('de').click({ force: true });
           });
           cy.get('.modal-card-title').should('contain', i18n.de.login.title);
         });
@@ -119,9 +119,9 @@ describe('Login', () => {
         cy.get('.login.modal.is-active .animation-content footer button.is-warning').click()
         cy.get('.home').should('exist');
       });
-    
+
       it('should be possible to log out again', () => {
-        cy.get('#navMenu > div.navbar-end > div.navbar-item.signOut').click({force: true});
+        cy.get('#navMenu > div.navbar-end > div.navbar-item.signOut').click({ force: true });
         cy.get('.login.modal');
       });
     });

@@ -13,26 +13,36 @@
       </div>
     </section>
     <div class="box">
-      <ul>
+      <ul class="menu-list">
         <li>
-          <a>http://[host]:[port]/rest/v2/message?validate=true</a>
+          <router-link to="/ppmp">
+            Production Performance Management Protocol
+          </router-link>
+          <ul>
+            <li><a>Measurements</a></li>
+            <li><a>Messages</a></li>
+            <li><a>Processes</a></li>
+          </ul>
         </li>
         <li>
-          <a>http://[host]:[port]/rest/v2/measurement?validate=true</a>
+          <router-link to="/configuration">
+            {{ $t('configuration.title') }}
+          </router-link>
         </li>
         <li>
-          <a>http://[host]:[port]/rest/v2/process?validate=true</a>
-        </li>
-        <li>
-          <a>http://[host]:[port]/rest/basicauth/v2/message?validate=true</a>
-        </li>
-        <li>
-          <a>http://[host]:[port]/rest/basicauth/v2/measurement?validate=true</a>
-        </li>
-        <li>
-          <a>http://[host]:[port]/rest/basicauth/v2/process?validate=true</a>
+          <router-link to="/about">
+            {{ $t('about.about') }} / {{ $t('about.licenses') }}
+          </router-link>
         </li>
       </ul>
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.home {
+  a:not([href]) {
+    cursor: default;
+  }
+}
+</style>

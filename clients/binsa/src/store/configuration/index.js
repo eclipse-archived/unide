@@ -184,39 +184,39 @@ export default store => {
           };
           // first login should not have credential popup
           if(!(credentials && credentials.user && credentials.password)) {
-            singletons.preferences.fallbackLoginIsAnonymous = true;
+            singletons.preferences.fallbackLoginIsAnonymous = false;
           }
 
           return Promise.all(Object.keys(singletons)
-          // potentially no configuration exists (ever) yet
-          .filter(s => !(nsStore.state.configuration && nsStore.state.configuration[s]))
-          .map(function(_id) {
-            const obj = Object.assign({
-              _id,
-              type: 'singleton'
-            }, singletons[_id]);
-            // TODO: optimize for batch
-            return db.put(obj)
-            .then(res => nsStore.commit('saveConfiguration', Object.assign({
-              _id:  res.id,
-              _rev: res.rev
-            }, obj)));
-          })
-        )
-        .then(() => {
-          // should fallback configuration (credentials = null) be regarded as explicit anonymous (credentials = {}) ?
-          if(nsStore.state.configuration.preferences.fallbackLoginIsAnonymous && !nsStore.state.credentials) {
-            nsStore.commit('saveCredentials', credentials || {});
-          }
-          //  logout sets fallbackLoginIsAnonymous explicitly to false, see signOut()
-          if(credentials && credentials.remember && !nsStore.state.configuration.preferences.fallbackLoginIsAnonymous) {
-            return nsStore.dispatch('saveConfiguration', Object.assign({}, nsStore.state.configuration.preferences, {
-              fallbackLoginIsAnonymous: true
-            }))
-            .then(() => nsStore.state.configuration);
-          }
-          return nsStore.state.configuration;
-        });
+            // potentially no configuration exists (ever) yet
+            .filter(s => !(nsStore.state.configuration && nsStore.state.configuration[s]))
+            .map(function(_id) {
+              const obj = Object.assign({
+                _id,
+                type: 'singleton'
+              }, singletons[_id]);
+              // TODO: optimize for batch
+              return db.put(obj)
+              .then(res => nsStore.commit('saveConfiguration', Object.assign({
+                _id:  res.id,
+                _rev: res.rev
+              }, obj)));
+            })
+          )
+          .then(() => {
+            // should fallback configuration (credentials = null) be regarded as explicit anonymous (credentials = {}) ?
+            if(nsStore.state.configuration.preferences.fallbackLoginIsAnonymous && !nsStore.state.credentials) {
+              nsStore.commit('saveCredentials', credentials || {});
+            }
+            //  logout sets fallbackLoginIsAnonymous explicitly to false, see signOut()
+            if(credentials && credentials.remember && !nsStore.state.configuration.preferences.fallbackLoginIsAnonymous) {
+              return nsStore.dispatch('saveConfiguration', Object.assign({}, nsStore.state.configuration.preferences, {
+                fallbackLoginIsAnonymous: true
+              }))
+              .then(() => nsStore.state.configuration);
+            }
+            return nsStore.state.configuration;
+          });
         },
         res  = await db.allDocs({
           /* eslint camelcase: 0,indent: 0 */

@@ -228,7 +228,6 @@ export default {
     };
     import(`~/assets/schemas/${this.type}_schema.json`)
       .then(schema => {
-        console.time("parsing Schema");
         this.masterSchema = new Schema('$', null, schema);
         // inject examples
         Object.entries(this.examples).forEach(([path, example]) => {
@@ -238,7 +237,6 @@ export default {
             console.error(`schema path not found in ${this.type}: ${path}`);
           }
         });
-        console.timeEnd("parsing Schema");
         this.loading = false;
         return schema;
       })

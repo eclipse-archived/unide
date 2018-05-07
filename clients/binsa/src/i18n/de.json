@@ -32,6 +32,7 @@
 	"about": {
 		"about": "Über die Anwendung",
 		"title": "Name",
+		"dataConcent": "Datenschutz",
 		"description": "Beschreibung",
 		"author": "Autor",
 		"version": "Version",
@@ -39,6 +40,12 @@
 		"source": "Quellcode",
 		"repository": "Repository",
 		"licenses": "Verwendete Bibliotheken & Lizenzen"
+	},
+	"dataConcent": {
+		"title": "Information zur Datenverwaltung",
+		"titleAccepted": "Information zur Datenverwaltung (akzeptiert)",
+		"information": "Diese Webseite speichert Konfigurationsdaten für Funktions-, Komfortzwecke. Die Daten werden nur lokal in dem Browser/App gespeichert. Wenn Sie einen Benutzernamen und Passwort eintragen, dann werden die Daten verschlüsselt (AES-GCM/SHA256). Sie können die Daten jederzeit einsehen, ändern oder löschen, indem Sie auf den 'Konfiguration' Knopf klicken. Sie können die Daten komplett löschen, indem Sie den Cache der Seite/App im Browser/App Einstellungen löschen.",
+		"requirement": "Fahren Sie nur fort, wenn Sie mit dem Speichern dieser Daten einverstanden sind."
 	},
 	"home": {
 		"title": "Dies ist ein Client und Service, um PPMP Nachrichten zu validieren",
