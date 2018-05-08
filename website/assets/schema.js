@@ -16,7 +16,7 @@ schemas are enriched with:
 class Schema {
   constructor(step, parent, original) {
     this.$id = Schema.idx++;
-    this.$step = step;
+    this.$step = step + '&#8203';
     this.$parent = parent;
     if(original) {
       this.parseFrom(original);
@@ -64,16 +64,16 @@ class Schema {
     if(schema.items) {
       if(schema.items instanceof Array) {
         this.items = schema.items.map((item, idx) =>
-          (new Schema(
+          new Schema(
             `[${idx}]`,
-            { schema: this, path: `items[${idx}]` }))
-            .parseFrom(schema.items[idx])
+            { schema: this, path: `items[${idx}]` },
+            schema.items[idx])
         );
       } else {
-        this.items = (new Schema(
+        this.items = new Schema(
           '[*]',
-          { schema: this, path: 'items' }))
-          .parseFrom(schema.items);
+          { schema: this, path: 'items' },
+          schema.items);
       }
     }
     // Object with subschemas
@@ -85,10 +85,10 @@ class Schema {
         // .filter(([subkey, dependency]) => !(dependency instanceof Array)) // just needed for dependencies
           .forEach(([subkey, subschema], idx) => {
             this[key] = this[key] || {};
-            this[key][subkey] = (new Schema(
-              `${key === 'patternProperties' ? '&lt;field&gt;' : subkey}`,
-              { schema: this, path: `${key}["${subkey}"]` }))
-              .parseFrom(subschema);
+            this[key][subkey] = new Schema(
+              (key === 'patternProperties' ? '&lt;field&gt;' : subkey),
+              { schema: this, path: `${key}["${subkey}"]` },
+              subschema);
           })
       );
     // simple direct subschemas
@@ -104,20 +104,20 @@ class Schema {
     ] /* 'if', 'then', 'else', 'propertyNames', 'contains', 'definitions' */
       .filter(key => schema.hasOwnProperty(key))
       .forEach(path => {
-        this[path] = (new Schema(
+        this[path] = new Schema(
           '+',
-          { schema: this, path }))
-          .parseFrom(schema[path]);
+          { schema: this, path },
+          schema[path]);
       });
     ['allOf', 'anyOf', 'oneOf']
       .filter(key => schema.hasOwnProperty(key))
       .forEach(key =>
         schema[key].forEach((subschema, idx) => {
           this[key] = this[key] || [];
-          this[key].push((new Schema(
+          this[key].push(new Schema(
             `(${idx})${(key === 'anyOf') ? '?' : '+'}`,
-            { schema: this, path: `${key}[${idx}]` }))
-            .parseFrom(subschema));
+            { schema: this, path: `${key}[${idx}]` },
+            subschema));
         })
       );
     return this;
