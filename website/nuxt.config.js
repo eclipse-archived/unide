@@ -62,8 +62,6 @@ module.exports = {
   },
 
   plugins: [{
-    src: '~/plugins/ga.js'
-  }, {
     src: '~/plugins/prismjs.js'
   }],
 

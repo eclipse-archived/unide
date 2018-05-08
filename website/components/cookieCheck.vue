@@ -1,5 +1,5 @@
 <template>
-    <transition appear name="slideFromBottom">
+    <transition appear name="fade">
       <div class="cookieCheck" v-show="!accepted">
         <div class="columns">
           <div class="column is-one-third-desktop is-offset-one-third-desktop is-half-tablet is-offset-one-quarter-tablet">
@@ -75,6 +75,12 @@ export default {
       padding-left: 0.5rem;
       margin-bottom: 0;
     }
+  }
+  &.fade-enter-active, &.fade-leave-active {
+    transition: opacity .5s;
+  }
+  &.fade-enter, &.fade-leave-to {
+    opacity: 0;
   }
 }
 
