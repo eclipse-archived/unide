@@ -23,18 +23,16 @@
       <nuxt/>
     </div>
     <eclipseFooter/>
-    <cookieCheck/>
   </div>
 </template>
 
 <script>
-import cookieCheck from '~/components/cookieCheck.vue';
 import eclipseFooter from '~/components/eclipseFooter.vue';
 import navbar from '~/components/navbar.vue';
 
 export default {
   components: {
-    cookieCheck, eclipseFooter, navbar
+    eclipseFooter, navbar
   }
 };
 </script>

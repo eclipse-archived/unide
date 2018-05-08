@@ -29,7 +29,6 @@
       </div>
     </div>
     <eclipseFooter/>
-    <cookieCheck/>
   </div>
 </template>
 
