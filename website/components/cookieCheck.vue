@@ -71,6 +71,10 @@ export default {
       padding: 0.5rem;
       margin-bottom: 0;
     }
+    .buttons {
+      padding-left: 0.5rem;
+      margin-bottom: 0;
+    }
   }
 }
 
