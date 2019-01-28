@@ -1,17 +1,6 @@
 @startuml
 !include definitions.iuml
 
-skinparam class {
-	BorderColor black
-	FontColor #50237f
-	BackgroundColor #f5f5f5
-	ArrowColor black
-}
-skinparam stereotype{
-	CBackgroundColor white
-	EBackgroundColor white
-}
-
 class MessagePayload {
 	content-spec : String
 	device : Device
@@ -51,5 +40,7 @@ hide Part
 hide PartType
 hide Result
 hide Series
+
+Context "1" -left- "0..*" Limits
 
 @enduml

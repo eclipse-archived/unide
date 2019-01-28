@@ -2,7 +2,7 @@
 	"definitions": {
 		"code": {
 			"type": "string",
-			"description": "The code is an addendum to the result which allows to pass information in the case the result was NOK. The value often stems from the integrated system e.g. a PLC code",
+			"description": "The code is an addendum to the result, which allows to pass information in the case the result was NOK. The value often stems from the integrated system e.g. a PLC code",
 			"maxLength": 128
 		},
 		"device": {
@@ -16,7 +16,7 @@
 				},
 				"mode": {
 					"type": "string",
-					"description": "The operational mode indicates the functional state of the device. This is not restrictected to enum, since it is dependent on the machine, process or use case. Examples are 'auto', 'manual', 'test', 'wait', 'maintenance', 'run', 'stop', 'other' or 'unknown'"
+					"description": "The operational mode indicates the functional state of the device. This is not restricted to enum, since it is dependent on the machine, process or use case. Examples are 'auto', 'manual', 'test', 'wait', 'maintenance', 'run', 'stop', 'other' or 'unknown'"
 				},
 				"state": {
 					"type": "string",
@@ -50,23 +50,8 @@
 						"patternProperties": {
 							"^[^$]+": {
 								"type": "object",
-								"description": "The key shall be the name of a measurement point (element of series element). The value is a structure of additional context information.",
+								"description": "The key shall be the name of a measurement point (element of series element). The value is a structure of additional context information like accuracy, offset etc. This information can be further described in the URI given in the namespace field",
 								"properties": {
-									"accuracy": {
-										"oneOf": [
-											{
-												"type": "number",
-												"description": "A constant that describes the accuracy of the corresponding measurement as absolute value"
-											},
-											{
-												"type": "array",
-												"description": "An array of accuracy values. The items of the array correspond to the respective measurements at the same position.",
-												"items": {
-													"type": "number"
-												}
-											}
-										]
-									},
 									"limits": {
 										"description": "Provides information about the limit for data provided in the series element. The limit corresponds to the measurement point (see also series element) with the same key. The value is a structure of upper/lower limits and applies to numeric values only.",
 										"type": "object",
@@ -84,7 +69,7 @@
 														"type": "number"
 													},
 													"target": {
-														"description": "Indicates the intented target value of the measurement",
+														"description": "Indicates the intended target value of the measurement",
 														"type": "number"
 													},
 													"upperError": {
@@ -116,7 +101,7 @@
 														}
 													},
 													"target": {
-														"description": "Indicates the intented target values. The values correspond to the respective measurements in the given order.",
+														"description": "Indicates the intended target values. The values correspond to the respective measurements in the given order.",
 														"type": "array",
 														"items": {
 															"type": "number"
@@ -140,31 +125,19 @@
 											}
 										]
 									},
-									"offset": {
-										"description": "The offset applies to numeric data type only.",
-										"oneOf": [
-											{
-												"type": "number",
-												"description": "Describes the offset of the corresponding measurement as absolute value"
-											},
-											{
-												"type": "array",
-												"description": "An array of offset values. The items of the array correspond to the respective measurements at the same position.",
-												"items": {
-													"type": "number"
-												}
-											}
-										]
+									"namespace": {
+										"type": "string",
+										"description": "If an URI is specified, it gives further detail about the parameter in this context object"
 									},
 									"type": {
 										"type": "string",
-										"description": "The data type of the corresponding measurement value.",
-										"enum": ["BASE64", "BOOLEAN", "NUMBER", "OTHER", "REF", "STRING"],
+										"description": "The data type of the corresponding measurement value. They correspond to the primitive JSON types boolean, number, integer and string. BASE64 is a string with base64 encoded binary data. Array and Object should not be used in order to limit complexity.",
+										"enum": ["BASE64", "BOOLEAN", "INTEGER", "NUMBER", "STRING"],
 										"default": "NUMBER"
 									},
 									"unit": {
 										"type": "string",
-										"description": "Describes the unit of the corresponding measurement. It is recommended to use symbols as defined in https://tools.ietf.org/html/draft-ietf-core-senml-14#section-12.1"
+										"description": "Describes the unit of the corresponding measurement. It is recommended to use SI (International System of Units) symbols or describe the string further in a given namespace"
 									}
 								},
 								"minProperties": 1
@@ -192,7 +165,7 @@
 								"type": "array",
 								"items": {
 									"type": ["boolean", "number", "string"],
-									"description": "The type of this measurement series is dependendant on the context.type. It defaults to number"
+									"description": "The type of this measurement series is dependent on the context.type. It defaults to number"
 								}
 							}
 						},
@@ -221,7 +194,7 @@
 				},
 				"id": {
 					"type": "string",
-					"description": "Identifies a part. This id comes from a 3rd party system and thus we have no guarantees if this is unique or not.",
+					"description": "Identifies a part. This id comes from a third party system and thus we have no guarantees if this is unique or not.",
 					"maxLength": 256
 				},
 				"type": {

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="289" height="117.58" contentScriptType="application/ecmascript" contentStyleType="text/css" preserveAspectRatio="none" version="1.1" viewBox="0 0 289 117.5781" xmlns="http://www.w3.org/2000/svg" zoomAndPan="magnify">
+	<rect x=".5" y=".5" width="288" height="116.58" rx="5" ry="5" fill="#f5f5f5" stroke="#50237f"/>
+	<text transform="translate(-504.5 -714.76)" x="514" y="731.38092" fill="#000000" font-family="sans-serif" font-size="10px" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="36">Symbol</text>
+	<text transform="translate(-504.5 -714.76)" x="556" y="731.38092" fill="#000000" font-family="sans-serif" font-size="10px" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="28">Name</text>
+	<text transform="translate(-504.5 -714.76)" x="637" y="731.38092" fill="#000000" font-family="sans-serif" font-size="10px" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="56">Description</text>
+	<text transform="translate(-504.5,-713.5)" x="523" y="749.38092" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="0"/>
+	<text transform="translate(-504.5 -712.11)" x="556" y="743.95898" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="24">Class</text>
+	<text transform="translate(-504.5 -712.11)" x="637" y="743.95898" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="86">A complex Object</text>
+	<text transform="translate(-504.5,-713.5)" x="523" y="767.38092" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="0"/>
+	<text transform="translate(-504.5 -712.25)" x="556" y="761.95898" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="58">Aggregation</text>
+	<text transform="translate(-504.5 -712.09)" x="637" y="761.95898" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="107">List of Objects as Array</text>
+	<text transform="translate(-504.5,-713.5)" x="523" y="785.38092" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="0"/>
+	<text transform="translate(-504.5 -712.19)" x="556" y="779.95898" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="59">Composition</text>
+	<text transform="translate(-504.5 -712.09)" x="637" y="779.95898" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="104">List of Objects as Map</text>
+	<text transform="translate(-504.5,-713.5)" x="523" y="803.38092" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="0"/>
+	<text transform="translate(-504.5 -712.39)" x="556" y="797.95898" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="54">Association</text>
+	<text transform="translate(-504.5 -712.11)" x="637" y="797.95898" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="126">A complex Object as child</text>
+	<text transform="translate(-504.5,-713.5)" x="523" y="821.38092" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="0"/>
+	<text transform="translate(-504.5 -712.14)" x="556" y="815.95898" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="69">Specialization</text>
+	<text transform="translate(-504.5 -712.09)" x="637" y="815.95898" fill="#000000" font-family="sans-serif" font-size="10px" lengthAdjust="spacingAndGlyphs" textLength="147">An extension of another Object</text>
+	<line x1="6.5" x2="282.5" y1="20.078" y2="20.078" stroke="#000"/>
+	<line x1="6.5" x2="282.5" y1="38.078" y2="38.078" stroke="#000"/>
+	<line x1="6.5" x2="282.5" y1="56.078" y2="56.078" stroke="#000"/>
+	<line x1="6.5" x2="282.5" y1="74.078" y2="74.078" stroke="#000"/>
+	<line x1="6.5" x2="282.5" y1="92.078" y2="92.078" stroke="#000"/>
+	<line x1="48.5" x2="48.5" y1="7.5" y2="110.08" stroke="#000"/>
+	<line x1="129.5" x2="129.5" y1="7.5" y2="110.08" stroke="#000"/>
+	<path d="m20.871 26.751h12m-11.5-3.1729h11v11h-11z" fill="none" stroke="#000" stroke-width="1px"/>
+	<g transform="translate(0 1.5453)" fill="none" stroke="#000">
+		<path d="m24.935 47.446 5.6592-5.6592" stroke-linecap="square" stroke-width="1px"/>
+		<rect x="20.869" y="47.512" width="4" height="3.9606" ry="0"/>
+		<rect x="30.774" y="39.593" width="2" height="2" ry="0"/>
+	</g>
+	<path d="m21.038 88.97 11.784-11.784" fill="none" stroke="#000" stroke-linecap="square" stroke-width="1px"/>
+	<g transform="translate(0 .78224)" fill="none" stroke="#000">
+		<path d="m25.986 93.638h6.7885v6.7885z"/>
+		<path d="m19.701 106.75 9.6682-9.6682" stroke-linecap="square" stroke-width="1px"/>
+	</g>
+	<g transform="translate(0 1.3665)" fill="none" stroke="#000">
+		<path d="m24.935 65.602 5.6592-5.6592" stroke-linecap="square" stroke-width="1px"/>
+		<rect x="20.869" y="65.668" width="4" height="3.9606" ry="0"/>
+		<rect x="30.774" y="57.795" width="2" height="2" ry="0"/>
+	</g>
+</svg>

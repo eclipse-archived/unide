@@ -5,6 +5,7 @@
           <div class="column is-one-third-desktop is-offset-one-third-desktop is-half-tablet is-offset-one-quarter-tablet">
             <div class="content">
                 <slot>This website uses cookies for reasons of functionality, convenience, and statistics. For information on deleting the cookies, please consult your browser’s help function.</slot>
+                <slot>Some Eclipse Foundation pages use cookies to better serve you when you return to the site. You can set your browser to notify you before you receive a cookie or turn off cookies. If you do so, however, some areas of some sites may not function properly. To read Eclipse Foundation Privacy Policy <a href="">click here.</a></slot>
             </div>
             <div class="buttons">
               <div class="button is-success" @click="accept">Got it!</div>
@@ -26,6 +27,7 @@ export default {
   },
   created() {
     this.lSAvaialable = true;
+    this.cookieName = "eclipse_cookieconsent_status";
     try {
       const name = "localStorateTest";
       localStorage.setItem(name, name);
@@ -41,14 +43,14 @@ export default {
         return true;
       }
       return this.lSAvaialable
-        ? localStorage.getItem("acceptCookies")
-        : Cookie.get("acceptCookies");
+        ? localStorage.getItem(this.cookieName)
+        : Cookie.get(this.cookieName);
     },
     accept() {
       const now = (new Date()).toISOString();
       this.lSAvaialable
-        ? localStorage.setItem("acceptCookies", now)
-        : Cookie.set("acceptCookies", now);
+        ? localStorage.setItem(this.cookieName, now)
+        : Cookie.set(this.cookieName, now);
         this.accepted = this.hasAccepted();
     }
   }

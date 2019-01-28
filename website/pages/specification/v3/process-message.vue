@@ -5,7 +5,9 @@
       Process Payload
     </h1>
     <p>The process message is the format to exchange data out of discrete processes. It also allows to transport process information, part information and measurement data for each phase of the process.</p>
-    <img src="images/specification/v3/processPayload.svg" alt="Class diagram of the Process message payload" title="Class diagram of the Process Message payload" class="is-center">
+    <div class="diagram">
+      <img src="images/specification/v3/processPayload.svg" alt="Class diagram of the Process message payload" title="Class diagram of the Process Message payload">
+    </div>
 
     <schemaDetail type="v3/process" :examples="$static.examples">
       <card :collapsed="true">
@@ -55,7 +57,7 @@ export default {
             series: {
               time: [0, 23, 24],
               force: [26, 23, 24],
-              pressure: [52.4, 46.32, 44.2432]
+              pressure: [100952.4, 100946.32, 100944.2432]
             }
           }
         ]
@@ -99,12 +101,14 @@ export default {
             ts: new Date(now.valueOf() + 100).toISOString(),
             context: {
               pressure: {
+                namespace: "https://mycompany.com/productvariants/5986",
+                unit: "Pa",
                 limits: {
-                  upperError: 4444,
-                  lowerError: 44,
-                  upperWarn: 2222,
-                  lowerWarn: 46,
-                  target: 35
+                  upperError: 103000,
+                  lowerError: 99000,
+                  upperWarn: 102000,
+                  lowerWarn: 100000,
+                  target: 100950
                 }
               },
               force: {
@@ -123,7 +127,7 @@ export default {
                 time: 12,
                 name: "turning point",
                 value: {
-                  pressure: 24,
+                  pressure: 101530,
                   force: 50
                 }
               },
@@ -143,16 +147,16 @@ export default {
                 time: 50,
                 name: "shutoffPressure",
                 value: {
-                  pressure: 50,
-                  upperError: 52,
-                  lowerError: 48
+                  pressure: 100950,
+                  upperError: 103000,
+                  lowerError: 99000
                 }
               }
             ],
             series: {
               time: [30, 36, 42],
               force: [26, 23, 24],
-              pressure: [52.4, 46.32, 44.2432],
+              pressure: [100952.4, 100946.32, 100944.2432],
               temperature: [45.4243, 46.42342, 44.2432]
             }
           },
@@ -198,6 +202,10 @@ export default {
           return l;
         },
         {
+          'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.unit':
+            "measurements[0].context.pressure.unit",
+            'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.namespace':
+            "measurements[0].context.pressure.namespace",
           'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[0]':
             "measurements[0].context.pressure.limits",
           'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[1]':

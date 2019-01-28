@@ -1,18 +1,6 @@
 @startuml
 !include definitions.iuml
 
-skinparam class {
-	BorderColor black
-	FontColor #50237f
-	BackgroundColor #f5f5f5
-	ArrowColor black
-}
-
-skinparam stereotype {
-	CBackgroundColor white
-	EBackgroundColor white
-}
-
 class MeasurementPayload {
 	content-spec : String
 	device : Device
@@ -22,10 +10,8 @@ class MeasurementPayload {
 
 MeasurementPayload -- Device
 MeasurementPayload -- Part
-MeasurementPayload "1" o-- "1..*" Measurement : Measurements
+MeasurementPayload "1" o-right- "1..*" Measurement : Measurements
 
 Measurement -- Series
-
-hide Series
 
 @enduml

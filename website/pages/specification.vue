@@ -19,7 +19,7 @@
       The Production Performance Management Protocol (PPMP) specifies a format that allows to capture data that is required to do performance analysis of production facilities. It allows monitoring backends to collect and evaluate key metrics of machines in the context of a production process. It is doing that by allowing to relate the machine status with currently produced parts.
       </p>
       <p>
-      The specification is structured into three payload formats: Measurement payload, message payload and process payload. The Measurement payload contains measurements from machines such as the temperature of a machine at a specific point in time together with the currently produced part. The message payload contains arbitrary messages sent by a machine, e.g. alerts or the like. A process message consists of information about a discrete e.g. tightening or welding processes with all their characterising data which are needed to describe and analyze it.
+      The specification is structured into three payload formats: Measurement payload, message payload and process payload. The Measurement payload contains measurements from machines such as the temperature of a machine at a specific point in time together with the currently produced part. The message payload contains arbitrary messages sent by a machine, e.g. alerts or the like. A process message consists of information about a discrete e.g. tightening or welding process with all their characterizing data, which are needed to describe and analyze it.
       </p>
       <p>
       The default way of transporting the json payload is via http to allow for an easy integration into various backend systems. Other transportation methods are possible and welcome.
@@ -114,6 +114,9 @@ export default {
         color: $bosch-lima;
       }
     }
+  }
+  .diagram {
+      text-align: center;
   }
 }
 </style>
