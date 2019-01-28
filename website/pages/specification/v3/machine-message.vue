@@ -6,8 +6,9 @@
     </h1>
     <p>The main purpose of the machine message format is to allow devices and integrators to send messages containing an interpretation of measurement data or status.</p>
 
-    <img src="images/specification/v3/messagePayload.svg" alt="Class diagram of the message payload" title="Class diagram of the message payload" class="is-centered">
-
+    <div class="diagram">
+      <img src="images/specification/v3/messagePayload.svg" alt="Class diagram of the message payload" title="Class diagram of the message payload">
+    </div>
     <schemaDetail type="v3/message" :examples="$static.examples">
       <card :collapsed="true">
         <template slot="header">

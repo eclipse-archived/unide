@@ -7,3 +7,6 @@ tests/videos
 tests/screenshots
 conf/cache
 jenkins.pipeline
+
+.vscode/settings.json
+.vscode/team-essentials/state.json

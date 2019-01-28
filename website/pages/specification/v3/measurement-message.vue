@@ -5,7 +5,9 @@
       Measurement Payload
     </h1>
     <p>The measurement message is the format to exchange simple (non-structured, non-complex ) measurement data. It also allows to transport multiple measurement data (eg. values over time), called 'series'.</p>
-    <img src="images/specification/v3/measurementPayload.svg" alt="Class diagram of the Measurement Message payload" title="Class diagram of the Measurement Message payload" class="is-centered">
+    <div class="diagram">
+      <img src="images/specification/v3/measurementPayload.svg" alt="Class diagram of the Measurement Message payload" title="Class diagram of the Measurement Message payload">
+    </div>
 
     <schemaDetail type="v3/measurement" :examples="$static.examples">
       <card :collapsed="true">
@@ -109,7 +111,7 @@ export default {
             series: {
               // eslint-disable-next-line camelcase
               time: [0, 130, 2633],
-              pressure: [52.4, 46.32, 44.2432],
+              pressure: [100952.4, 100946.32, 100944.2432],
               scanData: ["Zm9vCg==", "YmFyCg==", "Y2hlZXNlCg=="]
             },
             ts: new Date(now.valueOf() - 5000).toISOString()
