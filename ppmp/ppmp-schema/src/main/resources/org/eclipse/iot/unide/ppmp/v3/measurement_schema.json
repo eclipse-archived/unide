@@ -13,7 +13,20 @@
 			"$ref": "definitions.json#/definitions/part"
 		},
 		"measurements": {
-			"$ref": "definitions.json#/definitions/measurements"
+			"allOf": [
+				{
+					"$ref": "definitions.json#/definitions/measurements"
+				},
+				{
+					"items": {
+						"properties": {
+							"series": {
+								"required": ["time"]
+							}
+						}
+					}
+				}
+			]
 		}
 	},
 	"required": [

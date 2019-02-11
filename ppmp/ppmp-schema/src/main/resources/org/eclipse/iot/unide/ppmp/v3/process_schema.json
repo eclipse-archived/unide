@@ -89,7 +89,7 @@
 									"description": "Provides information about special or interesting values during the process phase.",
 									"properties": {
 										"time": {
-											"type": "integer",
+											"type": "number",
 											"description": "The time offset in milliseconds to the 'ts' field of the measurement"
 										},
 										"name": {

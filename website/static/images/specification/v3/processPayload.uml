@@ -4,7 +4,7 @@
 class ProcessPayload {
 	content-spec: String
 	device: Device
-	measurements: Measurements
+	measurements: ProcessMeasurement
 	part[0..1]: Part
 	process: Process
 }
@@ -18,9 +18,14 @@ class Process {
 }
 
 class ProcessMeasurement {
+	code[0..1]: String
+	context[0..1]: ContextList
 	name[0..1]: String
 	phase[0..1] ; String
+	result[0..1]: Result
+	series: Series
 	specialValues[0..1]: SpecialValues
+	ts: Date
 }
 
 class Program {
@@ -30,20 +35,22 @@ class Program {
 }
 
 class SpecialValue {
-	time[0..1]: Integer
+	time[0..1]: Number
 	name[0..1]: String
 	value: <String, (Boolean | Number | String)>
 }
 
+hide Measurement
+
 ProcessPayload -- Device
 ProcessPayload -- Part
 ProcessPayload -- Process
-ProcessPayload "1" o-- "0..*" Measurement: Measurements
+ProcessPayload "1" o-- "0..*" ProcessMeasurement: Measurements
 
 Process -- Program
 
-Measurement -- Series
+ProcessMeasurement -- Series
+ProcessMeasurement "1" *-- "0..1" Context : ContextList
 
-Measurement <|-- ProcessMeasurement
 ProcessMeasurement "1" o-- "0..*" SpecialValue: SpecialValues
 @enduml
