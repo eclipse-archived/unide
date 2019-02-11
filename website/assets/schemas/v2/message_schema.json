@@ -17,8 +17,12 @@
 				},
 				"metaData": {
 					"type": "object",
-					"properties": {},
-					"additionalProperties": true,
+					"patternProperties": {
+						".*": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
 					"description": "Additional key-value pairs in a JSON structure format. Key and value must be strings"
 				},
 				"operationalStatus": {
@@ -55,8 +59,12 @@
 					},
 					"metaData": {
 						"type": "object",
-						"properties": {},
-						"additionalProperties": true,
+						"patternProperties": {
+							".*": {
+								"type": "string"
+							}
+						},
+						"additionalProperties": false,
 						"description": "Additional key-value pairs in a JSON structure format. Key and value must be strings"
 					},
 					"origin": {
