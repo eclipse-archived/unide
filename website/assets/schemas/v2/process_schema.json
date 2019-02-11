@@ -11,8 +11,12 @@
 				},
 				"metaData": {
 					"type": "object",
-					"properties": {},
-					"additionalProperties": true,
+					"patternProperties": {
+						".*": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
 					"description": "Additional key-value pairs in a JSON structure format. Key and value must be strings"
 				},
 				"operationalStatus": {
@@ -120,8 +124,12 @@
 				},
 				"metaData": {
 					"type": "object",
-					"properties": {},
-					"additionalProperties": true,
+					"patternProperties": {
+						".*": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
 					"description": "Additional key-value pairs in a JSON structure format. Key and value must be strings"
 				},
 				"partID": {
@@ -168,8 +176,12 @@
 				},
 				"metaData": {
 					"type": "object",
-					"properties": {},
-					"additionalProperties": true,
+					"patternProperties": {
+						".*": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
 					"description": "Additional key-value pairs in a JSON structure format. Key and value must be strings"
 				},
 				"program": {
@@ -333,7 +345,7 @@
 					},
 					"series": {
 						"type": "object",
-						"description": "The series data collected for the measurements. Every entry matches a Measurement Point of the device. In the case of a time series, one column contains the time offset in milliseconds (positive values in ascending order starting with 0). In this case the value is the keyword $_time. The maximum size for the measurement value is 10 positions before the decimal point. The decimal places are truncated to 2 in the historical data.",
+						"description": "The series data collected for the measurements. Every entry matches a Measurement Point of the device. In the case of a time series, one column contains the time offset in milliseconds (positive values in ascending order starting with 0). In this case the value is the keyword $_time. The maximum size for the measurement value is 10 positions before the decimal point.",
 						"properties": {
 							"$_time": {
 								"type": "array",
