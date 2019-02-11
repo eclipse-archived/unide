@@ -177,13 +177,13 @@
 					},
 					"series": {
 						"type": "object",
-						"description": "The series data collected for the measurements. Every entry matches a Measurement Point of the Device Type. In the case of a time series, one column contains the time offsets.",
+						"description": "The series data collected for the measurements. In the case of a time series, the measurement point 'time' should contain the time offsets.",
 						"properties": {
 							"time": {
 								"type": "array",
-								"description": "The time offset in milliseconds (positive values in ascending order starting with 0) to the 'ts' field of the measurement",
+								"description": "The time offset in milliseconds to the 'ts' field of the measurement.",
 								"items": {
-									"type": "integer"
+									"type": "number"
 								}
 							}
 						},
@@ -196,10 +196,8 @@
 								}
 							}
 						},
-						"required": [
-							"time"
-						],
-						"minProperties": 2
+						"required": [],
+						"minProperties": 1
 					},
 					"ts": {
 						"format": "date-time",

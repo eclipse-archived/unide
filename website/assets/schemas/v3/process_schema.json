@@ -89,7 +89,7 @@
 									"description": "Provides information about special or interesting values during the process phase.",
 									"properties": {
 										"time": {
-											"type": "integer",
+											"type": "number",
 											"description": "The time offset in milliseconds to the 'ts' field of the measurement"
 										},
 										"name": {
@@ -101,7 +101,8 @@
 											"description": "Contains the actual (multidimensional) value of interest. Similarly to series, every entry matches a Measurement Point of the device",
 											"patternProperties": {
 												"^[^$]+": {
-													"type": "number"
+													"type": ["boolean", "number", "string"],
+													"description": "The type of this measurement series is dependendant on the context.type. It defaults to number"
 												}
 											},
 											"minProperties": 1

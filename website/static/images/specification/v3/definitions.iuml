@@ -48,7 +48,7 @@ class Limits {
 }
 
 class Series {
-	time: [Integer]
+	time[0..1]: [Number]
 	<values>[1..*]: [(Boolean | Number | String)]
 }
 
