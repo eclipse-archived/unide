@@ -124,7 +124,6 @@ export default {
             specialValues: [
               {
                 // eslint-disable-next-line camelcase
-                time: 12,
                 name: "turning point",
                 value: {
                   pressure: 101530,
@@ -132,7 +131,6 @@ export default {
                 }
               },
               {
-                time: 50,
                 name: "shutoffForce",
                 value: {
                   force: 24,
@@ -144,7 +142,6 @@ export default {
                 }
               },
               {
-                time: 50,
                 name: "shutoffPressure",
                 value: {
                   pressure: 100950,
@@ -154,7 +151,6 @@ export default {
               }
             ],
             series: {
-              time: [30, 36, 42],
               force: [26, 23, 24],
               pressure: [100952.4, 100946.32, 100944.2432],
               temperature: [45.4243, 46.42342, 44.2432]

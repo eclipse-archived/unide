@@ -136,7 +136,6 @@ export default {
         "measurements[0].code",
         "measurements[0].context",
         "measurements[0].result",
-        "measurements[0].series",
         "measurements[0].ts",
         "part",
         "part.code",
@@ -151,15 +150,17 @@ export default {
           return l;
         },
         {
-          'properties.measurements.items.properties.context.patternProperties["^[^$]+"]':
+          'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"]':
             "measurements[0].context.temperature",
-          'properties.measurements.items.properties.series.patternProperties["^[^$]+"]':
+          'properties.measurements.allOf[0].items.properties.series':
+            "measurements[0].series",
+          'properties.measurements.allOf[0].items.properties.series.patternProperties["^[^$]+"]':
             "measurements[0].series.temperature"
         }
       ),
       ...["accuracy", "limits", "offset", "unit"].reduce((l, key) => {
         l[
-          `properties.measurements.items.properties.context.patternProperties["^[^$]+"].properties.${key}`
+          `properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.${key}`
         ] = `measurements[0].context.temperature.${key}`;
         return l;
       }, {}),
@@ -171,7 +172,7 @@ export default {
         "upperWarn"
       ].reduce((l, key) => {
         l[
-          `properties.measurements.items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[0].properties.${key}`
+          `properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[0].properties.${key}`
         ] = `measurements[0].context.temperature.limits.${key}`;
         return l;
       }, {})
