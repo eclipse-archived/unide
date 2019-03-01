@@ -47,17 +47,14 @@ export default {
         device: {
           id: deviceId
         },
-
-        measurements: [
-          {
-            ts: now.toISOString(),
-            series: {
-              // eslint-disable-next-line camelcase
-              time: [0, 23, 24],
-              temperature: [45.4231, 46.4222, 44.2432]
-            }
+        measurements: [{
+          ts: now.toISOString(),
+          series: {
+            // eslint-disable-next-line camelcase
+            time: [0, 23, 24],
+            temperature: [45.4231, 46.4222, 44.2432]
           }
-        ]
+        }]
       },
       complexMessage: {
         "content-spec": "urn:spec://eclipse.org/unide/measurement-message#v3",
@@ -65,8 +62,10 @@ export default {
           id: deviceId,
           mode: "maintenance",
           state: "WARN",
-          swVersion: "2.0.3.13",
-          swBuildID: "41535"
+          additionalData: {
+            swVersion: "2.0.3.13",
+            swBuildID: "41535"
+          }
         },
         part: {
           code: "HUH289",
@@ -74,49 +73,51 @@ export default {
           type: "BATCH",
           typeId: "F00VH07328",
           result: "OK",
-          lotID: "845849",
-          toolID: "32324-432143"
-        },
-        measurements: [
-          {
-            code: "190ABT",
-            context: {
-              temperature: {
-                accuracy: [0.112, 0.115, 0.129],
-                limits: {
-                  lowerError: -2,
-                  lowerWarn: -1,
-                  target: 1.21,
-                  upperError: 5,
-                  upperWarn: 1.5
-                },
-                offset: 37,
-                unit: "Cel"
-              }
-            },
-            result: "OK",
-            series: {
-              // eslint-disable-next-line camelcase
-              time: [0, 23, 24],
-              temperature: [0.4231, 2.4222, 4.2432]
-            },
-            ts: now.toISOString()
-          },
-          {
-            context: {
-              scanData: {
-                type: "BASE64"
-              }
-            },
-            series: {
-              // eslint-disable-next-line camelcase
-              time: [0, 130, 2633],
-              pressure: [100952.4, 100946.32, 100944.2432],
-              scanData: ["Zm9vCg==", "YmFyCg==", "Y2hlZXNlCg=="]
-            },
-            ts: new Date(now.valueOf() - 5000).toISOString()
+          additionalData: {
+            lotID: "845849",
+            toolID: "32324-432143"
           }
-        ]
+        },
+        measurements: [{
+          code: "190ABT",
+          context: {
+            temperature: {
+              limits: {
+                lowerError: -2,
+                lowerWarn: -1,
+                target: 1.21,
+                upperError: 5,
+                upperWarn: 1.5
+              },
+              namespace: "https://mycompany.com/metaModel/v3",
+              unit: "Cel",
+              additionalData: {
+                offset: 37,
+                accuracy: [0.112, 0.115, 0.129]
+              }
+            }
+          },
+          result: "OK",
+          series: {
+            // eslint-disable-next-line camelcase
+            time: [0, 23, 24],
+            temperature: [0.4231, 2.4222, 4.2432]
+          },
+          ts: now.toISOString()
+        }, {
+          context: {
+            scanData: {
+              type: "BASE64"
+            }
+          },
+          series: {
+            // eslint-disable-next-line camelcase
+            time: [0, 130, 2633],
+            pressure: [100952.4, 100946.32, 100944.2432],
+            scanData: ["Zm9vCg==", "YmFyCg==", "Y2hlZXNlCg=="]
+          },
+          ts: new Date(now.valueOf() - 5000).toISOString()
+        }]
       }
     };
     this.$static.examples = Object.entries({
@@ -126,12 +127,14 @@ export default {
         "device.id",
         "device.mode",
         "device.state",
+        "device.additionalData",
         "part",
         "part.code",
         "part.id",
         "part.result",
         "part.type",
         "part.typeId",
+        "part.additionalData",
         "measurements",
         "measurements[0].code",
         "measurements[0].context",

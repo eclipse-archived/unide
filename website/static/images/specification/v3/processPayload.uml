@@ -15,6 +15,7 @@ class Process {
 	result[0..1]: Result
 	shutoffPhase[0..1]: String
 	ts: Date
+	additionalData[0..1]: Object
 }
 
 class ProcessMeasurement {
@@ -26,18 +27,20 @@ class ProcessMeasurement {
 	series: Series
 	specialValues[0..1]: SpecialValues
 	ts: Date
+	additionalData[0..1]: Object
 }
 
 class Program {
 	id: String
 	lastChangeDate[0..1]: Date
 	name[0..1]: String
+	additionalData[0..1]: Object
 }
 
 class SpecialValue {
 	time[0..1]: Number
 	name[0..1]: String
-	value: <String, (Boolean | Number | String)>
+	value: <String, Boolean | Number | String>
 }
 
 hide Measurement

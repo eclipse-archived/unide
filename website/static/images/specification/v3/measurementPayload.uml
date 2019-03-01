@@ -14,11 +14,12 @@ class TimeMeasurement {
 	result[0..1]: Result
 	series: TimeSeries
 	ts: Date
+	additionalData[0..1]: Object
 }
 
 class TimeSeries {
 	time: [Number]
-	<values>[1..*]: [(Boolean | Number | String)]
+	<values>[1..*]: [Boolean | Number | String]
 }
 
 hide Measurement

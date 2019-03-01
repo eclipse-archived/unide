@@ -16,6 +16,7 @@ class Message {
 	title[0..1] : String
 	ts : Date
 	type[0..1] : Type
+	additionalData[0..1]: Object
 }
 
 enum Type {
