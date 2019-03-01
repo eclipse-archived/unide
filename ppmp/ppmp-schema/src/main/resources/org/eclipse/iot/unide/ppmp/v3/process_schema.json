@@ -39,8 +39,12 @@
 							"type": "string",
 							"description": "The name of the program",
 							"maxLength": 256
+						},
+						"additionalData": {
+							"type": "object"
 						}
 					},
+					"additionalProperties": false,
 					"required": [
 						"id"
 					]
@@ -56,8 +60,12 @@
 					"type": "string",
 					"format": "date-time",
 					"description": "Start time of the process"
+				},
+				"additionalData": {
+					"type": "object"
 				}
 			},
+			"additionalProperties": false,
 			"required": [
 				"ts"
 			]
@@ -119,6 +127,7 @@
 			]
 		}
 	},
+	"additionalProperties": false,
 	"required": [
 		"content-spec",
 		"device",

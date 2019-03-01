@@ -22,6 +22,7 @@ class Device {
 	id: String
 	mode[0..1]: String
 	state[0..1]: DeviceState
+	additionalProperties[0..1]: Object
 }
 
 class Measurement {
@@ -30,6 +31,7 @@ class Measurement {
 	result[0..1]: Result
 	series: Series
 	ts: Date
+	additionalProperties[0..1]: Object
 }
 
 class Context {
@@ -37,6 +39,7 @@ class Context {
 	namespace[0..1]: String
 	type[0..1]: String
 	unit[0..1]: String
+	additionalProperties[0..1]: Object
 }
 
 class Limits {
@@ -49,7 +52,7 @@ class Limits {
 
 class Series {
 	time[0..1]: [Number]
-	<values>[1..*]: [(Boolean | Number | String)]
+	<values>[1..*]: [Boolean | Number | String]
 }
 
 class Part {
@@ -58,6 +61,7 @@ class Part {
 	type[0..1]: PartType
 	typeId[0..1]: String
 	result[0..1]: Result
+	additionalProperties[0..1]: Object
 }
 
 enum DeviceState {

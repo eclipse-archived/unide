@@ -51,16 +51,14 @@ export default {
         process: {
           ts: now.toISOString()
         },
-        measurements: [
-          {
-            ts: new Date(now.valueOf() + 100).toISOString(),
-            series: {
-              time: [0, 23, 24],
-              force: [26, 23, 24],
-              pressure: [100952.4, 100946.32, 100944.2432]
-            }
+        measurements: [{
+          ts: new Date(now.valueOf() + 100).toISOString(),
+          series: {
+            time: [0, 23, 24],
+            force: [26, 23, 24],
+            pressure: [100952.4, 100946.32, 100944.2432]
           }
-        ]
+        }]
       },
       complexMessage: {
         "content-spec": "urn:spec://eclipse.org/unide/process-message#v2",
@@ -68,16 +66,20 @@ export default {
           id: deviceId,
           mode: "auto",
           state: "OK",
-          swVersion: "2.0.3.13",
-          swBuildId: "41535"
+          additionalData: {
+            swVersion: "2.0.3.13",
+            swBuildId: "41535"
+          }
         },
         part: {
           code: "HUH289",
           id: "420003844",
-          result: "NOK",
-          toolId: "32324-432143",
           type: "SINGLE",
-          typeId: "F00VH07328"
+          typeId: "F00VH07328",
+          result: "NOK",
+          additionalData: {
+            toolId: "32324-432143"
+          }
         },
         process: {
           externalId: "b4927dad-58d4-4580-b460-79cefd56775b",
@@ -87,87 +89,82 @@ export default {
             name: "Programm 1"
           },
           result: "NOK",
-          shutoffPhase: "phase 2",
           ts: now.toISOString(),
-          escalation: "shift leader",
-          maxDuration: "30min"
+          additionalData: {
+            escalation: "shift leader",
+            maxDuration: "30min",
+            shutoffPhase: "phase 2"
+          }
         },
-        measurements: [
-          {
-            code: "0000 EE01",
-            name: "heating up",
-            phase: "phase 1",
-            result: "OK",
-            ts: new Date(now.valueOf() + 100).toISOString(),
-            context: {
-              pressure: {
-                namespace: "https://mycompany.com/productvariants/5986",
-                unit: "Pa",
-                limits: {
-                  upperError: 103000,
-                  lowerError: 99000,
-                  upperWarn: 102000,
-                  lowerWarn: 100000,
-                  target: 100950
-                }
+        measurements: [{
+          code: "0000 EE01",
+          context: {
+            pressure: {
+              limits: {
+                upperError: 103000,
+                lowerError: 99000,
+                upperWarn: 102000,
+                lowerWarn: 100000,
+                target: 100950
               },
-              force: {
-                limits: {
-                  upperError: [29, 27, 26],
-                  lowerError: [23, 21, 20],
-                  upperWarn: [28.5, 26.5, 25.5],
-                  lowerWarn: [23.5, 21.5, 20.5],
-                  target: [26, 24, 23]
-                }
-              }
+              namespace: "https://mycompany.com/productvariants/5986",
+              unit: "Pa"
             },
-            specialValues: [
-              {
-                // eslint-disable-next-line camelcase
-                name: "turning point",
-                value: {
-                  pressure: 101530,
-                  force: 50
-                }
-              },
-              {
-                name: "shutoffForce",
-                value: {
-                  force: 24,
-                  upperError: 26,
-                  lowerError: 22,
-                  upperWarn: 25,
-                  lowerWarn: 23,
-                  target: 24
-                }
-              },
-              {
-                name: "shutoffPressure",
-                value: {
-                  pressure: 100950,
-                  upperError: 103000,
-                  lowerError: 99000
-                }
+            force: {
+              limits: {
+                upperError: [29, 27, 26],
+                lowerError: [23, 21, 20],
+                upperWarn: [28.5, 26.5, 25.5],
+                lowerWarn: [23.5, 21.5, 20.5],
+                target: [26, 24, 23]
               }
-            ],
-            series: {
-              force: [26, 23, 24],
-              pressure: [100952.4, 100946.32, 100944.2432],
-              temperature: [45.4243, 46.42342, 44.2432]
             }
           },
-          {
-            ts: new Date(now.valueOf() + 430).toISOString(),
-            phase: "phase 2",
-            name: "processing",
-            result: "OK",
-            series: {
-              // eslint-disable-next-line camelcase
-              time: [0, 23, 24],
-              temperature: [49.2, 48.8, 50]
+          name: "heating up",
+          phase: "phase 1",
+          result: "OK",
+          series: {
+            force: [26, 23, 24],
+            pressure: [100952.4, 100946.32, 100944.2432],
+            temperature: [45.4243, 46.42342, 44.2432]
+          },
+          specialValues: [{
+            // eslint-disable-next-line camelcase
+            name: "turning point",
+            value: {
+              pressure: 101530,
+              force: 50
             }
-          }
-        ]
+          }, {
+            name: "shutoffForce",
+            value: {
+              force: 24,
+              upperError: 26,
+              lowerError: 22,
+              upperWarn: 25,
+              lowerWarn: 23,
+              target: 24
+            }
+          }, {
+            name: "shutoffPressure",
+            value: {
+              pressure: 100950,
+              upperError: 103000,
+              lowerError: 99000
+            }
+          }],
+          ts: new Date(now.valueOf() + 100).toISOString()
+        }, {
+          name: "processing",
+          phase: "phase 2",
+          result: "OK",
+          series: {
+            // eslint-disable-next-line camelcase
+            time: [0, 23, 24],
+            temperature: [49.2, 48.8, 50]
+          },
+          ts: new Date(now.valueOf() + 430).toISOString()
+        }]
       }
     };
     this.$static.examples = Object.entries({
@@ -176,6 +173,7 @@ export default {
         "device",
         "device.id",
         "device.mode",
+        "device.additionalData",
         "measurements",
         "part",
         "part.code",
@@ -190,7 +188,6 @@ export default {
         "process.program.lastChangedDate",
         "process.program.name",
         "process.result",
-        "process.shutoffPhase",
         "process.ts"
       ].reduce(
         (l, v) => {

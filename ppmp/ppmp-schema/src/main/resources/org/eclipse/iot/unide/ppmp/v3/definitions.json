@@ -29,8 +29,12 @@
 					],
 					"default": "UNKNOWN",
 					"description": "The state describes the technical condition of a device."
+				},
+				"additionalData": {
+					"type": "object"
 				}
 			},
+			"additionalProperties": false,
 			"required": [
 				"id"
 			]
@@ -165,8 +169,12 @@
 									"unit": {
 										"type": "string",
 										"description": "Describes the unit of the corresponding measurement. It is recommended to use symbols as defined in https://tools.ietf.org/html/draft-ietf-core-senml-14#section-12.1"
+									},
+									"additionalData": {
+										"type": "object"
 									}
 								},
+								"additinalProperties": false,
 								"minProperties": 1
 							}
 						},
@@ -203,8 +211,12 @@
 						"format": "date-time",
 						"type": "string",
 						"description": "Start time of the the data measurment in  ISO 8601 format"
+					},
+					"additionalData": {
+						"type": "object"
 					}
 				},
+				"additionalProperties": false,
 				"required": [
 					"ts",
 					"series"
@@ -238,8 +250,12 @@
 				},
 				"result": {
 					"$ref": "#/definitions/result"
+				},
+				"additionalData": {
+					"type": "object"
 				}
 			},
+			"additionalProperties": false,
 			"required": [
 				"id"
 			]
