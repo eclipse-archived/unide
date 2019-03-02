@@ -2,10 +2,10 @@
   <div>
     <slot/>
     <template v-if="link === true">
-      yes 
+      yes
     </template>
     <template v-else-if="link === false">
-      no 
+      no
     </template>
     <template v-else-if="isSchema(link)">
       <nuxt-link :to="'#p-'+link.$id">
@@ -20,7 +20,7 @@
       </li>
     </ul>
     <ul v-else-if="link instanceof Object">
-      <li v-for="(subschema, key) in link">
+      <li v-for="(subschema, key) in link" :key="key">
         <nuxt-link :to="'#p-'+subschema.$id">
           {{ key }}
         </nuxt-link>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import Schema from "../assets/schema.js";
+import Schema from '../assets/schema.js';
 
 export default {
   props: {

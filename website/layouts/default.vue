@@ -8,7 +8,7 @@
         Proposal
       </nuxt-link>
       <nuxt-link active-class="is-active" class="navbar-item" to="/specification">
-        Specification 
+        Specification
       </nuxt-link>
       <nuxt-link active-class="is-active" class="navbar-item" to="/blog">
         Blog Archives

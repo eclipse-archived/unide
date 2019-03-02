@@ -1,7 +1,7 @@
 <template>
   <div class="blogArchives">
     <h4 class="subtitle is-5">
-      Blog Archives 
+      Blog Archives
     </h4>
     <ul>
       <li v-for="post in posts" :key="post.url">
@@ -42,4 +42,3 @@ export default {
   }
 }
 </style>
-

@@ -7,13 +7,13 @@
       <div class="card is-pulled-right">
         <div class="card-image">
           <figure class="image">
-            <img src="images/languages.png" alt="Overview Languages" title="Overview Languages"></img>
+            <img src="images/languages.png" alt="Overview Languages" title="Overview Languages"/>
           </figure>
         </div>
         <div class="card-content">Languages of the world</div>
       </div>
       <p class="is-clearfix">
-        Imagine the following: You go on vacation to a foreign country and want to get by. Usually you will neither have the time nor the resources to learn a new language for each trip. Luckily this is not necessary. A handful of simple phrases such as <i>hello</i>, <i>I am hungry</i>, etc. are already sufficient to cope with many situations. To have such phrases at hand you don’t need to be fluent in a language, a mini phrase book will already cover a good portion. Thus, to master common situations in different languages you will be well served by a collection of mini phrase books in different languages. 
+        Imagine the following: You go on vacation to a foreign country and want to get by. Usually you will neither have the time nor the resources to learn a new language for each trip. Luckily this is not necessary. A handful of simple phrases such as <i>hello</i>, <i>I am hungry</i>, etc. are already sufficient to cope with many situations. To have such phrases at hand you don’t need to be fluent in a language, a mini phrase book will already cover a good portion. Thus, to master common situations in different languages you will be well served by a collection of mini phrase books in different languages.
       </p>
       <div class="card is-pulled-left">
         <div class="card-image">
@@ -50,7 +50,7 @@
         </div>
       </div>
       <p>
-      In order to, first, leverage the Eclipse IoT stack in Industry 4.0 scenarios and, second, build a lively community around the specification, we consider the Eclipse iot working group as the premier place to host Unide. 
+      In order to, first, leverage the Eclipse IoT stack in Industry 4.0 scenarios and, second, build a lively community around the specification, we consider the Eclipse iot working group as the premier place to host Unide.
       </p>
     </div>
   </div>

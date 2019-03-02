@@ -22,7 +22,7 @@ class Device {
 	id: String
 	mode[0..1]: String
 	state[0..1]: DeviceState
-	additionalProperties[0..1]: Object
+	additionalData[0..1]: Object
 }
 
 class Measurement {
@@ -31,15 +31,15 @@ class Measurement {
 	result[0..1]: Result
 	series: Series
 	ts: Date
-	additionalProperties[0..1]: Object
+	additionalData[0..1]: Object
 }
 
 class Context {
 	limits[0..1]: Limits
 	namespace[0..1]: String
-	type[0..1]: String
+	type[0..1]: ValueType
 	unit[0..1]: String
-	additionalProperties[0..1]: Object
+	additionalData[0..1]: Object
 }
 
 class Limits {
@@ -61,7 +61,7 @@ class Part {
 	type[0..1]: PartType
 	typeId[0..1]: String
 	result[0..1]: Result
-	additionalProperties[0..1]: Object
+	additionalData[0..1]: Object
 }
 
 enum DeviceState {
@@ -81,6 +81,15 @@ enum Result {
 enum PartType {
 	SINGLE
 	BATCH
+}
+
+enum ValueType {
+	BASE64
+	BOOLEAN
+	NUMBER
+	OTHER
+	REF
+	STRING
 }
 
 Measurement "1" *-- "0..1" Context : ContextList

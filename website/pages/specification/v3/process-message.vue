@@ -12,14 +12,14 @@
     <schemaDetail type="v3/process" :examples="$static.examples">
       <card :collapsed="true">
         <template slot="header">
-          Minimal message example 
+          Minimal message example
         </template>
         <prism language="json">{{ $static.message | stringify }}</prism>
       </card>
 
       <card :collapsed="true">
         <template slot="header">
-          Process message example 
+          Process message example
         </template>
         <prism language="json">{{ $static.complexMessage | stringify }}</prism>
       </card>
@@ -28,139 +28,141 @@
 </template>
 
 <script>
-import prism from "vue-prism-component";
-import card from "~/components/collapsibleCard.vue";
-import get from "lodash/get";
-import schemaDetail from "~/components/schemaDetail.vue";
+import prism from 'vue-prism-component';
+import card from '~/components/collapsibleCard.vue';
+import get from 'lodash/get';
+import schemaDetail from '~/components/schemaDetail.vue';
 
 export default {
   head() {
     return {
-      title: "Specification for process messages"
+      title: 'Specification for process messages'
     };
   },
   created() {
     const now = new Date(),
-      deviceId = "a4927dad-58d4-4580-b460-79cefd56775b";
+          deviceId = 'a4927dad-58d4-4580-b460-79cefd56775b';
     this.$static = {
       message: {
-        "content-spec": "urn:spec://eclipse.org/unide/process-message#v2",
-        device: {
+        'content-spec': 'urn:spec://eclipse.org/unide/process-message#v2',
+        device:         {
           id: deviceId
         },
         process: {
           ts: now.toISOString()
         },
         measurements: [{
-          ts: new Date(now.valueOf() + 100).toISOString(),
+          ts:     new Date(now.valueOf() + 100).toISOString(),
           series: {
-            time: [0, 23, 24],
-            force: [26, 23, 24],
+            time:     [0, 23, 24],
+            force:    [26, 23, 24],
             pressure: [100952.4, 100946.32, 100944.2432]
           }
         }]
       },
       complexMessage: {
-        "content-spec": "urn:spec://eclipse.org/unide/process-message#v2",
-        device: {
-          id: deviceId,
-          mode: "auto",
-          state: "OK",
+        'content-spec': 'urn:spec://eclipse.org/unide/process-message#v2',
+        device:         {
+          id:             deviceId,
+          mode:           'auto',
+          state:          'OK',
           additionalData: {
-            swVersion: "2.0.3.13",
-            swBuildId: "41535"
+            swVersion: '2.0.3.13',
+            swBuildId: '41535'
           }
         },
         part: {
-          code: "HUH289",
-          id: "420003844",
-          type: "SINGLE",
-          typeId: "F00VH07328",
-          result: "NOK",
+          code:           'HUH289',
+          id:             '420003844',
+          type:           'SINGLE',
+          typeId:         'F00VH07328',
+          result:         'NOK',
           additionalData: {
-            toolId: "32324-432143"
+            toolId: '32324-432143'
           }
         },
         process: {
-          externalId: "b4927dad-58d4-4580-b460-79cefd56775b",
-          program: {
-            id: "1",
-            lastChangedDate: "2002-05-30T09:30:10.123+02:00",
-            name: "Programm 1"
+          externalId: 'b4927dad-58d4-4580-b460-79cefd56775b',
+          program:    {
+            id:              '1',
+            lastChangedDate: '2002-05-30T09:30:10.123+02:00',
+            name:            'Programm 1'
           },
-          result: "NOK",
-          ts: now.toISOString(),
+          result:         'NOK',
+          ts:             now.toISOString(),
           additionalData: {
-            escalation: "shift leader",
-            maxDuration: "30min",
-            shutoffPhase: "phase 2"
+            escalation:   'shift leader',
+            maxDuration:  '30min',
+            shutoffPhase: 'phase 2'
           }
         },
         measurements: [{
-          code: "0000 EE01",
+          code:    '0000 EE01',
           context: {
             pressure: {
               limits: {
                 upperError: 103000,
                 lowerError: 99000,
-                upperWarn: 102000,
-                lowerWarn: 100000,
-                target: 100950
+                upperWarn:  102000,
+                lowerWarn:  100000,
+                target:     100950
               },
-              namespace: "https://mycompany.com/productvariants/5986",
-              unit: "Pa"
+              namespace: 'https://mycompany.com/productvariants/5986',
+              unit:      'Pa'
             },
             force: {
               limits: {
                 upperError: [29, 27, 26],
                 lowerError: [23, 21, 20],
-                upperWarn: [28.5, 26.5, 25.5],
-                lowerWarn: [23.5, 21.5, 20.5],
-                target: [26, 24, 23]
+                upperWarn:  [28.5, 26.5, 25.5],
+                lowerWarn:  [23.5, 21.5, 20.5],
+                target:     [26, 24, 23]
               }
             }
           },
-          name: "heating up",
-          phase: "phase 1",
-          result: "OK",
+          name:   'heating up',
+          phase:  'phase 1',
+          result: 'OK',
           series: {
-            force: [26, 23, 24],
-            pressure: [100952.4, 100946.32, 100944.2432],
+            force:       [26, 23, 24],
+            pressure:    [100952.4, 100946.32, 100944.2432],
             temperature: [45.4243, 46.42342, 44.2432]
           },
           specialValues: [{
             // eslint-disable-next-line camelcase
-            name: "turning point",
+            name:  'turning point',
             value: {
               pressure: 101530,
-              force: 50
+              force:    50
             }
           }, {
-            name: "shutoffForce",
+            name:  'shutoffForce',
+            time:  24,
             value: {
-              force: 24,
+              force:      24,
               upperError: 26,
               lowerError: 22,
-              upperWarn: 25,
-              lowerWarn: 23,
-              target: 24
+              upperWarn:  25,
+              lowerWarn:  23,
+              target:     24
             }
           }, {
-            name: "shutoffPressure",
+            name:  'shutoffPressure',
+            time:  24,
             value: {
-              pressure: 100950,
+              pressure:   100950,
               upperError: 103000,
               lowerError: 99000
             }
           }],
           ts: new Date(now.valueOf() + 100).toISOString()
         }, {
-          name: "processing",
-          phase: "phase 2",
-          result: "OK",
+          name:   'processing',
+          phase:  'phase 2',
+          result: 'OK',
           series: {
             // eslint-disable-next-line camelcase
-            time: [0, 23, 24],
+            time:        [0, 23, 24],
             temperature: [49.2, 48.8, 50]
           },
           ts: new Date(now.valueOf() + 430).toISOString()
@@ -169,83 +171,77 @@ export default {
     };
     this.$static.examples = Object.entries({
       ...[
-        "content-spec",
-        "device",
-        "device.id",
-        "device.mode",
-        "device.additionalData",
-        "measurements",
-        "part",
-        "part.code",
-        "part.id",
-        "part.result",
-        "part.type",
-        "part.typeId",
-        "process",
-        "process.externalId",
-        "process.program",
-        "process.program.id",
-        "process.program.lastChangedDate",
-        "process.program.name",
-        "process.result",
-        "process.ts"
+        'content-spec',
+        'device',
+        'device.id',
+        'device.mode',
+        'device.additionalData',
+        'measurements',
+        'part',
+        'part.code',
+        'part.id',
+        'part.result',
+        'part.type',
+        'part.typeId',
+        'process',
+        'process.externalId',
+        'process.program',
+        'process.program.id',
+        'process.program.lastChangedDate',
+        'process.program.name',
+        'process.result',
+        'process.ts'
       ].reduce(
         (l, v) => {
           l[this.schemafy(v)] = v;
           return l;
         },
         {
+          'properties.measurements.allOf[0].items.properties.context':
+            'measurements[0].context',
           'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.unit':
-            "measurements[0].context.pressure.unit",
-            'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.namespace':
-            "measurements[0].context.pressure.namespace",
+            'measurements[0].context.pressure.unit',
+          'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.namespace':
+            'measurements[0].context.pressure.namespace',
           'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[0]':
-            "measurements[0].context.pressure.limits",
+            'measurements[0].context.pressure.limits',
           'properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[1]':
-            "measurements[0].context.force.limits",
+            'measurements[0].context.force.limits',
           'properties.measurements.allOf[0].items.properties.series.patternProperties["^[^$]+"]':
-            "measurements[0].series.force"
+            'measurements[0].series.force'
         }
       ),
-      ...["code", "result", "series", "series.time", "ts"].reduce((l, key) => {
-        l[
-          `properties.measurements.allOf[0].items.${this.schemafy(key)}`
-        ] = `measurements[0].${key}`;
+      ...['code', 'result', 'series', 'series.time', 'ts'].reduce((l, key) => {
+        l[`properties.measurements.allOf[0].items.${this.schemafy(key)}`] = `measurements[0].${key}`;
         return l;
       }, {}),
       ...[
-        "name",
-        "phase",
-        "specialValues",
-        "specialValues[1].time",
-        "specialValues[1].name",
-        "specialValues[1].value"
+        'name',
+        'phase',
+        'specialValues',
+        'specialValues[1].time',
+        'specialValues[1].name',
+        'specialValues[1].value'
       ].reduce((l, key) => {
-        l[
-          `properties.measurements.allOf[1].items.${this.schemafy(key)}`
-        ] = `measurements[0].${key}`;
+        l[`properties.measurements.allOf[1].items.${this.schemafy(key)}`] = `measurements[0].${key}`;
         return l;
       }, {}),
       ...[
-        "lowerError",
-        "lowerWarn",
-        "target",
-        "upperError",
-        "upperWarn"
+        'lowerError',
+        'lowerWarn',
+        'target',
+        'upperError',
+        'upperWarn'
       ].reduce((l, key) => {
-        l[
-          `properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[0].properties.${key}`
-        ] = `measurements[0].context.pressure.limits.${key}`;
-        l[
-          `properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[1].properties.${key}`
-        ] = `measurements[0].context.force.limits.${key}`;
+        l[`properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[0].properties.${key}`] = `measurements[0].context.pressure.limits.${key}`;
+        l[`properties.measurements.allOf[0].items.properties.context.patternProperties["^[^$]+"].properties.limits.oneOf[1].properties.${key}`] = `measurements[0].context.force.limits.${key}`;
         return l;
       }, {})
     }).reduce((l, [key, path]) => {
       const example =
         get(this.$static.message, path) ||
         get(this.$static.complexMessage, path);
-      if (example) {
+      if(example) {
         l[key] = [example];
       } else {
         console.error(`no example provided in process-message for:
@@ -256,14 +252,14 @@ export default {
   },
   filters: {
     stringify(v) {
-      return JSON.stringify(v, " ", 2);
+      return JSON.stringify(v, ' ', 2);
     }
   },
   methods: {
     schemafy(v) {
       return v
-        .replace(/(^|\.)/g, "$1properties.")
-        .replace(/\[[^]]*]/g, ".items");
+        .replace(/(^|\.)/g, '$1properties.')
+        .replace(/\[[^]]*]/g, '.items');
     }
   },
   components: {

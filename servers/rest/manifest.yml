@@ -1,0 +1,8 @@
+---
+applications:
+- name: unide-ppmp-server
+  instances: 1
+  host: unide-ppmp-server-${random-word}
+  path: target/ppmp-server-0.3.0-SNAPSHOT.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  memory: 1GB

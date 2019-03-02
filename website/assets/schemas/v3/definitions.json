@@ -50,29 +50,14 @@
 					},
 					"context": {
 						"type": "object",
-						"description": "Provides additional information about the data provided in the series element. An entry in the context applies to the element in the series with the same key.",
+						"description": "Provides additional information about the data in the series element. An entry in the context applies to the element in the series with the same key.",
 						"patternProperties": {
 							"^[^$]+": {
 								"type": "object",
 								"description": "The key shall be the name of a measurement point (element of series element). The value is a structure of additional context information.",
 								"properties": {
-									"accuracy": {
-										"oneOf": [
-											{
-												"type": "number",
-												"description": "A constant that describes the accuracy of the corresponding measurement as absolute value"
-											},
-											{
-												"type": "array",
-												"description": "An array of accuracy values. The items of the array correspond to the respective measurements at the same position.",
-												"items": {
-													"type": "number"
-												}
-											}
-										]
-									},
 									"limits": {
-										"description": "Provides information about the limit for data provided in the series element. The limit corresponds to the measurement point (see also series element) with the same key. The value is a structure of upper/lower limits and applies to numeric values only.",
+										"description": "Provides information about the limit for data in the series element. The limit corresponds to the measurement point (see also series element) with the same key. The value is a structure of upper/lower limits and applies to numeric values only.",
 										"type": "object",
 										"oneOf": [
 											{
@@ -144,21 +129,9 @@
 											}
 										]
 									},
-									"offset": {
-										"description": "The offset applies to numeric data type only.",
-										"oneOf": [
-											{
-												"type": "number",
-												"description": "Describes the offset of the corresponding measurement as absolute value"
-											},
-											{
-												"type": "array",
-												"description": "An array of offset values. The items of the array correspond to the respective measurements at the same position.",
-												"items": {
-													"type": "number"
-												}
-											}
-										]
+									"namespace": {
+										"type": "string",
+										"description": "An URI that identifies the schema for further describing the values (e.g. a semantic description or further specification on length, unit, naming conventions etc.)"
 									},
 									"type": {
 										"type": "string",

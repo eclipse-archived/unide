@@ -177,7 +177,6 @@
           </div>
           <div class="field-body">
             <prism language="json" v-for="(example, idx) in schema.examples" :key="idx">{{ example | stringify }}</prism>
-            </div>
           </div>
         </div>
       </div>
@@ -186,49 +185,47 @@
 </template>
 
 <script>
-import card from "~/components/collapsibleCard.vue";
-import cloneDeepWith from "lodash/clonedeepWith";
-import get from "lodash/get";
-import merge from "lodash/merge";
-import prism from "vue-prism-component";
-import Schema from "../assets/schema";
-import schemaLink from "~/components/schemaLink.vue";
-import schemaToc from "~/components/schemaToc.vue";
-import set from "lodash/set";
-
+import card from '~/components/collapsibleCard.vue';
+import get from 'lodash/get';
+import merge from 'lodash/merge';
+import prism from 'vue-prism-component';
+import JSONSchema from '../assets/schema';
+import schemaLink from '~/components/schemaLink.vue';
+import schemaToc from '~/components/schemaToc.vue';
+import set from 'lodash/set';
 
 export default {
   props: {
     type: {
-      type: String,
+      type:     String,
       required: true
     },
     examples: {
-      type: Object,
+      type:     Object,
       required: false,
-      default: () => ({})
+      default:  () => ({})
     }
   },
   data() {
     return {
       masterSchema: null,
-      loading: true
+      loading:      true
     };
   },
   created() {
     const rfcs = {
       date: {
-        link: "https://tools.ietf.org/html/rfc3339#section-5.6",
-        name: "RFC3339, 5.6"
+        link: 'https://tools.ietf.org/html/rfc3339#section-5.6',
+        name: 'RFC3339, 5.6'
       },
       email: {
-        link: "https://tools.ietf.org/html/rfc5322#section-3.4.1",
-        name: "RFC5322, 3.4.1"
+        link: 'https://tools.ietf.org/html/rfc5322#section-3.4.1',
+        name: 'RFC5322, 3.4.1'
       }
     };
     import(`~/assets/schemas/${this.type}_schema.json`)
-      .then(schema => {
-        this.masterSchema = new Schema('$', null, schema);
+      .then((schema) => {
+        this.masterSchema = new JSONSchema('$', null, schema.default);
         // inject examples
         Object.entries(this.examples).forEach(([path, example]) => {
           if(get(this.masterSchema, path)) {
@@ -238,7 +235,7 @@ export default {
           }
         });
         this.loading = false;
-        return schema;
+        return schema.default;
       })
       .catch(err => {
         throw err;
@@ -246,20 +243,20 @@ export default {
 
     this.$static = {
       formats: {
-        "date-time": rfcs.date,
-        date: rfcs.date,
-        time: rfcs.date,
-        email: rfcs.email
+        'date-time': rfcs.date,
+        date:        rfcs.date,
+        time:        rfcs.date,
+        email:       rfcs.email
       }
     };
   },
   methods: {
     traverse(obj, fn) {
-      if(obj instanceof Schema) {
+      if(obj instanceof JSONSchema) {
         fn(obj);
         Object.entries(obj)
-        .filter(([key, value]) => key !== "$parent")
-        .forEach(([key, value]) => this.traverse(value, fn));
+          .filter(([key, value]) => key !== '$parent')
+          .forEach(([key, value]) => this.traverse(value, fn));
       } else if(obj instanceof Array) {
         obj.forEach(v => this.traverse(v, fn));
       } else if(obj instanceof Object) {
@@ -267,30 +264,30 @@ export default {
       }
     },
     simplifySchema(schema) {
-      const removableWith = schema => {
-              if (schema.anyOf && schema.anyOf.indexOf(true) >= 0) {
-                return [schema, true];
+      const removableWith = (subschema) => {
+              if(subschema.anyOf && subschema.anyOf.indexOf(true) >= 0) {
+                return [subschema, true];
               }
-              if (schema.allOf && schema.allOf.indexOf(false) >= 0) {
-                return [schema, false];
+              if(subschema.allOf && subschema.allOf.indexOf(false) >= 0) {
+                return [subschema, false];
               }
-              if(schema.allOf && schema.allOf.length) {
-                return [schema, new Schema(schema.$step, schema.$parent, merge({}, ...schema.allOf.map(item => item.toJSON())))];
+              if(subschema.allOf && subschema.allOf.length) {
+                return [subschema, new JSONSchema(subschema.$step, subschema.$parent, merge({}, ...subschema.allOf.map(item => item.toJSON())))];
               }
-              if (schema.not === true) {
-                return [schema, false];
+              if(subschema.not === true) {
+                return [subschema, false];
               }
-              if (Object.keys(schema).filter(key => key[0] !== "$").length === 0) {
-                return [schema, true];
+              if(Object.keys(subschema).filter(key => key[0] !== '$').length === 0) {
+                return [subschema, true];
               }
               return null;
             },
-            replace = replacement => {
-              if (!replacement) {
+            replace = (replacement) => {
+              if(!replacement) {
                 return;
               }
-              const [schema, rpl] = replacement,
-                    parentRef     = schema.$parent;
+              const [rschema, rpl] = replacement,
+                    parentRef     = rschema.$parent;
               if(parentRef) { // is this replacement still valid?
                 set(parentRef.schema, parentRef.path, rpl);
               }
@@ -298,14 +295,14 @@ export default {
               replace(removableWith(parentRef.schema)); // repeat for parent
             };
       this.traverse(schema, obj => {
-          replace(removableWith(obj));
+        replace(removableWith(obj));
       });
       return schema;
     }
   },
   computed: {
     schemas() {
-      if (!this.masterSchema) {
+      if(!this.masterSchema) {
         return null;
       }
       // flatten schema
@@ -318,16 +315,16 @@ export default {
   },
   filters: {
     stringify(v) {
-      return JSON.stringify(v, " ", 2);
+      return JSON.stringify(v, ' ', 2);
     },
     capitalize(v, schema) {
-      if (!v) {
-        return "";
+      if(!v) {
+        return '';
       }
-      if (!(v instanceof Array)) {
+      if(!(v instanceof Array)) {
         v = [v];
       }
-      return v.map(i => `${i[0].toUpperCase()}${i.slice(1)}`).join(", ");
+      return v.map(i => `${i[0].toUpperCase()}${i.slice(1)}`).join(', ');
     }
   },
   components: {

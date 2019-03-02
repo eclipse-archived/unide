@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   head: {
     title:         'Welcome',
     titleTemplate: 'Eclipse unide - %s',
@@ -39,7 +39,8 @@ module.exports = {
           exclude: /(node_modules)/
         });
       }
-      config.module.rules.push({
+      config.module.rules.unshift({
+        type:    'javascript/auto',
         test:    /schema\.json$/,
         exclude: /node_modules/,
         loader:  'json-schema-loader',
@@ -52,21 +53,32 @@ module.exports = {
       }
     },
     extractCSS: true,
-    publicPath: '/files/',
-    babel:      {
-      presets: [['vue-app', {
-        targets: { ie: 9 }
-      }]],
-      plugins: ['transform-runtime']
-    }
+    publicPath: '/files/'
   },
 
   plugins: [{
     src: '~/plugins/prismjs.js'
   }],
 
+  generate: {
+    routes: ['machine', 'measurement', 'process'].map((name) => `/specification/${name}-message`)
+  },
   router: {
-    base: '/unide/'
+    base: '/unide/',
+    scrollBehavior({ hash:selector }, from, savedPosition) {
+      if(savedPosition) {
+        return savedPosition;
+      } else {
+        return selector ? { selector } : {};
+      }
+    },
+    extendRoutes(routes, resolve) {
+      // alias for default PPMP version
+      ['machine', 'measurement', 'process'].forEach((name) => routes.push({
+        path:     `/specification/${name}-message`,
+        redirect: `/specification/v2/${name}-message`
+      }));
+    }
     //, fallback: true
   },
 

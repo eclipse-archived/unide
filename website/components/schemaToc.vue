@@ -22,8 +22,8 @@ export default {
   name:  'schemaToc',
   props: {
     tag: {
-      type:     String,
-      default:  'li'
+      type:    String,
+      default: 'li'
     },
     schema: {
       type:     Object,
@@ -39,4 +39,3 @@ export default {
 .schemaDocumenation {
 }
 </style>
-

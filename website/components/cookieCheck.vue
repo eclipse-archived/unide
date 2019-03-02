@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import * as Cookie from "tiny-cookie";
+import * as Cookie from 'tiny-cookie';
 
 export default {
   data() {
@@ -27,12 +27,12 @@ export default {
   },
   created() {
     this.lSAvaialable = true;
-    this.cookieName = "eclipse_cookieconsent_status";
+    this.cookieName = 'eclipse_cookieconsent_status';
     try {
-      const name = "localStorateTest";
+      const name = 'localStorateTest';
       localStorage.setItem(name, name);
       localStorage.removeItem(name);
-    } catch (e) {
+    } catch(e) {
       this.lSAvaialable = false;
     }
     this.accepted = this.hasAccepted();
@@ -51,7 +51,7 @@ export default {
       this.lSAvaialable
         ? localStorage.setItem(this.cookieName, now)
         : Cookie.set(this.cookieName, now);
-        this.accepted = this.hasAccepted();
+      this.accepted = this.hasAccepted();
     }
   }
 };
