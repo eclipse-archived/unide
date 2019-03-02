@@ -13,7 +13,6 @@ class Process {
 	externalId[0..1]: String
 	program[0..1]: Program
 	result[0..1]: Result
-	shutoffPhase[0..1]: String
 	ts: Date
 	additionalData[0..1]: Object
 }

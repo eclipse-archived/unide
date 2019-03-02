@@ -8,7 +8,7 @@
         Proposal
       </nuxt-link>
       <nuxt-link active-class="is-active" class="navbar-item" to="/specification">
-        Specification 
+        Specification
       </nuxt-link>
       <nuxt-link active-class="is-active" class="navbar-item" to="/blog">
         Blog Archives
@@ -33,10 +33,10 @@
 </template>
 
 <script>
-import navbar from "~/components/navbar.vue";
-import recentPosts from "~/components/recentPosts.vue";
-import blogArchives from "~/components/blogArchives.vue";
-import eclipseFooter from "~/components/eclipseFooter.vue";
+import navbar from '~/components/navbar.vue';
+import recentPosts from '~/components/recentPosts.vue';
+import blogArchives from '~/components/blogArchives.vue';
+import eclipseFooter from '~/components/eclipseFooter.vue';
 
 export default {
   components: {
@@ -59,4 +59,3 @@ body {
   }
 }
 </style>
-

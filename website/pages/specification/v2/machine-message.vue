@@ -27,94 +27,94 @@
 </template>
 
 <script>
-import prism from "vue-prism-component";
-import card from "~/components/collapsibleCard.vue";
-import get from "lodash/get";
-import schemaDetail from "~/components/schemaDetail.vue";
+import prism from 'vue-prism-component';
+import card from '~/components/collapsibleCard.vue';
+import get from 'lodash/get';
+import schemaDetail from '~/components/schemaDetail.vue';
 
 export default {
   head() {
     return {
-      title: "Specification for machine messages"
+      title: 'Specification for machine messages'
     };
   },
   created() {
     const now = new Date(),
-      deviceId = "a4927dad-58d4-4580-b460-79cefd56775b";
+          deviceId = 'a4927dad-58d4-4580-b460-79cefd56775b';
     this.$static = {
       message: {
-        "content-spec": "urn:spec://eclipse.org/unide/machine-message#v2",
-        device: {
+        'content-spec': 'urn:spec://eclipse.org/unide/machine-message#v2',
+        device:         {
           deviceID: deviceId
         },
         messages: [
           {
-            ts: now.toISOString(),
-            code: "190ABT"
+            ts:   now.toISOString(),
+            code: '190ABT'
           }
         ]
       },
       multipleMachineMessages: {
-        "content-spec": "urn:spec://eclipse.org/unide/machine-message#v2",
-        device: {
-          deviceID: deviceId,
-          operationalStatus: "normal",
-          metaData: {
-            swVersion: "2.0.3.13",
-            swBuildID: "41535"
+        'content-spec': 'urn:spec://eclipse.org/unide/machine-message#v2',
+        device:         {
+          deviceID:          deviceId,
+          operationalStatus: 'normal',
+          metaData:          {
+            swVersion: '2.0.3.13',
+            swBuildID: '41535'
           }
         },
         messages: [
           {
-            origin: "sensor-id-992.2393.22",
-            ts: now.toISOString(),
-            type: "DEVICE",
-            severity: "HIGH",
-            code: "190ABT",
-            title: "control board damaged",
+            origin:      'sensor-id-992.2393.22',
+            ts:          now.toISOString(),
+            type:        'DEVICE',
+            severity:    'HIGH',
+            code:        '190ABT',
+            title:       'control board damaged',
             description:
-              "Electronic control board or its electrical connections are damaged",
-            hint: "Check the control board",
+              'Electronic control board or its electrical connections are damaged',
+            hint:     'Check the control board',
             metaData: {
-              firmware: "20130304_22.020"
+              firmware: '20130304_22.020'
             }
           },
           {
-            ts: new Date(now.valueOf() + 100).toISOString(),
-            type: "TECHNICAL_INFO",
-            severity: "HIGH",
-            code: "33-02",
-            title: "Disk size limit reached",
+            ts:          new Date(now.valueOf() + 100).toISOString(),
+            type:        'TECHNICAL_INFO',
+            severity:    'HIGH',
+            code:        '33-02',
+            title:       'Disk size limit reached',
             description:
-              "Disk size has reached limit. Unable to write log files."
+              'Disk size has reached limit. Unable to write log files.'
           }
         ]
       }
     };
     this.$static.examples = Object.entries({
       ...[
-        "content-spec",
-        "device",
-        "device.deviceID",
-        "device.metaData",
-        "device.operationalStatus",
-        "messages",
-        "messages[0].ts",
-        "messages[0].origin",
-        "messages[0].type",
-        "messages[0].severity",
-        "messages[0].code",
-        "messages[0].title",
-        "messages[0].description",
-        "messages[0].hint",
-        "messages[0].metaData"
+        'content-spec',
+        'device',
+        'device.deviceID',
+        'device.metaData',
+        'device.operationalStatus',
+        'messages',
+        'messages[0].ts',
+        'messages[0].origin',
+        'messages[0].type',
+        'messages[0].severity',
+        'messages[0].code',
+        'messages[0].title',
+        'messages[0].description',
+        'messages[0].hint',
+        'messages[0].metaData'
       ].reduce((l, v) => {
-        l[v.replace(/(^|\.)/g, "$1properties.").replace(/\[[^]]*]/g, ".items")] = v;
+        l[v.replace(/(^|\.)/g, '$1properties.').replace(/\[[^]]*]/g, '.items')] = v;
         return l;
       }, {})
     }).reduce((l, [key, path]) => {
       const example = get(this.$static.message, path) || get(this.$static.multipleMachineMessages, path);
-      if (example) {
+      if(example) {
         l[key] = [example];
       }
       return l;
@@ -122,7 +122,7 @@ export default {
   },
   filters: {
     stringify(v) {
-      return JSON.stringify(v, " ", 2);
+      return JSON.stringify(v, ' ', 2);
     }
   },
   components: {

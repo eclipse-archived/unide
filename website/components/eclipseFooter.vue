@@ -29,10 +29,10 @@
 @import "~assets/variables.scss";
 
 .footer {
-	font-size: 0.875em;
-	border-top: 1px solid $grey-lighter;
-	padding-top: 1.25rem;
-	margin-top: 1rem;
-	padding: 2rem 0;
+  font-size: 0.875em;
+  border-top: 1px solid $grey-lighter;
+  padding-top: 1.25rem;
+  margin-top: 1rem;
+  padding: 2rem 0;
 }
 </style>

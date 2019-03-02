@@ -25,82 +25,82 @@
 </template>
 
 <script>
-import prism from "vue-prism-component";
-import card from "~/components/collapsibleCard.vue";
+import prism from 'vue-prism-component';
+import card from '~/components/collapsibleCard.vue';
 import get from 'lodash/get';
-import schemaDetail from "~/components/schemaDetail.vue";
+import schemaDetail from '~/components/schemaDetail.vue';
 
 export default {
   head() {
     return {
-      title: "Specification for measurement messages"
+      title: 'Specification for measurement messages'
     };
   },
   created() {
     const now = new Date(),
-      deviceId = "a4927dad-58d4-4580-b460-79cefd56775b";
+          deviceId = 'a4927dad-58d4-4580-b460-79cefd56775b';
     this.$static = {
       message: {
-        "content-spec": "urn:spec://eclipse.org/unide/measurement-message#v2",
-        device: {
+        'content-spec': 'urn:spec://eclipse.org/unide/measurement-message#v2',
+        device:         {
           deviceID: deviceId
         },
 
         measurements: [
           {
-            ts: now.toISOString(),
+            ts:     now.toISOString(),
             series: {
               // eslint-disable-next-line camelcase
-              $_time: [0, 23, 24],
+              $_time:      [0, 23, 24],
               temperature: [45.4231, 46.4222, 44.2432]
             }
           }
         ]
       },
       complexMessage: {
-        "content-spec": "urn:spec://eclipse.org/unide/measurement-message#v2",
-        device: {
-          deviceID: deviceId,
-          operationalStatus: "MM",
-          metaData: {
-            swVersion: "2.0.3.13",
-            swBuildID: "41535"
+        'content-spec': 'urn:spec://eclipse.org/unide/measurement-message#v2',
+        device:         {
+          deviceID:          deviceId,
+          operationalStatus: 'MM',
+          metaData:          {
+            swVersion: '2.0.3.13',
+            swBuildID: '41535'
           }
         },
         part: {
-          partTypeID: "F00VH07328",
-          partID: "420003844",
-          result: "OK",
-          code: "HUH289",
-          metaData: {
-            lotID: "845849",
-            toolID: "32324-432143"
+          partTypeID: 'F00VH07328',
+          partID:     '420003844',
+          result:     'OK',
+          code:       'HUH289',
+          metaData:   {
+            lotID:  '845849',
+            toolID: '32324-432143'
           }
         },
         measurements: [
           {
-            ts: now.toISOString(),
-            code: "190ABT",
-            result: "OK",
+            ts:     now.toISOString(),
+            code:   '190ABT',
+            result: 'OK',
             series: {
               // eslint-disable-next-line camelcase
-              $_time: [0, 23, 24],
+              $_time:      [0, 23, 24],
               temperature: [45.4231, 46.4222, 44.2432]
             },
             limits: {
               temperature: {
                 lowerError: 40,
-                lowerWarn: 45,
+                lowerWarn:  45,
                 upperError: 50,
-                upperWarn: 47.5
+                upperWarn:  47.5
               }
             }
           },
           {
-            ts: new Date(now.valueOf() - 5000).toISOString(),
+            ts:     new Date(now.valueOf() - 5000).toISOString(),
             series: {
               // eslint-disable-next-line camelcase
-              $_time: [0, 130, 2633],
+              $_time:   [0, 130, 2633],
               pressure: [52.4, 46.32, 44.2432]
             }
           }
@@ -109,48 +109,48 @@ export default {
     };
     this.$static.examples = Object.entries({
       ...[
-        "content-spec",
-        "device",
-        "device.deviceID",
-        "device.metaData",
-        "device.operationalStatus",
-        "measurements",
-        "measurements[0].code",
-        "measurements[0].limits",
-        "measurements[0].result",
-        "measurements[0].series",
-        "measurements[0].ts",
-        "part",
-        "part.code",
-        "part.metaData",
-        "part.partID",
-        "part.partTypeID",
-        "part.result"
+        'content-spec',
+        'device',
+        'device.deviceID',
+        'device.metaData',
+        'device.operationalStatus',
+        'measurements',
+        'measurements[0].code',
+        'measurements[0].limits',
+        'measurements[0].result',
+        'measurements[0].series',
+        'measurements[0].ts',
+        'part',
+        'part.code',
+        'part.metaData',
+        'part.partID',
+        'part.partTypeID',
+        'part.result'
       ].reduce(
         (l, v) => {
-          l[v.replace(/(^|\.)/g, "$1properties.").replace(/\[[^]]*]/g, ".items")] = v;
+          l[v.replace(/(^|\.)/g, '$1properties.').replace(/\[[^]]*]/g, '.items')] = v;
           return l;
         },
         {
           'properties.measurements.items.properties.limits.patternProperties["^[^$]+"]':
-            "measurements[0].limits.temperature",
+            'measurements[0].limits.temperature',
           'properties.measurements.items.properties.series.patternProperties["^[^$]+"]':
-            "measurements[0].series.temperature"
+            'measurements[0].series.temperature'
         }
       ),
       ...[
-        "lowerError",
-        "lowerWarn",
-        "target",
-        "upperError",
-        "upperWarn"
+        'lowerError',
+        'lowerWarn',
+        'target',
+        'upperError',
+        'upperWarn'
       ].reduce((l, key) => {
         l[`properties.measurements.items.properties.limits.patternProperties["^[^$]+"].properties.${key}`] = `measurements[0].limits.temperature.${key}`;
         return l;
       }, {})
     }).reduce((l, [key, path]) => {
       const example = get(this.$static.message, path) || get(this.$static.complexMessage, path);
-      if (example) {
+      if(example) {
         l[key] = [example];
       }
       return l;
@@ -158,7 +158,7 @@ export default {
   },
   filters: {
     stringify(v) {
-      return JSON.stringify(v, " ", 2);
+      return JSON.stringify(v, ' ', 2);
     }
   },
   components: {

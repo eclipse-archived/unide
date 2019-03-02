@@ -24,20 +24,60 @@
       <p>
       The default way of transporting the json payload is via http to allow for an easy integration into various backend systems. Other transportation methods are possible and welcome.
       </p>
+      <article class="message is-warning is-size-7">
+        <div class="message-body">
+          Version 3 is still marked with a star (*), because it is not finally released with server and binding implementations and might be subject to minor fixes (addressed via <a href="https://github.com/eclipse/unide/issues">github</a>)
+        </div>
+      </article>
     </div>
     <div class="columns" id="messageDetail">
-      <nuxt-link :to="'/specification' + (isStatic ? '#messageDetail' : '')" exact class="column" tag="div">
-        <a>Overview</a>
-      </nuxt-link>
-      <nuxt-link :to="'/specification/v2/machine-message' + (isStatic ? '#messageDetail' : '')" class="column" tag="div">
-        <a>Machine&nbsp;Message</a>
-      </nuxt-link>
-      <nuxt-link :to="'/specification/v2/measurement-message' + (isStatic ? '#messageDetail' : '')" class="column" tag="div">
-        <a>Measurement&nbsp;Message</a>
-      </nuxt-link>
-      <nuxt-link :to="'/specification/v2/process-message' + (isStatic ? '#messageDetail' : '')" class="column" tag="div">
-        <a>Process&nbsp;Message</a>
-      </nuxt-link>
+      <div class="column">
+        <nuxt-link :to="'/specification' + (isStatic ? '#messageDetail' : '')" exact>
+          Overview
+        </nuxt-link>
+      </div>
+      <div class="column">
+        <nuxt-link :to="'/specification/machine-message' + (isStatic ? '#messageDetail' : '')" :class="{ 'nuxt-link-active': $route.path.endsWith('machine-message')}">
+          Machine&nbsp;Message
+        </nuxt-link>
+        (v
+        <nuxt-link :to="'/specification/v2/machine-message' + (isStatic ? '#messageDetail' : '')">
+          2
+        </nuxt-link>
+        /
+        <nuxt-link :to="'/specification/v3/machine-message' + (isStatic ? '#messageDetail' : '')">
+          3*
+        </nuxt-link>
+        )
+      </div>
+      <div class="column">
+        <nuxt-link :to="'/specification/measurement-message' + (isStatic ? '#messageDetail' : '')" :class="{ 'nuxt-link-active': $route.path.endsWith('measurement-message')}">
+          Measurement&nbsp;Message
+        </nuxt-link>
+        (v
+        <nuxt-link :to="'/specification/v2/measurement-message' + (isStatic ? '#messageDetail' : '')">
+          2
+        </nuxt-link>
+        /
+        <nuxt-link :to="'/specification/v3/measurement-message' + (isStatic ? '#messageDetail' : '')">
+          3*
+        </nuxt-link>
+        )
+      </div>
+      <div class="column">
+        <nuxt-link :to="'/specification/process-message' + (isStatic ? '#messageDetail' : '')" :class="{ 'nuxt-link-active': $route.path.endsWith('process-message')}">
+          Process&nbsp;Message
+        </nuxt-link>
+        (v
+        <nuxt-link :to="'/specification/v2/process-message' + (isStatic ? '#messageDetail' : '')">
+          2
+        </nuxt-link>
+        /
+        <nuxt-link :to="'/specification/v3/process-message' + (isStatic ? '#messageDetail' : '')">
+          3*
+        </nuxt-link>
+        )
+      </div>
     </div>
 
     <nuxt-child/>
@@ -49,7 +89,7 @@
 export default {
   head() {
     return {
-      title: "Specification"
+      title: 'Specification'
     };
   },
   asyncData({ isStatic }) {
@@ -100,18 +140,19 @@ export default {
     border-bottom: 2px solid $primary;
     margin-bottom: 2em;
     > .column {
+      white-space: nowrap;
+      display: block;
+      font-size: 1.2rem;
+      color: $bosch-darkgray;
       a {
-        font-size: 1.2rem;
-        color: $bosch-darkgray;
-        display: block;
         text-decoration: none;
         &:hover {
           color: $bosch-lima;
           font-weight: bold;
         }
-      }
-      &.nuxt-link-active a {
-        color: $bosch-lima;
+        &.nuxt-link-active {
+          color: $bosch-lima;
+        }
       }
     }
   }
@@ -120,4 +161,3 @@ export default {
   }
 }
 </style>
-

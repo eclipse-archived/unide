@@ -24,10 +24,10 @@ export default {
   layout: 'sidebar',
   head() {
     return {
-      title: "Frequently asked questions"
+      title: 'Frequently asked questions'
     };
   },
-  data:   () => ({
+  data: () => ({
     faqs: [{
       question: 'What does "Unide" stand for?',
       answer:   "The projects name is derived from understand industry devices. Other ideas like connect industry machines turned out to have meanings in foreign languages or being trademarked already.<br/>Regarding the logo: Unide and PPMP's goal is to enable you to connect machines and receive their measurements / alerts. The logo represents that. It has you ('<i>U</i>') highlighted and connects to rings. As a side note, we found that the words almost look like <i>you-nice</i>."

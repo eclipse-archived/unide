@@ -4,7 +4,7 @@
       {{ dateHeader }}
     </h1>
     <ul>
-      <li v-for="item in list" v-if="item.title">
+      <li v-for="item in list.filter((i) => i.title)" :key="item.url">
         <h2 class="title is-4">
           <nuxt-link :to="item.url">
             {{ item.title }}
@@ -49,6 +49,7 @@ export default {
       list = payload || (await axios.get(`${process.server ? 'http://localhost:3000/' : '/'}unide/files/posts/${path}.json`)).data;
     } else {
       list = await import('posts/recent.json');
+      list = list.default;
     }
     return {
       list: list.slice().reverse()
@@ -99,10 +100,8 @@ export default {
   li {
     margin-bottom: 2em;
   }
-	a {
-		text-decoration: none;
-	}
+  a {
+    text-decoration: none;
+  }
 }
 </style>
-
-

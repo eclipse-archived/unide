@@ -18,7 +18,7 @@
             <span></span>
             <span></span>
           </div>
-        
+
           <nuxt-link class="navbar-item" to="/">
             <img src="logo.svg" :alt="brand">
           </nuxt-link>
@@ -108,4 +108,3 @@ export default {
   }
 }
 </style>
-

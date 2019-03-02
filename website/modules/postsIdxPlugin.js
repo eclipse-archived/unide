@@ -1,9 +1,11 @@
-const fs                  = require('fs'),
-      path                = require('path'),
-      VirtualModulePlugin = require('webpack-virtual-modules'),
-      fm                  = require('front-matter'),
-      Prism               = require('prismjs'),
-      marked              = new (require('markdown-it'))({
+import fs from 'fs';
+import path from 'path';
+import VirtualModulePlugin from 'webpack-virtual-modules';
+import fm from 'front-matter';
+import Prism from 'prismjs';
+import MarkdownIt from 'markdown-it';
+
+const marked              = new MarkdownIt({
         html:    true,
         linkify: true,
         breaks:  true,
@@ -69,9 +71,10 @@ postFiles.forEach((file, idx) => {
   }
 });
 
-module.exports = function(options) {
+export default function(options) {
   this.options.build = this.options.build || {};
   const extend       = this.options.build.extend,
+        extendRoutes = this.options.router.extendRoutes,
         postStructure = postFiles.reduce((l, file) => {
           const f = {
             url:   file.url,
@@ -129,12 +132,15 @@ module.exports = function(options) {
   // don't extend routes for every post as this is part of every (spa) page (router config)
   this.options.router = this.options.router || {};
   this.options.router.extendRoutes = (routes, resolve) => {
+    extendRoutes(routes, resolve);
     routes.push({
+      name:      'article',
       path:      `/blog/:year/:month/:day/:name`,
-      component: resolve(path.join(__dirname, '..', 'pages', 'article.vue'))
+      component: resolve(path.join(__dirname, '..', 'pages/article.vue'))
     }, {
+      name:      'blog',
       path:      `/blog/:year?/:month?/:day?`,
-      component: resolve(path.join(__dirname, '..', 'pages', 'blog.vue'))
+      component: resolve(path.join(__dirname, '..', 'pages/blog.vue'))
     });
   };
 
@@ -169,7 +175,7 @@ module.exports = function(options) {
         compiler.plugin('emit', (compilation, callback) => {
           postFiles.forEach(file => {
             const str = JSON.stringify(file);
-            compilation.fileDependencies.push(path.join(__dirname, '..', 'blog', `${file.name}.md`));
+            compilation.fileDependencies.add(path.join(__dirname, '..', 'blog', `${file.name}.md`));
             compilation.assets[`posts/${file.name}.json`] = {
               source: () => str,
               size:   () => str.length
