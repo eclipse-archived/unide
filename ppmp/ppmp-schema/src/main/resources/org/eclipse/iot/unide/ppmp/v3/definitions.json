@@ -65,24 +65,24 @@
 												"description": "A constant limit for all corresponding measurements",
 												"properties": {
 													"lowerError": {
-														"description": "Indicates an error if this limit is underrun",
-														"type": "number"
+														"description": "Indicates an error if this limit is underrun. null indicates that there is no value defined at a certain index.",
+														"type": ["number", "null"]
 													},
 													"lowerWarn": {
-														"description": "Indicates a warning if this limit is underrun",
-														"type": "number"
+														"description": "Indicates a warning if this limit is underrun. null indicates that there is no value defined at a certain index.",
+														"type": ["number", "null"]
 													},
 													"target": {
-														"description": "Indicates the intented target value of the measurement",
-														"type": "number"
+														"description": "Indicates the intented target value of the measurement. null indicates that there is no value defined at a certain index.",
+														"type": ["number", "null"]
 													},
 													"upperError": {
-														"description": "Indicates an error if this limit is exceeded",
-														"type": "number"
+														"description": "Indicates an error if this limit is exceeded. null indicates that there is no value defined at a certain index.",
+														"type": ["number", "null"]
 													},
 													"upperWarn": {
-														"description": "Indicates a warning if this limit is exceeded",
-														"type": "number"
+														"description": "Indicates a warning if this limit is exceeded. null indicates that there is no value defined at a certain index.",
+														"type": ["number", "null"]
 													}
 												}
 											},
@@ -172,8 +172,8 @@
 							"^[^$]+": {
 								"type": "array",
 								"items": {
-									"type": ["boolean", "number", "string"],
-									"description": "The type of this measurement series is dependendant on the context.type. It defaults to number"
+									"type": ["boolean", "number", "string", "null"],
+									"description": "The type of this measurement series is dependendant on the context.type. It defaults to number. null indicates that there is no value defined at a certain index."
 								}
 							}
 						},
