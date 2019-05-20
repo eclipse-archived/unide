@@ -29,7 +29,6 @@
 			]
 		}
 	},
-	"additionalProperties": false,
 	"required": [
 		"content-spec",
 		"device",

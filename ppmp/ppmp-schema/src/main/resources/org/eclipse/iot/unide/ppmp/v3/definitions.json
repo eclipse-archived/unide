@@ -34,7 +34,6 @@
 					"type": "object"
 				}
 			},
-			"additionalProperties": false,
 			"required": [
 				"id"
 			]
@@ -65,24 +64,24 @@
 												"description": "A constant limit for all corresponding measurements",
 												"properties": {
 													"lowerError": {
-														"description": "Indicates an error if this limit is underrun. null indicates that there is no value defined at a certain index.",
-														"type": ["number", "null"]
+														"description": "Indicates an error if this limit is underrun",
+														"type": "number"
 													},
 													"lowerWarn": {
-														"description": "Indicates a warning if this limit is underrun. null indicates that there is no value defined at a certain index.",
-														"type": ["number", "null"]
+														"description": "Indicates a warning if this limit is underrun",
+														"type": "number"
 													},
 													"target": {
-														"description": "Indicates the intented target value of the measurement. null indicates that there is no value defined at a certain index.",
-														"type": ["number", "null"]
+														"description": "Indicates the intented target value of the measurement",
+														"type": "number"
 													},
 													"upperError": {
-														"description": "Indicates an error if this limit is exceeded. null indicates that there is no value defined at a certain index.",
-														"type": ["number", "null"]
+														"description": "Indicates an error if this limit is exceeded",
+														"type": "number"
 													},
 													"upperWarn": {
-														"description": "Indicates a warning if this limit is exceeded. null indicates that there is no value defined at a certain index.",
-														"type": ["number", "null"]
+														"description": "Indicates a warning if this limit is exceeded",
+														"type": "number"
 													}
 												}
 											},
@@ -91,38 +90,38 @@
 												"description": "An array of limit values. The items of the array correspond to the respective measurements at the same position.",
 												"properties": {
 													"lowerError": {
-														"description": "Indicates an error if these limits is underrun. The values correspond to the respective measurements in the given order.",
+														"description": "Indicates an error if these limits is underrun. The values correspond to the respective measurements in the given order. null indicates that there is no value defined at a certain index.",
 														"type": "array",
 														"items": {
-															"type": "number"
+															"type": ["number", "null"]
 														}
 													},
 													"lowerWarn": {
-														"description": "Indicates a warning if these limits is underrun. The values correspond to the respective measurements in the given order.",
+														"description": "Indicates a warning if these limits is underrun. The values correspond to the respective measurements in the given order. null indicates that there is no value defined at a certain index.",
 														"type": "array",
 														"items": {
-															"type": "number"
+															"type": ["number", "null"]
 														}
 													},
 													"target": {
-														"description": "Indicates the intented target values. The values correspond to the respective measurements in the given order.",
+														"description": "Indicates the intented target values. The values correspond to the respective measurements in the given order. null indicates that there is no value defined at a certain index.",
 														"type": "array",
 														"items": {
-															"type": "number"
+															"type": ["number", "null"]
 														}
 													},
 													"upperError": {
-														"description": "Indicates an error if these limits is exceeded. The values correspond to the respective measurements in the given order.",
+														"description": "Indicates an error if these limits is exceeded. The values correspond to the respective measurements in the given order. null indicates that there is no value defined at a certain index.",
 														"type": "array",
 														"items": {
-															"type": "number"
+															"type": ["number", "null"]
 														}
 													},
 													"upperWarn": {
-														"description": "Indicates a warning if these limits is exceeded. The values correspond to the respective measurements in the given order.",
+														"description": "Indicates a warning if these limits is exceeded. The values correspond to the respective measurements in the given order. null indicates that there is no value defined at a certain index.",
 														"type": "array",
 														"items": {
-															"type": "number"
+															"type": ["number", "null"]
 														}
 													}
 												}
@@ -173,7 +172,7 @@
 								"type": "array",
 								"items": {
 									"type": ["boolean", "number", "string", "null"],
-									"description": "The type of this measurement series is dependendant on the context.type. It defaults to number. null indicates that there is no value defined at a certain index."
+									"description": "The type of this measurement series is dependendant on the context.type. It defaults to number"
 								}
 							}
 						},
@@ -189,7 +188,6 @@
 						"type": "object"
 					}
 				},
-				"additionalProperties": false,
 				"required": [
 					"ts",
 					"series"
@@ -228,7 +226,6 @@
 					"type": "object"
 				}
 			},
-			"additionalProperties": false,
 			"required": [
 				"id"
 			]

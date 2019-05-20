@@ -67,7 +67,6 @@
 						"type": "object"
 					}
 				},
-				"additionalProperties": false,
 				"required": [
 					"ts",
 					"code"
@@ -75,7 +74,6 @@
 			}
 		}
 	},
-	"additionalProperties": false,
 	"required": [
 		"content-spec",
 		"device",

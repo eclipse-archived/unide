@@ -44,7 +44,6 @@
 							"type": "object"
 						}
 					},
-					"additionalProperties": false,
 					"required": [
 						"id"
 					]
@@ -65,7 +64,6 @@
 					"type": "object"
 				}
 			},
-			"additionalProperties": false,
 			"required": [
 				"ts"
 			]
@@ -127,7 +125,6 @@
 			]
 		}
 	},
-	"additionalProperties": false,
 	"required": [
 		"content-spec",
 		"device",

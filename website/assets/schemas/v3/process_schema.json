@@ -44,13 +44,16 @@
 							"type": "object"
 						}
 					},
-					"additionalProperties": false,
 					"required": [
 						"id"
 					]
 				},
 				"result": {
 					"$ref": "definitions.json#/definitions/result"
+				},
+				"shutoffPhase": {
+					"type": "string",
+					"description": "The id of the phase that led to stop the process. The shutOffPhase is the phase of the process in which either pre-defined parameters are met to successfully finish the process or an error that stopped the process. That is not necessarily the last phase. The shutOffPhase should be sent when the last process phase is sent."
 				},
 				"ts": {
 					"type": "string",
@@ -61,7 +64,6 @@
 					"type": "object"
 				}
 			},
-			"additionalProperties": false,
 			"required": [
 				"ts"
 			]
@@ -123,7 +125,6 @@
 			]
 		}
 	},
-	"additionalProperties": false,
 	"required": [
 		"content-spec",
 		"device",
