@@ -55,7 +55,7 @@ export default {
           ts:     new Date(now.valueOf() + 100).toISOString(),
           series: {
             time:     [0, 23, 24],
-            force:    [26, 23, 24],
+            force:    [26, 23, null],
             pressure: [100952.4, 100946.32, 100944.2432]
           }
         }]
@@ -115,7 +115,7 @@ export default {
                 upperError: [29, 27, 26],
                 lowerError: [23, 21, 20],
                 upperWarn:  [28.5, 26.5, 25.5],
-                lowerWarn:  [23.5, 21.5, 20.5],
+                lowerWarn:  [23.5, 21.5, null],
                 target:     [26, 24, 23]
               }
             }
@@ -126,7 +126,7 @@ export default {
           series: {
             force:       [26, 23, 24],
             pressure:    [100952.4, 100946.32, 100944.2432],
-            temperature: [45.4243, 46.42342, 44.2432]
+            temperature: [45.4243, null, 44.2432]
           },
           specialValues: [{
             // eslint-disable-next-line camelcase
