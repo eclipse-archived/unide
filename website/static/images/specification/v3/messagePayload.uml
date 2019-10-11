@@ -13,21 +13,35 @@ class Message {
 	hint[0..1] : String
 	origin[0..1] : String
 	severity[0..1] : Severity
+	source[0..1] : Source
+	state[0..1] : State
 	title[0..1] : String
 	ts : Date
 	type[0..1] : Type
 	additionalData[0..1]: Object
 }
 
-enum Type {
-	DEVICE
-	TECHNICAL_INFO
-}
-
 enum Severity {
 	HIGH
 	MEDIUM
 	LOW
+	UNKNOWN
+}
+
+enum State {
+	NEW
+	ENDED
+}
+
+enum Source {
+	DEVICE
+	TECHNICAL_INFO
+}
+
+enum Type {
+	TECHNICAL_INFO
+	WARNING
+	ERROR
 	UNKNOWN
 }
 
