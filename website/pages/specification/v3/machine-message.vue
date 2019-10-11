@@ -70,9 +70,11 @@ export default {
           hint:           'Check the control board',
           origin:         'sensor-id-992.2393.22',
           severity:       'HIGH',
+          source:         'DEVICE',
+          state:          'NEW',
           title:          'control board damaged',
           ts:             now.toISOString(),
-          type:           'DEVICE',
+          type:           'WARNING',
           additionalData: {
             firmware: '20130304_22.020'
           }
@@ -80,9 +82,9 @@ export default {
           code:        '33-02',
           description: 'Disk size has reached limit. Unable to write log files.',
           severity:    'HIGH',
+          source:      'TECHNICAL_INFO',
           title:       'Disk size limit reached',
-          ts:          new Date(now.valueOf() + 100).toISOString(),
-          type:        'TECHNICAL_INFO'
+          ts:          new Date(now.valueOf() + 100).toISOString()
         }]
       }
     };
