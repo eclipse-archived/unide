@@ -44,14 +44,6 @@
 						],
 						"default": "UNKNOWN"
 					},
-					"state": {
-						"type": "string",
-						"enum": [
-							"NEW",
-							"ENDED"
-						],
-						"description": "Determines the lifecycle state of the message"
-					},
 					"source": {
 						"type": "string",
 						"description": "The type of message. Default is DEVICE but can be set to TECHNICAL_INFO indicating a problem with the integration of the actual device. Allowed values: DEVICE, TECHNICAL_INFO",
@@ -60,6 +52,14 @@
 							"TECHNICAL_INFO"
 						],
 						"default": "DEVICE"
+					},
+					"state": {
+						"type": "string",
+						"enum": [
+							"NEW",
+							"ENDED"
+						],
+						"description": "Determines the lifecycle state of the message"
 					},
 					"title": {
 						"type": "string",

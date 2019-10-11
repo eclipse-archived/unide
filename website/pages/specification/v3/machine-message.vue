@@ -101,6 +101,8 @@ export default {
         'messages[0].hint',
         'messages[0].origin',
         'messages[0].severity',
+        'messages[0].source',
+        'messages[0].state',
         'messages[0].title',
         'messages[0].ts',
         'messages[0].type',
