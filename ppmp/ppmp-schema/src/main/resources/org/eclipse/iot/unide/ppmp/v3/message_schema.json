@@ -35,7 +35,7 @@
 					},
 					"severity": {
 						"type": "string",
-						"description": "Severity of the message",
+						"description": "Severity of the message. It complements type for describing urgency and relevance of a message",
 						"enum": [
 							"HIGH",
 							"MEDIUM",
@@ -43,6 +43,23 @@
 							"UNKNOWN"
 						],
 						"default": "UNKNOWN"
+					},
+					"state": {
+						"type": "string",
+						"enum": [
+							"NEW",
+							"ENDED"
+						],
+						"description": "Determines the lifecycle state of the message"
+					},
+					"source": {
+						"type": "string",
+						"description": "The type of message. Default is DEVICE but can be set to TECHNICAL_INFO indicating a problem with the integration of the actual device. Allowed values: DEVICE, TECHNICAL_INFO",
+						"enum": [
+							"DEVICE",
+							"TECHNICAL_INFO"
+						],
+						"default": "DEVICE"
 					},
 					"title": {
 						"type": "string",
@@ -56,12 +73,14 @@
 					},
 					"type": {
 						"type": "string",
-						"description": "The type of message. Default is DEVICE but can be set to TECHNICAL_INFO indicating a problem with the integration of the actual device. Allowed values: DEVICE, TECHNICAL_INFO",
+						"description": "Describes the debug level of the message. It complements severity for describing urgency and relevance of a message",
 						"enum": [
-							"DEVICE",
-							"TECHNICAL_INFO"
+							"INFO",
+							"WARNING",
+							"ERROR",
+							"UNKNOWN"
 						],
-						"default": "DEVICE"
+						"default": "UNKNOWN"
 					},
 					"additionalData": {
 						"type": "object"
