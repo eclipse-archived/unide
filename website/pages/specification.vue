@@ -24,6 +24,13 @@
       <p>
       The default way of transporting the json payload is via http to allow for an easy integration into various backend systems. Other transportation methods are possible and welcome.
       </p>
+      <h2>Validation</h2>
+      <p>
+        Did you know that you can easily validate your PPMP payload against the published online version of PPMP? For exapmle, <a href="https://www.jsonschemavalidator.net">jsonschemavalidator.net</a> provides an online validation frontend. Just use your payload as JSON input and the respective github link to the PPMP specification as a <code>$ref</code> in the schema. For example:
+        <prism language="json">{
+  "$ref": "https://raw.githubusercontent.com/eclipse/unide/master/ppmp/ppmp-schema/src/main/resources/org/eclipse/iot/unide/ppmp/v3/process_schema.json"
+}</prism>
+      </p>
       <article class="message is-warning is-size-7">
         <div class="message-body">
           Version 3 is still marked with a star (*), because it is not finally released with server and binding implementations and might be subject to minor fixes (addressed via <a href="https://github.com/eclipse/unide/issues">github</a>)
@@ -47,7 +54,7 @@
         /
         <nuxt-link :to="'/specification/v3/machine-message' + (isStatic ? '#messageDetail' : '')">
           3*
-        </nuxt-link>
+         </nuxt-link>
         )
       </div>
       <div class="column">
@@ -85,6 +92,7 @@
 </template>
 
 <script>
+import prism from 'vue-prism-component';
 
 export default {
   head() {
@@ -94,6 +102,9 @@ export default {
   },
   asyncData({ isStatic }) {
     return { isStatic };
+  },
+  components: {
+    prism
   }
 };
 </script>
