@@ -44,7 +44,7 @@ export default {
           deviceId = 'a4927dad-58d4-4580-b460-79cefd56775b';
     this.$static = {
       message: {
-        'content-spec': 'urn:spec://eclipse.org/unide/process-message#v2',
+        'content-spec': 'urn:spec://eclipse.org/unide/process-message#v3',
         device:         {
           id: deviceId
         },
@@ -61,7 +61,7 @@ export default {
         }]
       },
       complexMessage: {
-        'content-spec': 'urn:spec://eclipse.org/unide/process-message#v2',
+        'content-spec': 'urn:spec://eclipse.org/unide/process-message#v3',
         device:         {
           id:             deviceId,
           mode:           'auto',

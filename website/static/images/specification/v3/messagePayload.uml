@@ -39,10 +39,10 @@ enum Source {
 }
 
 enum Type {
-	TECHNICAL_INFO
+	INFO
 	WARNING
 	ERROR
-	UNKNOWN
+	UNKNOW
 }
 
 MessagePayload -- Device
@@ -55,6 +55,7 @@ hide Part
 hide PartType
 hide Result
 hide Series
+hide ValueType
 
 Context "1" -left- "0..*" Limits
 
