@@ -42,7 +42,7 @@ enum Type {
 	INFO
 	WARNING
 	ERROR
-	UNKNOW
+	UNKNOWN
 }
 
 MessagePayload -- Device
