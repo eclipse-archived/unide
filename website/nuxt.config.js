@@ -76,7 +76,7 @@ export default {
       // alias for default PPMP version
       ['machine', 'measurement', 'process'].forEach((name) => routes.push({
         path:     `/specification/${name}-message`,
-        redirect: `/specification/v2/${name}-message`
+        redirect: `/specification/v3/${name}-message`
       }));
     }
     //, fallback: true

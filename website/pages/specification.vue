@@ -31,11 +31,6 @@
   "$ref": "https://raw.githubusercontent.com/eclipse/unide/master/ppmp/ppmp-schema/src/main/resources/org/eclipse/iot/unide/ppmp/v3/process_schema.json"
 }</prism>
       </p>
-      <article class="message is-warning is-size-7">
-        <div class="message-body">
-          Version 3 is still marked with a star (*), because it is not finally released with server and binding implementations and might be subject to minor fixes (addressed via <a href="https://github.com/eclipse/unide/issues">github</a>)
-        </div>
-      </article>
     </div>
     <div class="columns" id="messageDetail">
       <div class="column">
@@ -53,7 +48,7 @@
         </nuxt-link>
         /
         <nuxt-link :to="'/specification/v3/machine-message' + (isStatic ? '#messageDetail' : '')">
-          3*
+          3
          </nuxt-link>
         )
       </div>
@@ -67,7 +62,7 @@
         </nuxt-link>
         /
         <nuxt-link :to="'/specification/v3/measurement-message' + (isStatic ? '#messageDetail' : '')">
-          3*
+          3
         </nuxt-link>
         )
       </div>
@@ -81,7 +76,7 @@
         </nuxt-link>
         /
         <nuxt-link :to="'/specification/v3/process-message' + (isStatic ? '#messageDetail' : '')">
-          3*
+          3
         </nuxt-link>
         )
       </div>
