@@ -1,15 +1,15 @@
 ---
-title: PPMP Version 3 final
+title: Protocol v3 final
 date: 2019-11-26 00:00:00
 tags: "v3"
 ---
 
-Version 3 of PPMP (Production Performance Management Protocol) has been finalized!
+Version 3 of the Production Performance Management Protocol (Production Performance Management Protocol) has been finalized!
 Thanks to CONTACT Software, Balluff GmbH, Bosch Plant Blaichach and Bosch Connected Industry for their proposals, ideas and patience.\
 The major improvements in Version 3 include consistent structure and naming, context for measurements and better extensibility.
 
 # Easy validation
-Did you know that you can easily validate your PPMP payload against the published online version of PPMP? For example, [jsonschemavalidator.net](https://www.jsonschemavalidator.net/) provides an online validation frontend. Just use your payload as JSON input and the respective github link to the PPMP specification as a `$ref` in the schema. For example:
+Did you know that you can easily validate your payload against the published online version of Production Performance Management Protocol? For example, [jsonschemavalidator.net](https://www.jsonschemavalidator.net/) provides an online validation frontend. Just use your payload as JSON input and the respective github link to the Production Performance Management Protocol specification as a `$ref` in the schema. For example:
 ```json
 {
   "$ref": "https://raw.githubusercontent.com/eclipse/unide/master/ppmp/ppmp-schema/src/main/resources/org/eclipse/iot/unide/ppmp/v3/process_schema.json"

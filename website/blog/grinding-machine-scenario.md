@@ -1,5 +1,5 @@
 ---
-title: "PPMP Use Cases: Unide and the Eclipse Production Performance Management Testbed"
+title: "Use Cases: Unide and the Eclipse Testbed"
 date: 2018-02-13 00:00:00
 tags: "use cases"
 ---
@@ -8,7 +8,7 @@ tags: "use cases"
 
 In this blog post we present a real world condition monitoring scenario used in
 the [Eclipse Production Performance Management Testbed][1], where Unide and
-PPMP plays a crucial role. Moreover, we also provide a code repository and
+the Production Performance Management Protocol plays a crucial role. Moreover, we also provide a code repository and
 instructions so that you can recreate the scenario in your own computer and
 learn about its components and the communication with each other.
 
@@ -26,14 +26,14 @@ Production Performance management Protocol (PPMP).
 
 - The device, i.e. the grinding machine, has been retrofitted with an
   acceleration sensor attached to one of its critical components. The data
-  provided by this sensor is routed to the gateway in the form of a [PPMP
+  provided by this sensor is routed to the gateway in the form of a [Production Performance Management Protocol
   Measurement Message][2].
 
 - The gateway receives the raw acceleration measurements, calculates some
   statistical characteristics and and applies some machine learning techniques
   to them in order to evaluate the condition of the grinding machine. Then both
   the statistical values and the condition are routed to the backend, again in
-  the form of a PPMP Measurement Message.
+  the form of a Production Performance Management Protocol Measurement Message.
 
 - The backend, usually in the cloud, is any component that "speaks PPMP" and
   performs meaningful operations on the incoming messages. Most frequently it
@@ -43,7 +43,7 @@ Production Performance management Protocol (PPMP).
   management (e.g. the grinding machine is in bad condition and an inspection
   must be carried out). 
   
-  The backend can be swapped effortless with any entity adhering to PPMP standard.
+  The backend can be swapped effortless with any entity adhering to the Production Performance Management Protocol standard.
   In the Eclipse PPM Testbed at least two different backends have been used: 
     - One directly based on [Unide][3]
     - One based on [CONTACT Elements for IoT][4].
@@ -96,7 +96,7 @@ $ source activate env    # or in windows: activate env
 Run `unide-grinding-machine -h` to get familiar with the CLI. With this
 executable we can generate some machine grinding data, and (for the moment)
 print messages to the console. To do so, run `unide-grinding-machine send
-random` and you should get a large message on the console. This is the PPMP
+random` and you should get a large message on the console. This is the Production Performance Management Protocol
 message ought to be sent to the gateway.
 
 We don't have a gateway so far, but don't worry, we will get to that in a
@@ -135,7 +135,7 @@ $ unide-grinding-machine send random --endpoint=http://127.0.0.1:5000
 ```
 
 If you take peek at the gateway output, you should see new information printed
-out, which is a PPMP message containing the result of the classification
+out, which is a Production Performance Management Protocol message containing the result of the classification
 algorithms applied to the device data we just sent to it. 
 
 We are getting somewhere! But still, it is not extremely useful to print some

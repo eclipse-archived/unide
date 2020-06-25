@@ -2,8 +2,8 @@
   <div class="specification">
     <div class="content">
       <h1>
-        <a id="PPMP-Specification" title="PPMP Specification"></a>
-        PPMP Specification
+        <a id="PPMP-Specification" title="Production Performance Management Protocol Specification"></a>
+        Production Performance Management Protocol Specification
       </h1>
       <h2>Rationale</h2>
       <p>
@@ -26,7 +26,7 @@
       </p>
       <h2>Validation</h2>
       <p>
-        Did you know that you can easily validate your PPMP payload against the published online version of PPMP? For exapmle, <a href="https://www.jsonschemavalidator.net">jsonschemavalidator.net</a> provides an online validation frontend. Just use your payload as JSON input and the respective github link to the PPMP specification as a <code>$ref</code> in the schema. For example:
+        Did you know that you can easily validate your Production Performance Management Protocol payload against the published online version of the Production Performance Management Protocol? For exapmle, <a href="https://www.jsonschemavalidator.net">jsonschemavalidator.net</a> provides an online validation frontend. Just use your payload as JSON input and the respective github link to the Production Performance Management Protocol specification as a <code>$ref</code> in the schema. For example:
         <prism language="json">{
   "$ref": "https://raw.githubusercontent.com/eclipse/unide/master/ppmp/ppmp-schema/src/main/resources/org/eclipse/iot/unide/ppmp/v3/process_schema.json"
 }</prism>

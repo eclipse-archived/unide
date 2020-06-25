@@ -24,8 +24,8 @@
       Industry benefits of Unide
     </h2>
     <p>This open source project aims to make PPM affordable for smaller organizations by reducing cost and complexity of data communication. Through sample implementations of a simple information structure (Production Performance Management Protocol - PPMP) tailored to manufacturing environments, we want to encourage the community to use, share, and evolve this structure together.</p>
-    <p>PPMP has already been introduced as part of a PPM testbed at a medium-sized Bosch plant, working with many SMEs as partners and suppliers. Furthermore, this testbed aims to create an ecosystem which allows SMEs and larger companies to collaborate efficiently.</p>
-    <p>The PPMP takes an important role by ensuring interoperability between different types of devices and software. It is designed to gather and aggregate machine and sensor data from different devices. It focuses on defining the JSON payload which can be transferred via a variety of transports (REST, AMQP, MQTT). The primary goals of PPMP are:</p>
+    <p>The Production Performance Management Protocol has already been introduced as part of a PPM testbed at a medium-sized Bosch plant, working with many SMEs as partners and suppliers. Furthermore, this testbed aims to create an ecosystem which allows SMEs and larger companies to collaborate efficiently.</p>
+    <p>The Production Performance Management Protocol takes an important role by ensuring interoperability between different types of devices and software. It is designed to gather and aggregate machine and sensor data from different devices. It focuses on defining the JSON payload which can be transferred via a variety of transports (REST, AMQP, MQTT). The primary goals of the Production Performance Management Protocol are:</p>
     <ol>
       <li>Integrating devices (across domains; e.g. manufacturing or energy) for data aggregation and gathering purposes</li>
       <li>Providing a very lightweight and easy-to-use solution for small and medium-sized enterprises (SMEs)</li>
@@ -35,7 +35,7 @@
     </h1>
     <p>The Eclipse Unide project publishes the current version of Production Performance Management Protocol (PPMP) and develops simple server/client implementations. The implementations store the payloads in a database and displays them through a simple user interface. Everyone can then use these samples for their custom condition monitoring applications.</p>
     <p>The project will contain:</p>
-    <p><em>PPMP Specification:</em></p>
+    <p><em>Production Performance Management Protocol Specification:</em></p>
     <ul>
       <li>Machine message and measurement interfaces</li>
       <li>JSON based</li>
@@ -57,13 +57,13 @@
     </h1>
     <p>Eclipse Unide provides a lightweight Production Performance Management Protocol (PPMP) server-client implementations (using JSON, REST and other). The core of the protocol are two interface definitions:</p>
     <ul>
-      <li>PPMP Measurement Interface: This is a public REST API with the purpose of receiving time series and machine data.</li>
-      <li>PPMP Messages Interface: This is a public REST API with the purpose of receiving machine messages.</li>
+      <li>Production Performance Management Protocol Measurement Interface: This is a public REST API with the purpose of receiving time series and machine data.</li>
+      <li>Production Performance Management Protocol Messages Interface: This is a public REST API with the purpose of receiving machine messages.</li>
     </ul>
     <h1>
      Why Here?
     </h1>
-    <p>The PPMP extends the existing Eclipse IoT world by providing an easy and lightweight format for gathering data from industry sensors and machines, focusing on normalizing time series and alert messages. It can be transported by protocols like REST, AMQP, MQTT. As PPMP, these technologies do also not require complex and expensive middleware nor do their systems cause additional license fees. Eclipse is an excellent platform for developing PPMP sample implementations and evolving the format hands-on with the community. In fact, it could even join forces with existing Eclipse IoT projects like <a href="https://projects.eclipse.org/projects/iot.hono" target="_blank" rel="external">Hono</a>, <a href="https://www.eclipse.org/paho/" target="_blank" rel="external">Paho</a> or <a href="https://www.eclipse.org/kura/" target="_blank" rel="external">Kura</a>.</p>
+    <p>The Production Performance Management Protocol extends the existing Eclipse IoT world by providing an easy and lightweight format for gathering data from industry sensors and machines, focusing on normalizing time series and alert messages. It can be transported by protocols like REST, AMQP, MQTT. As the Production Performance Management Protocol, these technologies do also not require complex and expensive middleware nor do their systems cause additional license fees. Eclipse is an excellent platform for developing Production Performance Management Protocol sample implementations and evolving the format hands-on with the community. In fact, it could even join forces with existing Eclipse IoT projects like <a href="https://projects.eclipse.org/projects/iot.hono" target="_blank" rel="external">Hono</a>, <a href="https://www.eclipse.org/paho/" target="_blank" rel="external">Paho</a> or <a href="https://www.eclipse.org/kura/" target="_blank" rel="external">Kura</a>.</p>
     <h1>Interested Parties</h1>
     <ul>
       <li><a href="https://www.contact-software.com" target="_blank" rel="external">CONTACT Software GmbH</a></li>

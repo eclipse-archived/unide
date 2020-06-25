@@ -1,11 +1,11 @@
 ---
-title: "PPMP Use Cases: Template for PPMP transformation"
+title: "Use Cases: Template for transformation"
 date: 2018-09-04 00:00:00
 tags: "use cases"
 ---
 
 # Quick start
-In [a previous blog post](https://www.eclipse.org/unide/blog/2018/2/11/Transform-PPMP-with-camel/), I have already introduced Apache Camel as a tool to transform to PPMP. In this post, I want to dive a little deeper to get you started with your own transformation.
+In [a previous blog post](https://www.eclipse.org/unide/blog/2018/2/11/Transform-PPMP-with-camel/), I have already introduced Apache Camel as a tool to transform to the Production Performance Management Protocol. In this post, I want to dive a little deeper to get you started with your own transformation.
 You can find corresponding source code with some transformation examples [in the repository of the Eclipse PPM Testbed](https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement/tree/master/camel-integrator). After download or checkout of the project, you can easily package everything necessary for an installation via [Apache Maven](https://maven.apache.org/) and java&#160;8+:
 ```bash
 git clone https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement.git
@@ -47,24 +47,24 @@ Among others, you'll find:
 		</figure>
 	</div>
 	<div class="card-content">
-		html logfile before transformation to PPMP
+		html logfile before transformation to the Production Performance Management Protocol
 	</div>
 </div>
 
 * `application-context.xml`
-  Main entry file to start camel routes. It contains a general PPMP validation REST endpoint that reuses the route from `ppmp-validate-context.xml`
+  Main entry file to start camel routes. It contains a general Production Performance Management Protocol validation REST endpoint that reuses the route from `ppmp-validate-context.xml`
 * `mqtt-context.xml`
   A simple example of converting transport protocol (mqtt to REST), without looking at the payload
 * `ppmp-splitAndRewrite-context.xml`
-  Shows how to receive (PPMP-) payload via different REST paths (/rest or /ppm), and each forwarding to two seperate endpoints (/rest and /ppm)
+  Shows how to receive (Production Performance Management Protocol-) payload via different REST paths (/rest or /ppm), and each forwarding to two seperate endpoints (/rest and /ppm)
   * `ppmpRewrite.xml` and `ppmRewrite.xml`
     mapping examples to rewrite the urls
 * `ppmp-validate-context.xml`
-  A simple validation route for PPMP messages that can be reused in many other routes.
+  A simple validation route for Production Performance Management Protocol messages that can be reused in many other routes.
 * `psi6000-transform-context.xml`
-  A more advanced example of converting a psi6000 JSON format, converting it to plain old java object (POJO), transforming that to PPMP POJOs (using [unide.java](https://github.com/eclipse/unide.java)) and forwarding these to actual REST endpoints
+  A more advanced example of converting a psi6000 JSON format, converting it to plain old java object (POJO), transforming that to Production Performance Management Protocol POJOs (using [unide.java](https://github.com/eclipse/unide.java)) and forwarding these to actual REST endpoints
 * `kistler.xml`
-   This example takes html files with a structure similar to the test file in [`src/test/data/00000855.html`](https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement/blob/master/camel-integrator/src/test/data/00000855.html), cleans the html structure, retrieves the relevant parts via [XPath](https://en.wikipedia.org/wiki/XPath) and creates a PPMP process message out of that
+   This example takes html files with a structure similar to the test file in [`src/test/data/00000855.html`](https://github.com/eclipselabs/eclipseiot-testbed-productionperformancemanagement/blob/master/camel-integrator/src/test/data/00000855.html), cleans the html structure, retrieves the relevant parts via [XPath](https://en.wikipedia.org/wiki/XPath) and creates a Production Performance Management Protocol process message out of that
 * `application.properties`
   Contains key/value pairs that can be used in the camel context configurations.
 * `log4j.properties`

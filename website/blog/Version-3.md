@@ -1,10 +1,10 @@
 ---
-title: PPMP Version 3 release candidate
+title: Protocol Version 3 release candidate
 date: 2019-03-01 00:00:00
 tags: "v3"
 ---
 
-After a long discussion phase, the PPMP version 3 is finally linked on the specification page. Special thanks to [bgusach](https://github.com/bgusach), [bf-bryants](https://github.com/bf-bryants), [muelsen](https://github.com/muelsen) and [alaendle](https://github.com/alaendle) for their contributions [via github issues](https://github.com/eclipse/unide/issues)!
+After a long discussion phase, the Production Performance Management Protocol version 3 is finally linked on the specification page. Special thanks to [bgusach](https://github.com/bgusach), [bf-bryants](https://github.com/bf-bryants), [muelsen](https://github.com/muelsen) and [alaendle](https://github.com/alaendle) for their contributions [via github issues](https://github.com/eclipse/unide/issues)!
 # The most important changes
 * `context` section in `measurements`\
   The optional context section ccontains information on how to interpret the measurements. This includes

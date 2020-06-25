@@ -22,7 +22,7 @@ and start the server
 ```bash
 java -jar ppmp-server-0.2.0.jar -conf application_conf.json
 ```
-Point your browser to http://localhost:8090 and see the servers documentation running on your local server! At this point, PPMP validation (via HTTP POST to `/rest/v2/validate`) is enabled, but no persistence.
+Point your browser to http://localhost:8090 and see the servers documentation running on your local server! At this point, Production Performance Management Protocol validation (via HTTP POST to `/rest/v2/validate`) is enabled, but no persistence.
 
 If you want to send data to the server, a quick way is via [Postman App](https://www.getpostman.com/), which is available as native app or [Chrome app](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en). Once installed and started, you can easily use the "Import > Import From Link" feature to get the prepared [unide.postman_collection.json](https://raw.githubusercontent.com/eclipse/unide/f4d349bc4a0096d3f99e14cf5f8b9f53a5145fdd/servers/rest/assets/postman/unide.postman_collection.json) and the corresponding [unide.postman_environment](https://raw.githubusercontent.com/eclipse/unide/f4d349bc4a0096d3f99e14cf5f8b9f53a5145fdd/servers/rest/assets/postman/unide.postman_environment.json). You should now have Machine/Measurement/Process messages and requests prepared in the Collections tab. In order to send, you could extend the URL with "/validate" and hit "Send" button. If you get the response
 > Ppmp Message of type 'xy' is valid
@@ -58,7 +58,7 @@ Download the appropriate jdbc driver, e.g. [h2-*.jar](http://repo1.maven.org/mav
   "sqlDb.password": ""
 }
 ```
-Start the PPMP Server with the jdbc dependency on the classpath, e.g.:
+Start the Production Performance Management Protocol Server with the jdbc dependency on the classpath, e.g.:
 ```bash
 java -cp "h2-1.4.197.jar;ppmp-server-0.2.0.jar" io.vertx.core.Launcher org.eclipse.iot.unide.server.MainVerticle -conf application.conf
 ```
@@ -70,10 +70,10 @@ For concurrent db actions (reading while writing), use the h2 tcp server instead
 ## Download
 
 Available artifacts for download:
-* [PPMP Schema v2](https://repo.eclipse.org/content/repositories/unide-releases/org/eclipse/iot/unide/ppmp/ppmp-schema/2.0.0/)
-* [PPMP java Binding](https://repo.eclipse.org/content/repositories/unide-releases/org/eclipse/iot/unide/ppmp/ppmp-java-binding/0.2.0/)
-* [PPMP Python Binding](https://pypi.python.org/packages/d5/af/c90911d1da56a1ed0238338ba01068d43b8cd0137e9ca52b0f52a279f73e/unide_python-0.2.0-py2.py3-none-any.whl#md5=ca67bcd536b3a4015f72f5fa53d36543) 
-* [PPMP Server](https://repo.eclipse.org/content/repositories/unide-releases/org/eclipse/iot/unide/ppmp/ppmp-server/0.2.0/)
+* [Production Performance Management Protocol Schema v2](https://repo.eclipse.org/content/repositories/unide-releases/org/eclipse/iot/unide/ppmp/ppmp-schema/2.0.0/)
+* [Production Performance Management Protocol java Binding](https://repo.eclipse.org/content/repositories/unide-releases/org/eclipse/iot/unide/ppmp/ppmp-java-binding/0.2.0/)
+* [Production Performance Management Protocol Python Binding](https://pypi.python.org/packages/d5/af/c90911d1da56a1ed0238338ba01068d43b8cd0137e9ca52b0f52a279f73e/unide_python-0.2.0-py2.py3-none-any.whl#md5=ca67bcd536b3a4015f72f5fa53d36543) 
+* [Production Performance Management Protocol Server](https://repo.eclipse.org/content/repositories/unide-releases/org/eclipse/iot/unide/ppmp/ppmp-server/0.2.0/)
 * [binsa client chrome app](http://download.eclipse.org/unide/binsa.crx)
 
 Source code:
@@ -97,7 +97,7 @@ Source code:
 ### New HTML5 simulation client
 * Progressive Webapp runs as website (see https://unide.eclipse.org/binsa), browser app, native client (via [nw.js](https://nwjs.io/)) or app (via [Apache cordova](https://cordova.apache.org/))
 
-### PPMP JSON Schema files
+### Production Performance Management Protocol JSON Schema files
 * Introduced separate bundle for schemas
 * general fixes
   * make schema draft-06 compliant
@@ -120,7 +120,7 @@ Source code:
   * completed 'series' definition
 
 ### Website
-* Autogenerating PPMP specification from JSON schemas to avoid discrepancies
+* Autogenerating Production Performance Management Protocol specification from JSON schemas to avoid discrepancies
 * Generating UML schemas with plantuml
 * Using similar HTML5 stack as simulation client for SPA website
 

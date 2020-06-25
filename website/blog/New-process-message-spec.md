@@ -1,5 +1,5 @@
 ---
-title: New PPMP-Specification for processes
+title: New Production Performance Management Protocol-Specification for processes
 date: 2017-06-01 00:00:00
 tags: "process message"
 ---
