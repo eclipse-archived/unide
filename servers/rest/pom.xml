@@ -31,7 +31,7 @@
 		<vertx.version>3.5.0</vertx.version>
 		<influxdb.version>2.7</influxdb.version>
 		<jsonvaldiator.version>0.1.7</jsonvaldiator.version>
-		<jackson.version>2.8.6</jackson.version>
+		<jackson.version>2.9.10.8</jackson.version>
 		<ppmpjavabinding.version>0.3.0-SNAPSHOT</ppmpjavabinding.version>
 		<ppmpschema.version>3.0.0-SNAPSHOT</ppmpschema.version>
 		<log4j.version>1.2.17</log4j.version>
