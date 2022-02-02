@@ -35,7 +35,7 @@
 		<ppmpjavabinding.version>0.3.0-SNAPSHOT</ppmpjavabinding.version>
 		<ppmpschema.version>3.0.0-SNAPSHOT</ppmpschema.version>
 		<log4j.version>1.2.17</log4j.version>
-		<postgres.version>42.1.4</postgres.version>
+		<postgres.version>42.2.25</postgres.version>
 		<jaxb.version>2.3.0</jaxb.version>
 	</properties>
 
