@@ -28,7 +28,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<webroot>${project.build.directory}/classes/webroot</webroot>
-		<vertx.version>3.5.0</vertx.version>
+		<vertx.version>3.9.4</vertx.version>
 		<influxdb.version>2.7</influxdb.version>
 		<jsonvaldiator.version>0.1.7</jsonvaldiator.version>
 		<jackson.version>2.8.6</jackson.version>
